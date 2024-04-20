@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 //models/products/product.model.js
 const mongoose = require('mongoose')
 const Category = require('../categories/categories.model'); 
+=======
+const mongoose = require('mongoose')
+>>>>>>> d37ef13 (made products simple crud api)
 const productSchema = mongoose.Schema(
     {
         name: {
@@ -9,12 +13,18 @@ const productSchema = mongoose.Schema(
         },
         quantity: {
             type: Number,
+<<<<<<< HEAD
             default: 1
+=======
+            required: true,
+            default: 0
+>>>>>>> d37ef13 (made products simple crud api)
         },
         price: {
             type: Number,
             required: true,
         },
+<<<<<<< HEAD
         images: [{
             type: String,
             required: false
@@ -24,6 +34,12 @@ const productSchema = mongoose.Schema(
             ref: 'Category',
             required: false
         }/*  */
+=======
+        image: {
+            type: String,
+            required: false
+        }
+>>>>>>> d37ef13 (made products simple crud api)
     },
     {
         timestamps:true
