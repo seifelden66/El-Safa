@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Category = require('../models/categories/categories.model')
 const ObjectId = mongoose.Types.ObjectId;
+const Product = require('../models/products/product.model');
 
 const getCategories = async (req, res) => {
     try {
@@ -45,15 +46,27 @@ const updateCategory = async (req, res) => {
     }
 }
 
-const deleteCategory= async (req, res) => {
+const deleteCategory = async (req, res) => {
     try {
-        const category = await Category.findByIdAndDelete(req.params.id)
-        if (!category) {
-            return res.status(404).json({ message: "category not found" })
+        const categoryId = req.params.id;
+        if (!ObjectId.isValid(categoryId)) {
+            return res.status(404).json({ message: "Invalid category ID" });
         }
-        res.status(200).json({ message: "category deleted successfully" })
+
+        // Check if there are any products associated with this category
+        const productCount = await Product.countDocuments({ category: categoryId });
+        if (productCount > 0) {
+            // If there are products, prevent deletion
+            return res.status(400).json({ message: "Cannot delete category because it has associated products" });
+        }
+
+        const category = await Category.findByIdAndDelete(categoryId);
+        if (!category) {
+            return res.status(404).json({ message: "Category not found" });
+        }
+        res.status(200).json({ message: "Category deleted successfully" });
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(500).json({ message: error.message });
     }
 }
 
