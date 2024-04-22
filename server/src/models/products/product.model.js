@@ -1,7 +1,6 @@
 //models/products/product.model.js
 const mongoose = require('mongoose')
 const Category = require('../categories/categories.model'); 
-const Branch = require('../branches/branch.model');
 const productSchema = mongoose.Schema(
     {
         name: {
@@ -24,12 +23,7 @@ const productSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Category',
             required: false
-        },
-        branch: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Branch',
-            required: false
-        }
+        }/*  */
     },
     {
         timestamps:true
