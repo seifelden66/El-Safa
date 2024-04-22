@@ -37,4 +37,4 @@ const usersSchema = new mongoose.Schema({
 });
 
 // Connects usersSchema with the "Users" collection
-module.exports = mongoose.model("Users", usersSchema);
+module.exports = mongoose.model("User", usersSchema);

@@ -5,4 +5,15 @@ function generateAndSetToken(id, role) {
   return jwt.sign({ id, role }, "kareem", { expiresIn: "3h" });
 }
 
-module.exports = generateAndSetToken;
+function generateEmailToken(email) {
+  return jwt.sign({ email }, "kareem", { expiresIn: "2m" });
+}
+
+function generateResetToken(email, id) {
+  return jwt.sign({ id, email }, "kareem", { expiresIn: "2m" });
+}
+module.exports = {
+  generateAndSetToken,
+  generateEmailToken,
+  generateResetToken,
+};

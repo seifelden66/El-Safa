@@ -1,4 +1,5 @@
 const usersSchema = require("./users.mongo");
+const resetCodeSchema = require("./forgotPassword.mongo");
 const generateHashPassword = require("../../services/auth/bcryptPassword");
 
 async function getAllUser() {
@@ -38,7 +39,7 @@ async function editUserProfile(user, id) {
     user.password = hashedPassword;
   }
   return usersSchema.findOneAndUpdate(
-    { _id, id },
+    { _id: id },
     { $set: user },
     { new: true }
   );
@@ -57,7 +58,32 @@ async function userLogin(user) {
 async function userProfile(user) {
   return await usersSchema.findOne(
     { _id: user.id, role: user.role },
-    { password: 0, createdAt: 0, updatedAt: 0 }
+    { password: 0, createdAt: 0, updatedAt: 0, __v: 0 }
+  );
+}
+
+// ANCHOR - check Email
+async function checkEmail(email) {
+  return await usersSchema.findOne({ email: email }).select("email");
+}
+// ANCHOR - save reset password code in database
+// NOTE - THIS FUNCTION USE resetCodeSchema
+async function saveResetCode(data) {
+  return await resetCodeSchema.create(data);
+}
+
+// ANCHOR - check about code
+async function cheackCode(code, email) {
+  return await resetCodeSchema.findOne({ code: code, email: email });
+}
+
+// ANCHOR - update password set new password
+async function resetPassword(email, password) {
+  const hashedPassword = await generateHashPassword(password);
+  return await usersSchema.findOneAndUpdate(
+    { email: email },
+    { password: hashedPassword },
+    { new: true }
   );
 }
 module.exports = {
@@ -68,4 +94,14 @@ module.exports = {
   addNewAdmin,
   getOneUser,
   editUserProfile,
+  checkEmail,
+  saveResetCode,
+  cheackCode,
+  resetPassword,
 };
+
+
+
+
+
+// TODO  add validation on reseet password function
