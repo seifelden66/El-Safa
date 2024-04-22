@@ -1,4 +1,7 @@
+//models/products/product.model.js
 const mongoose = require('mongoose')
+const Category = require('../categories/categories.model'); 
+const Branch = require('../branches/branch.model');
 const productSchema = mongoose.Schema(
     {
         name: {
@@ -7,15 +10,24 @@ const productSchema = mongoose.Schema(
         },
         quantity: {
             type: Number,
-            required: true,
-            default: 0
+            default: 1
         },
         price: {
             type: Number,
             required: true,
         },
-        image: {
+        images: [{
             type: String,
+            required: false
+        }],
+        category: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Category',
+            required: false
+        },
+        branch: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Branch',
             required: false
         }
     },
