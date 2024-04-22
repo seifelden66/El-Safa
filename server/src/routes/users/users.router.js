@@ -6,6 +6,9 @@ const {
   httpEditUserProfile,
   httpLoginWithEmail,
   httpUserProfile,
+  httpForgotPasswordEmail,
+  httpResetPassword,
+  httpCheckCode,
 } = require("../../controllers/users.controller");
 const {
   validationUserDate,
@@ -49,7 +52,20 @@ usersRouter.put(
   validateUserDataProfile,
   httpEditUserProfile
 );
-usersRouter.get("/test", (req, res) => {
-  res.status(200).json({ hi: "kareem" });
-});
+
+//ANCHOR - forgot password cheack email
+usersRouter.post("/forgor-password-email", httpForgotPasswordEmail);
+// NOTE - this 2 routes (send code and reset password is protected cant access them unless you have email token)
+usersRouter.post(
+  "/forgot-password-code",
+  passportInitialize,
+  passportAuthenticate,
+  httpCheckCode
+);
+usersRouter.patch(
+  "/new-password",
+  passportInitialize,
+  passportAuthenticate,
+  httpResetPassword
+);
 module.exports = usersRouter;
