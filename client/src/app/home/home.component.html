@@ -1,0 +1,217 @@
+
+<div class="container-fluid ">
+  <div class="row carusel_container ">
+    <div class="col-xxl-5 col-xl-5 col-10 data">
+      <h1 class="offer">الشحن مجاني - للطلبات التي تزيد قيمتها عن 100 دولار</h1>
+
+      <h1 class="saless">
+        عرض لفترة محدودة!
+        <br>
+        <div class="sales">
+          <span class="sale"> عرض حتى </span>
+          <span class="sale2">50% خصم</span>
+
+        </div>
+      </h1>
+
+      <h3>
+        قدمنا نموذجًا جديدًا للتسوق عبر الإنترنت للبقالة والتوصيل المريح إلى
+        المنازل.
+      </h3>
+
+      <button (click)="redirect4()" type="button" class="btn carusel_btn btn-outline-secondary w-25 p-2 my-5">
+        انظر في المتجر
+      </button>
+    </div>
+
+    <div class="col-xxl-6 col-xl-6 col-10">
+      @if (images) {
+      <ngb-carousel class="carusel" [showNavigationArrows]="false">
+
+        @for (item of productcenter; track $index) {
+
+          <ng-template ngbSlide>
+  
+            <div class="picsum-img-wrapper carouserl_img">
+              <img
+                class="w-100"
+                src="{{ item.thumbnail }}"
+                alt=""
+              />
+            </div>
+  
+          </ng-template>
+
+        }
+
+
+        
+      </ngb-carousel>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mx-auto">
+  
+  <div class="row mostsells_container">
+    <div class="mostsells">
+      <div class="product_data">
+        <h1>! New Collection</h1>
+        <p class="my-3">Launch Offer 15% Off!</p>
+        <button (click)="redirect4()" type="button" class="btn carusel_bt btn-outline-secondary w-100 p-2 my-5">
+          انظرالي جميع المنتجات
+        </button>
+      </div>
+  
+      <div class="product_img">
+        <img class="w-75" src="../../assets/pen1.png" alt="" />
+      </div>
+    </div>
+  
+    <div class="mostsells">
+      <div class="product_data">
+        <h1>! New Collection</h1>
+        <p class="my-3">Launch Offer 15% Off!</p>
+        <button (click)="redirect4()" type="button" class="btn carusel_bt btn-outline-secondary w-100 p-2 my-5">
+          انظرالي جميع المنتجات
+        </button>
+      </div>
+  
+      <div class="product_img">
+        <img class="w-75" src="../../assets/pen2.png" alt="" />
+      </div>
+    </div>
+  </div>
+  
+  <div class="row brands ">
+    <div class="col-10 col-xl-4 col-xxl-5">
+      <div class="brand_names">
+        <h3>Most Populer Brands</h3>
+        <p>All brand Offer start 25 Dec.</p>
+      </div>
+    </div>
+  
+    <div class="col-10 col-xl-5 col-xxl-5">
+      <div class="brand_imgs_container">
+        <div class="brands_imgs">
+          <img src="../../assets/brand1.png" alt="" />
+        </div>
+  
+        <div class="brands_imgs">
+          <img src="../../assets/brand2.png" alt="" />
+        </div>
+  
+        <div class="brands_imgs">
+          <img src="../../assets/brand3.png" alt="" />
+        </div>
+  
+        <div class="brands_imgs">
+          <img src="../../assets/brand4.png" alt="" />
+        </div>
+  
+        <div class="brands_imgs">
+          <img src="../../assets/brand5.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid some_offers">
+    <h2 class="some_offersh">بعض عروضنا</h2>
+  
+    <div class="row best_product_container row-cols-1 row-cols-md-3 g-4 ">
+      @for (product of productcenter.slice(0,8); track $index) {
+
+        <div class="col-9 col-xxl-2 col-xl-3 col-md-5 offer_card my-2 ">
+          <div class="card offer_data p-4 h-100 ">
+            
+            <img
+              [src]="product.thumbnail"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body my-4">
+              <h2 class="card-title">{{ product.title }}</h2>
+              <h3 class="card-title">${{ product.price }}</h3>
+              <div class="rating">
+                
+                <ngb-rating  [(rate)]="product.rating" [readonly]="true" [max]="5"></ngb-rating>
+              </div>
+
+    
+              <button type="button" (click)="redirect4()" class="btn  carusel_Btnss btn-success d-flex w-100 p-1 mt-3">
+                <span>Show More details</span> 
+              </button>
+            </div>
+          </div>
+        </div>
+
+      }
+
+  
+    </div>
+  </div>
+  
+  <div class="services">
+    <div class="row services_container">
+      <div class="service">
+        <div class="card flex justify-content-center">
+          <p-card header="">
+            <i class="pi pi-truck icon_color1" style="font-size: 2rem"></i>
+  
+            <h5>Fast Delivery</h5>
+  
+            <p class="m-0">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
+              sed consequuntur
+            </p>
+          </p-card>
+        </div>
+      </div>
+  
+      <div class="service">
+        <div class="card flex justify-content-center">
+          <p-card header="">
+            <i class="pi pi-server      icon_color3    " style="font-size: 2rem"></i>
+  
+            <h5>Online Support 24/7</h5>
+            <p class="m-0">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
+              sed consequuntur
+            </p>
+          </p-card>
+        </div>
+      </div>
+  
+      <div class="service">
+        <div class="card flex justify-content-center">
+          <p-card header="">
+            <i class="pi pi-credit-card icon_color4" style="font-size: 2rem"></i>
+  
+            <h5>Secure Payment</h5>
+            <p class="m-0">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
+              sed consequuntur
+            </p>
+          </p-card>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="card flex justify-content-center">
+          <p-card header="">
+            <i class="fa-solid fa-truck-fast icon_color2"style="font-size: 2rem" ></i>
+            <h5>Secure Payment</h5>
+            <p class="m-0">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
+              sed consequuntur
+            </p>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
