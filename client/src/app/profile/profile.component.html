@@ -1,0 +1,124 @@
+<div class="container mt-4 mb-4">
+    <div class="row container_profile">
+      <div class="col-xxl-3  col-xl-3 col-12 left_side">
+        <div class="container-fluid">
+          <div class="row part_1">
+            <div class="col-12">
+              <img class="w-50" src="../../assets/icon-256x256-removebg-preview.png" alt="" />
+              <!-- <h3>{{ userdata.name }}</h3> -->
+              <!-- <h6>{{ userdata.username }}</h6> -->
+            </div>
+          </div>
+  
+          <div class="row part_2">
+            <div class="col-12">
+              <p>
+                <!-- {{userdata.bio}} -->
+              </p>
+            </div>
+          </div>
+          
+ 
+          <div class="row part_4">
+            <div class="col">
+              <h5>Add Notes</h5>
+              <hr />
+              <div class="input-group">
+                <textarea
+                  class="form-control"
+                  placeholder="Add Your Notes . . ."
+                  aria-label="Add Your Notes"
+                  rows="4"
+                ></textarea>
+                <!-- <button class="btn btn-outline-secondary" type="button">Save</button> -->
+              </div>
+            </div>
+          </div>
+          
+  
+          <div class="row part_5">
+            <div class="col-12">
+              <button type="button" class="btn btn-outline-primary w-100">
+                Add Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-xxl-8 col-xl-8 col-12 right_side">
+        <div class="container-fluid px-5">
+  
+  
+          <div class="row  ">
+  
+            <div class="col-12 part_1ls  mb-4 mt-4 ">
+              
+                        <h4>Basic Information</h4>
+              
+                        <hr />
+              
+                        <div class="userdata">
+                          <div class="row">
+                            <div class="age col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-xs-6 ">
+                              <h5>age</h5>
+                              <p>23 Years</p>
+                            </div>
+                            <div class="Experiance col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-xs-6 ">
+                              <h5>Years of Experiances</h5>
+                              <!-- <p>{{userdata.experience}} Years</p> -->
+                            </div>
+                            <div class="Phobe col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-xs-6 ">
+                              <h5>Phone</h5>
+                              <p>+12345678912</p>
+                            </div>
+              
+                            <div class="City col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-xs-6 ">
+                              <h5>City</h5>
+                              <!-- <p>{{userdata.country}}</p> -->
+                            </div>
+                            <div class="Location col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-xs-6 ">
+                              <h5>Location</h5>
+                              <!-- <p>{{userdata.country }}</p> -->
+                            </div>
+                            <div class="Email col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-xs-6 ">
+                              <h5>Email</h5>
+                              <!-- <p>{{userdata.email}}</p> -->
+                            </div>
+                          </div>
+                        </div>
+              
+                        <div class="user_Btns d-flex gap-5 mt-3">
+                          <button type="button" class="btn btn-outline-secondary p-1">
+                            Download Data
+                          </button>
+                          <button type="button" class="btn btn-outline-info p-1">
+                            Send Email
+                          </button>
+                        </div>
+            </div>
+
+
+            <div class="col-12 my-4">
+                <div class="card w-75 p-4 d-flex mx-auto">
+                    <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+                </div>
+                
+                
+            </div>
+  
+
+  
+  
+  
+  
+          </div>
+  
+          
+  
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

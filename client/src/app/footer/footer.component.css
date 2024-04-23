@@ -1,0 +1,80 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+footer{
+    background-color: #161C2D;
+    color: slategray;
+}
+
+
+.row{
+    padding: 20px ;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px ;
+
+}
+
+.part2{
+    display: flex;
+    flex-direction: column;
+}
+
+.part2 .links1{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 0px;
+}
+
+.part2 .links1 p:hover{
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.links2{
+    display: flex;
+    gap: 20px ;
+    padding: 20px 0px;
+}
+
+.links2 p{
+    border: solid;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+}
+
+.links2 p:nth-child(1),.links2 p:nth-child(2),.links2 p:nth-child(3),.links2 p:nth-child(4) {
+    transition: .5s;
+    cursor: pointer;
+}
+
+.links2 p:nth-child(1):hover{
+    background-color: #2E51E6;
+    color: white;
+}
+
+.links2 p:nth-child(2):hover{
+    background-color: black;
+    color: white;
+}
+
+.links2 p:nth-child(3):hover{
+    background-color: #E6366C;
+    color: white;
+}
+
+.links2 p:nth-child(4):hover{
+    background-color: #d61f1f;
+    color: white;
+}
