@@ -55,7 +55,7 @@ usersRouter.put(
 
 //ANCHOR - forgot password cheack email
 usersRouter.post("/forgor-password-email", httpForgotPasswordEmail);
-// NOTE - this 2 routes (send code and reset password is protected cant access them unless you have email token)
+// NOTE - this 2 routes (send code and reset password is protected cant access them unless you have token)
 usersRouter.post(
   "/forgot-password-code",
   passportInitialize,
