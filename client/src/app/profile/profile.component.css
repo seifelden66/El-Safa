@@ -1,0 +1,45 @@
+
+.container_profile {
+    background-color: #EEF0FC;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 3px 3px gray;
+}
+
+.part_1, .part_2, .part_4, .part_5, .part_1ls, .part_2ls, .part_3ls {
+    padding: 20px;
+}
+
+.part_1, .part_2, .part_4, .part_5 {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.profile-img {
+    max-width: 120px;
+    border-radius: 50%;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Additional Styles */
+.user_Btns button {
+    padding: 8px 20px;
+}
+
+.experiance_container .experiances {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.experiance_container .experiances .exp_data {
+    margin-left: 10px;
+}

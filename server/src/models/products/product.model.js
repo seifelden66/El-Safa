@@ -23,7 +23,11 @@ const productSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Category',
             required: false
+<<<<<<< HEAD
         }/*  */
+=======
+        }
+>>>>>>> dc5aaaf5760eb39abd12eca63e5e136819a73707
     },
     {
         timestamps:true
