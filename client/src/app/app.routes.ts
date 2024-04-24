@@ -1,12 +1,13 @@
-import { LoginComponent } from './login/login.component';
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import { ProductPageComponent } from './product-page/product-page.component';
-import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
-import { InvoiceComponent } from './invoice/invoice.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { HomeComponent } from './user/home/home.component';
+import { LoginComponent } from './user/login/login.component';
+import { ProductPageComponent } from './user/product-page/product-page.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { InvoiceComponent } from './user/invoice/invoice.component';
+import { ProductDetailsComponent } from './user/product-details/product-details.component';
+
 
 export const routes: Routes = [
     {
@@ -32,6 +33,7 @@ export const routes: Routes = [
     {
         path:'invoice',
         component: InvoiceComponent
+
     },
     {
         path:'product_details/:id',
@@ -39,7 +41,7 @@ export const routes: Routes = [
     },
     {
         path: "**",
-        component:LoginComponent
+        component:HomeComponent
 
     }
 

@@ -1,4 +1,7 @@
-<div dir="ltr" class="container-fluid big_container px-4">
+<app-second-header></app-second-header>
+
+
+<div class="container-fluid big_container px-4">
   <div class="row product_details_container ">
     <h3 class="m-0 title">Title</h3>
     <hr>
@@ -32,7 +35,7 @@
       <div class="card text-bg-dark">
         <div class="card-body py-3">
           <h1>
-            {{ product_details?.title }}
+            {{ product_details?.name }}
           </h1>
           <h2 class="card-title details ">Category: {{ product_details?.category }}</h2>
           <div class="product_price " >
@@ -50,8 +53,8 @@
             ></ngb-rating>
             <h5 class="m-0 rate">{{ product_details.rating }}</h5>
           </div>
-          <h5 class="detal">Details:</h5>
-          <p class="card-text">{{ product_details?.description }}</p>
+          <h5 class="detal">Quantity:</h5>
+          <h2 class="card-text">{{ product_details?.quantity }}</h2>
         </div>
 
         <div class="Btns d-flex gap-5">
@@ -263,3 +266,5 @@
     </div>
   </div>
 </div>
+
+<app-footer></app-footer>

@@ -35,7 +35,7 @@ const states = [
   FontAwesomeModule,
   IconFieldModule,
   InputIconModule,
-  HttpClientModule
+  HttpClientModule,
 ],
   templateUrl: './second-header.component.html',
   styleUrl: './second-header.component.css'

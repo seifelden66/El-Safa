@@ -15,6 +15,8 @@ import { CardModule } from 'primeng/card';
 import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { SecondHeaderComponent } from '../second-header/second-header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 type State = { id: number; name: string };
 
@@ -38,7 +40,9 @@ const states = [
     ButtonModule,
     CardModule,
     HttpClientModule,
-    NgbRatingModule
+    NgbRatingModule,
+    SecondHeaderComponent,
+    FooterComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

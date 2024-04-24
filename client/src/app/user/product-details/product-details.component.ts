@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
+import { SecondHeaderComponent } from '../second-header/second-header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [HttpClientModule,NgbRatingModule,TabViewModule,ButtonModule],
+  imports: [HttpClientModule,NgbRatingModule,TabViewModule,ButtonModule,SecondHeaderComponent,FooterComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
@@ -27,9 +29,9 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.ActivatedRoute.snapshot.params['id']);
    const product_id = this.ActivatedRoute.snapshot.params['id']
-    // console.log(product_id);
+    console.log(product_id);
     
-    this.http.get(`https://dummyjson.com/products/${product_id}`).subscribe((res: any) =>{
+    this.http.get(`http://localhost:8000/v1/products/${product_id}`).subscribe((res: any) =>{
       this.product_details = res ;
 
       this.main_img = this.product_details.thumbnail

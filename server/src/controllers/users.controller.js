@@ -53,11 +53,11 @@ async function httpAddUser(req, res) {
     const user = await addNewUser(req.body);
     const { _id, role } = user;
     const token = generateAndSetToken(_id, role);
-    res.cookie("userToken", token, {
-      httpOnly: true,
-      secure: true,
-      maxAge: 24 * 60 * 60 * 1000,
-    });
+    // res.cookie("userToken", token, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   maxAge: 24 * 60 * 60 * 1000,
+    // });
     // NOTE - SEND WELCOME EMAIL TO USER
     await sendEmail({
       to: user.email,
@@ -76,7 +76,7 @@ async function httpAddUser(req, res) {
       <p>Start shopping now and make the most out of your experience!</p>
       <p>Best regards,<br/>The ElSafa Team</p>`,
     });
-    return res.status(201).json({ success: "success insert" });
+    return res.status(201).json({ success: token });
   } catch (error) {
     if (error.code === 11000) {
       if (req.file) {

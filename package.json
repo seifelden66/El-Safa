@@ -8,12 +8,18 @@
     "install": "npm run install-server && npm run install client",
     "server": "npm run watch --prefix server",
     "client": "npm run start --prefix client",
-    "watch": "npm run server & npm run client",
+    "watch": "concurrently \"npm run server\" \"npm run client\"",
     "deploy": "npm run build --prefix client && npm run start --prefix server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "primeng": "^17.14.1"
+  }
 }
