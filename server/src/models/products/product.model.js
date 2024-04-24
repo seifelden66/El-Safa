@@ -1,7 +1,8 @@
 //models/products/product.model.js
 const mongoose = require('mongoose')
-const Category = require('../categories/categories.model'); 
+const Category = require('../categories/categories.model');
 const productSchema = mongoose.Schema(
+    
     {
         name: {
             type: String,
@@ -23,16 +24,43 @@ const productSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Category',
             required: false
-<<<<<<< HEAD
-        }/*  */
-=======
-        }
->>>>>>> dc5aaaf5760eb39abd12eca63e5e136819a73707
+        },
+        comments: [{
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
+            },
+            text: {
+                type: String,
+                required: true
+            },
+            date: {
+                type: Date,
+                default: Date.now
+            }
+        }],
+        ratings: [{
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
+            },
+            value: {
+                type: Number,
+                required: true,
+                min: 1,
+                max: 5
+            },
+            date: {
+                type: Date,
+                default: Date.now
+            }
+        }]
     },
     {
-        timestamps:true
+        timestamps: true
     }
 )
+
 
 const Product = mongoose.model("product", productSchema)
 module.exports = Product
