@@ -7,7 +7,7 @@ const validationUserDate = [
     .notEmpty()
     .withMessage("Name is required")
     .isLength({ min: 3 })
-    .withMessage("name must be t least 3 characters"),
+    .withMessage("Name must be at least 3 characters"),
   body("location")
     .trim()
     .notEmpty()
@@ -22,6 +22,12 @@ const validationUserDate = [
     .withMessage(
       "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
     ),
+  body("phone")
+    .trim()
+    .notEmpty()
+    .withMessage("Phone number is required")
+    .isMobilePhone("any")
+    .withMessage("Invalid phone number format"),
 ];
 
 // ANCHOR - validate user data when he edit your profile
@@ -58,6 +64,13 @@ const validateUserDataProfile = (req, res, next) => {
       res,
       next
     );
+  } else if (req.body.phone || req.body.phone == "") {
+    body("phone")
+      .trim()
+      .notEmpty()
+      .withMessage("Phone number is required")
+      .isMobilePhone("any")
+      .withMessage("Invalid phone number format")(req, res, next);
   } else {
     next();
   }
