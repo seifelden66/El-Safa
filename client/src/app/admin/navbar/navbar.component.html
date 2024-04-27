@@ -1,0 +1,111 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-sm">
+  <div class="container-fluid mx-5">
+    <span class="navbar-brand" (click)="toggleSideBarFunction()">
+      <i class="fa-solid fa-bars"></i>
+    </span>
+    <div>
+      <ul class="navbar-nav d-flex flex-row ms-auto me-3 align-items-center">
+        <li class="nav-item mx-2 position-relative">
+          <button
+            class="nav-link d-flex align-items-center"
+            id="navbarDropdownMenuLink"
+            aria-expanded="false"
+            (click)="toggleDropdown('navbarDropdown')"
+          >
+            <i class="fa-solid fa-bell"></i>
+            <span
+              class="badge bg-danger rounded-circle position-absolute top-5 start-100 translate-middle"
+            >
+              3
+              <!-- Change this number dynamically -->
+            </span>
+          </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            [class.show]="isDropdownOpen.navbarDropdown"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="#">test</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">test</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">test</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- nav item message  -->
+
+        <li class="nav-item mx-3 position-relative">
+          <button
+            class="nav-link d-flex align-items-center"
+            id="messageDropdownMenuLink"
+            aria-expanded="false"
+            (click)="toggleDropdown('messageDropdown')"
+          >
+            <i class="fa-solid fa-envelope"></i>
+            <span
+              class="badge bg-danger rounded-circle position-absolute top-5 start-100 translate-middle"
+            >
+              7
+              <!-- Change this number dynamically -->
+            </span>
+          </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            [class.show]="isDropdownOpen.messageDropdown"
+            aria-labelledby="messageDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="#">test</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">test</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">test</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Other dropdowns omitted for brevity -->
+
+        <div class="topbar-divider d-none d-sm-block"></div>
+        <li class="nav-item mx-2">
+          <button
+            class="nav-link d-flex align-items-center"
+            id="userDropdownMenuLink"
+            aria-expanded="false"
+            (click)="toggleDropdown('userDropdown')"
+          >
+            <img
+              src="https://mdbootstrap.com/img/Photos/Avatars/img (31).webp"
+              class="rounded-circle user-image"
+              height="22"
+              alt=""
+              loading="lazy"
+            />
+          </button>
+          <div
+            class="dropdown-menu shadow animated--grow-in"
+            [class.show]="isDropdownOpen.userDropdown"
+            aria-labelledby="userDropdownMenuLink"
+          >
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Profile
+            </a>
+            <a class="dropdown-item">
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
