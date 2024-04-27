@@ -7,6 +7,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { InvoiceComponent } from './user/invoice/invoice.component';
 import { ProductDetailsComponent } from './user/product-details/product-details.component';
+import { CartComponent } from './user/cart/cart.component';
 
 
 export const routes: Routes = [
@@ -38,6 +39,10 @@ export const routes: Routes = [
     {
         path:'product_details/:id',
         component: ProductDetailsComponent
+    },
+    {
+        path:'cart',
+        component:CartComponent
     },
     {
         path: "**",

@@ -106,6 +106,7 @@ export class HomeComponent implements OnInit {
       this.http.get('https://dummyjson.com/products').subscribe((res:any)=>{this.productcenter=res.products}
     )
 
+// ============================================
     
 
     }

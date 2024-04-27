@@ -1,5 +1,6 @@
 .bg-gradient-primary {
-    background-color: rgb(252, 250, 235);
+    background-color: #EEF0FC;
+  padding: 36px 0px ;
   }
   .bg-image {
     background: url("https://source.unsplash.com/800x600/?ecommerce");
@@ -11,6 +12,7 @@
     font-size: 0.8rem;
     border-radius: 0.5rem;
     padding: 1rem 1rem;
+    
   }
   
   form.user .btn-user {

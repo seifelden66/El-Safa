@@ -3,7 +3,7 @@ import {
   Header,
   PrimeTemplate,
   SharedModule
-} from "./chunk-D7HJQF7N.js";
+} from "./chunk-XI47K54R.js";
 import {
   CommonModule,
   NgClass,
@@ -42,8 +42,8 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1
 } from "./chunk-TDR5BHHU.js";
-import "./chunk-V2DXGMIT.js";
 import "./chunk-UKEHM6V6.js";
+import "./chunk-V2DXGMIT.js";
 import "./chunk-ZDOIMVJD.js";
 
 // node_modules/primeng/fesm2022/primeng-card.mjs

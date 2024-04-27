@@ -3,7 +3,7 @@
 
 <div  class="container-fluid  mx-auto">
 
-  <div class="row allproduct_container mx-auto my-4">
+  <div class="row allproduct_container mx-auto py-4">
 
 
     <div class="col-4 col-xxl-2 col-xl-3 col-md-3 catogury ">
@@ -65,38 +65,53 @@
         
 
         @for(product of allproducts; track  $index){
-          <div class="product_data  my-3">
+          <div class="product_data   my-3">
             <div class="product_img">
               <img
                 class="w-100 p-3"
                 src="{{ product.thumbnail }}"
                 alt=""
+                (click)="redirect(product?.id)"
               />      
+
+              <button type="button"  class="btn fav  carusel_Btnss  d-flex w-25 py-2 ">
+                <!-- <span><i class="fas fa-heart"></i></span>  -->
+              </button>
+
+
             </div>
       
             <div class="product_price  p-2  text-center">
-              <!-- <button type="button" class="btn btn-outline-secondary p-1 my-2 ">{{ product.category }}</button> -->
-              <p class="product_name" style="color: #6474A9;">{{ product?.name }}</p>
+              <button type="button" class="btn btn-outline-secondary p-1 my-2 ">{{ product?.category }}</button>
+              <p class="product_name" style="color: #6474A9;">{{ product?.title }}</p>
               <div class="rate_product">
                 <ngb-rating [(rate)]="product.rating" [max]="5"></ngb-rating>
 
               </div>
               <h2 style="font-weight: 600;" class="my-2">${{ product.price }}</h2>
               <div class="Btns d-flex gap-3 my-2">
-                                  
-              <button type="button" (click)="redirect(product?._id)" class="btn  carusel_Btnss btn d-flex w-100 p-1 mt-1">
-                <span>Show More details</span> 
-              </button>
+                
 
-              <button type="button"  class="btn  carusel_Btnss  d-flex w-100 p-1 ">
-                <i class="fas fa-heart"></i>
-              </button>
 
+                <div class="card">
+                  <p-toast></p-toast>
+                  <button type="button" pButton (click)="redirecttocart(product)" (click)="increase()"  (click)="show()" label="+" class="p-button-success"></button>
+              </div>
+
+
+                
+
+                
+ 
+              
+                
               </div>
               
 
            
             </div>
+
+            
           </div>
         }
 

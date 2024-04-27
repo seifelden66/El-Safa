@@ -1,7 +1,7 @@
 <app-second-header></app-second-header>
 
 
-<div class="container-fluid big_container px-4">
+<div class="container-fluid big_container py-2 px-4">
   <div class="row product_details_container ">
     <h3 class="m-0 title">Title</h3>
     <hr>
@@ -45,20 +45,22 @@
           </div>
 
 
-          <div class="rate_product">
+           <div class="rate_product">
             <ngb-rating
               [readonly]="true"
               [(rate)]="product_details.rating"
               [max]="5"
             ></ngb-rating>
             <h5 class="m-0 rate">{{ product_details.rating }}</h5>
-          </div>
-          <h5 class="detal">Quantity:</h5>
-          <h2 class="card-text">{{ product_details?.quantity }}</h2>
+          </div> 
+
+
+          <h5 class="detal">description:</h5>
+          <h2 class="card-text">{{ product_details?.description }}</h2>
         </div>
 
         <div class="Btns d-flex gap-5">
-          <button type="button" class="btn py-1 px-4 carusel_bt btn-secondary">
+          <button type="button" (click)="addtocart(product_details)" class="btn py-1 px-4 carusel_bt btn-secondary">
             Buy Now
           </button>
           <button type="button" class="btn py-1 px-3 btn-danger">
@@ -73,7 +75,7 @@
 
   <div class="w-100 my-3 product_descusion">
     <div class="card">
-      <div class="flex mb-2 gap-2 justify-content-end">
+      <!-- <div class="flex mb-2 gap-2 justify-content-end">
         <p-button
           (click)="activeIndex = 0"
           rounded="true"
@@ -88,16 +90,17 @@
           [outlined]="activeIndex !== 1"
           label="2"
         ></p-button>
-      </div>
+      </div> -->
 
 
 
       <p-tabView [(activeIndex)]="activeIndex" class="treed_part">
         <p-tabPanel header="Description">
           <div class="row d-flex gap-5">
-            <div class="col-12">
+            <div class="col-12 ">
               <h1>Product descriptions</h1>
               {{ product_details?.description }}
+              <p class="w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium incidunt id ut inventore assumenda mollitia vel nisi dignissimos dolor beatae dolorem velit distinctio, cupiditate nam consequatur rem, ipsum rerum unde?</p>
             </div>
 
             <div class="col-12">
@@ -158,7 +161,7 @@
                 <h1 class="product_rate">{{ product_details.rating}}</h1>
                 <h3>Overall Rating</h3>
     
-                <div class="rate_product">
+                 <div class="rate_product">
                   <ngb-rating
                     [readonly]="true"
                     [(rate)]="product_details.rating"
@@ -166,7 +169,6 @@
                   ></ngb-rating>
                   <h4 class="m-0 rate">{{ product_details.rating }}</h4>
                 </div>
-    
     
               </div>
     

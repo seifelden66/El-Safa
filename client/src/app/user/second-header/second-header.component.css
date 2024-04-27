@@ -45,6 +45,8 @@
   border: solid;
   border-radius: 4px;
   padding: 7px;
+  font-size: 20px;
+
 }
 
 .user_img,
@@ -52,6 +54,29 @@
 .faverot {
   display: flex;
   justify-content: center;
+
+}
+
+.payment{
+  position: relative;
+}
+
+.payment p{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  /* padding: 10px ; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10%;
+  right:10%;
+  font-weight: 900;
+  color: white;
+  /* background-color:#3B82F6 ; */
+  font-size: 16px;
+  color:  #AE4EE8;
 }
 
 .user_img {
@@ -61,11 +86,12 @@
 
 .payment,
 .faverot {
-  border: solid 2px;
+  border-bottom: solid 2px #EC1E18;
   width: fit-content;
   border-radius: 50%;
   cursor: pointer;
-  padding: 13px;
+  padding: 7px;
+  
 }
 
 .user_img img {
@@ -74,9 +100,12 @@
 
 .payment i {
   color: gray;
+  font-size: 25px;
+  color: #EC1E18;
 }
 .faverot i {
   color: red;
+  font-size: 25px;
 }
 
 .nav_btns {

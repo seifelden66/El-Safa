@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 20px ;
 }
 
 .data .offer {
@@ -45,11 +46,15 @@
   padding: 5px;
 }
 
+
+
 .saless{
   width: 100%;
-  font-size: 40px;
   flex-direction: column;
-  gap: 10px;
+  display: flex;
+  gap: 15px;
+  font-size: 65px ;
+  padding: 20px 0px;
   background: linear-gradient(
     120deg,
     #ad51ee,
@@ -72,6 +77,12 @@
   color: transparent;
 }
 
+.saless span{
+  font-size: 54px;
+  padding: 10px 0px ;
+  font-weight: 600;
+}
+
 .carusel_btn {
   border: solid #5c3dc3;
   color: #5c3dc3;
@@ -88,7 +99,7 @@
 }
 
 
-
+/* 
 .sale {
   align-items: center;
   color: transparent;
@@ -104,7 +115,7 @@
   font-size: 30px;
   font-weight: 700;
   
-}
+} */
 
 .carouserl_img {
   display: flex;
@@ -207,6 +218,7 @@
 /* ======================= */
 .some_offers {
   padding: 20px;
+  background-color: #EEF0FC;
 }
 
 .best_product_container {
@@ -243,6 +255,7 @@
   background-clip: text;
   color: transparent;
   font-size: 35px;
+  /* border: solid red; */
 }
 
 .card img {
@@ -314,6 +327,7 @@ background-color: transparent;
 /* ============================================== */
 /* media Quary */
 
+
 @media (width < 1000px) {
   .best_product_container {
     display: flex;
@@ -348,6 +362,15 @@ background-color: transparent;
     width: 95%;
   
   }
+  .saless{
+    font-size: 50px ;
+  }
+  
+  .saless span{
+    font-size: 40px;
+    font-weight: 500;
+  }
+
 }
 
 @media (width<800px) {
@@ -359,7 +382,20 @@ background-color: transparent;
     width: 80%;
   }
   
-
+  .some_offersh{
+    border: solid;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .saless{
+    font-size: 40px ;
+  }
+  
+  .saless span{
+    font-size: 35px;
+    font-weight: 500;
+  }
 }
 
 
@@ -367,6 +403,8 @@ background-color: transparent;
   .offer_card{
     width: 80%;
   }
+
+  
 
   
 }
