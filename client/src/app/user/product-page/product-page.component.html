@@ -1,0 +1,125 @@
+  
+<app-second-header></app-second-header>
+
+<div  class="container-fluid  mx-auto">
+
+  <div class="row allproduct_container mx-auto my-4">
+
+
+    <div class="col-4 col-xxl-2 col-xl-3 col-md-3 catogury ">
+
+
+      <h4 class="pb-2 search_type d-flex justify-content-center ">
+        Filters
+      </h4>
+      
+      <div dir="rtl" class="Categories_items py-3">
+
+
+        
+      <div class="type">
+        
+        <h4 class="pb-2 search_type d-flex justify-content-center">
+          Categories
+        </h4>
+  
+
+        @for (item of category; track $index) {
+
+          <div class="item_name">
+            <p class="m-0">{{ item }}</p>
+            <input type="checkbox">
+          </div>
+
+        }
+        
+
+ 
+      </div>
+
+      <div class="Rate" >
+        
+        <h4 class="pb-2 search_type  d-flex justify-content-center">
+          Price
+        </h4>
+        <div class="card">
+          <input type="text" pInputText [(ngModel)]="rangeValues" [readOnly]="true" class="w-full"/>
+          <p-slider [(ngModel)]="rangeValues" [max]="500" [range]="true"></p-slider>
+      </div>
+
+        
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+    <div class="col-xxl-9 col-xl-9 col-md-9 col-8">
+
+      <div class="row allproduct ">
+        
+
+        @for(product of allproducts; track  $index){
+          <div class="product_data  my-3">
+            <div class="product_img">
+              <img
+                class="w-100 p-3"
+                src="{{ product.thumbnail }}"
+                alt=""
+              />      
+            </div>
+      
+            <div class="product_price  p-2  text-center">
+              <!-- <button type="button" class="btn btn-outline-secondary p-1 my-2 ">{{ product.category }}</button> -->
+              <p class="product_name" style="color: #6474A9;">{{ product?.name }}</p>
+              <div class="rate_product">
+                <ngb-rating [(rate)]="product.rating" [max]="5"></ngb-rating>
+
+              </div>
+              <h2 style="font-weight: 600;" class="my-2">${{ product.price }}</h2>
+              <div class="Btns d-flex gap-3 my-2">
+                                  
+              <button type="button" (click)="redirect(product?._id)" class="btn  carusel_Btnss btn d-flex w-100 p-1 mt-1">
+                <span>Show More details</span> 
+              </button>
+
+              <button type="button"  class="btn  carusel_Btnss  d-flex w-100 p-1 ">
+                <i class="fas fa-heart"></i>
+              </button>
+
+              </div>
+              
+
+           
+            </div>
+          </div>
+        }
+
+                
+    
+
+    
+    
+
+        
+    
+        
+    
+    
+    
+      </div>
+      
+    </div>
+
+
+
+</div>
+
+</div>
+
+<app-footer></app-footer>

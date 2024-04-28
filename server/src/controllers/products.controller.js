@@ -22,28 +22,25 @@ const storage = multer.diskStorage({
 
 
 const getProducts = async (req, res) => {
-    try {
-        const products = await Product.find({})
-        res.status(200).json(products)
-    } catch (error) {
+  try {
+    const products = await Product.find({});
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-        res.status(500).json({message:error.message})
-
+const getProduct = async (req, res) => {
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: "Invalid product ID" });
     }
-}
-
-
-const getProduct = async (req, res)=>{
-    try {
-        if (!ObjectId.isValid(req.params.id)) {
-            return res.status(404).json({message:"Invalid product ID"});
-        }
-        const product = await Product.findById(req.params.id)
-        res.status(200).json(product)
-    } catch (error) {
-        res.status(500).json({message:error.message})
-    }
-}
+    const product = await Product.findById(req.params.id);
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 
 const postProduct = async (req, res) => {

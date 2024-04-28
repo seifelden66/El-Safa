@@ -1,0 +1,202 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="body w-100">
+    <app-navbar class="w-100"></app-navbar>
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between mt-5 mb-4">
+        <h1 class="h3">Products</h1>
+        <a
+          class="btn btn-primary align-content-center"
+          routerLink="/admin/add-product"
+        >
+          add Product
+        </a>
+      </div>
+      <div class="card shadow mb-4">
+        <div class="card-header d-flex justify-content-between">
+          <h3 class="m-0 font-weight-bold text-primary">Products Table</h3>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search..."
+              aria-label="Search"
+              aria-describedby="search-btn"
+            />
+            <button class="btn btn-primary" type="button" id="search-btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <!-- Product Table -->
+            <table class="table table-bordered" id="dataTable">
+              <thead>
+                <tr>
+                  <th>PRODUCT & TITLE</th>
+                  <th>CATEGORIES</th>
+                  <th>image</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- Use Bootstrap classes for table rows -->
+                @for(product of products; track product!._id){
+                <tr>
+                  <td>{{ product!.name }}</td>
+                  <td>{{ product!.category }}</td>
+                  <td><button class="btn btn-primary">images</button></td>
+                  <td>{{ product!.quantity }}</td>
+                  <td>{{ product!.price }}</td>
+                  <td>
+                    <button
+                      class="btn btn-sm"
+                      title="Edit"
+                      (click)="showEditModel(product!._id)"
+                    >
+                      <i class="fas fa-edit edit-product"></i>
+                    </button>
+                    <button
+                      class="btn btn-sm"
+                      (click)="showDeleteModel(product!._id)"
+                    >
+                      <i class="fas fa-trash-alt delete-product"></i>
+                    </button>
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="modelBackdrop"
+          [ngClass]="{ hide: deleteModelStatus && editModelStatus }"
+        ></div>
+
+        <!-- Delete product model -->
+        <div class="ng-Modal" [ngClass]="{ hide: deleteModelStatus }">
+          <div class="ng-Modal-header">
+            <h3>Delete Product</h3>
+          </div>
+          <div class="ng-Modal-body">
+            <p>Are you sure you want delete this product?</p>
+          </div>
+          <div class="ng-Modal-footer">
+            <div class="d-flex gap-2 float-end py-2">
+              <button class="btn btn-primary" (click)="hideDeleteModel()">
+                Close
+              </button>
+              <button class="btn btn-danger" (click)="deleteProduct()">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit product model -->
+        <div
+          id="editmodel"
+          class="ng-Modal"
+          [ngClass]="{ hide: editModelStatus }"
+        >
+          <div class="ng-Modal-header">
+            <h3>Edit Product</h3>
+          </div>
+          <div class="ng-Modal-body">
+            <form
+              class="product"
+              enctype="multipart/form-data"
+              [formGroup]="productForm"
+              (ngSubmit)="EditProduct()"
+            >
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label for="productName">Product Name</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-product mb4"
+                    id="productName"
+                    formControlName="name"
+                    placeholder="Name"
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <label for="quantity">Quantity</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-product mb-4"
+                    id="quantity"
+                    formControlName="quantity"
+                    placeholder="Quantity"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label for="price">Price</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-product mb4"
+                    id="price"
+                    formControlName="price"
+                    placeholder="Price"
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <label for="category">Categorys</label>
+                  <select
+                    class="form-control form-control-product mb-4"
+                    id="category"
+                    formControlName="category"
+                  >
+                    @for(category of categorys; track category._id){
+                    <option value="{{ category!._id }}">
+                      {{ category!.name }}
+                    </option>
+                    }
+                  </select>
+                </div>
+              </div>
+              <!-- TODO add this attribute  -->
+              <!-- formControlName="images" -->
+              <div class="form-group row mb-4 w-75">
+                <label for="productImages">Images</label>
+                <input
+                  multiple
+                  type="file"
+                  class="form-control form-control-product mb4"
+                  id="productImages"
+                  placeholder="Images"
+                />
+              </div>
+              <!-- TODO add this attribute  -->
+              <!-- formControlName="description" -->
+              <div class="form-group row mb-4 w-75">
+                <label for="desc">Description</label>
+                <textarea
+                  id="desc"
+                  class="form-control"
+                  cols="20"
+                  rows="5"
+                ></textarea>
+              </div>
+              <button class="btn btn-primary">Edit Product</button>
+            </form>
+          </div>
+          <div class="ng-Modal-footer">
+            <div class="d-flex gap-2 float-end py-2">
+              <button class="btn btn-primary" (click)="hideEditModel()">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

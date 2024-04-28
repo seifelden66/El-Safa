@@ -16,7 +16,10 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
   "dependencies": {
-    "server": "^1.0.39"
+    "primeng": "^17.14.1"
   }
 }

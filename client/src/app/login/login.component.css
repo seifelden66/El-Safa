@@ -1,76 +1,74 @@
-.cont{
-    height: 90vh;
-    position: relative;
-
+.bg-gradient-primary {
+  background-color: rgb(252, 250, 235);
 }
 
-.login{
-    width: 70%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);    
-    padding: 50px;
-    background-image: linear-gradient(161deg, #00272B 50% ,#01202C 50% );
-    border-radius: 19px;
+.bg-image {
+  background: url("https://source.unsplash.com/800x600/?ecommerce");
+  background-position: center;
+  background-size: cover;
 }
 
-.user{
-    display: flex;
-    justify-content: center;
-    padding: 20px ;
-    color: white;
+form.user .form-control-user {
+  font-size: 0.8rem;
+  border-radius: 0.5rem;
+  padding: 1rem 1rem;
 }
 
-.userdata{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-
+form.user .btn-user {
+  font-size: 0.8rem;
+  border-radius: 10rem;
+  padding: 0.75rem 1rem;
 }
 
-.userinput{
-    position: relative;
-    display: flex;
-    align-items: center;
+.btn-primary {
+  background: linear-gradient(
+    90deg,
+    rgba(69, 79, 255, 1) 0%,
+    rgba(125, 64, 255, 1) 100%
+  );
+  border: none;
 }
 
-.userdata i {
-    border: none;
-    padding: 15px;
-    border-radius: 50%;
-    position: absolute;
-    left: -10px;
-    font-size: 30px;
-    background-color: rgb(255, 255, 255);
-
+.btn-primary:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(69, 79, 255, 0.8) 0%,
+    rgba(125, 64, 255, 0.8) 100%
+  );
 }
 
-.userdata input{
-    border: none;
-    padding: 10px 30px ;
-    border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.796);
-    outline: none;
-    color: black;
-    font-size: 20px;
-    font-weight: 600;
+.btn-google,
+.btn-facebook {
+  color: #fff;
+  border-radius: 10rem;
+  padding: 0.75rem 1rem;
 }
 
-
-@media (width<900PX){
-    
-.login{
-    width: 70%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);    
-    padding: 50px;
-    background-image: linear-gradient(147deg, #00272B 50% ,#01202C 50% );
+.btn-google {
+  background-color: #ea4335;
+  border-color: #fff;
 }
 
+.btn-google:hover {
+  background-color: #e12717;
+}
 
+.btn-google:focus,
+.btn-google.focus {
+  background-color: #e12717;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.error {
+  color: #fffbfb;
+  font-size: 1.2rem;
+  font: bold;
+  margin-top: 0.25rem;
+  background-color: rgb(255, 7, 7);
+  opacity: 0.5;
+  border-radius: 5px;
+}
+
+.text-center {
+  margin-top: 1rem;
 }

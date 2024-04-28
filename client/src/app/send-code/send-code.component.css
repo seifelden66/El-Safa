@@ -1,0 +1,60 @@
+.bg-gradient-primary {
+  background-color: rgb(252, 250, 235);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.bg-image {
+  background: url("https://source.unsplash.com/800x600/?ecommerce");
+  background-position: center;
+  background-size: cover;
+}
+
+form.user .form-control-user {
+  font-size: 0.8rem;
+  border-radius: 0.5rem;
+  padding: 1rem 1rem;
+}
+
+form.user .btn-user {
+  font-size: 0.8rem;
+  border-radius: 10rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    90deg,
+    rgba(69, 79, 255, 1) 0%,
+    rgba(125, 64, 255, 1) 100%
+  );
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(69, 79, 255, 0.8) 0%,
+    rgba(125, 64, 255, 0.8) 100%
+  );
+}
+
+.error {
+  color: #fffbfb;
+  font-size: 1.2rem;
+  font: bold;
+  margin-top: 0.25rem;
+  background-color: rgb(255, 7, 7);
+  opacity: 0.5;
+  border-radius: 5px;
+}
+
+.text-center {
+  margin-top: 1rem;
+}
+
+.expire-time {
+  /* font-weight: bold; */
+  color: red;
+}

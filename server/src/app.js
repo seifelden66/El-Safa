@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "..", "public", "browser")));
 app.use("/v1", api);
-
+///
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "browser", "index.html"));
 });
