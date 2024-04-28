@@ -2,16 +2,16 @@ import {
   BaseIcon,
   Ripple,
   RippleModule
-} from "./chunk-IVJBX75C.js";
+} from "./chunk-3NBXKKIU.js";
+import {
+  DomHandler
+} from "./chunk-EK2YCWCT.js";
 import {
   ObjectUtils,
   PrimeTemplate,
   SharedModule,
   UniqueComponentId
 } from "./chunk-D7HJQF7N.js";
-import {
-  DomHandler
-} from "./chunk-EK2YCWCT.js";
 import {
   CommonModule,
   DOCUMENT,

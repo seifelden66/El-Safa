@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./user/home/home.component";
-import { LoginComponent } from "./user/login/login.component";
 import { ProductPageComponent } from "./user/product-page/product-page.component";
 import { ProfileComponent } from "./user/profile/profile.component";
 import { SignUpComponent } from "./user/sign-up/sign-up.component";
@@ -14,6 +13,14 @@ import { CategorysComponent } from "./admin/categorys/categorys.component";
 import { AddProductComponent } from "./admin/add-product/add-product.component";
 import { OrdersComponent } from "./admin/orders/orders.component";
 import { AddNewAdminComponent } from "./admin/add-new-admin/add-new-admin.component";
+import { LoginComponent } from "./login/login.component";
+import { adminAuthGaurdGuard } from "./admin/services/admin-auth-gaurd.guard";
+import { isLoginGuard } from "./services/is-login.guard";
+import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
+import { SendCodeComponent } from "./send-code/send-code.component";
+import { sendCodeGuard } from "./services/send-code.guard";
+import { ResetPasswordComponent } from "./reset-password/reset-password.component";
+import { resetPasswordGuard } from "./services/reset-password.guard";
 
 export const routes: Routes = [
   {
@@ -23,6 +30,7 @@ export const routes: Routes = [
   {
     path: "login",
     component: LoginComponent,
+    canActivate: [isLoginGuard],
   },
   {
     path: "product",
@@ -77,6 +85,25 @@ export const routes: Routes = [
         component: AddNewAdminComponent,
       },
     ],
+    canActivate: [adminAuthGaurdGuard],
+  },
+  {
+    path: "forgotPassword",
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: "forgotPassword",
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: "sendCode",
+    component: SendCodeComponent,
+    canActivate: [sendCodeGuard],
+  },
+  {
+    path: "resetPassword",
+    component: ResetPasswordComponent,
+    canActivate: [resetPasswordGuard],
   },
 
   {

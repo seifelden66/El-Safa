@@ -26,7 +26,7 @@ adminRouter.use((req, res, next) => {
   next();
 });
 
-adminRouter.get("/all-users", httpGetAllUser);
+adminRouter.get("/users", httpGetAllUser);
 adminRouter.post(
   "/register",
   upload.single("file"),

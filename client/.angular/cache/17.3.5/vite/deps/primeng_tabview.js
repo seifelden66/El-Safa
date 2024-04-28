@@ -2,7 +2,11 @@ import {
   BaseIcon,
   Ripple,
   RippleModule
-} from "./chunk-IVJBX75C.js";
+} from "./chunk-3NBXKKIU.js";
+import {
+  ConnectedOverlayScrollHandler,
+  DomHandler
+} from "./chunk-EK2YCWCT.js";
 import {
   PrimeNGConfig,
   PrimeTemplate,
@@ -10,10 +14,6 @@ import {
   UniqueComponentId,
   zindexutils
 } from "./chunk-D7HJQF7N.js";
-import {
-  ConnectedOverlayScrollHandler,
-  DomHandler
-} from "./chunk-EK2YCWCT.js";
 import {
   CommonModule,
   NgClass,
