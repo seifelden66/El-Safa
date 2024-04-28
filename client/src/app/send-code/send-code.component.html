@@ -23,13 +23,17 @@
                     [formGroup]="sendCodeForm"
                     (ngSubmit)="onSubmit()"
                   >
-                    <div class="form-group">
+                    <div class="form-group text-center mb-3">
                       <input
                         type="code"
-                        class="form-control form-control-user mb-4"
+                        class="form-control form-control-user mb-3"
                         placeholder="Enter code ..."
                         formControlName="code"
                       />
+                      <span class="small expire-time"
+                        >code will expire after :
+                        <strong>{{ timer }}</strong></span
+                      >
                     </div>
                     <button class="btn btn-primary btn-user btn-block w-100">
                       Send code

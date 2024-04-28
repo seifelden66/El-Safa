@@ -25,11 +25,26 @@ export class SendCodeComponent {
   sendCodeForm!: FormGroup;
   error!: any;
   emailToken!: any;
+  timer: number = 30;
+
   ngOnInit() {
     this.sendCodeForm = new FormGroup({
       code: new FormControl("", [Validators.required]),
     });
     this.emailToken = this.cookieService.get("emailToken");
+    this.CodeExpireTime();
+  }
+  ngOnDestroy() {
+    clearInterval(this.timer);
+  }
+  CodeExpireTime() {
+    setInterval(() => {
+      if (this.timer == 0) {
+        this.router.navigate(["/forgotPassword"]);
+      } else {
+        this.timer -= 1;
+      }
+    }, 1000);
   }
   onSubmit() {
     this.http
