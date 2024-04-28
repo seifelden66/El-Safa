@@ -2,11 +2,19 @@
 const mongoose = require('mongoose')
 const Category = require('../categories/categories.model');
 const productSchema = mongoose.Schema(
-    
+
     {
         name: {
             type: String,
             required: ['true', "enter product name"]
+        },
+        short_desc: {
+            type: String,
+            required: true
+        },
+        desc: {
+            type: String,
+            required: true
         },
         quantity: {
             type: Number,
