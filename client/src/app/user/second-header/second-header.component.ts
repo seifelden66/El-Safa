@@ -1,3 +1,5 @@
+import { CartService } from './../services/cart.service';
+import { CounterService } from '../services/counter.service';
 import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +13,9 @@ import { Observable, OperatorFunction, debounceTime, distinctUntilChanged, map }
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { OrderListModule } from 'primeng/orderlist';
+
+
 type State = { id: number; name: string };
 
 const states = [
@@ -36,12 +41,14 @@ const states = [
   IconFieldModule,
   InputIconModule,
   HttpClientModule,
+  OrderListModule
 ],
   templateUrl: './second-header.component.html',
   styleUrl: './second-header.component.css'
 })
 export class SecondHeaderComponent implements OnInit {
   model: State | null = null;
+  count:number = 0
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
 
@@ -62,7 +69,7 @@ export class SecondHeaderComponent implements OnInit {
       )
     );
 
-constructor(private router : Router ,private http :HttpClient){}
+constructor(private router : Router ,private http :HttpClient,private CounterService :CounterService,private CartService :CartService){}
 
 redirect(){
 
@@ -100,6 +107,10 @@ redirect6(){
   this.router.navigate(['login'])
 }
 
+redirect7(){
+  this.router.navigate([`cart`])
+}
+
 // =============================
 products: any[] = [];
 categories: string[] = [];
@@ -108,6 +119,15 @@ selectedCategory: string | null = null;
 
 ngOnInit(): void {
   this.getAllProducts();
+  
+  this.CartService.getcount().subscribe((res)=>{
+    this.count=res
+  })
+
+
+  // this.CartService.addtocart
+
+
 }
 
 getAllProducts(): void {
@@ -127,6 +147,11 @@ getAllProducts(): void {
 filterProductsByCategory(category: string): void {
   this.selectedCategory = category;            
 }
+
+// ======counter======================================
+
+
+
 
 }
 

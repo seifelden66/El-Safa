@@ -1,9 +1,9 @@
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-MERBZJKO.js";
-import {
   DomHandler
 } from "./chunk-EK2YCWCT.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-MERBZJKO.js";
 import {
   CommonModule,
   DOCUMENT,

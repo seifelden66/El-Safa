@@ -1,11 +1,12 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -25,17 +26,15 @@ export class ProductDetailsComponent implements OnInit {
   }
   
    product_details : any 
-  constructor(private ActivatedRoute : ActivatedRoute,private http :HttpClient){}
+  constructor(private ActivatedRoute : ActivatedRoute,private http :HttpClient,private CartService : CartService,private router :Router){}
   ngOnInit(): void {
     // console.log(this.ActivatedRoute.snapshot.params['id']);
    const product_id = this.ActivatedRoute.snapshot.params['id']
-    console.log(product_id);
+    // console.log(product_id);
     
-    this.http.get(`http://localhost:8000/v1/products/${product_id}`).subscribe((res: any) =>{
+    this.http.get(`https://dummyjson.com/products/${product_id}`).subscribe((res: any) =>{
       this.product_details = res ;
-
       this.main_img = this.product_details.thumbnail
-
     });
     
       
@@ -46,7 +45,16 @@ export class ProductDetailsComponent implements OnInit {
 
     activeIndex: number = 0;
 
+    // =======cart operations==============================
   
+    addtocart(product_details:any){
+      // console.log(product_details);
+      this.CartService.addtocart(product_details)
+      // console.log(product_details);
+      this.router.navigate([`cart`])
+      
+
+    }
 
  
   }
