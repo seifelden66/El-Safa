@@ -27,25 +27,30 @@ export class SendCodeComponent {
   emailToken!: any;
   timer: number = 30;
 
+  private intervalId: any;
+
   ngOnInit() {
     this.sendCodeForm = new FormGroup({
       code: new FormControl("", [Validators.required]),
     });
     this.emailToken = this.cookieService.get("emailToken");
-    this.CodeExpireTime();
+    this.startTimer();
   }
   ngOnDestroy() {
-    clearInterval(this.timer);
+    clearInterval(this.intervalId);
   }
-  CodeExpireTime() {
-    setInterval(() => {
-      if (this.timer == 0) {
+
+  startTimer() {
+    this.intervalId = setInterval(() => {
+      if (this.timer === 0) {
+        clearInterval(this.intervalId);
         this.router.navigate(["/forgotPassword"]);
       } else {
         this.timer -= 1;
       }
-    }, 1000);
+    }, 1100);
   }
+
   onSubmit() {
     this.http
       .post(
