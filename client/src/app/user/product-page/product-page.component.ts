@@ -41,7 +41,7 @@ export class ProductPageComponent implements OnInit {
   
   
   show() {
-    this.messageService.add({ severity: 'success', summary: 'success', detail: 'Add To Cart' });
+    this.messageService.add({ severity: 'info', summary: 'success', detail: 'Add To Cart' });
 }
 
 

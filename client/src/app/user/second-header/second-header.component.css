@@ -70,12 +70,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 10%;
-  right:10%;
-  font-weight: 900;
+  top: -5%;
+  right:5%;
+  font-weight: 500;
   color: white;
   /* background-color:#3B82F6 ; */
-  font-size: 16px;
+  font-size: 14px;
   color:  #AE4EE8;
 }
 
@@ -157,10 +157,13 @@
   border-radius: 50%;
 }
 
+
 .navbar_data {
   width: 100%;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
+  display: flex;
+  justify-content: space-around;
 }
 
 .navbar_data li a:hover{

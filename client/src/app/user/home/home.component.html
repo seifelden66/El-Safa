@@ -9,7 +9,7 @@
       <h1 class="saless">
         Limited Time Offer!
         <br>
-        <span class="sale">Up To 50% OFF</span>
+        <span class="animated-text py-xxl-4">Up To 50% OFF</span>
       </h1>
 
       <h3>
@@ -56,10 +56,11 @@
 <div class="container-fluid mx-auto">
   
   <div class="row mostsells_container px-3">
+    <h3 class="some_offersh" > New Collection</h3>
     <div class="mostsells">
       <div class="product_data">
         <h1>! New Collection</h1>
-        <p class="my-3">Launch Offer 15% Off!</p>
+        <p class="my-3 Launch_offer ">Launch Offer 15% Off!</p>
         <button (click)="redirect4()" type="button" class="btn carusel_bt btn-outline-secondary w-100 p-2 my-5">
           View collection
         </button>
@@ -73,7 +74,7 @@
     <div class="mostsells">
       <div class="product_data">
         <h1>! New Collection</h1>
-        <p class="my-3">Launch Offer 15% Off!</p>
+        <p class="my-3 Launch_offer ">Launch Offer 15% Off!</p>
         <button (click)="redirect4()" type="button" class="btn carusel_bt btn-outline-secondary w-100 p-2 my-5">
           View collection
         </button>
@@ -119,7 +120,7 @@
   </div>
   
   <div class="container-fluid some_offers">
-    <h1 class="some_offersh m-0 ">some of our Products</h1>
+    <h1 class="some_offersh m-0 d-flex justify-content-center py-4 ">Some of our Products</h1>
   
     <div class="row best_product_container row-cols-1 row-cols-md-3 g-4 ">
       @for (product of productcenter.slice(0,8); track $index) {
