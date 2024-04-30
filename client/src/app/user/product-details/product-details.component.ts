@@ -7,11 +7,12 @@ import { TabViewModule } from 'primeng/tabview';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CartService } from '../services/cart.service';
+import { FirestnavComponent } from '../firestnav/firestnav.component';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [HttpClientModule,NgbRatingModule,TabViewModule,ButtonModule,SecondHeaderComponent,FooterComponent],
+  imports: [HttpClientModule,NgbRatingModule,TabViewModule,ButtonModule,SecondHeaderComponent,FooterComponent,FirestnavComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })

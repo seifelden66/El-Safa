@@ -21,15 +21,32 @@ const storage = multer.diskStorage({
   });
 
 
-const getProducts = async (req, res) => {
-  try {
-    const products = await Product.find({});
-    res.status(200).json(products);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
 
+const getProducts = async (req, res) => {
+    const page = parseInt(req.query.page) || 1; 
+    const pageSize = 10;
+  
+    try {
+      const totalCount = await Product.countDocuments(); 
+      const totalPages = Math.ceil(totalCount / pageSize); 
+      const products = await Product.find({})
+                                    .skip((page - 1) * pageSize) 
+                                    .limit(pageSize); 
+  
+      res.status(200).json({
+        currentPage: page,
+        totalPages: totalPages,
+        pageSize: pageSize,
+        totalCount: totalCount,
+        products: products
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
+  
+  
 const getProduct = async (req, res) => {
   try {
     if (!ObjectId.isValid(req.params.id)) {

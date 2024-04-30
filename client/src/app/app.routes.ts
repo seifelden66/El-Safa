@@ -22,6 +22,9 @@ import { sendCodeGuard } from "./services/send-code.guard";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { resetPasswordGuard } from "./services/reset-password.guard";
 
+import { CartComponent } from "./user/cart/cart.component";
+import { ContactComponent } from "./user/contact/contact.component";
+
 export const routes: Routes = [
   {
     path: "home",
@@ -104,6 +107,22 @@ export const routes: Routes = [
     path: "resetPassword",
     component: ResetPasswordComponent,
     canActivate: [resetPasswordGuard],
+  },
+  {
+    path: "product_details/:id",
+    component: ProductDetailsComponent,
+  },
+  {
+    path: "cart",
+    component: CartComponent,
+  },
+  {
+    path: "contact",
+    component: ContactComponent,
+  },
+  {
+    path: "**",
+    component: HomeComponent,
   },
 
   {
