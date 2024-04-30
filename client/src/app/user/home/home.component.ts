@@ -17,6 +17,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { FirestnavComponent } from '../firestnav/firestnav.component';
 
 type State = { id: number; name: string };
 
@@ -42,7 +43,8 @@ const states = [
     HttpClientModule,
     NgbRatingModule,
     SecondHeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FirestnavComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

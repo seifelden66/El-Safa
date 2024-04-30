@@ -14,12 +14,13 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'primeng/api';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 import { ToastModule } from 'primeng/toast'; // Correct import path
+import { FirestnavComponent } from '../firestnav/firestnav.component';
 
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [NgbRatingModule,HttpClientModule,ButtonModule,SliderModule,FormsModule,SecondHeaderComponent,FooterComponent,HttpClientModule,ToastModule],
+  imports: [NgbRatingModule,HttpClientModule,ButtonModule,SliderModule,FormsModule,SecondHeaderComponent,FooterComponent,HttpClientModule,ToastModule,FirestnavComponent],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.css',
   providers: [MessageService]

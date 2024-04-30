@@ -8,6 +8,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { InvoiceComponent } from './user/invoice/invoice.component';
 import { ProductDetailsComponent } from './user/product-details/product-details.component';
 import { CartComponent } from './user/cart/cart.component';
+import { ContactComponent } from './user/contact/contact.component';
 
 
 export const routes: Routes = [
@@ -43,6 +44,10 @@ export const routes: Routes = [
     {
         path:'cart',
         component:CartComponent
+    },
+    {
+        path:'contact',
+        component:ContactComponent
     },
     {
         path: "**",

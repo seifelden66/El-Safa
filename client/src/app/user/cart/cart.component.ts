@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { CounterService } from '../services/counter.service';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { FirestnavComponent } from '../firestnav/firestnav.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [SecondHeaderComponent,FooterComponent,CommonModule,NgbRatingModule],
+  imports: [SecondHeaderComponent,FooterComponent,CommonModule,NgbRatingModule,FirestnavComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
   animations: [

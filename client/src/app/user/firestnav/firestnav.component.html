@@ -1,0 +1,111 @@
+
+<div class="col-12 second_nav ">
+    <div dir="ltr" class="row  sec_nav justify-content-xxl-start gap-xxl-2 justify-content-md-start gap-md-4  ">
+
+
+      <div class="col-4 col-xxl-2 col-md-2 px-4  one">
+    
+        
+        <button class="btn btn-suceess category_btn"  [matMenuTriggerFor]="animals">Category</button>
+
+
+        <mat-menu #animals="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
+  <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+</mat-menu>
+
+<mat-menu #vertebrates="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
+  <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
+  <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+  <button mat-menu-item>Birds</button>
+  <button mat-menu-item>Mammals</button>
+</mat-menu>
+
+<mat-menu #invertebrates="matMenu">
+  <button mat-menu-item>Insects</button>
+  <button mat-menu-item>Molluscs</button>
+  <button mat-menu-item>Crustaceans</button>
+  <button mat-menu-item>Corals</button>
+  <button mat-menu-item>Arachnids</button>
+  <button mat-menu-item>Velvet worms</button>
+  <button mat-menu-item>Horseshoe crabs</button>
+</mat-menu>
+
+<mat-menu #fish="matMenu">
+  <button mat-menu-item>Baikal oilfish</button>
+  <button mat-menu-item>Bala shark</button>
+  <button mat-menu-item>Ballan wrasse</button>
+  <button mat-menu-item>Bamboo shark</button>
+  <button mat-menu-item>Banded killifish</button>
+</mat-menu>
+
+<mat-menu #amphibians="matMenu">
+  <button mat-menu-item>Sonoran desert toad</button>
+  <button mat-menu-item>Western toad</button>
+  <button mat-menu-item>Arroyo toad</button>
+  <button mat-menu-item>Yosemite toad</button>
+</mat-menu>
+
+<mat-menu #reptiles="matMenu">
+  <button mat-menu-item>Banded Day Gecko</button>
+  <button mat-menu-item>Banded Gila Monster</button>
+  <button mat-menu-item>Black Tree Monitor</button>
+  <button mat-menu-item>Blue Spiny Lizard</button>
+  <button mat-menu-item disabled>Velociraptor</button>
+</mat-menu>
+
+    
+    
+    
+      </div>
+    
+      <div   class="col-8 col-xxl-9 col-md-9 two">
+        <nav class="navbar navbar_container navbar-expand-lg bg-body-tertiary">
+          <div  class="container-fluid ">
+    
+            <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+    
+            <div class="collapse navbar-collapse nav_links" id="navbarSupportedContent">
+              <ul  class="navbar-nav me-auto mb-2 mb-lg-0">
+    
+                <div class="d-flex navbar_data  gap-3  ">
+
+                  <li class="nav-item">
+                    <a class="nav-link"  [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active_link" routerLink="/">Home</a>
+                </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link"  routerLinkActive="active_link" routerLink="/product">product</a>
+                </li>
+            
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="/cart">Cart</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active_link"  routerLink="/contact">contact</a>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link"  routerLink="">product</a>
+          </li>
+      
+
+                </div>
+              </ul>
+      
+            </div>
+    
+    
+    
+          </div>
+        </nav>
+      </div>
+
+    </div>
+  </div>
