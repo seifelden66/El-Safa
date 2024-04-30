@@ -7,7 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [SecondHeaderComponent,FirestnavComponent,FooterComponent,AgmCoreModule],
+  imports: [FirestnavComponent,FooterComponent,SecondHeaderComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })

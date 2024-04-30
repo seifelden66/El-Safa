@@ -70,13 +70,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -5%;
+  top: -10%;
   right:5%;
   font-weight: 500;
   color: white;
-  /* background-color:#3B82F6 ; */
+  background-color:white ;
   font-size: 14px;
-  color:  #AE4EE8;
+  color:red;
 }
 
 .user_img {
@@ -86,7 +86,6 @@
 
 .payment,
 .faverot {
-  border-bottom: solid 2px #EC1E18;
   width: fit-content;
   border-radius: 50%;
   cursor: pointer;
@@ -100,12 +99,12 @@
 
 .payment i {
   color: gray;
-  font-size: 25px;
-  color: #EC1E18;
+  font-size: 22px;
+  color: #B942CF;
 }
 .faverot i {
-  color: red;
-  font-size: 25px;
+  color: #B942CF;
+  font-size: 22px;
 }
 
 .nav_btns {

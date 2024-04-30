@@ -1,11 +1,10 @@
 import { CounterService } from './../services/counter.service';
 import { CartService } from './../services/cart.service';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject , OnDestroy , TemplateRef} from '@angular/core';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
-import { Router } from '@angular/router';
 import { SliderModule } from 'primeng/slider';
 import { FormsModule } from '@angular/forms';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
@@ -15,18 +14,21 @@ import { MessageService } from 'primeng/api';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 import { ToastModule } from 'primeng/toast'; // Correct import path
 import { FirestnavComponent } from '../firestnav/firestnav.component';
+import { Router } from '@angular/router';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastService } from '../services/toast.service';
 
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [NgbRatingModule,HttpClientModule,ButtonModule,SliderModule,FormsModule,SecondHeaderComponent,FooterComponent,HttpClientModule,ToastModule,FirestnavComponent],
+  imports: [NgbRatingModule,HttpClientModule,ButtonModule,SliderModule,FormsModule,SecondHeaderComponent,FooterComponent,HttpClientModule,ToastModule,FirestnavComponent,NgbTooltipModule],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.css',
   providers: [MessageService]
 
 })
-export class ProductPageComponent implements OnInit {
+export class ProductPageComponent implements OnInit,OnDestroy  {
 	// rating = 8;
 
   constructor(private http : HttpClient, private router : Router, 	config: NgbModalConfig,
@@ -115,6 +117,25 @@ export class ProductPageComponent implements OnInit {
   increase(){
     this.CartService.setcount(this.count +=1)
   }
+  //======================================================
   
+  toastService = inject(ToastService);
+
+  showStandard(template: TemplateRef<any>) {
+		this.toastService.show({ template });
+	}
+
+	showSuccess(template: TemplateRef<any>) {
+		this.toastService.show({ template, classname: 'bg-success text-light', delay: 10000 });
+	}
+
+	showDanger(template: TemplateRef<any>) {
+		this.toastService.show({ template, classname: 'bg-danger text-light', delay: 15000 });
+	}
+
+	ngOnDestroy(): void {
+		this.toastService.clear();
+	}
+
 
 }

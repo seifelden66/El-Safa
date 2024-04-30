@@ -1,3 +1,7 @@
+.active_link{
+  color: #AE4EE8;
+}
+
 .second_nav{
   position: sticky;
   top: 0;
