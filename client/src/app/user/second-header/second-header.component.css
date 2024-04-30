@@ -70,13 +70,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -10%;
+  top: -15%;
   right:5%;
   font-weight: 500;
   color: white;
   background-color:white ;
   font-size: 14px;
-  color:red;
+  color:#B942CF;
+  padding: 5px ;
 }
 
 .user_img {

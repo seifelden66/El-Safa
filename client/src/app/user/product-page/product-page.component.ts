@@ -12,23 +12,22 @@ import { FooterComponent } from '../footer/footer.component';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'primeng/api';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
-import { ToastModule } from 'primeng/toast'; // Correct import path
+import { Toast, ToastModule } from 'primeng/toast'; // Correct import path
 import { FirestnavComponent } from '../firestnav/firestnav.component';
 import { Router } from '@angular/router';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToastService } from '../services/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [NgbRatingModule,HttpClientModule,ButtonModule,SliderModule,FormsModule,SecondHeaderComponent,FooterComponent,HttpClientModule,ToastModule,FirestnavComponent,NgbTooltipModule],
+  imports: [NgbRatingModule,HttpClientModule,ButtonModule,SliderModule,FormsModule,SecondHeaderComponent,FooterComponent,HttpClientModule,ToastModule,FirestnavComponent],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.css',
   providers: [MessageService]
 
 })
-export class ProductPageComponent implements OnInit,OnDestroy  {
+export class ProductPageComponent implements OnInit  {
 	// rating = 8;
 
   constructor(private http : HttpClient, private router : Router, 	config: NgbModalConfig,
@@ -41,11 +40,16 @@ export class ProductPageComponent implements OnInit,OnDestroy  {
   count : number = 0;
   category:any;
   selectedCategory: string | null = null;
+
+    toster = inject(ToastrService)
   
   
   show() {
-    this.messageService.add({ severity: 'info', summary: 'success', detail: 'Add To Cart' });
-}
+    this.toster.success("added to Cart","Success")
+  }
+  show2() {
+    this.toster.success("added to Wishlist","Success")
+  }
 
 
   ngOnInit(): void {
@@ -119,23 +123,6 @@ export class ProductPageComponent implements OnInit,OnDestroy  {
   }
   //======================================================
   
-  toastService = inject(ToastService);
-
-  showStandard(template: TemplateRef<any>) {
-		this.toastService.show({ template });
-	}
-
-	showSuccess(template: TemplateRef<any>) {
-		this.toastService.show({ template, classname: 'bg-success text-light', delay: 10000 });
-	}
-
-	showDanger(template: TemplateRef<any>) {
-		this.toastService.show({ template, classname: 'bg-danger text-light', delay: 15000 });
-	}
-
-	ngOnDestroy(): void {
-		this.toastService.clear();
-	}
 
 
 }

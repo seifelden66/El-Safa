@@ -20,6 +20,7 @@
     "concurrently": "^8.2.2"
   },
   "dependencies": {
+    "@angular/animations": "^17.3.6",
     "ngx-toastr": "^18.0.0",
     "primeng": "^17.14.1",
     "some-module": "^0.0.3"
