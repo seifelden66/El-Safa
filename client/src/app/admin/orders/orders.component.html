@@ -19,33 +19,28 @@
               <thead>
                 <tr>
                   <th>ORDERID</th>
-                  <th>COUSTOMER</th>
+                  <th>ADDRESS</th>
                   <th>TOTAL</th>
-                  <th>DATE</th>
                   <th>TYPE</th>
                   <th>STATUS</th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
-                  <td>Caesar Vance</td>
-                  <td>Pre-Sales Support</td>
-                  <td>New York</td>
-                  <td>21</td>
-                  <td>2011/12/12</td>
-                  <td>2011/12/12</td>
-                </tr>
-                <tr>
-                  <td>Doris Wilder</td>
-                  <td>Sales Assistant</td>
-                  <td>Sidney</td>
-                  <td>23</td>
-                  <td>2010/09/20</td>
-                  <td>2011/12/12</td>
-                </tr>
+                @for(order of orders; track order._id){
 
-                
+                <tr>
+                  <td>
+                    <a routerLink="/admin/order-details/{{ order!._id }}">{{
+                      order!._id
+                    }}</a>
+                  </td>
+                  <td>{{ order!.Delivery_address }}</td>
+                  <td>${{ order!.totalPrice }}</td>
+                  <td>{{ order!.type_of_payment }}</td>
+                  <td>{{ order!.order_status }}</td>
+                </tr>
+                }
               </tbody>
             </table>
           </div>

@@ -34,8 +34,9 @@ export class AddProductComponent implements OnInit {
       quantity: new FormControl("", [Validators.required]),
       price: new FormControl("", [Validators.required]),
       category: new FormControl("", [Validators.required]),
-      // images: new FormControl("", [Validators.required]),
-      // description: new FormControl("", [Validators.required]),
+      images: new FormControl(null),
+      short_desc: new FormControl("", [Validators.required]),
+      desc: new FormControl("", [Validators.required]),
     });
   }
 
@@ -48,16 +49,37 @@ export class AddProductComponent implements OnInit {
       });
   }
 
+  onFileSelected(event: any) {
+    if (event.target.files.length > 0) {
+      const files: File[] = event.target.files;
+      this.productForm.patchValue({
+        images: files,
+      });
+    }
+  }
+
   addNewProduct() {
-    this.http
-      .post("http://localhost:8000/v1/products", this.productForm.value)
-      .subscribe(
-        (res: any) => {
-          this.route.navigate(["/admin/products"]);
-        },
-        (error) => console.log(error)
-      );
-    console.log(this.productForm);
+    const formData = new FormData();
+    formData.append("name", this.productForm.value.name);
+    formData.append("quantity", this.productForm.value.quantity);
+    formData.append("price", this.productForm.value.price);
+    formData.append("category", this.productForm.value.category);
+    formData.append("short_desc", this.productForm.value.short_desc);
+    formData.append("desc", this.productForm.value.desc);
+    const images: FileList = this.productForm.value.images;
+
+    for (let i = 0; i < images.length; i++) {
+      formData.append("image", images[i]);
+    }
+
+    // console.log(formData.get("image"));
+
+    this.http.post("http://localhost:8000/v1/products", formData).subscribe(
+      (res: any) => {
+        this.route.navigate(["/admin/products"]);
+      },
+      (error) => console.log(error)
+    );
   }
 }
 
