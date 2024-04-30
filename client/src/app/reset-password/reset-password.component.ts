@@ -8,10 +8,11 @@ import {
 } from "@angular/forms";
 import { CookieService } from "../services/cookie.service";
 import { Router } from "@angular/router";
+import { NgClass } from "@angular/common";
 @Component({
   selector: "app-reset-password",
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: "./reset-password.component.html",
   styleUrl: "./reset-password.component.css",
 })
@@ -21,14 +22,21 @@ export class ResetPasswordComponent {
     private cookieService: CookieService,
     private router: Router
   ) {}
+
   resetPasswordForm!: FormGroup;
   error!: any;
   resetToken!: any;
+  togglePassword: boolean = false;
+
   ngOnInit() {
     this.resetPasswordForm = new FormGroup({
       newPassword: new FormControl("", [Validators.required]),
     });
     this.resetToken = this.cookieService.get("resetToken");
+  }
+
+  togglePasswordVisibility() {
+    this.togglePassword = !this.togglePassword;
   }
 
   onSubmit() {

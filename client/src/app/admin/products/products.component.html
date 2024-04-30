@@ -49,7 +49,14 @@
                 <tr>
                   <td>{{ product!.name }}</td>
                   <td>{{ product!.category }}</td>
-                  <td><button class="btn btn-primary">images</button></td>
+                  <td>
+                    <button
+                      (click)="showImageModel(product!.images)"
+                      class="btn btn-primary"
+                    >
+                      images
+                    </button>
+                  </td>
                   <td>{{ product!.quantity }}</td>
                   <td>{{ product!.price }}</td>
                   <td>
@@ -191,6 +198,29 @@
           <div class="ng-Modal-footer">
             <div class="d-flex gap-2 float-end py-2">
               <button class="btn btn-primary" (click)="hideEditModel()">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Images Model  -->
+        <div
+          style="width: 500px"
+          class="ng-Modal"
+          [ngClass]="{ hide: imageModelStatus }"
+        >
+          <div class="ng-Modal-header">
+            <h3>Product Images</h3>
+          </div>
+          <div class="ng-Modal-body">
+            @for(image of productImages; track $index){
+            <img class="w-100 my-3" src="/assets/{{ image }}" alt="" />
+            }
+          </div>
+          <div class="ng-Modal-footer">
+            <div class="d-flex gap-2 float-end py-2">
+              <button class="btn btn-primary" (click)="hideImageModel()">
                 Close
               </button>
             </div>

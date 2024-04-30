@@ -21,6 +21,7 @@ import { SendCodeComponent } from "./send-code/send-code.component";
 import { sendCodeGuard } from "./services/send-code.guard";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { resetPasswordGuard } from "./services/reset-password.guard";
+import { SingleOrderComponent } from "./admin/single-order/single-order.component";
 
 export const routes: Routes = [
   {
@@ -73,6 +74,10 @@ export const routes: Routes = [
         component: OrdersComponent,
       },
       {
+        path: "order-details/:id",
+        component: SingleOrderComponent,
+      },
+      {
         path: "add-product",
         component: AddProductComponent,
       },
@@ -86,10 +91,6 @@ export const routes: Routes = [
       },
     ],
     canActivate: [adminAuthGaurdGuard],
-  },
-  {
-    path: "forgotPassword",
-    component: ForgotPasswordComponent,
   },
   {
     path: "forgotPassword",

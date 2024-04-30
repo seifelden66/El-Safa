@@ -36,6 +36,8 @@ export class ProductsComponent implements OnInit {
   productId: string = "";
   deleteModelStatus: boolean = true;
   editModelStatus: boolean = true;
+  imageModelStatus: boolean = true;
+  productImages: any;
   productForm!: FormGroup;
 
   ngOnInit(): void {
@@ -96,6 +98,13 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  showImageModel(images: any) {
+    this.productImages = images;
+    this.imageModelStatus = false;
+  }
+  hideImageModel() {
+    this.imageModelStatus = true;
+  }
   hideEditModel() {
     this.editModelStatus = true;
   }

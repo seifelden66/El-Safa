@@ -38,7 +38,6 @@ async function httpAddUser(req, res) {
           "public",
           "browser",
           "assets",
-          "image",
           req.file.filename
         )
       );
@@ -88,7 +87,6 @@ async function httpAddUser(req, res) {
             "public",
             "browser",
             "assets",
-            "image",
             req.file.filename
           )
         );
@@ -116,7 +114,6 @@ async function httpAddAdmin(req, res) {
           "public",
           "browser",
           "assets",
-          "image",
           req.file.filename
         )
       );
@@ -140,7 +137,6 @@ async function httpAddAdmin(req, res) {
             "public",
             "browser",
             "assets",
-            "image",
             req.file.filename
           )
         );
@@ -238,7 +234,6 @@ async function httpEditUserProfile(req, res) {
           "public",
           "browser",
           "assets",
-          "image",
           req.file.filename
         )
       );

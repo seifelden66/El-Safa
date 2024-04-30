@@ -26,7 +26,7 @@ export class SendCodeComponent {
   error!: any;
   emailToken!: any;
   timer: number = 30;
-
+  TimerId: any;
   ngOnInit() {
     this.sendCodeForm = new FormGroup({
       code: new FormControl("", [Validators.required]),
@@ -35,16 +35,17 @@ export class SendCodeComponent {
     this.CodeExpireTime();
   }
   ngOnDestroy() {
-    clearInterval(this.timer);
+    clearInterval(this.TimerId);
   }
   CodeExpireTime() {
-    setInterval(() => {
-      if (this.timer == 0) {
+    this.TimerId = setInterval(() => {
+      if (this.timer === 0) {
+        clearInterval(this.TimerId);
         this.router.navigate(["/forgotPassword"]);
       } else {
         this.timer -= 1;
       }
-    }, 1000);
+    }, 1200);
   }
   onSubmit() {
     this.http

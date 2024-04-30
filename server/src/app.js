@@ -3,17 +3,22 @@ const fs = require("fs");
 const path = require("path");
 const mongoose = require("mongoose");
 const express = require("express");
-const cors = require("cors")
+const cors = require("cors");
 const morgan = require("morgan");
-const helmet = require("helmet");
+// const helmet = require("helmet");
 const requestIp = require("request-ip");
 const api = require("./routes/api");
-
-
+// const cspConfig = require("./util/helmet.config");
 const app = express();
 
 app.use(requestIp.mw());
-app.use(helmet());
+// Use helmet with CSP
+// app.use(helmet());
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: cspConfig,
+//   })
+// );
 app.use(cors({ origin: "http://localhost:4200" }));
 
 const accessLogStream = fs.createWriteStream("access.log", { flags: "a" });

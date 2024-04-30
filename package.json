@@ -20,6 +20,7 @@
     "concurrently": "^8.2.2"
   },
   "dependencies": {
-    "primeng": "^17.14.1"
+    "primeng": "^17.14.1",
+    "server": "^1.0.39"
   }
 }

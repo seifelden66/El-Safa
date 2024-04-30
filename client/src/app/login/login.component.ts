@@ -7,25 +7,31 @@ import {
 } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: "app-login",
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, NgClass],
   templateUrl: "./login.component.html",
   styleUrl: "./login.component.css",
 })
 export class LoginComponent {
+  loginForm!: FormGroup; // product form data
+  error!: string;
+  togglePassword: boolean = false;
   constructor(private http: HttpClient, private router: Router) {}
 
-  loginForm!: FormGroup; // product form data
   ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl("", [Validators.required]),
       password: new FormControl("", [Validators.required]),
     });
   }
-  error!: string;
+  togglePasswordVisibility() {
+    this.togglePassword = !this.togglePassword;
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       this.http
