@@ -57,7 +57,7 @@ export class ProductPageComponent implements OnInit {
   }
 
   getallproduct(){
-    this.http.get('https://dummyjson.com/products').subscribe((res:any)=>{
+    this.http.get('http://localhost:8000/v1/products').subscribe((res:any)=>{
       this.allproducts=res.products
     })
 
