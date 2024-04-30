@@ -1,9 +1,10 @@
 import {
   Footer,
   Header,
+  ObjectUtils,
   PrimeTemplate,
   SharedModule
-} from "./chunk-XI47K54R.js";
+} from "./chunk-YBJTPGKE.js";
 import {
   CommonModule,
   NgClass,
@@ -21,6 +22,7 @@ import {
   NgModule,
   ViewEncapsulation$1,
   setClassMetadata,
+  signal,
   ɵɵadvance,
   ɵɵattribute,
   ɵɵclassMap,
@@ -42,8 +44,8 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1
 } from "./chunk-TDR5BHHU.js";
-import "./chunk-V2DXGMIT.js";
 import "./chunk-UKEHM6V6.js";
+import "./chunk-V2DXGMIT.js";
 import "./chunk-ZDOIMVJD.js";
 
 // node_modules/primeng/fesm2022/primeng-card.mjs
@@ -146,7 +148,11 @@ var Card = class _Card {
    * Inline style of the element.
    * @group Props
    */
-  style;
+  set style(value) {
+    if (!ObjectUtils.equals(this._style(), value)) {
+      this._style.set(value);
+    }
+  }
   /**
    * Class of the element.
    * @group Props
@@ -160,6 +166,7 @@ var Card = class _Card {
   subtitleTemplate;
   contentTemplate;
   footerTemplate;
+  _style = signal(null);
   constructor(el) {
     this.el = el;
   }
@@ -236,7 +243,7 @@ var Card = class _Card {
       }
       if (rf & 2) {
         ɵɵclassMap(ctx.styleClass);
-        ɵɵproperty("ngClass", "p-card p-component")("ngStyle", ctx.style);
+        ɵɵproperty("ngClass", "p-card p-component")("ngStyle", ctx._style());
         ɵɵattribute("data-pc-name", "card");
         ɵɵadvance();
         ɵɵproperty("ngIf", ctx.headerFacet || ctx.headerTemplate);
@@ -262,7 +269,7 @@ var Card = class _Card {
     args: [{
       selector: "p-card",
       template: `
-        <div [ngClass]="'p-card p-component'" [ngStyle]="style" [class]="styleClass" [attr.data-pc-name]="'card'">
+        <div [ngClass]="'p-card p-component'" [ngStyle]="_style()" [class]="styleClass" [attr.data-pc-name]="'card'">
             <div class="p-card-header" *ngIf="headerFacet || headerTemplate">
                 <ng-content select="p-header"></ng-content>
                 <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>

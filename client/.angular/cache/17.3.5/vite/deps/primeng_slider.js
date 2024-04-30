@@ -1,6 +1,10 @@
 import {
+  AutoFocus,
+  AutoFocusModule
+} from "./chunk-5SASJIEP.js";
+import {
   DomHandler
-} from "./chunk-EK2YCWCT.js";
+} from "./chunk-LZMSIMQG.js";
 import {
   NG_VALUE_ACCESSOR
 } from "./chunk-MERBZJKO.js";
@@ -59,8 +63,8 @@ import {
   ɵɵtemplate,
   ɵɵviewQuery
 } from "./chunk-TDR5BHHU.js";
-import "./chunk-V2DXGMIT.js";
 import "./chunk-UKEHM6V6.js";
+import "./chunk-V2DXGMIT.js";
 import "./chunk-ZDOIMVJD.js";
 
 // node_modules/primeng/fesm2022/primeng-slider.mjs
@@ -165,7 +169,7 @@ function Slider_span_5_Template(rf, ctx) {
   if (rf & 2) {
     const ctx_r0 = ɵɵnextContext();
     ɵɵstyleProp("transition", ctx_r0.dragging ? "none" : null);
-    ɵɵproperty("ngStyle", ɵɵpureFunction2(11, _c8, ctx_r0.orientation == "horizontal" ? ctx_r0.handleValue + "%" : null, ctx_r0.orientation == "vertical" ? ctx_r0.handleValue + "%" : null));
+    ɵɵproperty("ngStyle", ɵɵpureFunction2(12, _c8, ctx_r0.orientation == "horizontal" ? ctx_r0.handleValue + "%" : null, ctx_r0.orientation == "vertical" ? ctx_r0.handleValue + "%" : null))("autofocus", ctx_r0.autofocus);
     ɵɵattribute("tabindex", ctx_r0.disabled ? null : ctx_r0.tabindex)("aria-valuemin", ctx_r0.min)("aria-valuenow", ctx_r0.value)("aria-valuemax", ctx_r0.max)("aria-labelledby", ctx_r0.ariaLabelledBy)("aria-label", ctx_r0.ariaLabel)("aria-orientation", ctx_r0.orientation)("data-pc-section", "handle");
   }
 }
@@ -199,7 +203,7 @@ function Slider_span_6_Template(rf, ctx) {
   if (rf & 2) {
     const ctx_r0 = ɵɵnextContext();
     ɵɵstyleProp("transition", ctx_r0.dragging ? "none" : null);
-    ɵɵproperty("ngStyle", ɵɵpureFunction2(12, _c8, ctx_r0.rangeStartLeft, ctx_r0.rangeStartBottom))("ngClass", ɵɵpureFunction1(15, _c9, ctx_r0.handleIndex == 0));
+    ɵɵproperty("ngStyle", ɵɵpureFunction2(13, _c8, ctx_r0.rangeStartLeft, ctx_r0.rangeStartBottom))("ngClass", ɵɵpureFunction1(16, _c9, ctx_r0.handleIndex == 0))("autofocus", ctx_r0.autofocus);
     ɵɵattribute("tabindex", ctx_r0.disabled ? null : ctx_r0.tabindex)("aria-valuemin", ctx_r0.min)("aria-valuenow", ctx_r0.value ? ctx_r0.value[0] : null)("aria-valuemax", ctx_r0.max)("aria-labelledby", ctx_r0.ariaLabelledBy)("aria-label", ctx_r0.ariaLabel)("aria-orientation", ctx_r0.orientation)("data-pc-section", "startHandler");
   }
 }
@@ -309,6 +313,11 @@ var Slider = class _Slider {
    * @group Props
    */
   tabindex = 0;
+  /**
+   * When present, it specifies that the component should automatically get focus on load.
+   * @group Props
+   */
+  autofocus;
   /**
    * Callback to invoke on value change.
    * @param {SliderChangeEvent} event - Custom value change event.
@@ -792,7 +801,8 @@ var Slider = class _Slider {
       styleClass: "styleClass",
       ariaLabel: "ariaLabel",
       ariaLabelledBy: "ariaLabelledBy",
-      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute]
+      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute],
+      autofocus: [InputFlags.HasDecoratorInputTransform, "autofocus", "autofocus", booleanAttribute]
     },
     outputs: {
       onChange: "onChange",
@@ -801,14 +811,14 @@ var Slider = class _Slider {
     features: [ɵɵProvidersFeature([SLIDER_VALUE_ACCESSOR]), ɵɵInputTransformsFeature],
     decls: 8,
     vars: 18,
-    consts: [["sliderHandle", ""], ["sliderHandleStart", ""], ["sliderHandleEnd", ""], [3, "click", "ngStyle", "ngClass"], ["class", "p-slider-range", 3, "ngStyle", 4, "ngIf"], ["class", "p-slider-handle", "role", "slider", 3, "transition", "ngStyle", "touchstart", "touchmove", "touchend", "mousedown", "keydown", 4, "ngIf"], ["class", "p-slider-handle", "role", "slider", 3, "transition", "ngStyle", "ngClass", "keydown", "mousedown", "touchstart", "touchmove", "touchend", 4, "ngIf"], ["class", "p-slider-handle", 3, "transition", "ngStyle", "ngClass", "keydown", "mousedown", "touchstart", "touchmove", "touchend", 4, "ngIf"], [1, "p-slider-range", 3, "ngStyle"], ["role", "slider", 1, "p-slider-handle", 3, "touchstart", "touchmove", "touchend", "mousedown", "keydown", "ngStyle"], ["role", "slider", 1, "p-slider-handle", 3, "keydown", "mousedown", "touchstart", "touchmove", "touchend", "ngStyle", "ngClass"], [1, "p-slider-handle", 3, "keydown", "mousedown", "touchstart", "touchmove", "touchend", "ngStyle", "ngClass"]],
+    consts: [["sliderHandle", ""], ["sliderHandleStart", ""], ["sliderHandleEnd", ""], [3, "click", "ngStyle", "ngClass"], ["class", "p-slider-range", 3, "ngStyle", 4, "ngIf"], ["class", "p-slider-handle", "role", "slider", "pAutoFocus", "", 3, "transition", "ngStyle", "autofocus", "touchstart", "touchmove", "touchend", "mousedown", "keydown", 4, "ngIf"], ["class", "p-slider-handle", "role", "slider", "pAutoFocus", "", 3, "transition", "ngStyle", "ngClass", "autofocus", "keydown", "mousedown", "touchstart", "touchmove", "touchend", 4, "ngIf"], ["class", "p-slider-handle", 3, "transition", "ngStyle", "ngClass", "keydown", "mousedown", "touchstart", "touchmove", "touchend", 4, "ngIf"], [1, "p-slider-range", 3, "ngStyle"], ["role", "slider", "pAutoFocus", "", 1, "p-slider-handle", 3, "touchstart", "touchmove", "touchend", "mousedown", "keydown", "ngStyle", "autofocus"], ["role", "slider", "pAutoFocus", "", 1, "p-slider-handle", 3, "keydown", "mousedown", "touchstart", "touchmove", "touchend", "ngStyle", "ngClass", "autofocus"], [1, "p-slider-handle", 3, "keydown", "mousedown", "touchstart", "touchmove", "touchend", "ngStyle", "ngClass"]],
     template: function Slider_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵelementStart(0, "div", 3);
         ɵɵlistener("click", function Slider_Template_div_click_0_listener($event) {
           return ctx.onBarClick($event);
         });
-        ɵɵtemplate(1, Slider_span_1_Template, 1, 5, "span", 4)(2, Slider_span_2_Template, 1, 5, "span", 4)(3, Slider_span_3_Template, 1, 4, "span", 4)(4, Slider_span_4_Template, 1, 4, "span", 4)(5, Slider_span_5_Template, 2, 14, "span", 5)(6, Slider_span_6_Template, 2, 17, "span", 6)(7, Slider_span_7_Template, 2, 17, "span", 7);
+        ɵɵtemplate(1, Slider_span_1_Template, 1, 5, "span", 4)(2, Slider_span_2_Template, 1, 5, "span", 4)(3, Slider_span_3_Template, 1, 4, "span", 4)(4, Slider_span_4_Template, 1, 4, "span", 4)(5, Slider_span_5_Template, 2, 15, "span", 5)(6, Slider_span_6_Template, 2, 18, "span", 6)(7, Slider_span_7_Template, 2, 17, "span", 7);
         ɵɵelementEnd();
       }
       if (rf & 2) {
@@ -831,7 +841,7 @@ var Slider = class _Slider {
         ɵɵproperty("ngIf", ctx.range);
       }
     },
-    dependencies: [NgClass, NgIf, NgStyle],
+    dependencies: [NgClass, NgIf, NgStyle, AutoFocus],
     styles: ["@layer primeng{.p-slider{position:relative}.p-slider .p-slider-handle{position:absolute;cursor:grab;touch-action:none;display:block}.p-slider-range{position:absolute;display:block}.p-slider-horizontal .p-slider-range{top:0;left:0;height:100%}.p-slider-horizontal .p-slider-handle{top:50%}.p-slider-vertical{height:100px}.p-slider-vertical .p-slider-handle{left:50%}.p-slider-vertical .p-slider-range{bottom:0;left:0;width:100%}}\n"],
     encapsulation: 2,
     changeDetection: 0
@@ -885,6 +895,8 @@ var Slider = class _Slider {
                 [attr.aria-label]="ariaLabel"
                 [attr.aria-orientation]="orientation"
                 [attr.data-pc-section]="'handle'"
+                pAutoFocus
+                [autofocus]="autofocus"
             ></span>
             <span
                 *ngIf="range"
@@ -907,6 +919,8 @@ var Slider = class _Slider {
                 [attr.aria-label]="ariaLabel"
                 [attr.aria-orientation]="orientation"
                 [attr.data-pc-section]="'startHandler'"
+                pAutoFocus
+                [autofocus]="autofocus"
             ></span>
             <span
                 *ngIf="range"
@@ -1017,6 +1031,12 @@ var Slider = class _Slider {
         transform: numberAttribute
       }]
     }],
+    autofocus: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
     onChange: [{
       type: Output
     }],
@@ -1044,18 +1064,18 @@ var SliderModule = class _SliderModule {
   static ɵmod = ɵɵdefineNgModule({
     type: _SliderModule,
     declarations: [Slider],
-    imports: [CommonModule],
+    imports: [CommonModule, AutoFocusModule],
     exports: [Slider]
   });
   static ɵinj = ɵɵdefineInjector({
-    imports: [CommonModule]
+    imports: [CommonModule, AutoFocusModule]
   });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(SliderModule, [{
     type: NgModule,
     args: [{
-      imports: [CommonModule],
+      imports: [CommonModule, AutoFocusModule],
       exports: [Slider],
       declarations: [Slider]
     }]

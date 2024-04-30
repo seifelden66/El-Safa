@@ -1,6 +1,6 @@
 import {
   SharedModule
-} from "./chunk-XI47K54R.js";
+} from "./chunk-YBJTPGKE.js";
 import {
   CommonModule,
   NgClass
@@ -21,8 +21,8 @@ import {
   ɵɵprojectionDef,
   ɵɵproperty
 } from "./chunk-TDR5BHHU.js";
-import "./chunk-V2DXGMIT.js";
 import "./chunk-UKEHM6V6.js";
+import "./chunk-V2DXGMIT.js";
 import "./chunk-ZDOIMVJD.js";
 
 // node_modules/primeng/fesm2022/primeng-inputicon.mjs
