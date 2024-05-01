@@ -30,11 +30,7 @@
                       <button type="button" (click)="CartService.increase(item.id)" (click)="increase()" class="btn btn-success">+</button>
                       <p class="pt-2">{{item.quantity}}</p>
                       <button type="button" (click)="CartService.decrease(item.id)" (click)="decrease()" class="btn btn-danger">-</button>
-                      <button type="button" class="btn btn-info">edit</button>
-
-
-
-                    </div>
+                  </div>
               </td>
               <td class="delete pt-5">
                 <i (click)="delete(item)"   [ngClass]="{'clicked': isClicked} " class="fa-solid fa-trash delete-icon"></i>

@@ -7,7 +7,13 @@ const {
 } = require("../../controllers/users.controller");
 
 // protected order route , just available for admin
-const { httpAllOrders } = require("../../controllers/orders.controller");
+const {
+  httpAllOrders,
+  httpOrderDetails,
+  httpConfirmOrder,
+  httpDispatchOrder,
+  httpDeliverOrder,
+} = require("../../controllers/orders.controller");
 
 const { validationUserDate } = require("../../services/validateUserData");
 const {
@@ -40,6 +46,13 @@ adminRouter.post(
 );
 adminRouter.get("/user", httpGetUser);
 
-adminRouter.get("/orders", httpAllOrders); // get all orders just for admin
+// orders route just for admin
+adminRouter.get("/orders", httpAllOrders);
+
+adminRouter.get("/orders-details", httpOrderDetails);
+
+adminRouter.patch("/confirm-order", httpConfirmOrder);
+adminRouter.patch("/dispatch-order", httpDispatchOrder);
+adminRouter.patch("/deliver-order", httpDeliverOrder);
 
 module.exports = adminRouter;

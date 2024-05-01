@@ -3,6 +3,11 @@
 const express = require("express");
 
 const {
+  passportAuthenticate,
+  passportInitialize,
+} = require("../../services/auth/isLogin");
+
+const {
   getProducts,
   getProduct,
   postProduct,
@@ -20,7 +25,18 @@ router.get("/:id", getProduct);
 router.post("/", upload.array("image"), postProduct);
 router.put("/:id", updateProduct);
 router.delete("/:id", deleteProduct);
-router.post("/:id/ratings", addRating);
-router.post("/:id/comments", addComment);
+
+router.post(
+  "/:id/ratings",
+  passportInitialize,
+  passportAuthenticate,
+  addRating
+);
+router.post(
+  "/:id/comments",
+  passportInitialize,
+  passportAuthenticate,
+  addComment
+);
 
 module.exports = router;

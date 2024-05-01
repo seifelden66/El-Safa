@@ -14,10 +14,10 @@ import { RouterLink } from "@angular/router";
 })
 export class OrdersComponent {
   orders: any;
-  amdinToken!: any;
+  adminToken!: any;
   constructor(private http: HttpClient, private cookieCervice: CookieService) {}
   ngOnInit() {
-    this.amdinToken = this.cookieCervice.get("adminToken");
+    this.adminToken = this.cookieCervice.get("adminToken");
     this.getOrders();
   }
 
@@ -25,7 +25,7 @@ export class OrdersComponent {
     this.http
       .get("http://localhost:8000/v1/admin/orders", {
         headers: {
-          Authorization: `Bearer ${this.amdinToken}`,
+          Authorization: `Bearer ${this.adminToken}`,
         },
       })
       .subscribe(

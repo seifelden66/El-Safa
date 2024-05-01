@@ -30,7 +30,9 @@ const getProducts = async (req, res) => {
       const totalPages = Math.ceil(totalCount / pageSize); 
       const products = await Product.find({})
                                     .skip((page - 1) * pageSize) 
+                                    .populate('category')
                                     .limit(pageSize); 
+                                    
   
       res.status(200).json({
         currentPage: page,
@@ -113,13 +115,12 @@ const deleteProduct = async (req, res) => {
 
 const addComment = async (req, res) => {
   try {
-    const { userId, text } = req.body;
-
+    const userId = req.user.id;
+    const  text  = req.body;
     const product = await Product.findById(req.params.id);
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
-
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -135,8 +136,10 @@ const addComment = async (req, res) => {
 };
 
 const addRating = async (req, res) => {
+
   try {
-    const { userId, value } = req.body;
+    const userId = req.user.id;
+    const  value  = req.body;
 
     const product = await Product.findById(req.params.id);
     if (!product) {
