@@ -30,7 +30,9 @@ const getProducts = async (req, res) => {
       const totalPages = Math.ceil(totalCount / pageSize); 
       const products = await Product.find({})
                                     .skip((page - 1) * pageSize) 
+                                    .populate('category')
                                     .limit(pageSize); 
+                                    
   
       res.status(200).json({
         currentPage: page,
