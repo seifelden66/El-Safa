@@ -92,6 +92,8 @@ export class ProductPageComponent implements OnInit {
       .subscribe((res: any) => {
         this.allproducts = res.products;
         this.totalPages = res.totalPages;
+        console.log(this.allproducts);
+        
       });
   }
   onPageChange(pageNumber: number) {

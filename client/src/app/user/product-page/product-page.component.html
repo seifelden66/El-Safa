@@ -51,33 +51,19 @@
               class="w-100 p-3"
               src="/assets/{{ product.images[0] }}"
               alt=""
-              (click)="redirect(product?.id)"
+              (click)="redirect(product?._id)"
             />
           </div>
         
-          <div class="product_price p-2 text-center">
-            <button type="button" class="btn btn-outline-secondary p-1 my-2">
-              {{ product?.category }}
-            </button>
-
-            <p class="product_name" style="color: #6474a9">
-              {{ product?.title }}
-            </p>
-
-
-            <div class="rate_product">
-              <ngb-rating [(rate)]="product.rating" [max]="5"></ngb-rating>
-            </div>
-      
             <div class="product_price  p-2  text-center">
-              <button type="button" class="btn btn-outline-secondary p-1 my-2 ">{{ product?.name }}</button>
-              <p class="product_name" style="color: #6474A9;">{{ product?.title }}</p>
+              <button type="button" class="btn btn-outline-secondary p-1 my-2 ">{{ product?.category['name'] }}</button>
+              <p class="product_name" style="color: #6474A9;">{{ product?.name }}</p>
               <!-- <div class="rate_product">
-                <ngb-rating [(rate)]="product.rating" [max]="5"></ngb-rating>
+                <ngb-rating [(rate)]="product.ratings['0']['value']" [max]="5"></ngb-rating>
 
               </div> -->
-              <h2 style="font-weight: 600;" class="my-2">${{ product.price }}</h2>
-              <h2 style="font-weight: 600;" class="my-2">${{ product.short_desc }}</h2>
+              <h2 style="font-weight: 600;" class="my-2">${{ product?.price}}</h2>
+              <h2 style="font-weight: 600;" class="my-2">{{ product?.short_desc }}</h2>
                 
 
                 <div class="add_fav_btn Btns d-flex gap-3 my-2 ">
@@ -90,7 +76,7 @@
                   
                                   <div class="card">
                                     <p-toast></p-toast>
-                                    <button type="button" pButton (click)="redirecttocart(product)" (click)="increase()"  (click)="show()" label="+" class=""></button>
+                                    <button type="button" pButton (click)="redirecttocart(product)" (click)="increase()"  (click)="show()" label="" class="">+</button>
                                
                                   </div>
 
@@ -105,10 +91,6 @@
           </div>
 
 
-
-
-        </div>
-
         }
 
       </div>
@@ -118,7 +100,7 @@
     </div>
 
 
-    
+
   </div>
 </div>
 

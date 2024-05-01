@@ -191,9 +191,8 @@
 .product_data {
   /* border: solid 1px; */
   border-radius: 6px;
-  width: 23%;
+  width: 23% ;
   overflow: hidden;
-
 }
 
 .product_price{
@@ -257,13 +256,13 @@
 /* media quary */
 @media (width < 1000px) {
   .product_data {
-    width: 30%;
+    width: 45%;
   }
 }
 
 @media (width<800px) {
   .product_data {
-    width: 45%;
+    width: 90%;
   }
 
   .product_header {
