@@ -1,11 +1,18 @@
 import { CounterService } from "./../services/counter.service";
 import { CartService } from "./../services/cart.service";
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit, inject } from "@angular/core";
 import { NgbRatingModule } from "@ng-bootstrap/ng-bootstrap";
 import { BrowserModule } from "@angular/platform-browser";
 import { ButtonModule } from "primeng/button";
 import { Router } from "@angular/router";
+import {
+  Component,
+  OnInit,
+  inject,
+  OnDestroy,
+  TemplateRef,
+} from "@angular/core";
+
 import { SliderModule } from "primeng/slider";
 import { FormsModule } from "@angular/forms";
 import { SecondHeaderComponent } from "../second-header/second-header.component";
@@ -13,8 +20,11 @@ import { FooterComponent } from "../footer/footer.component";
 import { NgbModal, NgbModalConfig } from "@ng-bootstrap/ng-bootstrap";
 import { MessageService } from "primeng/api";
 import { HttpClientModule } from "@angular/common/http"; // Import HttpClientModule
-import { ToastModule } from "primeng/toast"; // Correct import path
+
+import { Toast, ToastModule } from "primeng/toast"; // Correct import path
 import { FirestnavComponent } from "../firestnav/firestnav.component";
+
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-product-page",
@@ -37,6 +47,8 @@ import { FirestnavComponent } from "../firestnav/firestnav.component";
 })
 export class ProductPageComponent implements OnInit {
   // rating = 8;
+  currentPage: number = 1;
+  totalPages: number = 1;
 
   constructor(
     private http: HttpClient,
@@ -55,12 +67,13 @@ export class ProductPageComponent implements OnInit {
   category: any;
   selectedCategory: string | null = null;
 
+  toster = inject(ToastrService);
+
   show() {
-    this.messageService.add({
-      severity: "info",
-      summary: "success",
-      detail: "Add To Cart",
-    });
+    this.toster.success("added to Cart", "Success");
+  }
+  show2() {
+    this.toster.success("added to Wishlist", "Success");
   }
 
   ngOnInit(): void {
@@ -73,17 +86,17 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
-  getallproduct() {
-    this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
-      this.allproducts = res.products;
-      // console.log(this.allproducts);
-    });
-
-    //   getallproduct() {
-    //   this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
-    //     this.allproducts = res.products;
-    //   });
-    // }
+  getallproduct(page = 1) {
+    this.http
+      .get("http://localhost:8000/v1/products?page=${page}")
+      .subscribe((res: any) => {
+        this.allproducts = res.products;
+        this.totalPages = res.totalPages;
+      });
+  }
+  onPageChange(pageNumber: number) {
+    this.currentPage = pageNumber;
+    this.getallproduct(pageNumber);
   }
 
   redirect(product_id: any) {
