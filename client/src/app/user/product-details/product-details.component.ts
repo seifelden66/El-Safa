@@ -22,8 +22,6 @@ export class ProductDetailsComponent implements OnInit {
   
   reternsrc(newsrc:any){
     this.main_img= newsrc
-    
-
   }
   
    product_details : any 
@@ -31,12 +29,19 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.ActivatedRoute.snapshot.params['id']);
    const product_id = this.ActivatedRoute.snapshot.params['id']
-    // console.log(product_id);
+    console.log(product_id);
     
-    this.http.get(`https://dummyjson.com/products/${product_id}`).subscribe((res: any) =>{
+    this.http.get(`http://localhost:8000/v1/products/${product_id}`).subscribe((res: any) =>{
       this.product_details = res ;
-      this.main_img = this.product_details.thumbnail
-    });
+      console.log(res);
+      
+      this.main_img = this.product_details.images[0];
+    },
+    (error) => {
+      console.error('Error fetching product details:', error);
+    }
+
+  );
     
       
      }

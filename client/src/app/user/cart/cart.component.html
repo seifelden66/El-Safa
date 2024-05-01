@@ -19,8 +19,8 @@
       <tbody class="table_body">
           @for (item of CartService.getproduct(); track $index) {
           <tr class="product_data">
-              <td class="table_img"><img [src]="item.thumbnail" alt=""></td>
-              <td class="pt-5">{{ item.title }}</td>
+              <td class="table_img"><img src="/assets/item.images[0]" alt=""></td>
+              <td class="pt-5">{{ item.name }}</td>
               <td class="pt-5">{{ item.category }}</td>
               <td class="pt-5">{{ item.stock }}</td>
               <td class="pt-5">${{ item.price * item.quantity }}</td>

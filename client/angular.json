@@ -35,24 +35,24 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
-
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1.3mb",
-                  "maximumError": "1.5mb"  
+                  "maximumWarning": "2mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "12kb", 
-                  "maximumError": "15kb"    
+                  "maximumWarning": "15kb",
+                  "maximumError": "20kb"
                 }
-              ]
-              ,
+              ],
               "outputHashing": "all"
             },
             "development": {

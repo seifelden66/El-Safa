@@ -13,9 +13,10 @@
 .firest_nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 15px;
   padding: 13px;
-  background-color: #eef0fc;
+  background-color: #FFFFFF;
 }
 
 .Companyandsearch {
@@ -26,6 +27,19 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+.searchbar{
+  border-radius: 8px;
+  color: #7C5ED8 ;
+  border: solid  1px #7C5ED8;
+}
+
+.search{
+
+  border-radius: 8px;
+  color: #7C5ED8 ;
+  border: none;
+}
+
 
 .firest_nav .row {
   display: flex;
@@ -70,19 +84,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -15%;
+  top: 0%;
   right:5%;
-  font-weight: 500;
-  color: white;
-  background-color:white ;
-  font-size: 14px;
-  color:#B942CF;
+  font-weight: 200;
+  background-color:#7C5ED8 ;
+  font-size: 11px;
+  color:white;
   padding: 5px ;
 }
 
 .user_img {
-  width: 45px;
+  width: 40px ;
   cursor: pointer;
+  border: solid #7C5ED8 3.5px;
+  border-radius: 50%;
 }
 
 .payment,
@@ -101,10 +116,10 @@
 .payment i {
   color: gray;
   font-size: 22px;
-  color: #B942CF;
+  color: #7C5ED8;
 }
 .faverot i {
-  color: #B942CF;
+  color: #7C5ED8;
   font-size: 22px;
 }
 
@@ -124,7 +139,7 @@
 
 @media (width<1000px) {
   .navbar_data {
-    direction: rtl;
+    /* direction: rtl; */
     display: flex;
     justify-content: space-evenly;
   }
@@ -135,6 +150,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    direction: rtl;
+    /* direction: rtl; */
   }
 }

@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+}
+.h3 {
+  color: rgb(118, 118, 235);
+}
+form.product .form-control-product {
+  font-size: 0.8rem;
+  border-radius: 0.5rem;
+  padding: 1rem 1rem;
+}
+
+/* Custom CSS for form labels */
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #595a5c;
+}
+
+/* Optional: Adjust form field styles */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("data:image/svg+xml,%3csvg fill='%23343a40' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3e%3cpath d='M441.4 136.5l-10.7-10.7c-4.7-4.7-12.3-4.7-17 0L224 307 33.3 125.8c-4.7-4.7-12.3-4.7-17 0l-10.7 10.7C-6.1 142.2 1.5 160 16 160h416c14.5 0 22.1-17.8 9.4-28.5zM16 352h416c14.5 0 22.1-17.8 9.4-28.5L232 157.1c-4.7-4.7-12.3-4.7-17 0L6.6 323.5C-6.1 334.2 1.5 352 16 352zM224 349L414.7 493.5c4.7 4.7 12.3 4.7 17 0l10.7-10.7c4.7-4.7 4.7-12.3 0-17L241 320.1c-4.7-4.7-12.3-4.7-17 0L196.3 322c-4.7 4.7-4.7 12.3 0 17l27.7 27.9z'/%3e%3c/svg%3e")
+    no-repeat right 10px center;
+  background-size: 12px 12px;
+}

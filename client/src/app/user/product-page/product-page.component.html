@@ -64,26 +64,24 @@
             <div class="product_img">
               <img
                 class="w-100 p-3"
-                src="{{ product.thumbnail }}"
+                src="/assets/{{ product.images[0] }}"
                 alt=""
-                (click)="redirect(product?.id)"
+                (click)="redirect(product?._id)"
               />      
 
-              <button type="button"  class="btn fav  carusel_Btnss  d-flex w-25 py-2 ">
-                <!-- <span><i class="fas fa-heart"></i></span>  -->
-              </button>
 
 
             </div>
       
             <div class="product_price  p-2  text-center">
-              <button type="button" class="btn btn-outline-secondary p-1 my-2 ">{{ product?.category }}</button>
+              <button type="button" class="btn btn-outline-secondary p-1 my-2 ">{{ product?.name }}</button>
               <p class="product_name" style="color: #6474A9;">{{ product?.title }}</p>
-              <div class="rate_product">
+              <!-- <div class="rate_product">
                 <ngb-rating [(rate)]="product.rating" [max]="5"></ngb-rating>
 
-              </div>
+              </div> -->
               <h2 style="font-weight: 600;" class="my-2">${{ product.price }}</h2>
+              <h2 style="font-weight: 600;" class="my-2">${{ product.short_desc }}</h2>
               <div class="Btns d-flex gap-3 my-2">
                 
 

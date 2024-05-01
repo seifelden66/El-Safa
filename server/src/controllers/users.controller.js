@@ -38,7 +38,6 @@ async function httpAddUser(req, res) {
           "public",
           "browser",
           "assets",
-          "image",
           req.file.filename
         )
       );
@@ -88,7 +87,6 @@ async function httpAddUser(req, res) {
             "public",
             "browser",
             "assets",
-            "image",
             req.file.filename
           )
         );
@@ -116,7 +114,6 @@ async function httpAddAdmin(req, res) {
           "public",
           "browser",
           "assets",
-          "image",
           req.file.filename
         )
       );
@@ -140,7 +137,6 @@ async function httpAddAdmin(req, res) {
             "public",
             "browser",
             "assets",
-            "image",
             req.file.filename
           )
         );
@@ -188,12 +184,12 @@ async function httpLoginWithEmail(req, res) {
         const { _id, role } = user;
         const token = generateAndSetToken(_id, role);
         const TokenName = role == "admin" ? "adminToken" : "userToken";
-        res.cookie(TokenName, token, {
-          httpOnly: true,
-          secure: true,
-          maxAge: 24 * 60 * 60 * 1000,
-        });
-        return res.status(200).json({ success: "welcome back" });
+        // res.cookie(TokenName, token, {
+        //   httpOnly: true,
+        //   secure: true,
+        //   maxAge: 24 * 60 * 60 * 1000,
+        // });
+        return res.status(200).json({ token: token, role: TokenName });
       } else {
         return res.status(401).json({ error: "Invalid data" });
       }
@@ -238,7 +234,6 @@ async function httpEditUserProfile(req, res) {
           "public",
           "browser",
           "assets",
-          "image",
           req.file.filename
         )
       );
@@ -286,14 +281,13 @@ async function httpForgotPasswordEmail(req, res) {
         }); // send code to user via email
         // NOTE - send email token
         const token = generateEmailToken(response.email);
-        res.cookie("emailToken", token, {
-          httpOnly: true,
-          secure: true,
-          maxAge: 5 * 60 * 1000,
-        });
+        // res.cookie("emailToken", token, {
+        //   httpOnly: true,
+        //   secure: true,
+        //   maxAge: 5 * 60 * 1000,
+        // });
         return res.status(200).json({
-          message:
-            "We have sent a code to your email. The code will expire after 30 seconds.",
+          emailToken: token,
         });
       } catch (error) {
         return res.status(400).json({ error: "please try again later" });
@@ -312,12 +306,12 @@ async function httpCheckCode(req, res) {
     const checkStatus = await cheackCode(req.body.code, req.user.email);
     if (checkStatus) {
       const token = generateResetToken(checkStatus.email, checkStatus._id);
-      res.cookie("resetToken", token, {
-        httpOnly: true,
-        secure: true,
-        maxAge: 5 * 60 * 1000,
-      });
-      return res.status(200).json({ message: "you code is correct" });
+      // res.cookie("resetToken", token, {
+      //   httpOnly: true,
+      //   secure: true,
+      //   maxAge: 5 * 60 * 1000,
+      // });
+      return res.status(200).json({ resetToken: token });
     }
     return res.status(400).json({ error: "Invalid code " });
   } catch (error) {
@@ -329,11 +323,9 @@ async function httpCheckCode(req, res) {
 async function httpResetPassword(req, res) {
   if (req.user.id) {
     try {
-      const te = await resetPassword(req.user.email, req.body.newPassword);
-      console.log(te);
-      return res.status(200).json({ message: "Password reset successfully" });
+      resetPassword(req.user.email, req.body.newPassword);
+      return res.status(200).json({ success: "Password reset successfully" });
     } catch (error) {
-      console.error(error);
       return res.status(500).json({ error: "Internal server error" });
     }
   } else {

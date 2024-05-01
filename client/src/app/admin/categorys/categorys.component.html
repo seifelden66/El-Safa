@@ -1,0 +1,99 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="body w-100">
+    <app-navbar class="w-100"></app-navbar>
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between mt-5 mb-4">
+        <h1 class="h3">Categorys</h1>
+        <button
+          class="btn btn-primary align-content-center"
+          (click)="showAddNewCategoryModel()"
+        >
+          Add Category
+        </button>
+      </div>
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h3 class="m-0 font-weight-bold text-primary">Categorys Tables</h3>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table
+              class="table table-bordered"
+              id="dataTable"
+              width="100%"
+              cellspacing="0"
+            >
+              <thead>
+                <tr>
+                  <th>NAME</th>
+                  <th>DESCRIPTION</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                @for(category of categorys; track category._id){
+
+                <tr>
+                  <td>{{ category!.name }}</td>
+                  <td>{{ category!.description }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Edit product model -->
+        <div
+          id="editmodel"
+          class="ng-Modal"
+          [ngClass]="{ hide: AddNewCategoryModelStatus }"
+        >
+          <div class="ng-Modal-header">
+            <h3>Edit Product</h3>
+          </div>
+          <div class="ng-Modal-body">
+            <form
+              class="product"
+              enctype="multipart/form-data"
+              [formGroup]="CategoryForm"
+              (ngSubmit)="addNewCategory()"
+            >
+              <div class="form-group row mb-4 w-75">
+                <label for="productName">category Name</label>
+                <input
+                  type="text"
+                  class="form-control form-control-product mb4"
+                  id="productName"
+                  formControlName="name"
+                  placeholder="Name"
+                />
+              </div>
+              <div class="form-group row mb-4 w-75">
+                <label for="desc">Description</label>
+                <textarea
+                  id="desc"
+                  class="form-control"
+                  cols="20"
+                  rows="5"
+                  formControlName="description"
+                ></textarea>
+              </div>
+              <button class="btn btn-primary">Add Category</button>
+            </form>
+          </div>
+          <div class="ng-Modal-footer">
+            <div class="d-flex gap-2 float-end py-2">
+              <button
+                class="btn btn-primary"
+                (click)="hideAddNewCategoryModel()"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

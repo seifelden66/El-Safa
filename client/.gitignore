@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> 0abcb63a4f7716fc4add9d64de2cb5be6a89449a
 .DS_STORE
 
 /dist/
@@ -7,7 +11,11 @@
 /node_modules/
 
 # CircleCI temporary file for cache key computation.
+<<<<<<< HEAD
+# See `save_month_to_file` in `.circleci/config.yml`.
+=======
 # See save_month_to_file in .circleci/config.yml.
+>>>>>>> 0abcb63a4f7716fc4add9d64de2cb5be6a89449a
 month.txt
 
 # Include when developing application packages.
@@ -59,5 +67,9 @@ baseline.json
 aio/content/examples/.DS_Store
 
 
+<<<<<<< HEAD
+# Ignore cache created with the Angular CLI.
+=======
 # Ignore cache created with the Angular CLI.
+>>>>>>> 0abcb63a4f7716fc4add9d64de2cb5be6a89449a
 .angular/

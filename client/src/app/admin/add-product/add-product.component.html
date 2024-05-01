@@ -1,0 +1,101 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="body w-100">
+    <app-navbar class="w-100"></app-navbar>
+    <div class="container-fluid">
+      <h1 class="h3 my-4 text-gray-800">Add New Product</h1>
+      <div class="card shadow mb-4 p-5">
+        <form
+          class="product"
+          enctype="multipart/form-data"
+          [formGroup]="productForm"
+          (ngSubmit)="addNewProduct(); $event.preventDefault()"
+        >
+          <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <label for="productName">Product Name</label>
+              <input
+                type="text"
+                class="form-control form-control-product mb4"
+                id="productName"
+                formControlName="name"
+                placeholder="Name"
+              />
+            </div>
+            <div class="col-sm-6">
+              <label for="quantity">Quantity</label>
+              <input
+                type="number"
+                class="form-control form-control-product mb-4"
+                id="quantity"
+                formControlName="quantity"
+                placeholder="Quantity"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <label for="price">Price</label>
+              <input
+                type="number"
+                class="form-control form-control-product mb4"
+                id="price"
+                formControlName="price"
+                placeholder="Price"
+              />
+            </div>
+            <div class="col-sm-6">
+              <label for="category">Categorys</label>
+              <select
+                class="form-control form-control-product mb-4"
+                id="category"
+                formControlName="category"
+              >
+                @for(category of categorys; track category._id){
+                <option value="{{ category!._id }}">
+                  {{ category!.name }}
+                </option>
+                }
+              </select>
+            </div>
+          </div>
+          <div class="form-group row mb-4 w-75">
+            <label for="desc">Short Description</label>
+            <textarea
+              id="short_desc"
+              class="form-control"
+              formControlName="short_desc"
+              cols="15"
+              rows="3"
+            ></textarea>
+          </div>
+          <!-- TODO add this attribute  -->
+
+          <div class="form-group row mb-4 w-75">
+            <label for="productImages">Images</label>
+            <input
+              multiple
+              type="file"
+              class="form-control form-control-product mb4"
+              (change)="onFileSelected($event)"
+              id="productImages"
+              placeholder="Images"
+            />
+          </div>
+          <!-- TODO add this attribute  -->
+          <div class="form-group row mb-4 w-75">
+            <label for="desc">Description</label>
+            <textarea
+              id="desc"
+              class="form-control"
+              formControlName="desc"
+              cols="20"
+              rows="5"
+            ></textarea>
+          </div>
+          <button class="btn btn-primary">Add Product</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<ul
+  class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+  [ngClass]="{ hide: !toggleClassState }"
+  id="accordionSidebar"
+>
+  <!-- Sidebar - Brand -->
+  <a
+    class="sidebar-brand d-flex align-items-center justify-content-center"
+    routerLink="/admin/dashboard"
+  >
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fas fa-laugh-wink"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">ELSAFA</div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0" />
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" routerLink="/admin/dashboard">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider" />
+
+  <!-- Heading -->
+  <div class="sidebar-heading">Interface</div>
+
+  <!-- Nav Item - Utilities Collapse Menu -->
+
+  <!-- Divider -->
+  <hr class="sidebar-divider" />
+
+  <!-- Heading -->
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/users">
+      <i class="fas fa-fw fa-users"></i>
+      <span>Users</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/add-new-admin">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Add New Admin</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/products">
+      <i class="fa-brands fa-product-hunt"></i>
+      <span>Products</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/add-product">
+      <i class="fa-brands fa-product-hunt"></i>
+      <span>Add New Product</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/categorys">
+      <i class="fa-solid fa-layer-group"></i>
+      <span>Categores</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/orders">
+      <i class="fas fa-fw fa-box"></i>
+      <span>Orders</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block" />
+</ul>

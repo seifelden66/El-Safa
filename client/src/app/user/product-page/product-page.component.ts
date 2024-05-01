@@ -19,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'app-product-page',
+  selector: "app-product-page",
   standalone: true,
   imports: [NgbRatingModule,HttpClientModule,ButtonModule,SliderModule,FormsModule,SecondHeaderComponent,FooterComponent,HttpClientModule,ToastModule,FirestnavComponent],
   templateUrl: './product-page.component.html',
@@ -27,8 +27,8 @@ import { ToastrService } from 'ngx-toastr';
   providers: [MessageService]
 
 })
-export class ProductPageComponent implements OnInit  {
-	// rating = 8;
+export class ProductPageComponent implements OnInit {
+  // rating = 8;
 
   constructor(private http : HttpClient, private router : Router, 	config: NgbModalConfig,
 		private modalService: NgbModal,private CounterService :CounterService,private messageService: MessageService){
@@ -63,7 +63,7 @@ export class ProductPageComponent implements OnInit  {
   }
 
   getallproduct(){
-    this.http.get('https://dummyjson.com/products').subscribe((res:any)=>{
+    this.http.get('http://localhost:8000/v1/products').subscribe((res:any)=>{
       this.allproducts=res.products
     })
 
@@ -74,7 +74,6 @@ export class ProductPageComponent implements OnInit  {
 
   redirect(product_id:any){
     this.router.navigate([`/product_details`,product_id])
-    
   }
 
 
