@@ -48,7 +48,7 @@ export class ProductsComponent implements OnInit {
 
   getallproduct() {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
-      this.products = res;
+      this.products = res.products;
     });
   }
   // get categorys service
