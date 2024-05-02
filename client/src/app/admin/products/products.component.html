@@ -97,7 +97,6 @@
             </div>
           </div>
         </div>
-
         <!-- Edit product model -->
         <div
           id="editmodel"
@@ -163,7 +162,7 @@
                 </div>
               </div>
               <!-- TODO add this attribute  -->
-              <!-- formControlName="images" -->
+           
               <div class="form-group row mb-4 w-75">
                 <label for="productImages">Images</label>
                 <input
@@ -172,13 +171,15 @@
                   class="form-control form-control-product mb4"
                   id="productImages"
                   placeholder="Images"
+                  formControlName="images"
                 />
               </div>
               <!-- TODO add this attribute  -->
-              <!-- formControlName="description" -->
+            
               <div class="form-group row mb-4 w-75">
                 <label for="desc">Description</label>
                 <textarea
+                formControlName="desc"
                   id="desc"
                   class="form-control"
                   cols="20"

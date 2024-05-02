@@ -85,7 +85,7 @@ export const routes: Routes = [
         component: AddNewAdminComponent,
       },
     ],
-    canActivate: [adminAuthGaurdGuard],
+    // canActivate: [adminAuthGaurdGuard],
   },
   {
     path: "forgotPassword",
