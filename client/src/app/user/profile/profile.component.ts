@@ -2,11 +2,12 @@ import { Component , OnInit } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { FirestnavComponent } from '../firestnav/firestnav.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ChartModule,SecondHeaderComponent,FooterComponent],
+  imports: [ChartModule,SecondHeaderComponent,FooterComponent,FirestnavComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

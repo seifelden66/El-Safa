@@ -1,4 +1,3 @@
-
 <div class="wrapper">
   <app-sidebar></app-sidebar>
   <div class="body w-100">
@@ -10,7 +9,7 @@
           class="product"
           enctype="multipart/form-data"
           [formGroup]="productForm"
-          (ngSubmit)="addNewProduct()"
+          (ngSubmit)="addNewProduct(); $event.preventDefault()"
         >
           <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -60,26 +59,42 @@
               </select>
             </div>
           </div>
-          <!-- TODO add this attribute  -->
+          <div class="form-group row mb-4 w-75">
+            <label for="desc">Short Description</label>
+            <textarea
+              id="short_desc"
+              class="form-control"
+              formControlName="short_desc"
+              cols="15"
+              rows="3"
+            ></textarea>
+          </div>
          
+
           <div class="form-group row mb-4 w-75">
             <label for="productImages">Images</label>
             <input
               multiple
               type="file"
               class="form-control form-control-product mb4"
+              (change)="onFileSelected($event)"
               id="productImages"
               placeholder="Images"
               formControlName="images"
             />
           </div>
+<<<<<<< HEAD
           <!-- TODO add this attribute  -->
         
+=======
+          
+>>>>>>> 01f1a1bfcd6862228dcfc932b87209d025f2a7d3
           <div class="form-group row mb-4 w-75">
             <label for="desc">Description</label>
             <textarea
               id="desc"
               class="form-control"
+              formControlName="desc"
               cols="20"
               rows="5"
               formControlName="desc"

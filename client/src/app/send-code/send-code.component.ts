@@ -45,7 +45,7 @@ export class SendCodeComponent {
       } else {
         this.timer -= 1;
       }
-    }, 1200);
+    }, 1350);
   }
   onSubmit() {
     this.http

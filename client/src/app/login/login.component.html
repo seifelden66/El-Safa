@@ -34,13 +34,27 @@
                       />
                     </div>
                     <div class="form-group">
-                      <input
-                        type="password"
-                        class="form-control form-control-user mb-4"
-                        id="exampleInputPassword"
-                        placeholder="Password"
-                        formControlName="password"
-                      />
+                      <div class="input-group mb-4">
+                        <input
+                          [type]="togglePassword ? 'text' : 'password'"
+                          class="form-control form-control-user"
+                          id="exampleInputPassword"
+                          placeholder="Password"
+                          formControlName="password"
+                        />
+                        <span
+                          class="input-group-text"
+                          (click)="togglePasswordVisibility()"
+                        >
+                          <i
+                            class="fas"
+                            [ngClass]="{
+                              'fa-eye': !togglePassword,
+                              'fa-eye-slash': togglePassword
+                            }"
+                          ></i>
+                        </span>
+                      </div>
                     </div>
                     <button class="btn btn-primary btn-user btn-block w-100">
                       Login
@@ -70,5 +84,4 @@
       </div>
     </div>
   </div>
-   
 </div>

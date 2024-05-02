@@ -45,6 +45,8 @@
   border: solid;
   border-radius: 4px;
   padding: 7px;
+  font-size: 20px;
+
 }
 
 .user_img,
@@ -52,6 +54,29 @@
 .faverot {
   display: flex;
   justify-content: center;
+
+}
+
+.payment{
+  position: relative;
+}
+
+.payment p{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  /* padding: 10px ; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -5%;
+  right:5%;
+  font-weight: 500;
+  color: white;
+  /* background-color:#3B82F6 ; */
+  font-size: 14px;
+  color:  #AE4EE8;
 }
 
 .user_img {
@@ -61,11 +86,12 @@
 
 .payment,
 .faverot {
-  border: solid 2px;
+  border-bottom: solid 2px #EC1E18;
   width: fit-content;
   border-radius: 50%;
   cursor: pointer;
-  padding: 13px;
+  padding: 7px;
+  
 }
 
 .user_img img {
@@ -74,9 +100,12 @@
 
 .payment i {
   color: gray;
+  font-size: 25px;
+  color: #EC1E18;
 }
 .faverot i {
   color: red;
+  font-size: 25px;
 }
 
 .nav_btns {
@@ -91,86 +120,6 @@
 }
 
 /* ==================================================== */
-.sec_nav {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 13px;
-  background-color: white;
-}
-
-.nav_links .navbar-nav {
-  display: flex;
-  justify-content: space-between;
-  /* align-items: center; */
-  width: 100%;
-  gap: 10px;
-  padding: 10px 0px;
-}
-
-.one {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
-
-.two .navbar_container {
-  background-color: white !important;
-  display: flex;
-}
-
-.navbar_container .container-fluid {
-  display: flex;
-  justify-content: end;
-}
-.navbar-toggler {
-  border-radius: 50%;
-}
-
-.navbar_data {
-  width: 100%;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.navbar_data li a:hover{
-  color:#AE4EE8 ;
-}
-
-.offcanvas-body {
-  display: flex;
-
-}
-
-
-.dropend {
-  margin: 20px 0px;
-  display: flex;
-}
-
-.dropend button {
-  padding: 7px 14px;
-}
-
-
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-}
-
-.category_btn {
-  background-color: #f4f2fb;
-  color: #7c5cd3;
-  font-weight: 500;
-}
-
-/* ============================== */
-.offcanvas-body {
-  /* border: solid; */
-  display: flex;
-  flex-direction: column;
-}
 /* ================================ */
 
 @media (width<1000px) {

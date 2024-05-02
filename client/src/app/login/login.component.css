@@ -72,3 +72,7 @@ form.user .btn-user {
 .text-center {
   margin-top: 1rem;
 }
+
+.fa-eye {
+  cursor: pointer;
+}

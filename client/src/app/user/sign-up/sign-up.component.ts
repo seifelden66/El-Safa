@@ -31,21 +31,39 @@ export class SignUpComponent {
   // }
 
   insertuser(){
-    this.http.post('http://localhost:8000/v1/users/register',this.singin.value).subscribe(
-      res => {
-        console.log(res);
-        
+    this.http.post('http://localhost:8000/v1/users/register', this.singin.value).subscribe(
+      (res: any) => {  // Use 'any' as a type for res
+        // Check if res.success exists and is a string
+        if (res && typeof res.success === 'string') {
+          const token = res.success;
+  
+          function setCookie(name: string, value: string, hours: number){
+            const date = new Date();
+            date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+          }
+  
+          setCookie('userToken', token, 7);  // Set the token as a cookie
+  
+          console.log(token); // Log the token
+        } else {
+          console.log('Token not found or is not a string');
+        }
       },
       err => {
         console.log(err.error);
       }
-    )
+    );
   }
+  
 
   submithandel(){
     console.log(this.singin);
     
   }
+
+
 
 
 

@@ -21,6 +21,10 @@ import { SendCodeComponent } from "./send-code/send-code.component";
 import { sendCodeGuard } from "./services/send-code.guard";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { resetPasswordGuard } from "./services/reset-password.guard";
+import { SingleOrderComponent } from "./admin/single-order/single-order.component";
+
+import { CartComponent } from "./user/cart/cart.component";
+import { ContactComponent } from "./user/contact/contact.component";
 
 export const routes: Routes = [
   {
@@ -73,6 +77,10 @@ export const routes: Routes = [
         component: OrdersComponent,
       },
       {
+        path: "order-details/:id",
+        component: SingleOrderComponent,
+      },
+      {
         path: "add-product",
         component: AddProductComponent,
       },
@@ -92,10 +100,6 @@ export const routes: Routes = [
     component: ForgotPasswordComponent,
   },
   {
-    path: "forgotPassword",
-    component: ForgotPasswordComponent,
-  },
-  {
     path: "sendCode",
     component: SendCodeComponent,
     canActivate: [sendCodeGuard],
@@ -104,6 +108,22 @@ export const routes: Routes = [
     path: "resetPassword",
     component: ResetPasswordComponent,
     canActivate: [resetPasswordGuard],
+  },
+  {
+    path: "product_details/:id",
+    component: ProductDetailsComponent,
+  },
+  {
+    path: "cart",
+    component: CartComponent,
+  },
+  {
+    path: "contact",
+    component: ContactComponent,
+  },
+  {
+    path: "**",
+    component: HomeComponent,
   },
 
   {

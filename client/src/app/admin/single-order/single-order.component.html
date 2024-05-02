@@ -1,0 +1,166 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="body w-100">
+    <app-navbar class="w-100"></app-navbar>
+
+    <div class="container padding-bottom-3x mb-1 mt-5">
+      <div class="d-flex justify-content-between align-items-center mx-5 my-4">
+        <div class="user-profile d-flex align-items-center">
+          <div class="profile-img">
+            <img
+              class="w-100"
+              src="https://w7.pngwing.com/pngs/4/736/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
+              alt=""
+            />
+          </div>
+          <div class="user-details d-flex flex-column gap-2">
+            <h2 class="m-0">{{ user.name }}</h2>
+            <span
+              ><strong>Customer ID : </strong>
+              <span class="id-number">{{ user!._id }}</span></span
+            >
+          </div>
+        </div>
+        <div class="d-flex gap-3">
+          <button (click)="confirmOrder(orderId)" class="btn btn-primary">
+            Confirmed Order
+          </button>
+          <button (click)="dispatchOrder(orderId)" class="btn btn-primary">
+            Dispatche order
+          </button>
+          <button (click)="deliverOrder(orderId)" class="btn btn-primary">
+            order Delivered
+          </button>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="p-4 text-center text-white text-lg bg-dark rounded-top">
+          <span class="text-uppercase">Tracking Order No - </span
+          ><span class="text-medium">{{ orderId }}</span>
+        </div>
+        <div
+          class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary"
+        >
+          <div class="w-100 text-center py-1 px-2">
+            <span class="text-medium">Shipped Via:</span> UPS Ground
+          </div>
+          <div class="w-100 text-center py-1 px-2">
+            <span class="text-medium">Status:</span> Checking Quality
+          </div>
+          <div class="w-100 text-center py-1 px-2">
+            <span class="text-medium">Expected Date:</span> SEP 09, 2024
+          </div>
+        </div>
+        <div class="card-body">
+          <div
+            class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x"
+          >
+            <!-- completed -->
+            <div
+              class="step"
+              [ngClass]="{
+                completed:
+                  orderStatus == 'confirmed' ||
+                  orderStatus == 'dispatched' ||
+                  orderStatus == 'delivered'
+              }"
+            >
+              <div class="step-icon-wrap">
+                <div class="step-icon">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+              </div>
+              <h4 class="step-title">Confirmed Order</h4>
+            </div>
+            <div
+              class="step"
+              [ngClass]="{
+                completed:
+                  orderStatus == 'dispatched' || orderStatus == 'delivered'
+              }"
+            >
+              <div class="step-icon-wrap">
+                <div class="step-icon"><i class="fas fa-truck"></i></div>
+              </div>
+              <h4 class="step-title">Product Dispatched</h4>
+            </div>
+            <div
+              class="step"
+              [ngClass]="{
+                completed: orderStatus == 'delivered'
+              }"
+            >
+              <div class="step-icon-wrap">
+                <div class="step-icon">
+                  <i class="fa-solid fa-house-chimney"></i>
+                </div>
+              </div>
+              <h4 class="step-title">Product Delivered</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-sm-between align-items-center"
+      ></div>
+
+      <div class="table-responsive my-5">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>PRODUCT & TITLE</th>
+              <th>QUANTITY</th>
+              <th>PRICE</th>
+              <th>TOTAL PRICE</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(order of orders.orderItems; track order.id){
+            <tr>
+              <td class="d-flex justify-content-center product-info">
+                <div class="product-img">
+                  <img
+                    src="https://media.istockphoto.com/id/1672317574/photo/ama-dablam-mountain-peak.webp?b=1&s=170667a&w=0&k=20&c=Ea8yDEHpUemrRuMZUKGPDBE11YTWVksIupMN8FkEBf8="
+                    alt="Product Image"
+                  />
+                </div>
+                <a
+                  routerLink="/product_details/{{ order!.id }}"
+                  class="product-title"
+                  >Shirt</a
+                >
+              </td>
+              <td>{{ order!.quantity }}</td>
+              <td>${{ order!.price }}</td>
+              <td>${{ order!.totalPrice }}</td>
+            </tr>
+            }
+            <tr>
+              <td colspan="3">TOTAL RPICE</td>
+              <td>${{ orders!.totalPrice }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modelBackdrop" [ngClass]="{ show: modelStatus }"></div>
+      <div class="ng-Modal" [ngClass]="{ show: modelStatus }">
+        <div class="ng-Modal-header">
+          <h3>Order Status</h3>
+        </div>
+        <div class="ng-Modal-body">
+          <p>{{ orderMessage }}</p>
+        </div>
+        <div class="ng-Modal-footer">
+          <div class="d-flex gap-2 float-end py-2">
+            <button class="btn btn-primary" (click)="hideModel()">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
