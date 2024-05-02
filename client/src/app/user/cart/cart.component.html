@@ -2,7 +2,7 @@
 <app-firestnav></app-firestnav>
 <div class="container-fluid px-3 mx-auto">
 
-  @if (CartService.getproduct().length >= 1) {
+  @if (cartItems.items.length >= 1) {
     <table class="table">
       <thead>
           <tr>
@@ -17,27 +17,27 @@
           </tr>
       </thead>
       <tbody class="table_body">
-          @for (item of CartService.getproduct(); track $index) {
+          @for (item of cartItems.items ; track $index) {
           <tr class="product_data">
-              <td class="table_img"><img [src]="item.thumbnail" alt=""></td>
-              <td class="pt-5">{{ item.title }}</td>
-              <td class="pt-5">{{ item.category }}</td>
-              <td class="pt-5">{{ item.stock }}</td>
-              <td class="pt-5">${{ item.price * item.quantity }}</td>
+              <td class="table_img"><img src="/assets/{{item?.images[0]}}" alt=""></td>
+              <td class="pt-5">{{ item?.name }}</td>
+              <td class="pt-5">{{ item?.category['name'] }}</td>
+              <td class="pt-5">{{ item?.quantity }}</td>
+              <td class="pt-5">${{ item?.price * item?.quantity }}</td>
               <td class="rating pt-5"><ngb-rating [(rate)]="item.rating" [readonly]="true" [max]="5"></ngb-rating></td>
               <td>
                   <div class="Btns d-flex gap-2  justify-content-center">
                       <button type="button" (click)="CartService.increase(item.id)" (click)="increase()" class="btn btn-success">+</button>
-                      <p class="pt-2">{{item.quantity}}</p>
+                      <p class="pt-2">{{item?.quantity}}</p>
                       <button type="button" (click)="CartService.decrease(item.id)" (click)="decrease()" class="btn btn-danger">-</button>
                   </div>
               </td>
               <td class="delete pt-5">
-                <i (click)="delete(item)"   [ngClass]="{'clicked': isClicked} " class="fa-solid fa-trash delete-icon"></i>
+                <i (click)="deleteItem(item?.id)" class="fa-solid fa-trash delete-icon"></i>
               </td>
               
           </tr>
-          }
+        }
           <tr class="total ">
             <td class="py-4" colspan="7">Total Price : ${{ totalP }}</td>
             <td>

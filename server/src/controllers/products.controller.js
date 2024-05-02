@@ -32,8 +32,6 @@ const getProducts = async (req, res) => {
                                     .skip((page - 1) * pageSize) 
                                     .populate('category')
                                     .limit(pageSize); 
-                                    
-  
       res.status(200).json({
         currentPage: page,
         totalPages: totalPages,

@@ -8,8 +8,8 @@
     "install": "npm run install-server && npm run install client",
     "server": "npm run watch --prefix server",
     "client": "npm run start --prefix client",
-    "watch": "npm run server & npm run client",
-    "deploy": "npm run build --prefix client && npm run start --prefix server",
+    "watch":  "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "cd client && npm run build && cd ../server && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

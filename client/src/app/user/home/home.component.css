@@ -6,7 +6,12 @@
 }
 
 /* Add this CSS to your stylesheet */
-
+/* ========================================== */
+.carousel_img{
+  width: 100%;
+  object-fit: fill;
+  height: 550px;
+}
 
 
 /* ============================ */
@@ -14,80 +19,71 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-image: linear-gradient(
-    150deg,
-    #ead2f2,
-    #d9d5fc,
-    #d8d6fc,
-    #cde1fc,
-    #d1e5f0,
-    #d6e9e3,
-    #d9eadf,
-    #d9e9dd,
-    #dbeadb,
-    #dfebd7,
-    #eae9d7,
-    #eae8d6,
-    #eee3d7,
-    #efded6,
-    #efdad7,
-    #efd8d6
-  );
+
   border: none;
-  padding: 120px 0px ;
+  position: relative;
 }
 
 .data {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  text-align: center;
   gap: 20px ;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #7C5ED8;
 }
 
-.data >.offer {
-  background-color: #ffc728;
-  width: fit-content;
-  padding: 5px;
+.data > .offer {
+  background-color: #7C5ED8;
+  padding: 4px;
   letter-spacing: 3px;
-  font-weight: 400;
+  font-weight: 500;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%, 30px 50%);
 }
+
+
 
 
 
 .saless{
-  width: 100%;
+  /* width: max-content; */
   flex-direction: column;
-  display: flex;
-  gap: 15px;
-  font-size: 60px ;
+  /* display: flex; */
+  /* gap: 15px; */
+  font-size: 55px ;
   padding: 20px 0px;
-  font-weight: 400;
-
-}
-
-.saless span{
-  background: linear-gradient(
-    120deg,
-    #ad51ee,
-    #b04ce4,
-    #b449de,
-    #b844d3,
-    #bd3fc9,
-    #bf3bc1,
-    #bf3cc3,
-    #c339bc,
-    #c636b5,
-    #d52794,
-    #da228a,
-    #e31773,
-    #eb1064
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
   font-weight: 700;
-  color: transparent;
-  font-size: 50px;
+  color: white;
+  letter-spacing: 5px;
+
 }
+
+.color{
+  color: #7C5ED8;
+  animation-name: sale-animation;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.color2{
+  color: white;
+  animation-name: sale-animation;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 /* 
 .sale {
   font-size: 54px;
@@ -100,31 +96,10 @@
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  
+  font-size: 50px;
+  color: #7C5ED8;
+  font-weight: 700;
 }
-
-@keyframes sale-animation {
-  0% {
-    font-weight: 900;
-  }
-  20% {
-    font-weight: 700;
-  }
-  40% {
-    font-weight: 800;
-  }
-  60% {
-    font-weight: 900;
-  }
-  80% {
-    font-weight: 700;
-  }
-  100% {
-    font-weight: 900;
-  }
-}
-
-
 
 @keyframes sale-animation {
   0% {
@@ -145,23 +120,31 @@
   100% {
     font-weight: 500;
   }
+}
+
+.moredata{
+  color: white;
+  /* margin: 0px auto; */
+  font-weight: 500;
 }
 
 
 
 
 .carusel_btn {
-  border: solid #5c3dc3 2px;
-  color: #5c3dc3;
-  background-color: transparent;
+  border: solid white 2px;
+  background-color:  transparent;
   font-weight: 500;
   transition: 0.5s;
+  margin: 0px auto;
+  font-size: 16px;
+  color: white;
 }
 
 .carusel_btn:hover {
-  color: white;
   background-color: #5c3dc3;
   font-weight: 500;
+
 }
 
 
@@ -183,7 +166,7 @@
   justify-content: space-between;
   gap: 2px;
   padding: 30px 0px;
-  background-color: #eef0fc;
+  background-color: #F4F1FF;
 }
 
 .mostsells {
@@ -230,7 +213,7 @@
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  background-color: #eef0fc;
+  background-color: #F4F1FF;
   /* margin: 10px 0px; */
   border-radius: 12px;
 }
@@ -271,7 +254,7 @@
 /* ======================= */
 .some_offers {
   padding: 20px;
-  background-color: #EEF0FC;
+  background-color: #F4F1FF;
 }
 
 .best_product_container {

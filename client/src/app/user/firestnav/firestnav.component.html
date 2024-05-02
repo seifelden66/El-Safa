@@ -1,14 +1,14 @@
 <div class="col-12 second_nav">
   <div
     dir="ltr"
-    class="row sec_nav justify-content-xxl-start gap-xxl-2 justify-content-md-start gap-md-4"
-  >
-    <div class="col-4 col-xxl-2 col-md-2 px-4 one">
+    class="row sec_nav justify-content-xxl-start gap-xxl-2 justify-content-md-start gap-md-4">
+    <div class="col-3 col-xxl-2 col-md-3 px-5 one">
       <button
-        class="btn btn-suceess category_btn"
+        class="btn btn-suceess category_btn d-flex"
         [matMenuTriggerFor]="animals"
       >
-        Category
+      <i class="fas fa-list-ul m-0  "></i>
+        <span>Category</span> 
       </button>
 
       <mat-menu #animals="matMenu">
@@ -64,7 +64,7 @@
       </mat-menu>
     </div>
 
-    <div class="col-8 col-xxl-9 col-md-9 two">
+    <div class="col-7 col-xxl-9 col-md-8 two">
       <nav class="navbar navbar_container navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <button
@@ -106,7 +106,9 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" routerLink="/cart">Cart</a>
+                  <a class="nav-link"
+                  routerLinkActive="active_link"
+                  routerLink="/cart">Cart</a>
                 </li>
 
                 <li class="nav-item">

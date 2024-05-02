@@ -25,6 +25,7 @@ export class CartService {
 
   getproduct(){
     return this.item
+    
   }
 
   delete(item:any){

@@ -22,7 +22,6 @@ import { sendCodeGuard } from "./services/send-code.guard";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { resetPasswordGuard } from "./services/reset-password.guard";
 import { SingleOrderComponent } from "./admin/single-order/single-order.component";
-
 import { CartComponent } from "./user/cart/cart.component";
 import { ContactComponent } from "./user/contact/contact.component";
 
@@ -126,8 +125,4 @@ export const routes: Routes = [
     component: HomeComponent,
   },
 
-  {
-    path: "**",
-    component: HomeComponent,
-  },
 ];

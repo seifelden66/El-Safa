@@ -25,6 +25,7 @@ import { Toast, ToastModule } from "primeng/toast"; // Correct import path
 import { FirestnavComponent } from "../firestnav/firestnav.component";
 
 import { ToastrService } from "ngx-toastr";
+import { CookieService } from "../../services/cookie.service";
 
 @Component({
   selector: "app-product-page",
@@ -49,6 +50,7 @@ export class ProductPageComponent implements OnInit {
   // rating = 8;
   currentPage: number = 1;
   totalPages: number = 1;
+  userToken : any;
 
   constructor(
     private http: HttpClient,
@@ -56,7 +58,8 @@ export class ProductPageComponent implements OnInit {
     config: NgbModalConfig,
     private modalService: NgbModal,
     private CounterService: CounterService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private cookkeService : CookieService
   ) {
     config.backdrop = "static";
     config.keyboard = false;
@@ -64,8 +67,8 @@ export class ProductPageComponent implements OnInit {
 
   allproducts: any = [];
   count: number = 0;
-  category: any;
   selectedCategory: string | null = null;
+  category : any[] = [];
 
   toster = inject(ToastrService);
 
@@ -76,6 +79,10 @@ export class ProductPageComponent implements OnInit {
     this.toster.success("added to Wishlist", "Success");
   }
 
+  trackByIndex(index: number, item: any): number {
+    return index;
+  }
+
   ngOnInit(): void {
     this.getallproduct();
 
@@ -84,14 +91,18 @@ export class ProductPageComponent implements OnInit {
     this.CounterService.getcount().subscribe((value) => {
       this.count = value;
     });
+    this.userToken = this.cookkeService.get('userToken');
   }
+
 
   getallproduct(page = 1) {
     this.http
-      .get("http://localhost:8000/v1/products?page=${page}")
+      .get("http://localhost:8000/v1/products")
       .subscribe((res: any) => {
         this.allproducts = res.products;
         this.totalPages = res.totalPages;
+        console.log(this.allproducts);
+        
       });
   }
   onPageChange(pageNumber: number) {
@@ -99,20 +110,20 @@ export class ProductPageComponent implements OnInit {
     this.getallproduct(pageNumber);
   }
 
+
   redirect(product_id: any) {
-    this.router.navigate([`/product_details`, product_id]);
+    this.router.navigate([`/product_details`,product_id]);
   }
 
+
+
   getUniqueCategories(): void {
-    this.http.get("https://dummyjson.com/products").subscribe(
+    this.http.get("http://localhost:8000/v1/products").subscribe(
       (res: any) => {
-        // Check if res.products exists and is an array
         if (res && Array.isArray(res.products)) {
-          // Extract unique categories using Set
           const uniqueCategoriesSet = new Set(
-            res.products.map((item: any) => item.category)
+            res.products.map((item: any) => item.category['name'])
           );
-          // Convert Set back to array
           this.category = Array.from(uniqueCategoriesSet);
         } else {
           console.log("Products not found or is not an array");
@@ -123,6 +134,7 @@ export class ProductPageComponent implements OnInit {
       }
     );
   }
+  
 
   // ===================================
 
@@ -138,10 +150,65 @@ export class ProductPageComponent implements OnInit {
 
   redirecttocart(product_details: any) {
     this.CartService.addtocart(product_details);
-    // console.log(product_details);
+    console.log(product_details);
   }
   // =============counter services=========================
   increase() {
     this.CartService.setcount((this.count += 1));
   }
+
+  // =======filter by category====================================
+
+// Inside ProductPageComponent class
+selectedCategories: string[] = []; // Track selected categories
+
+onCategoryChange(category: string): void {
+  if (category === 'All Products') {
+    this.selectedCategory = null; // Reset selected category to null
+  } else {
+    this.selectedCategory = category; // Set selected category
+  }
+  this.filterProducts(); // Apply filtering
 }
+
+filterProducts(): void {
+  if (!this.selectedCategory) {
+    // If no category is selected, show all products
+    this.getallproduct();
+    return;
+  }
+
+  // Filter products based on the selected category
+  this.http.get("http://localhost:8000/v1/products").subscribe(
+    (res: any) => {
+      if (res && Array.isArray(res.products)) {
+        this.allproducts = res.products.filter(
+          (product: any) => product.category && product.category.name === this.selectedCategory
+        );
+        this.totalPages = res.totalPages;
+      } else {
+        console.log("Products not found or is not an array");
+      }
+    },
+    (err) => {
+      console.log(err.error);
+    }
+  );
+}
+
+addToCart(id : string){  
+  this.http.post("http://localhost:8000/v1/cart/addToCart", {product : {id : id, quantity : 1}}, {headers : {
+    Authorization : `Bearer ${this.userToken}`
+  }}).subscribe(
+    res =>{
+      console.log(res);
+    },
+    error => {
+      console.log(error);
+    }
+  )
+}
+
+}
+
+

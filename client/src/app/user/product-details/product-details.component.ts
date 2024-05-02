@@ -28,13 +28,13 @@ import { CookieService } from "../../services/cookie.service";
 export class ProductDetailsComponent implements OnInit {
   main_img: any;
   userToken!: any;
+  product_details: any;
   @Input() id?: any;
 
   reternsrc(newsrc: any) {
     this.main_img = newsrc;
   }
 
-  product_details: any;
   constructor(
     private ActivatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -48,10 +48,12 @@ export class ProductDetailsComponent implements OnInit {
     // console.log(product_id);
 
     this.http
-      .get(`https://dummyjson.com/products/${product_id}`)
+      .get(`http://localhost:8000/v1/products/${product_id}`)
       .subscribe((res: any) => {
         this.product_details = res;
-        this.main_img = this.product_details.thumbnail;
+        this.main_img = this.product_details.images[0];
+        console.log(this.product_details);
+        
       });
     this.userToken = this.cookieService.get("userToken");
   }
