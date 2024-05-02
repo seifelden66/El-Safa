@@ -1,13 +1,13 @@
 import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-MERBZJKO.js";
+import {
   AutoFocus,
   AutoFocusModule
 } from "./chunk-5SASJIEP.js";
 import {
   DomHandler
 } from "./chunk-LZMSIMQG.js";
-import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-MERBZJKO.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -63,8 +63,8 @@ import {
   ɵɵtemplate,
   ɵɵviewQuery
 } from "./chunk-TDR5BHHU.js";
-import "./chunk-UKEHM6V6.js";
 import "./chunk-V2DXGMIT.js";
+import "./chunk-UKEHM6V6.js";
 import "./chunk-ZDOIMVJD.js";
 
 // node_modules/primeng/fesm2022/primeng-slider.mjs

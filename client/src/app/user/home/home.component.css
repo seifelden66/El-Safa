@@ -316,9 +316,10 @@ background-color: transparent;
 .services_container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 60px 20px;
   /* gap: 7px ; */
-  background-color: #eceefa;
+  background-color: #F4F1FF;
+
 }
 
 .service{

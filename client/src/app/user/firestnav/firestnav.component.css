@@ -85,7 +85,11 @@
     align-items: center;
     gap: 7px;
     font-size: 18px;
-    border: solid;
+    border: solid 1px;
+  }
+  .category_btn:hover {
+    background-color:#7c5cd3;
+    color:#f4f2fb ;
   }
   
   /* ============================== */

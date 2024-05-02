@@ -1,45 +1,92 @@
-
-.container_profile {
-    background-color: #EEF0FC;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-shadow: 3px 3px 3px 3px gray;
+.container-fluid{
+    background-color: #F4F1FF;
 }
 
-.part_1, .part_2, .part_4, .part_5, .part_1ls, .part_2ls, .part_3ls {
-    padding: 20px;
-}
-
-.part_1, .part_2, .part_4, .part_5 {
-    border-bottom: 1px solid #dee2e6;
-}
-
-.profile-img {
-    max-width: 120px;
-    border-radius: 50%;
-}
-
-.circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #007bff;
-    color: #fff;
+.row{
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 20px 0px ;
 }
 
-/* Additional Styles */
-.user_Btns button {
-    padding: 8px 20px;
+/* ==================================== */
+
+.sidebar{
+    /* border: SOLID  green; */
+    background-color: #F4F1FF;
+    padding: 0px 7px;
+    box-shadow: 3px 3px 15px rgb(170, 162, 162);
+
 }
 
-.experiance_container .experiances {
+
+.sidebar_data{
+    padding: 50px 0px;
     display: flex;
-    margin-bottom: 10px;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.experiance_container .experiances .exp_data {
-    margin-left: 10px;
+.sidebar_data h3{
+    padding: 7px ;
+    cursor: pointer;
+    transition: .4s ease;
+}
+
+.sidebar_data h3:hover{
+background-color: #7C5ED8;
+color: white;
+}
+
+
+.sidebar_text{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+
+
+/* ==================================== */
+
+.profile_data{
+    display: flex;
+    flex-direction: column;
+    gap: 30px ;
+    padding: 0px 50px ;
+    
+}
+
+.user_img img{
+    width: 100px;
+}
+
+.user_data{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+.input_filed{
+    position: relative;
+    width: 60%;
+}
+
+.input input{
+    width: 100%;
+    padding: 10px 14px ;
+    border: none;
+    background-color: #F2F2F2;
+    border-radius: 5px ;
+}
+
+.icon{
+position: absolute;
+right: 9px;
+top: 50%;
+transform: translate(0,-50%);
+
 }
