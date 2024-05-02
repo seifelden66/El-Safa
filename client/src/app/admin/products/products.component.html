@@ -45,31 +45,31 @@
 
               <tbody>
                 <!-- Use Bootstrap classes for table rows -->
-                @for(product of products; track product!._id){
+                @for(product of products; track product?._id){
                 <tr>
-                  <td>{{ product!.name }}</td>
-                  <td>{{ product!.category }}</td>
+                  <td>{{ product?.name }}</td>
+                  <td>{{ product?.category?.['name'] }}</td>
                   <td>
                     <button
-                      (click)="showImageModel(product!.images)"
+                      (click)="showImageModel(product?.images)"
                       class="btn btn-primary"
                     >
                       images
                     </button>
                   </td>
-                  <td>{{ product!.quantity }}</td>
-                  <td>{{ product!.price }}</td>
+                  <td>{{ product?.quantity }}</td>
+                  <td>{{ product?.price }}</td>
                   <td>
                     <button
                       class="btn btn-sm"
                       title="Edit"
-                      (click)="showEditModel(product!._id)"
+                      (click)="showEditModel(product?._id)"
                     >
                       <i class="fas fa-edit edit-product"></i>
                     </button>
                     <button
                       class="btn btn-sm"
-                      (click)="showDeleteModel(product!._id)"
+                      (click)="showDeleteModel(product?._id)"
                     >
                       <i class="fas fa-trash-alt delete-product"></i>
                     </button>
@@ -82,11 +82,13 @@
         </div>
         <div
           class="modelBackdrop"
-          [ngClass]="{ hide: deleteModelStatus && editModelStatus }"
+          [ngClass]="{
+            show: deleteModelStatus || editModelStatus || imageModelStatus
+          }"
         ></div>
 
         <!-- Delete product model -->
-        <div class="ng-Modal" [ngClass]="{ hide: deleteModelStatus }">
+        <div class="ng-Modal" [ngClass]="{ show: deleteModelStatus }">
           <div class="ng-Modal-header">
             <h3>Delete Product</h3>
           </div>
@@ -109,7 +111,7 @@
         <div
           id="editmodel"
           class="ng-Modal"
-          [ngClass]="{ hide: editModelStatus }"
+          [ngClass]="{ show: editModelStatus }"
         >
           <div class="ng-Modal-header">
             <h3>Edit Product</h3>
@@ -161,33 +163,31 @@
                     id="category"
                     formControlName="category"
                   >
-                    @for(category of categorys; track category._id){
-                    <option value="{{ category!._id }}">
-                      {{ category!.name }}
+                    @for(category of categorys; track category?._id){
+                    <option value="{{ category?._id }}">
+                      {{ category?.name }}
                     </option>
                     }
                   </select>
                 </div>
               </div>
-              <!-- TODO add this attribute  -->
-              <!-- formControlName="images" -->
               <div class="form-group row mb-4 w-75">
-                <label for="productImages">Images</label>
-                <input
-                  multiple
-                  type="file"
-                  class="form-control form-control-product mb4"
-                  id="productImages"
-                  placeholder="Images"
-                />
+                <label for="desc">Short Description</label>
+                <textarea
+                  id="short_desc"
+                  class="form-control"
+                  formControlName="short_desc"
+                  cols="15"
+                  rows="3"
+                ></textarea>
               </div>
-              <!-- TODO add this attribute  -->
-              <!-- formControlName="description" -->
+
               <div class="form-group row mb-4 w-75">
                 <label for="desc">Description</label>
                 <textarea
                   id="desc"
                   class="form-control"
+                  formControlName="desc"
                   cols="20"
                   rows="5"
                 ></textarea>
@@ -208,7 +208,7 @@
         <div
           style="width: 500px"
           class="ng-Modal"
-          [ngClass]="{ hide: imageModelStatus }"
+          [ngClass]="{ show: imageModelStatus }"
         >
           <div class="ng-Modal-header">
             <h3>Product Images</h3>

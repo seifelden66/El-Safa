@@ -5,3 +5,55 @@
 html {
   background-color: #eef0fc;
 }
+
+.modelBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 999; /* higher z-index than modals */
+  display: none;
+}
+/* Images Model */
+.ng-Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;
+}
+
+.ng-Modal-header {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px 5px 0 0;
+}
+
+.ng-Modal-body {
+  max-height: 75vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.ng-Modal-footer {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.show{
+  display: block;
+}
