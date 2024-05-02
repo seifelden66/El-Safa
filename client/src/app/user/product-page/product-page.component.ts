@@ -148,10 +148,10 @@ export class ProductPageComponent implements OnInit {
 
   CartService = inject(CartService);
 
-  redirecttocart(product_details: any) {
-    this.CartService.addtocart(product_details);
-    console.log(product_details);
-  }
+  // redirecttocart(product_details: any) {
+  //   this.CartService.addtocart(product_details);
+  //   console.log(product_details);
+  // }
   // =============counter services=========================
   increase() {
     this.CartService.setcount((this.count += 1));

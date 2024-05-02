@@ -1,4 +1,5 @@
 <app-second-header></app-second-header>
+
 <app-firestnav></app-firestnav>
 <div class="container-fluid mx-auto">
   <div class="row allproduct_container mx-auto py-4 px-3">
@@ -20,7 +21,7 @@
               @for (cat of category; track $index) {
                 <div class="item_name">
                     <p class="m-0">{{ cat }}</p>
-      <input type="radio" name="category" (change)="onCategoryChange(cat)" />
+                   <input type="radio" name="category" (change)="onCategoryChange(cat)" />
                 </div>
             }
 
@@ -71,10 +72,10 @@
             <div class="product_price  p-2  text-center">
               <button type="button" class="btn btn-outline-secondary p-1 my-2 ">{{ product?.category['name'] }}</button>
               <p class="product_name" style="color: #6474A9;">{{ product?.name }}</p>
-              <!-- <div class="rate_product">
+              <div class="rate_product">
                 <ngb-rating [(rate)]="product.ratings['0']['value']" [max]="5"></ngb-rating>
 
-              </div> -->
+              </div>
               <h2 style="font-weight: 600;" class="my-2">${{ product?.price}}</h2>
               <h2 style="font-weight: 600;" class="my-2">{{ product?.short_desc }}</h2>
                 
@@ -83,7 +84,7 @@
 
                          <div class="card">
                                     <p-toast></p-toast>
-                                    <button type="button" pButton (click)="redirecttocart(product); increase() ; show2()" label="" class="fav_btn"><i class="fa-solid fa-heart"></i></button>
+                                    <button type="button" pButton (click)=" increase() ; show2()" label="" class="fav_btn"><i class="fa-solid fa-heart"></i></button>
                                
                                   </div>
                   

@@ -67,9 +67,5 @@ baseline.json
 aio/content/examples/.DS_Store
 
 
-<<<<<<< HEAD
-# Ignore cache created with the Angular CLI.
-=======
 # Ignore cache created with the Angular CLI.
->>>>>>> 0abcb63a4f7716fc4add9d64de2cb5be6a89449a
 .angular/

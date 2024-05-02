@@ -44,7 +44,7 @@ export const routes: Routes = [
     component: ProfileComponent,
   },
   {
-    path: "user",
+    path: "regester",
     component: SignUpComponent,
   },
   {
@@ -108,10 +108,7 @@ export const routes: Routes = [
     component: ResetPasswordComponent,
     canActivate: [resetPasswordGuard],
   },
-  {
-    path: "product_details/:id",
-    component: ProductDetailsComponent,
-  },
+
   {
     path: "cart",
     component: CartComponent,

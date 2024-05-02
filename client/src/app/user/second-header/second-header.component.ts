@@ -100,7 +100,7 @@ export class SecondHeaderComponent implements OnInit {
   }
 
   redirect5() {
-    this.router.navigate(["user"]);
+    this.router.navigate(["regester"]);
   }
 
   redirect6() {
