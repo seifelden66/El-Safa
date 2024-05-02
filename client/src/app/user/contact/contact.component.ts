@@ -11,7 +11,5 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
-  latitude = 51.678418; // Default latitude
-  longitude = 7.809007; // Default longitude
-  zoom = 12; // Default zoom level
+
 }

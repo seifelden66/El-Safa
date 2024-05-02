@@ -37,7 +37,7 @@
           <h1>
             {{ product_details?.name }}
           </h1>
-          <h2 class="card-title details ">Category: {{ product_details?.category }}</h2>
+          <h2 class="card-title details ">Category: {{ product_details?.category['name'] }}</h2>
           <div class="product_price " >
             <!-- <h2 class="card-title my-0 new_price">${{}}</h2> -->
             <h2 class="new_price ">${{ product_details?.price }}</h2>
@@ -141,7 +141,7 @@
           <div class="row rating_bigcontainer">
             
             <div class="big_container_rate">
-              <div class="product_rating">
+              <!-- <div class="product_rating">
                 <h1 class="product_rate">{{ product_details.rating}}</h1>
                 <h3>Overall Rating</h3>
     
@@ -154,7 +154,7 @@
                   <h4 class="m-0 rate">{{ product_details.rating }}</h4>
                 </div>
     
-              </div>
+              </div> -->
     
   
   
@@ -213,14 +213,14 @@
                 </div>
 
 
-                <div class="mb-1">
+                <!-- <div class="mb-1">
                   <h2>Your rating *</h2>
                   <ngb-rating
                   class="register_rateing"
                     [max]="5"
                   ></ngb-rating>
                 </div>
-      
+       -->
 
                 
                 <div class="input-group">

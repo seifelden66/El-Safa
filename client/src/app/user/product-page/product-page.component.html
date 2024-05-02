@@ -9,14 +9,27 @@
             Filter by Categories
           </h4>
 
-          @for (item of category; track $index) {
-
           <div class="item_name">
-            <p class="m-0">{{ item }}</p>
-            <input type="checkbox" />
+            <p class="m-0">All Products</p>
+            <input type="radio" name="category" (change)="onCategoryChange('All Products')" />
           </div>
 
-          }
+          <ng-container>
+            @if (category && category.length) {
+
+              @for (cat of category; track $index) {
+                <div class="item_name">
+                    <p class="m-0">{{ cat }}</p>
+      <input type="radio" name="category" (change)="onCategoryChange(cat)" />
+                </div>
+            }
+
+            }
+
+          </ng-container>
+
+
+
         </div>
 
         <div class="Rate">
@@ -70,14 +83,14 @@
 
                          <div class="card">
                                     <p-toast></p-toast>
-                                    <button type="button" pButton (click)="redirecttocart(product)" (click)="increase()"  (click)="show2()" label="" class="fav_btn"><i class="fa-solid fa-heart"></i></button>
+                                    <button type="button" pButton (click)="redirecttocart(product); increase() ; show2()" label="" class="fav_btn"><i class="fa-solid fa-heart"></i></button>
                                
                                   </div>
                   
                                   <div class="card">
                                     <p-toast></p-toast>
-                                    <button type="button" pButton (click)="redirecttocart(product)" (click)="increase()"  (click)="show()" label="" class="">+</button>
-                               
+                                    <button type="button" pButton (click)=" increase() ; show(); addToCart(product?._id)" label="" class="">+</button>
+                        
                                   </div>
 
                       
