@@ -119,9 +119,9 @@ export class SecondHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProducts();
 
-    this.CartService.getcount().subscribe((res) => {
-      this.count = res;
-    });
+    // this.CartService.getcount().subscribe((res) => {
+    //   this.count = res;
+    // });
 
     // this.CartService.addtocart
   }

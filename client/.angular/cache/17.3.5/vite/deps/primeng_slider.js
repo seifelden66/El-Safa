@@ -1,13 +1,13 @@
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-MERBZJKO.js";
-import {
   AutoFocus,
   AutoFocusModule
-} from "./chunk-5SASJIEP.js";
+} from "./chunk-OPBFOLG7.js";
 import {
   DomHandler
 } from "./chunk-LZMSIMQG.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-2DX7RTQ7.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -15,7 +15,7 @@ import {
   NgIf,
   NgStyle,
   isPlatformBrowser
-} from "./chunk-NCFBGS7G.js";
+} from "./chunk-MCCKNBDJ.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -62,10 +62,11 @@ import {
   ɵɵstyleProp,
   ɵɵtemplate,
   ɵɵviewQuery
-} from "./chunk-TDR5BHHU.js";
-import "./chunk-V2DXGMIT.js";
-import "./chunk-UKEHM6V6.js";
-import "./chunk-ZDOIMVJD.js";
+} from "./chunk-23S5YUD5.js";
+import "./chunk-5W7TR2ZS.js";
+import "./chunk-S6KPQDJK.js";
+import "./chunk-UA44W22Y.js";
+import "./chunk-QOHD3WUR.js";
 
 // node_modules/primeng/fesm2022/primeng-slider.mjs
 var _c0 = ["sliderHandle"];

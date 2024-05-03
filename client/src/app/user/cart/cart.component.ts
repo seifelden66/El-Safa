@@ -36,58 +36,76 @@ export class CartComponent implements OnInit {
   userToken : any;
   cartItems! : any;
   CartService = inject(CartService)
-  
+  totalPrice! : number 
   constructor(private CounterService : CounterService, private http : HttpClient, private cookieservice : CookieService){}
 
   ngOnInit(): void {
-
-    this.handleCartCount()
-
-    this.totalprice()
-    // console.log(this.CartService.getproduct());
     this.userToken = this.cookieservice.get('userToken')
     this.getCartItems()
+
+
   }
+
+
 
   
-  handleCartCount (){
-    const temp =this.CartService.getproduct().reduce((prev,curr)=>{
-      return prev + curr.quantity
-     },0)
 
-    this.CartService.setcount(temp)
-  }
  
   isClicked: boolean = false;
 
-  delete(item:any){
-    this.CartService.delete(item)
-    this.handleCartCount()
-    this.totalprice()
+
+  increase(item:any){
+
+
+    if(item.quantity >= 1){
+      item.quantity++
+
+      // cartItems
+
+      this.http.post("http://localhost:8000/v1/cart/addToCart", {product : {id : item.id, quantity : item.quantity}}, {headers : {
+        Authorization : `Bearer ${this.userToken}`
+      }}).subscribe(
+        res =>{
+          console.log(res);
+        },
+        error => {
+          console.log(error);
+        }
+      )
+    
+
+
+    }
+
+
   }
 
 
-  increase(){
-    this.handleCartCount()
-    this.totalprice()
+  decrease(item:any) {
+
+    if(item.quantity > 1){
+      item.quantity--
+
+      this.http.post("http://localhost:8000/v1/cart/addToCart", {product : {id : item.id, quantity : item.quantity}}, {headers : {
+        Authorization : `Bearer ${this.userToken}`
+      }}).subscribe(
+        res =>{
+          console.log(res);
+        },
+        error => {
+          console.log(error);
+        }
+      )
+    
+
+
+    
+    }
+
 
 
   }
 
-
-  decrease() {
-
-
-    this.handleCartCount()
-    this.totalprice()
-
-  }
-
-  totalprice(){
-    this.totalP = this.CartService.getproduct().reduce((total,item)=>{
-      return total+(item.price*item.quantity)
-    },0)
-  }
 
   // ================delet animations=============================
 
@@ -96,10 +114,11 @@ getCartItems(){
     Authorization : `Bearer ${this.userToken}`
   }}).subscribe((res:any)=>{
     console.log(res); 
-    this.cartItems = res
+    this.cartItems = res;
+   this.totalPrice= this.cartItems.totalPrice
+
   })
 }
-
 
 deleteItem(id: string) {
   this.http.delete(`http://localhost:8000/v1/cart/deleteFromCart?id=${id}`, { headers: { Authorization: `Bearer ${this.userToken}` } })
