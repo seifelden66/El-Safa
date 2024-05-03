@@ -34,9 +34,9 @@ export class ProductsComponent implements OnInit {
   products: any[] = [];
   categorys: any;
   productId: string = "";
-  deleteModelStatus: boolean = true;
-  editModelStatus: boolean = true;
-  imageModelStatus: boolean = true;
+  deleteModelStatus: boolean = false;
+  editModelStatus: boolean = false;
+  imageModelStatus: boolean = false;
   productImages: any;
   productForm!: FormGroup;
 
@@ -48,7 +48,8 @@ export class ProductsComponent implements OnInit {
 
   getallproduct() {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
-      this.products = res;
+      this.products = res.products;
+      console.log(res.products);
     });
   }
   // get categorys service
@@ -60,11 +61,11 @@ export class ProductsComponent implements OnInit {
 
   showDeleteModel(id: string) {
     this.productId = id;
-    this.deleteModelStatus = false;
+    this.deleteModelStatus = true;
   }
 
   hideDeleteModel() {
-    this.deleteModelStatus = true;
+    this.deleteModelStatus = false;
   }
 
   deleteProduct() {
@@ -82,12 +83,12 @@ export class ProductsComponent implements OnInit {
           alert(error.message);
         }
       );
-    this.deleteModelStatus = true;
+    this.deleteModelStatus = false;
   }
 
   showEditModel(id: string) {
     this.productId = id;
-    this.editModelStatus = false;
+    this.editModelStatus = true;
     const product = this.products.find((elem: any) => elem._id == id);
 
     this.productForm.patchValue({
@@ -100,13 +101,13 @@ export class ProductsComponent implements OnInit {
 
   showImageModel(images: any) {
     this.productImages = images;
-    this.imageModelStatus = false;
-  }
-  hideImageModel() {
     this.imageModelStatus = true;
   }
+  hideImageModel() {
+    this.imageModelStatus = false;
+  }
   hideEditModel() {
-    this.editModelStatus = true;
+    this.editModelStatus = false;
   }
 
   initForm() {
@@ -115,8 +116,8 @@ export class ProductsComponent implements OnInit {
       quantity: new FormControl("", [Validators.required]),
       price: new FormControl("", [Validators.required]),
       category: new FormControl("", [Validators.required]),
-      // images: new FormControl("", [Validators.required]),
-      // description: new FormControl("", [Validators.required]),
+      short_desc: new FormControl("", [Validators.required]),
+      desc: new FormControl("", [Validators.required]),
     });
   }
 
@@ -128,13 +129,12 @@ export class ProductsComponent implements OnInit {
       )
       .subscribe(
         (res: any) => {
-          console.log(res.message);
           // Update the product list after editing
           const editedProductIndex = this.products.findIndex(
             (product) => product._id === this.productId
           );
           if (editedProductIndex !== -1) {
-            this.products[editedProductIndex] = res.message;
+            this.products[editedProductIndex] = res;
           }
           this.productForm.reset();
           // this.editModelStatus = true;
@@ -143,7 +143,7 @@ export class ProductsComponent implements OnInit {
           console.error(error.message);
         }
       );
-    this.editModelStatus = true;
+    this.editModelStatus = false;
   }
 }
 

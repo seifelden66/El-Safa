@@ -2,9 +2,106 @@
   <app-sidebar></app-sidebar>
   <div class="body w-100">
     <app-navbar class="w-100"></app-navbar>
-    <div class="container-fluid">
-      <h1 class="h3 my-4 text-gray-800">Add New Admin</h1>
-      <div class="card shadow mb-4"></div>
+    <div
+      class="container-fluid d-flex justify-content-center align-items-center vh-100"
+    >
+      <div class="card shadow mb-4 w-75">
+        <div class="card-body">
+          <h1 class="h3 text-center mb-4 text-gray-800">Add New Admin</h1>
+          <form
+            [formGroup]="adminForm"
+            enctype="multipart/form-data"
+            (ngSubmit)="onSubmit()"
+          >
+            <div class="mb-3 row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Full Name</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Full Name"
+                  formControlName="name"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="email" class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="password" class="col-sm-3 col-form-label"
+                >Password</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  formControlName="password"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="phone" class="col-sm-3 col-form-label">Phone</label>
+              <div class="col-sm-9">
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  placeholder="Phone"
+                  formControlName="phone"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="location" class="col-sm-3 col-form-label"
+                >Location</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="location"
+                  placeholder="Location"
+                  formControlName="location"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="profile_picture" class="col-sm-3 col-form-label"
+                >Profile Picture</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="file"
+                  class="form-control"
+                  id="profile_picture"
+                  formControlName="file"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary btn-block">
+                  Add Admin
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
