@@ -28,6 +28,18 @@ const productSchema = mongoose.Schema(
             type: String,
             required: false
         }],
+        price: {
+            type: Number,
+            required: true,
+          },
+          originalPrice: {
+            type: Number,
+            required: true,
+          },
+          discount: {
+            type: Number,
+            default: 0, 
+          },
         category: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Category',
