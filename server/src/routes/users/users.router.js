@@ -68,4 +68,5 @@ usersRouter.patch(
   passportAuthenticate,
   httpResetPassword
 );
+
 module.exports = usersRouter;
