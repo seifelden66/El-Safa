@@ -8,7 +8,7 @@
     "install": "npm run install-server && npm run install client",
     "server": "npm run watch --prefix server",
     "client": "npm run start --prefix client",
-    "watch":  "concurrently \"npm run server\" \"npm run client\"",
+    "watch": "concurrently \"npm run server\" \"npm run client\"",
     "deploy": "cd client && npm run build && cd ../server && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "ngx-toastr": "^18.0.0",
-    "some-module": "^0.0.3",
     "primeng": "^17.14.1",
-    "server": "^1.0.39"
+    "server": "^1.0.39",
+    "some-module": "^0.0.3"
   }
 }
