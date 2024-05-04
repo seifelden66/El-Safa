@@ -46,6 +46,10 @@ const getProduct = async (req, res) => {
 };
 
 
+
+
+
+
 const postProduct = async (req, res) => {
   try {
     const { name, quantity, price, category, discount, ...rest } = req.body;
@@ -151,14 +155,25 @@ const addRating = async (req, res) => {
     );
 
     if (existingRatingIndex !== -1) {
-      product.ratings[existingRatingIndex].value = value; // Use the extracted value
+      product.ratings[existingRatingIndex].value = value; 
     } else {
-      product.ratings.push({ user: userId, value }); // Use the extracted value
+      product.ratings.push({ user: userId, value }); 
     }
 
     await product.save();
 
     res.status(201).json({ message: "Rating added successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getTopRatedProducts = async (req, res) => {
+  try {
+    const topRatedProducts = await Product.find({})
+      .sort({ "ratings.value": -1 }) 
+      .limit(5);
+    res.status(200).json(topRatedProducts);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -172,5 +187,5 @@ module.exports = {
   deleteProduct,
   addComment,
   addRating,
-  // upload,
+  getTopRatedProducts
 };
