@@ -92,7 +92,12 @@
 
               <div class="review_container w-75">
                 <div class="user_review">
-                  <h4>User name</h4>
+
+                  <div class="user_comment">
+                    <img src="../../../assets/icon-256x256-removebg-preview.png" alt="">
+                    <h4>User name</h4>
+
+                  </div>
 
                   <p>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -102,7 +107,12 @@
                 </div>
 
                 <div class="user_review">
-                  <h4>User name</h4>
+
+                  <div class="user_comment">
+                    <img src="../../../assets/icon-256x256-removebg-preview.png" alt="">
+                    <h4>User name</h4>
+
+                  </div>
 
                   <p>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -110,9 +120,15 @@
                     in ratione. Veniam, soluta earum.
                   </p>
                 </div>
+
 
                 <div class="user_review">
-                  <h4>User name</h4>
+
+                  <div class="user_comment">
+                    <img src="../../../assets/icon-256x256-removebg-preview.png" alt="">
+                    <h4>User name</h4>
+
+                  </div>
 
                   <p>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -120,9 +136,15 @@
                     in ratione. Veniam, soluta earum.
                   </p>
                 </div>
+
 
                 <div class="user_review">
-                  <h4>User name</h4>
+
+                  <div class="user_comment">
+                    <img src="../../../assets/icon-256x256-removebg-preview.png" alt="">
+                    <h4>User name</h4>
+
+                  </div>
 
                   <p>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -130,6 +152,24 @@
                     in ratione. Veniam, soluta earum.
                   </p>
                 </div>
+
+
+                <div class="user_review">
+
+                  <div class="user_comment">
+                    <img src="../../../assets/icon-256x256-removebg-preview.png" alt="">
+                    <h4>User name</h4>
+
+                  </div>
+
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Aperiam illo doloremque ullam deleniti officia accusantium
+                    in ratione. Veniam, soluta earum.
+                  </p>
+                </div>
+
+
               </div>
             </div>
           </div>
@@ -200,41 +240,42 @@
             <div class="sign_rate">
               <h1 class="my-3 thefirestreview">Be the first to review</h1>
 
-              <div class="register_rate">
+              <form class="register_rate" [formGroup]="rating_coommint" (ngSubmit)="submithandel()"  method="post">
+                
 
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">&#64;</span>
-                  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text"   formControlName="username"  class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="User email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                  <span class="input-group-text" id="basic-addon2">&#64;example.com</span>
-                </div>
-
-
-                <!-- <div class="mb-1">
+                
+                <div class="mb-1">
                   <h2>Your rating *</h2>
                   <ngb-rating
                   class="register_rateing"
                     [max]="5"
+                    formControlName="rate"
                   ></ngb-rating>
                 </div>
-       -->
+      
 
                 
                 <div class="input-group">
                   <span class="input-group-text">Leve your comment</span>
-                  <textarea class="form-control" aria-label="With textarea"></textarea>
+                  <textarea class="form-control" formControlName="comment" aria-label="With textarea"></textarea>
                 </div>
 
-                <button type="button" class="btn py-2 px-4 mt-2 carusel_bt btn-secondary w-25">
+                <!-- <button type="button" class="btn py-2 px-4 mt-2 carusel_bt btn-secondary w-25">
                   Submit
+                </button> -->
+
+                <button  class="btn btn-primary p-2 w-100">
+                  Register Now
                 </button>
 
 
-              </div>
 
+            </form>
             </div>
   
    

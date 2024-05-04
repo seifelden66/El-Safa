@@ -14,7 +14,7 @@ import {
 } from "@angular/core";
 
 import { SliderModule } from "primeng/slider";
-import { FormsModule } from "@angular/forms";
+import { FormControl, FormGroup, FormsModule } from "@angular/forms";
 import { SecondHeaderComponent } from "../second-header/second-header.component";
 import { FooterComponent } from "../footer/footer.component";
 import { NgbModal, NgbModalConfig } from "@ng-bootstrap/ng-bootstrap";
@@ -56,6 +56,7 @@ export class ProductPageComponent implements OnInit {
 	rating = 4;
 
 
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -67,6 +68,7 @@ export class ProductPageComponent implements OnInit {
   ) {
     config.backdrop = "static";
     config.keyboard = false;
+
   }
 
   allproducts: any = [];
@@ -216,13 +218,18 @@ addToCart(id : string){
     Authorization : `Bearer ${this.userToken}`
   }}).subscribe(
     res =>{
-      // console.log(res);
+      console.log(res);
     },
     error => {
       console.log(error);
     }
   )
 }
+
+// =============rating form===============================
+
+
+
 
 }
 

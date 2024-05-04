@@ -1,3 +1,4 @@
+import { CookieService } from './../../services/cookie.service';
 import { Component , OnInit , ViewChild  } from '@angular/core';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -11,5 +12,22 @@ import { SidebarModule } from 'primeng/sidebar';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent  {
+export class ProfileComponent implements OnInit  {
+
+
+  constructor(private CookieService : CookieService){}
+
+  usertoken!:any
+  
+  ngOnInit(): void {
+    this.usertoken=this.CookieService.get('userToken')
+ 
+    console.log(this.usertoken);
+    
+  }
+
+
+
+
+
 }

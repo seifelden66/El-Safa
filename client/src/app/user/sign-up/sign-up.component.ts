@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,13 +16,14 @@ export class SignUpComponent {
   singin : FormGroup;
 
 
-  constructor (private http : HttpClient ){
+  constructor (private http : HttpClient , private route : Router ){
     this.singin = new FormGroup ({
       name : new FormControl("",[Validators.required]),
       location : new FormControl("",Validators.required),
       email: new FormControl("",[Validators.email,Validators.required]),
       phone : new FormControl("", Validators.required),
       password: new FormControl("",Validators.required),
+      img : new FormControl(""),
       // rpassword: new FormControl("",Validators.required)
     })
   
@@ -45,14 +47,17 @@ export class SignUpComponent {
           }
   
           setCookie('userToken', token, 7);  // Set the token as a cookie
-  
+          this.route.navigate(['home'])
           console.log(token); // Log the token
         } else {
           console.log('Token not found or is not a string');
         }
       },
       err => {
-        console.log(err.error);
+  
+        console.log(err);
+        
+        
       }
     );
   }

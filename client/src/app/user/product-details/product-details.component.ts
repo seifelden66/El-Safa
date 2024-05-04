@@ -9,6 +9,7 @@ import { FooterComponent } from "../footer/footer.component";
 import { CartService } from "../services/cart.service";
 import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { CookieService } from "../../services/cookie.service";
+import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-product-details",
@@ -21,6 +22,7 @@ import { CookieService } from "../../services/cookie.service";
     SecondHeaderComponent,
     FooterComponent,
     FirestnavComponent,
+    ReactiveFormsModule
   ],
   templateUrl: "./product-details.component.html",
   styleUrl: "./product-details.component.css",
@@ -29,6 +31,7 @@ export class ProductDetailsComponent implements OnInit {
   main_img: any;
   userToken!: any;
   product_details: any;
+  rating_coommint : FormGroup
   @Input() id?: any;
 
   reternsrc(newsrc: any) {
@@ -41,7 +44,15 @@ export class ProductDetailsComponent implements OnInit {
     private CartService: CartService,
     private router: Router,
     private cookieService: CookieService
-  ) {}
+  ) {
+
+    this.rating_coommint = new FormGroup({
+      username : new FormControl (''),
+      rate:new FormControl(''),
+      comment : new FormControl('')
+    })
+
+  }
   ngOnInit(): void {
     // console.log(this.ActivatedRoute.snapshot.params['id']);
     const product_id = this.ActivatedRoute.snapshot.params["id"];
@@ -70,4 +81,13 @@ export class ProductDetailsComponent implements OnInit {
     // console.log(product_details);
     this.router.navigate([`cart`]);
   }
+
+  // ===================rating and comments============================
+
+  submithandel(){
+    console.log(this.rating_coommint.value);
+    
+  }
+
+
 }

@@ -15,7 +15,7 @@
       <tbody class="table_body">
           @for (item of cartItems?.items ; track $index) {
           <tr class="product_data">
-              <td class="table_img"><img src="/assets/{{item?.images[0]}}" alt=""></td>
+              <td class="table_img"><img src="/assets/{{item?.images}}" alt=""></td>
               <td class="pt-5">{{ item?.name }}</td>
               <td class="pt-5">${{ item?.price * item?.quantity }}</td>
               <!-- <td class="rating pt-5"><ngb-rating [(rate)]="item.rating" [readonly]="true" [max]="5"></ngb-rating></td> -->
