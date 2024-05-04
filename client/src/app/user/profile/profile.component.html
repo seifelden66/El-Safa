@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
   <div class="row">
-      <div class="col-5 col-xxl-2 col-xl-2">
+      <div class="col-12 col-xxl-2 col-xl-2 col-md-4">
         <div class="sidebar">
           <div class="sidebar_data">
             <h3 class="sidebar_text" ><i class="fa-solid fa-user "></i> <span >User informations</span> </h3>
@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <div class="col-6 col-xxl-10 col-xl-10">
+      <div class="col-12 col-xxl-8 col-xl-10 col-md-7">
         <div class="profiledata">
 
           <div class="profile_data">
@@ -30,7 +30,7 @@
                 <div class="input">
                   <label for="name">Name</label>
                   <div class="input_filed">
-                    <input type="text" id="name" >
+                    <input type="text" readonly="true" value="{{ userdata?.name }}" id="name" >
                     <i class="fa-solid icon fa-pen-to-square"></i>
                   </div>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="input">
                   <label for="email">Email Address</label>
                   <div class="input_filed">
-                    <input type="text" id="email" >
+                    <input value="{{ userdata?.email }}" type="text" readonly="true" id="email" >
                     <i class="fa-solid icon fa-pen-to-square"></i>
                   </div>
 
@@ -49,7 +49,7 @@
                   <label for="date">Date Of Birth</label>
 
                   <div class="input_filed">
-                    <input type="text" id="date" >
+                    <input type="text" readonly="true" id="date" >
                     <i class="fa-solid icon fa-pen-to-square"></i>
                   </div>               
                
@@ -61,7 +61,7 @@
                   <label for="City">City</label>
 
                   <div class="input_filed">
-                    <input type="text" id="City" >
+                    <input value="{{ userdata?.location }}" type="text" readonly="true" id="City" >
                     <i class="fa-solid icon fa-pen-to-square"></i>
                   </div>                
                 
@@ -70,7 +70,7 @@
                 <div class="input">
                   <label for="Mobile">Mobile phone</label>
                   <div class="input_filed">
-                    <input type="text" id="Mobile" >
+                    <input value="{{ userdata?.phone }}" type="text" readonly="true" id="Mobile" >
                     <i class="fa-solid icon fa-pen-to-square"></i>
                   </div>              
               

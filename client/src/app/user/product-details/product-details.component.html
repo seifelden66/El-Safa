@@ -74,12 +74,18 @@
   </div>
 
   <div class="w-100 my-3 product_descusion">
-    <div class="card">
-      
+
+    <div class="card2">
+      <nav>
+        <div class="nav nav-tabs py-1" id="nav-tab" role="tablist">
+          <button class="nav-link active btn1" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
+          <button class="nav-link btn1" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ratings & reviews</button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
 
 
-      <p-tabView [(activeIndex)]="activeIndex" class="treed_part">
-        <p-tabPanel header="Description">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
           <div class="row d-flex gap-5">
             <div class="col-12 ">
               <h1>Product descriptions</h1>
@@ -173,15 +179,19 @@
               </div>
             </div>
           </div>
-        </p-tabPanel>
+
+        </div>
 
 
-        <p-tabPanel header="Ratings & reviews">
 
+
+
+        <!-- ============================================================================================================================================ -->
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
           <div class="row rating_bigcontainer">
             
             <div class="big_container_rate">
-              <!-- <div class="product_rating">
+              <div class="product_rating">
                 <h1 class="product_rate">{{ product_details.rating}}</h1>
                 <h3>Overall Rating</h3>
     
@@ -194,7 +204,7 @@
                   <h4 class="m-0 rate">{{ product_details.rating }}</h4>
                 </div>
     
-              </div> -->
+              </div>
     
   
   
@@ -265,9 +275,9 @@
                   <textarea class="form-control" formControlName="comment" aria-label="With textarea"></textarea>
                 </div>
 
-                <!-- <button type="button" class="btn py-2 px-4 mt-2 carusel_bt btn-secondary w-25">
+                <button type="button" class="btn py-2 px-4 mt-2 carusel_bt btn-secondary w-25">
                   Submit
-                </button> -->
+                </button>
 
                 <button  class="btn btn-primary p-2 w-100">
                   Register Now
@@ -283,14 +293,17 @@
 
 
 
+        </div>
 
 
-
-        </p-tabPanel>
-      </p-tabView>
+        <!-- =======================end======================================================================================================================== -->
+      </div>
 
 
     </div>
+
+
+
   </div>
 </div>
 

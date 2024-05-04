@@ -10,6 +10,7 @@ import { CartService } from "../services/cart.service";
 import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { CookieService } from "../../services/cookie.service";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
   selector: "app-product-details",
@@ -22,7 +23,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
     SecondHeaderComponent,
     FooterComponent,
     FirestnavComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule
   ],
   templateUrl: "./product-details.component.html",
   styleUrl: "./product-details.component.css",
@@ -89,5 +91,8 @@ export class ProductDetailsComponent implements OnInit {
     
   }
 
+  // =================================================
+
+  active = 1;
 
 }

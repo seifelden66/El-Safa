@@ -257,6 +257,12 @@ h1,h2,h3,h4,h5,h6,p{
   color: #FFC107;
   font-size: 40px;
 }
+
+.btn1{
+  border: none ;
+  padding: 7px;
+  color: black;
+}
 /* =========================================== */
 @media (width<900px) {
 

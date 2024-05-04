@@ -1,11 +1,10 @@
-.container-fluid{
-    /* background-color: #F4F1FF; */
-}
+
 
 .row{
     display: flex;
     align-items: center;
     padding: 20px 0px ;
+    row-gap:30px ;
 }
 
 /* ==================================== */
@@ -72,7 +71,7 @@ color: white;
 }
 .input_filed{
     position: relative;
-    width: 60%;
+    width: 100%;
 }
 
 .input input{
