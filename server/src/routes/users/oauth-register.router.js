@@ -2,7 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const { Strategy } = require("passport-google-oauth20");
 const {
-  httpAddUserWithGoogleAccount,
+  httpGoogleAccountOauth,
 } = require("../../controllers/users.controller");
 const { generateAndSetToken } = require("../../services/auth/jwt");
 require("dotenv").config();
@@ -13,12 +13,12 @@ const config = {
 };
 
 const AUTH_OPTIONS = {
-  callbackURL: "/register/auth/google/callback",
+  callbackURL: "/auth/google/callback",
   clientID: config.CLIENT_ID,
   clientSecret: config.CLIENT_SECRET,
 };
 
-passport.use(new Strategy(AUTH_OPTIONS, httpAddUserWithGoogleAccount));
+passport.use(new Strategy(AUTH_OPTIONS, httpGoogleAccountOauth));
 
 const registerWithGoogleOauth = express.Router();
 

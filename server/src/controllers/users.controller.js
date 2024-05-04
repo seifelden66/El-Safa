@@ -14,8 +14,7 @@ const {
   saveResetCode,
   cheackCode,
   resetPassword,
-  addUserWithGoogleAccount,
-  LoginWithGoogleAccount,
+  GoogleAccountOauth,
 } = require("../models/users/users.model");
 const {
   generateAndSetToken,
@@ -341,45 +340,26 @@ async function httpResetPassword(req, res) {
 
 // SECTION - OAUTH GOOGLE ACCOUNT (RGISTER AND LOGIN);
 // register with google account
-async function httpAddUserWithGoogleAccount(
-  accessToken,
-  refreshToken,
-  user,
-  done
-) {
-
+async function httpGoogleAccountOauth(accessToken, refreshToken, user, done) {
   try {
-    const profile = {
-      _id: user._json.sub,
-      name: user._json.name,
-      email: user._json.email,
-      profile_picture: user._json.picture,
-      role: "user",
-    };
-    console.log(user);
-    const resp = await addUserWithGoogleAccount(profile);
-    done(null, user);
+    const userProfile = await getOneUser(user._json.sub);
+    if (userProfile) {
+      console.log("this user is exist  " + userProfile);
+      done(null, user);
+    } else {
+      const profile = {
+        _id: user._json.sub,
+        name: user._json.name,
+        email: user._json.email,
+        profile_picture: user._json.picture,
+        role: "user",
+      };
+      const resp = await GoogleAccountOauth(profile);
+      console.log("this is created user profile " + resp);
+      done(null, user);
+    }
   } catch (err) {
     console.log(err);
-    done(null, false);
-  }
-}
-
-// login with google account
-async function httpLoginWithGoogleAccount(
-  accessToken,
-  refreshToken,
-  profile,
-  done
-) {
-  try {
-    const user = await LoginWithGoogleAccount(profile._json.email);
-    if (user) {
-      done(null, profile);
-    } else {
-      done(null, false);
-    }
-  } catch (error) {
     done(null, false);
   }
 }
@@ -395,6 +375,5 @@ module.exports = {
   httpForgotPasswordEmail,
   httpCheckCode,
   httpResetPassword,
-  httpAddUserWithGoogleAccount,
-  httpLoginWithGoogleAccount,
+  httpGoogleAccountOauth,
 };
