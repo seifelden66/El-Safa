@@ -66,7 +66,6 @@ export class SingleOrderComponent {
       )
       .subscribe(
         (res: any) => {
-          console.log(res);
           this.orderStatus = res.orderStatus;
           this.modelStatus = true;
           this.orderMessage = res.message;
