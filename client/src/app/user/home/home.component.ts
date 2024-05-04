@@ -18,7 +18,7 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FirestnavComponent } from '../firestnav/firestnav.component';
-
+import Aos from 'aos'
 type State = { id: number; name: string };
 
 const states = [
@@ -102,6 +102,8 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
       this.getallproduct()
+      // AOS.init();
+
     }
 
     getallproduct(){

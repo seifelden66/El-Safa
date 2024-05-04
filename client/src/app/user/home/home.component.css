@@ -5,6 +5,9 @@
   text-decoration: none;
 }
 
+.container-fluid{
+  background-color:#F4F1FF ;
+}
 /* Add this CSS to your stylesheet */
 /* ========================================== */
 .carousel_img{
@@ -305,7 +308,7 @@
 
 /* ======================= */
 .some_offers {
-  padding: 20px;
+  padding: 20px ;
   background-color: #F4F1FF;
 }
 
