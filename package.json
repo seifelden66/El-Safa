@@ -27,8 +27,11 @@
     "aos": "^2.3.4",
     "ngx-owl-carousel-o": "^17.0.0",
     "ngx-toastr": "^18.0.0",
-    "primeng": "^17.14.1",
+    "primeicons": "^7.0.0",
+    "primeng": "^17.15.0",
     "server": "^1.0.39",
-    "some-module": "^0.0.3"
+    "some-module": "^0.0.3",
+    "swiper": "^11.1.1"
+
   }
 }
