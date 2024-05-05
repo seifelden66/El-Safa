@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-const { validationResult, check } = require("express-validator");
+const { ObjectId } = require("mongoose");
+const { validationResult } = require("express-validator");
 const {
   getAllUser,
   addNewUser,
@@ -13,6 +14,7 @@ const {
   saveResetCode,
   cheackCode,
   resetPassword,
+  GoogleAccountOauth,
 } = require("../models/users/users.model");
 const {
   generateAndSetToken,
@@ -335,6 +337,33 @@ async function httpResetPassword(req, res) {
   }
 }
 // !SECTION - END SECTION USER AND ADMIN
+
+// SECTION - OAUTH GOOGLE ACCOUNT (RGISTER AND LOGIN);
+// register with google account
+async function httpGoogleAccountOauth(accessToken, refreshToken, user, done) {
+  try {
+    const userProfile = await getOneUser(user._json.sub);
+    if (userProfile) {
+      console.log("this user is exist  " + userProfile);
+      done(null, user);
+    } else {
+      const profile = {
+        _id: user._json.sub,
+        name: user._json.name,
+        email: user._json.email,
+        profile_picture: user._json.picture,
+        role: "user",
+      };
+      const resp = await GoogleAccountOauth(profile);
+      console.log("this is created user profile " + resp);
+      done(null, user);
+    }
+  } catch (err) {
+    console.log(err);
+    done(null, false);
+  }
+}
+
 module.exports = {
   httpGetAllUser,
   httpGetUser,
@@ -346,4 +375,5 @@ module.exports = {
   httpForgotPasswordEmail,
   httpCheckCode,
   httpResetPassword,
+  httpGoogleAccountOauth,
 };
