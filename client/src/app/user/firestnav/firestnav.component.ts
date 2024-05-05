@@ -92,7 +92,7 @@ export class FirestnavComponent {
   count:number=0
   
   ngOnInit(): void {
-    this.getAllProducts();
+    // this.getAllProducts();
     
     this.CartService.getcount().subscribe((res)=>{
       this.count=res
@@ -100,26 +100,35 @@ export class FirestnavComponent {
   
   
     // this.CartService.addtocart
-  
+    // this.getallcategory()
   
   }
   
-  getAllProducts(): void {
-    this.http.get('https://dummyjson.com/products').subscribe((res: any) => {
-      if (res && res.products && Array.isArray(res.products)) {
-        this.products = res.products;
-        // Extract unique categories
-        this.categories = Array.from(new Set(this.products.map((product: any) => product.category)));
-      } else {
-        console.error('Failed to retrieve products');
-      }
-    }, (error) => {
-      console.error('Error fetching products:', error);
-    });
-  }
+  // getAllProducts(): void {
+  //   this.http.get('https://dummyjson.com/products').subscribe((res: any) => {
+  //     if (res && res.products && Array.isArray(res.products)) {
+  //       this.products = res.products;
+  //       // Extract unique categories
+  //       this.categories = Array.from(new Set(this.products.map((product: any) => product.category)));
+  //     } else {
+  //       console.error('Failed to retrieve products');
+  //     }
+  //   }, (error) => {
+  //     console.error('Error fetching products:', error);
+  //   });
+  // }
   
-  filterProductsByCategory(category: string): void {
-    this.selectedCategory = category;            
-  }
+  // filterProductsByCategory(category: string): void {
+  //   this.selectedCategory = category;            
+  // }
+
+
+  // getallcategory(){
+  //   this.http.get('http://localhost:8000/v1/products').subscribe((res)=>{
+  //     console.log(res);
+      
+  //   })
+  // }
+
   
 }

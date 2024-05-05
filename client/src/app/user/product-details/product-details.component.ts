@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NgbRatingModule } from "@ng-bootstrap/ng-bootstrap";
 import { ButtonModule } from "primeng/button";
@@ -11,6 +11,7 @@ import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { CookieService } from "../../services/cookie.service";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import {MatTabsModule} from '@angular/material/tabs';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-product-details",
@@ -24,7 +25,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     FooterComponent,
     FirestnavComponent,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    
   ],
   templateUrl: "./product-details.component.html",
   styleUrl: "./product-details.component.css",
@@ -45,7 +47,9 @@ export class ProductDetailsComponent implements OnInit {
     private http: HttpClient,
     private CartService: CartService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private toastr: ToastrService // Add this line
+
   ) {
 
     this.rating_coommint = new FormGroup({
@@ -75,13 +79,21 @@ export class ProductDetailsComponent implements OnInit {
 
   activeIndex: number = 0;
 
+
   // =======cart operations==============================
 
-  addtocart(product_details: any) {
-    // console.log(product_details);
-    this.CartService.addtocart(product_details);
-    // console.log(product_details);
-    this.router.navigate([`cart`]);
+  addToCart(id : string){  
+    this.http.post("http://localhost:8000/v1/cart/addToCart", {product : {id : id, quantity : 1}}, {headers : {
+      Authorization : `Bearer ${this.userToken}`
+    }}).subscribe(
+      res =>{
+        console.log(res);
+      this.toastr.success("added to Cart", "Success"); // Change this line
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   // ===================rating and comments============================

@@ -24,6 +24,7 @@ import { resetPasswordGuard } from "./services/reset-password.guard";
 import { SingleOrderComponent } from "./admin/single-order/single-order.component";
 import { CartComponent } from "./user/cart/cart.component";
 import { ContactComponent } from "./user/contact/contact.component";
+// import { TrackingComponent } from "./user/tracking/tracking.component";
 
 export const routes: Routes = [
   {
@@ -47,10 +48,10 @@ export const routes: Routes = [
     path: "regester",
     component: SignUpComponent,
   },
-  {
-    path: "invoice",
-    component: InvoiceComponent,
-  },
+  // {
+  //   path: "tracking",
+  //   component: TrackingComponent,
+  // },
   {
     path: "product_details/:id",
     component: ProductDetailsComponent,

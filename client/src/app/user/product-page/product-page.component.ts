@@ -64,7 +64,8 @@ export class ProductPageComponent implements OnInit {
     private modalService: NgbModal,
     private CounterService: CounterService,
     private messageService: MessageService,
-    private cookkeService : CookieService
+    private cookkeService : CookieService,
+    
   ) {
     config.backdrop = "static";
     config.keyboard = false;
