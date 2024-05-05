@@ -115,16 +115,27 @@ const addComment = async (req, res) => {
   try {
     const userId = req.user.id;
     const { text } = req.body;
+
     const product = await Product.findById(req.params.id);
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
+
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    product.comments.push({ user: userId, text });
+    const existingComment = product.comments.find(comment =>
+      comment.user.toString() === userId
+    );
+
+    if (existingComment) {
+      return res.status(400).json({ message: "You have already commented on this product" });
+    } else {
+      product.comments.push({ user: userId, text });
+    }
+
     await product.save();
 
     res.status(201).json({ message: "Comment added successfully" });
@@ -132,7 +143,6 @@ const addComment = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 
 const addRating = async (req, res) => {
@@ -150,12 +160,12 @@ const addRating = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const existingRatingIndex = product.ratings.findIndex((rating) =>
-      rating.user.equals(userId)
+    const existingRating = product.ratings.find((rating) =>
+      rating.user.toString() === userId
     );
 
-    if (existingRatingIndex !== -1) {
-      product.ratings[existingRatingIndex].value = value; 
+    if (existingRating) {
+      return res.status(400).json({ message: "You have already rated this product" });
     } else {
       product.ratings.push({ user: userId, value }); 
     }
