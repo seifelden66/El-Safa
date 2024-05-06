@@ -1,4 +1,5 @@
 const ordersSchema = require("./orders.mongo");
+const payOnlineSchema = require("./payOnline.mongo");
 const { cart } = require("../cart/cart.model");
 
 async function NewOrders(order) {
@@ -37,6 +38,10 @@ async function deliverOrder(id) {
   );
 }
 
+async function PayOnline(data) {
+  return await payOnlineSchema.create(data);
+}
+
 module.exports = {
   NewOrders,
   allOrders,
@@ -44,4 +49,5 @@ module.exports = {
   confirmOrder,
   dispatchOrder,
   deliverOrder,
+  PayOnline,
 };

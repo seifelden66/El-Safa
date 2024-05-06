@@ -1,69 +1,61 @@
-
-.container-fluid{
-    overflow-x: auto;
-    margin: 120px 0px ; 
+.container-fluid {
+  overflow-x: auto;
+  margin: 120px 0px;
 }
 
-.table  {
-    text-align: center;
-    
+.table {
+  text-align: center;
 }
 
-.product_data{
-    font-size: 16px ;
+.product_data {
+  font-size: 16px;
 }
 
-.Btns{
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    align-items: center;
+.Btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  align-items: center;
 }
 
-.delete i{
-    font-size: 25px ;
-    cursor: pointer;
+.delete i {
+  font-size: 25px;
+  cursor: pointer;
 }
 
-
-
-.rating{
-    color: #FFD869;
-    font-size: 20px;
-  }
-
-
-
-  .table_img img{
-    height: 100px ;
-    object-fit: contain;
-}
-.total{
-    font-size: 22px;
-    font-weight: 500;
-    
+.rating {
+  color: #ffd869;
+  font-size: 20px;
 }
 
-.payment_btn{
-    background-color: blueviolet;
-    color: white;
+.table_img img {
+  height: 100px;
+  object-fit: contain;
+}
+.total {
+  font-size: 22px;
+  font-weight: 500;
 }
 
-.form_item label{
-    font-weight: 400;
-    font-size: 20px;
+.payment_btn {
+  background-color: blueviolet;
+  color: white;
+}
+
+.form_item label {
+  font-weight: 400;
+  font-size: 20px;
 }
 /* ==================================================== */
 
-.sec_page{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 30px;
+.sec_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
 }
 
-
-.sec_page span{
-    font-size: 50px;
-    color: #ebb9f0;
+.sec_page span {
+  font-size: 50px;
+  color: #ebb9f0;
 }
