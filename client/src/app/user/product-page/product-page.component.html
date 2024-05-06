@@ -66,10 +66,14 @@
               <div class="data1">
                 <h2 class="m-0">{{ product?.name }}</h2>
                 <h4 class="m-0">{{ product?.category?.name }}</h4>
-                <div class="rate_product">
-                  <ngb-rating [(rate)]="rating" [max]="5" [readonly]="true" />
 
-                </div>
+                @if (product?.ratings['0'].value) {
+
+                  <div class="rate_product">
+                    <ngb-rating [(rate)]="product?.ratings['0'].value" [max]="5" [readonly]="true" />
+  
+                  </div>
+                }
 
               </div>
 

@@ -160,7 +160,7 @@ export class ProductDetailsComponent implements OnInit {
     this.product_id = this.activatedRoute.snapshot.params["id"];
     this.userToken = this.cookieService.get("userToken"); // Get user token from cookies
 
-
+    this.getProduct()
 
 }
 
@@ -225,10 +225,10 @@ submitComments() {
         this.commentError = "Failed to submit comments. Please try again.";
       }
     }
-  );
+  )
 }
 
-addtocart(product_details : any ) {
+addtocart(product_details : any) {
   this.cartService.addtocart(product_details);
   this.router.navigate([`cart`]);
 }

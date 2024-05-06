@@ -142,7 +142,7 @@ export class ProductPageComponent implements OnInit {
       (res: any) => {
         if (res && Array.isArray(res.products)) {
           const uniqueCategoriesSet = new Set(
-            res.products.map((item: any) => item.category['name'])
+            res.products.map((item: any) => item.category?.name)
           );
           this.category = Array.from(uniqueCategoriesSet);
         } else {

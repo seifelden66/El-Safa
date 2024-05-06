@@ -30,13 +30,23 @@
             {{ product_details?.name }}
           </h1>
           <h2 class="card-title details">
-            Category: {{ product_details?.category["name"] }}
+            Category: {{ product_details?.category?.name }}
           </h2>
+
           <div class="product_price">
-            <!-- <h2 class="card-title my-0 new_price">${{}}</h2> -->
             <h2 class="new_price">${{ product_details?.price }}</h2>
-            <!-- <h2 class="percentage">{{ product_details?.discountPercentage }}%off</h2> -->
+            <h2 class="card-title my-0 old_price">${{product_details?.originalPrice}}</h2>
           </div>
+
+          <h2>quantity: {{ product_details?.quantity }}</h2>
+          <div class="rate_product">
+            <ngb-rating [(rate)]="product_details?.ratings['0'].value" [max]="5" [readonly]="true" />
+
+          </div>
+          
+
+
+
 
           <!-- rate -->
           <form action="post"></form>
@@ -64,43 +74,26 @@
   </div>
 
   <div class="w-100 my-3 product_descusion">
-    <div class="card2">
+
+      <!-- ======================================================================= -->
+      <!-- ======================================================================= -->
+      <!-- ======================================================================= -->
+      <!-- ======================================================================= -->
+      <!-- ======================================================================= -->
+      <!-- ======================================================================= -->
+      <!-- ======================================================================= -->
+
       <nav>
-        <div class="nav nav-tabs py-1" id="nav-tab" role="tablist">
-          <button
-            class="nav-link active btn1"
-            id="nav-home-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-home"
-            type="button"
-            role="tab"
-            aria-controls="nav-home"
-            aria-selected="true"
-          >
-            Description
-          </button>
-          <button
-            class="nav-link btn1"
-            id="nav-profile-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-profile"
-            type="button"
-            role="tab"
-            aria-controls="nav-profile"
-            aria-selected="false"
-          >
-            Ratings & reviews
-          </button>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div
-          class="tab-pane fade show active"
-          id="nav-home"
-          role="tabpanel"
-          aria-labelledby="nav-home-tab"
-          tabindex="0"
-        >
+
+        <!-- ==================Part1================================================================== -->
+
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
           <div class="row d-flex gap-5">
             <div class="col-12">
               <h1>Product descriptions</h1>
@@ -199,27 +192,37 @@
               </div>
             </div>
           </div>
+
         </div>
 
-        <!-- ============================================================================================================================================ -->
-        <form (ngSubmit)="submitRating()">
-          <label for="rating">Rate this product:</label>
-          <input type="number" id="rating" name="rating" [(ngModel)]="rating" required min="1" max="5" />
-          <button type="submit">Submit</button>
-          @if (ratingError) {
-            <h1>{{ ratingError }}</h1>
+
+        <!-- ==================Part2================================================================== -->
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+          <form (ngSubmit)="submitRating()">
+            <label for="rating">Rate this product:</label>
+            <input type="number" id="rating" name="rating" [(ngModel)]="rating" required min="1" max="5" />
+            <button type="submit">Submit</button>
+            @if (ratingError) {
+              <h1>{{ ratingError }}</h1>
+            }
+          </form>
+          <form (ngSubmit)="submitComments()">
+            <label for="rating">comment this product:</label>
+            <input type="text" id="rating" name="comments" [(ngModel)]="comment" required  />
+            <button type="submit">Submit</button>
+          </form>
+          @if (commentError) {
+            {{ commentError }}
           }
-        </form>
-        <form (ngSubmit)="submitComments()">
-          <label for="rating">comment this product:</label>
-          <input type="text" id="rating" name="comments" [(ngModel)]="comment" required  />
-          <button type="submit">Submit</button>
-        </form>
-        @if (commentError) {
-          {{ commentError }}
-        }
-        <!-- =======================end======================================================================================================================== -->
-      </div>
+
+        </div>
+
+
+        <!-- ==================End=============================================================================== -->
+
+
+
+      
     </div>
   </div>
 </div>
