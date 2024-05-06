@@ -29,7 +29,6 @@ function handleFile(req, res, next) {
         "public",
         "browser",
         "assets",
-        "image",
         req.file.filename
       )
     ); // Delete the file
@@ -50,7 +49,6 @@ function handleFile(req, res, next) {
         "public",
         "browser",
         "assets",
-        "image",
         req.file.filename
       )
     ); // Delete the file
