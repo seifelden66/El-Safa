@@ -14,10 +14,10 @@
             />
           </div>
           <div class="user-details d-flex flex-column gap-2">
-            <h2 class="m-0">{{ user.name }}</h2>
+            <h2 class="m-0">{{ user?.name }}</h2>
             <span
               ><strong>Customer ID : </strong>
-              <span class="id-number">{{ user!._id }}</span></span
+              <span class="id-number">{{ user?._id }}</span></span
             >
           </div>
         </div>
@@ -120,7 +120,7 @@
             </tr>
           </thead>
           <tbody>
-            @for(order of orders.orderItems; track order.id){
+            @for(order of orders?.orderItems; track order.id){
             <tr>
               <td class="d-flex justify-content-center product-info">
                 <div class="product-img">
@@ -130,19 +130,19 @@
                   />
                 </div>
                 <a
-                  routerLink="/product_details/{{ order!.id }}"
+                  routerLink="/product_details/{{ order?.id }}"
                   class="product-title"
                   >Shirt</a
                 >
               </td>
-              <td>{{ order!.quantity }}</td>
-              <td>${{ order!.price }}</td>
-              <td>${{ order!.totalPrice }}</td>
+              <td>{{ order?.quantity }}</td>
+              <td>${{ order?.price }}</td>
+              <td>${{ order?.totalPrice }}</td>
             </tr>
             }
             <tr>
               <td colspan="3">TOTAL RPICE</td>
-              <td>${{ orders!.totalPrice }}</td>
+              <td>${{ orders?.totalPrice }}</td>
             </tr>
           </tbody>
         </table>

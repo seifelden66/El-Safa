@@ -6,46 +6,33 @@ const User = require("../models/users/users.mongo");
 
 const ObjectId = mongoose.Types.ObjectId;
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "uploads/");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + "-" + file.originalname);
-//   },
-// });
-
-// const upload = multer({
-//   storage: storage,
-//   limits: { fileSize: 5 * 1024 * 1024 },
-// });
-
-
 const getProducts = async (req, res) => {
-    const page = parseInt(req.query.page) || 1; 
-    const pageSize = 10;
-  
-    try {
-      const totalCount = await Product.countDocuments(); 
-      const totalPages = Math.ceil(totalCount / pageSize); 
-      const products = await Product.find({})
-                                    .skip((page - 1) * pageSize) 
-                                    .populate('category')
-                                    .limit(pageSize); 
-      res.status(200).json({
-        currentPage: page,
-        totalPages: totalPages,
-        pageSize: pageSize,
-        totalCount: totalCount,
-        products: products
-      });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
-  
-  
-  
+  const page = parseInt(req.query.page) || 1;
+  const pageSize = 10;
+
+  try {
+    const totalCount = await Product.countDocuments();
+    const totalPages = Math.ceil(totalCount / pageSize);
+    const products = await Product.find({})
+      .skip((page - 1) * pageSize)
+      .populate('category')
+      .limit(pageSize);
+
+
+    res.status(200).json({
+      currentPage: page,
+      totalPages: totalPages,
+      pageSize: pageSize,
+      totalCount: totalCount,
+      products: products
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+
 const getProduct = async (req, res) => {
   try {
     if (!ObjectId.isValid(req.params.id)) {
@@ -58,10 +45,15 @@ const getProduct = async (req, res) => {
   }
 };
 
+
+
+
+
+
 const postProduct = async (req, res) => {
-  // console.log(req.files);
   try {
-    const { name, quantity, price, category, ...rest } = req.body;
+    const { name, quantity, price, category, discount, ...rest } = req.body;
+
     const uploadedImages = [];
     if (req.files) {
       for (const file of req.files) {
@@ -69,10 +61,16 @@ const postProduct = async (req, res) => {
       }
     }
 
+    // Calculate discounted price
+    const originalPrice = price;
+    const discountedPrice = price - (price * discount / 100);
+
     const productData = {
       name,
       quantity,
-      price,
+      price: discountedPrice, // Update to use discounted price
+      originalPrice,
+      discount,
       category,
       images: uploadedImages,
       ...rest,
@@ -84,6 +82,8 @@ const postProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
 
 const updateProduct = async (req, res) => {
   try {
@@ -114,17 +114,28 @@ const deleteProduct = async (req, res) => {
 const addComment = async (req, res) => {
   try {
     const userId = req.user.id;
-    const  text  = req.body;
+    const { text } = req.body;
+
     const product = await Product.findById(req.params.id);
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
+
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    product.comments.push({ user: userId, text });
+    const existingComment = product.comments.find(comment =>
+      comment.user.toString() === userId
+    );
+
+    if (existingComment) {
+      return res.status(400).json({ message: "You have already commented on this product" });
+    } else {
+      product.comments.push({ user: userId, text });
+    }
+
     await product.save();
 
     res.status(201).json({ message: "Comment added successfully" });
@@ -133,11 +144,11 @@ const addComment = async (req, res) => {
   }
 };
 
-const addRating = async (req, res) => {
 
+const addRating = async (req, res) => {
   try {
     const userId = req.user.id;
-    const  value  = req.body;
+    const { value } = req.body;
 
     const product = await Product.findById(req.params.id);
     if (!product) {
@@ -149,18 +160,30 @@ const addRating = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const existingRatingIndex = product.ratings.findIndex((rating) =>
-      rating.user.equals(userId)
+    const existingRating = product.ratings.find((rating) =>
+      rating.user.toString() === userId
     );
-    if (existingRatingIndex !== -1) {
-      product.ratings[existingRatingIndex].value = value;
+
+    if (existingRating) {
+      return res.status(400).json({ message: "You have already rated this product" });
     } else {
-      product.ratings.push({ user: userId, value });
+      product.ratings.push({ user: userId, value }); 
     }
 
     await product.save();
 
     res.status(201).json({ message: "Rating added successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getTopRatedProducts = async (req, res) => {
+  try {
+    const topRatedProducts = await Product.find({})
+      .sort({ "ratings.value": -1 }) 
+      .limit(5);
+    res.status(200).json(topRatedProducts);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -174,5 +197,5 @@ module.exports = {
   deleteProduct,
   addComment,
   addRating,
-  // upload,
+  getTopRatedProducts
 };

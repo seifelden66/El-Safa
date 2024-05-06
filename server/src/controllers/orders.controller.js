@@ -58,7 +58,10 @@ async function httpOrderDetails(req, res) {
 async function httpConfirmOrder(req, res) {
   try {
     const order = await confirmOrder(req.body.id);
-    res.status(200).json(order);
+    res.status(200).json({
+      message: "The order has been confirmed",
+      orderStatus: order.order_status,
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Internal server error" });
@@ -68,7 +71,10 @@ async function httpConfirmOrder(req, res) {
 async function httpDispatchOrder(req, res) {
   try {
     const order = await dispatchOrder(req.body.id);
-    res.status(200).json(order);
+    res.status(200).json({
+      message: "The order is in the delivery stage",
+      orderStatus: order.order_status,
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Internal server error" });
@@ -78,7 +84,9 @@ async function httpDispatchOrder(req, res) {
 async function httpDeliverOrder(req, res) {
   try {
     const order = await deliverOrder(req.body.id);
-    res.status(200).json(order);
+    res
+      .status(200)
+      .json({ message: "order is deliverd", orderStatus: order.order_status });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Internal server error" });
