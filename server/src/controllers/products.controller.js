@@ -15,23 +15,20 @@ const getProducts = async (req, res) => {
     const totalPages = Math.ceil(totalCount / pageSize);
     const products = await Product.find({})
       .skip((page - 1) * pageSize)
-      .populate('category')
+      .populate("category")
       .limit(pageSize);
-
 
     res.status(200).json({
       currentPage: page,
       totalPages: totalPages,
       pageSize: pageSize,
       totalCount: totalCount,
-      products: products
+      products: products,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
-
-
 
 const getProduct = async (req, res) => {
   try {
@@ -44,11 +41,6 @@ const getProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-
-
-
-
 
 const postProduct = async (req, res) => {
   try {
@@ -63,7 +55,7 @@ const postProduct = async (req, res) => {
 
     // Calculate discounted price
     const originalPrice = price;
-    const discountedPrice = price - (price * discount / 100);
+    const discountedPrice = price - (price * discount) / 100;
 
     const productData = {
       name,
@@ -82,8 +74,6 @@ const postProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-
 
 const updateProduct = async (req, res) => {
   try {
@@ -133,8 +123,6 @@ const addComment = async (req, res) => {
   }
 };
 
-
-
 const addRating = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -155,9 +143,9 @@ const addRating = async (req, res) => {
     );
 
     if (existingRatingIndex !== -1) {
-      product.ratings[existingRatingIndex].value = value; 
+      product.ratings[existingRatingIndex].value = value;
     } else {
-      product.ratings.push({ user: userId, value }); 
+      product.ratings.push({ user: userId, value });
     }
 
     await product.save();
@@ -171,7 +159,7 @@ const addRating = async (req, res) => {
 const getTopRatedProducts = async (req, res) => {
   try {
     const topRatedProducts = await Product.find({})
-      .sort({ "ratings.value": -1 }) 
+      .sort({ "ratings.value": -1 })
       .limit(5);
     res.status(200).json(topRatedProducts);
   } catch (error) {
@@ -187,5 +175,5 @@ module.exports = {
   deleteProduct,
   addComment,
   addRating,
-  getTopRatedProducts
+  getTopRatedProducts,
 };
