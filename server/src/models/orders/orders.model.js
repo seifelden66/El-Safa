@@ -10,6 +10,10 @@ async function allOrders() {
   return await ordersSchema.find({}, { orderItems: 0, __v: 0 });
 }
 
+async function userOrders(id) {
+  return await ordersSchema.find({ userId: id }, { orderItems: 0, __v: 0 });
+}
+
 async function orderDetails(id) {
   return await ordersSchema.findById(id);
 }
@@ -49,5 +53,6 @@ module.exports = {
   confirmOrder,
   dispatchOrder,
   deliverOrder,
+  userOrders,
   PayOnline,
 };

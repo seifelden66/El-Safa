@@ -36,7 +36,7 @@ export class SingleOrderComponent {
 
   getOrderDetails() {
     this.http
-      .get(`http://localhost:8000/v1/admin/orders-details?id=${this.orderId}`, {
+      .get(`http://localhost:8000/v1/users/orders-details?id=${this.orderId}`, {
         headers: {
           Authorization: `Bearer ${this.adminToken}`,
         },

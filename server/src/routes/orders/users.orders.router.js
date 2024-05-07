@@ -4,7 +4,10 @@ const {
   passportInitialize,
 } = require("../../services/auth/isLogin");
 
-const { httpNewOrders } = require("../../controllers/orders.controller");
+const {
+  httpNewOrders,
+  httpUserOrders,
+} = require("../../controllers/orders.controller");
 
 // NOTE - all route here for user oreders like (add new order)
 const userOrderRouter = express.Router();
@@ -21,5 +24,6 @@ userOrderRouter.use((req, res, next) => {
 });
 
 userOrderRouter.post("/newOrder", httpNewOrders);
+userOrderRouter.get("/orders", httpUserOrders);
 
 module.exports = userOrderRouter;
