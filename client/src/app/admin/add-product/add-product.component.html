@@ -11,53 +11,82 @@
           [formGroup]="productForm"
           (ngSubmit)="addNewProduct(); $event.preventDefault()"
         >
-          <div class="form-group row">
+          <div class="form-group row mb-4">
             <div class="col-sm-6 mb-3 mb-sm-0">
               <label for="productName">Product Name</label>
               <input
                 type="text"
-                class="form-control form-control-product mb4"
+                class="form-control form-control-product"
                 id="productName"
                 formControlName="name"
                 placeholder="Name"
               />
+              @if(productForm.controls['name'].touched &&
+              productForm.controls['name'].invalid){
+              <small class="small admin-error mx-3"
+                >*name is requierd and It must be at least three letters
+              </small>
+              }
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3 mb-sm-0">
               <label for="quantity">Quantity</label>
               <input
                 type="number"
-                class="form-control form-control-product mb-4"
+                class="form-control form-control-product"
                 id="quantity"
                 formControlName="quantity"
                 placeholder="Quantity"
               />
+              @if(productForm.controls['quantity'].touched &&
+              productForm.controls['quantity'].invalid){
+              <small class="small admin-error mx-3">*Quantity is requird </small>
+              }
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row mb-4">
             <div class="col-sm-6 mb-3 mb-sm-0">
               <label for="price">Price</label>
               <input
                 type="number"
-                class="form-control form-control-product mb4"
+                class="form-control form-control-product"
                 id="price"
                 formControlName="price"
                 placeholder="Price"
               />
+              @if(productForm.controls['price'].touched &&
+              productForm.controls['price'].invalid){
+              <small class="small admin-error mx-3">*Price is requird </small>
+              }
             </div>
-            <div class="col-sm-6">
-              <label for="category">Categorys</label>
-              <select
-                class="form-control form-control-product mb-4"
-                id="category"
-                formControlName="category"
-              >
-                @for(category of categorys; track category._id){
-                <option value="{{ category!._id }}">
-                  {{ category!.name }}
-                </option>
-                }
-              </select>
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <label for="discount">Discount</label>
+              <input
+                type="number"
+                class="form-control form-control-product mb4"
+                id="discount"
+                formControlName="discount"
+                placeholder="discount"
+              />
             </div>
+          </div>
+
+          <div class="form-group row mb-4 w-75">
+            <label for="category">Categorys</label>
+            <select
+              class="form-control form-control-product"
+              id="category"
+              formControlName="category"
+            >
+              @for(category of categorys; track category._id){
+              <option value="{{ category!._id }}">
+                {{ category!.name }}
+              </option>
+              }
+            </select>
+            @if(productForm.controls['category'].touched &&
+            productForm.controls['category'].invalid){
+            <small class="small admin-error mx-3">*category is requird </small>
+            }
           </div>
           <div class="form-group row mb-4 w-75">
             <label for="desc">Short Description</label>
@@ -68,8 +97,14 @@
               cols="15"
               rows="3"
             ></textarea>
+            @if(productForm.controls['short_desc'].touched &&
+            productForm.controls['short_desc'].invalid){
+            <small class="small admin-error mx-3"
+              >*Please provide short desc about the product and It must be at
+              least 15 letters</small
+            >
+            }
           </div>
-         
 
           <div class="form-group row mb-4 w-75">
             <label for="productImages">Images</label>
@@ -82,9 +117,11 @@
               placeholder="Images"
               formControlName="images"
             />
+            @if(productForm.controls['images'].touched &&
+            productForm.controls['images'].invalid){
+            <small class="small admin-error mx-3">*Image is requird </small>
+            }
           </div>
-          <!-- TODO add this attribute  -->
-        
           <div class="form-group row mb-4 w-75">
             <label for="desc">Description</label>
             <textarea
@@ -95,6 +132,13 @@
               rows="5"
               formControlName="desc"
             ></textarea>
+            @if(productForm.controls['desc'].touched &&
+            productForm.controls['desc'].invalid){
+            <small class="small admin-error mx-3"
+              >*Please provide desc about the product and It must be at least 30
+              letters</small
+            >
+            }
           </div>
           <button class="btn btn-primary">Add Product</button>
         </form>

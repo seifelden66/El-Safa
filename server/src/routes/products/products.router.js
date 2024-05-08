@@ -15,11 +15,12 @@ const {
   deleteProduct,
   addRating,
   addComment,
-  // upload,
+  getTopRatedProducts,
 } = require("../../controllers/products.controller");
 const { upload } = require("../../services/handleFile");
 const router = express.Router();
 
+router.get("/top-rated", getTopRatedProducts);
 router.get("/", getProducts);
 router.get("/:id", getProduct);
 router.post("/", upload.array("image"), postProduct);

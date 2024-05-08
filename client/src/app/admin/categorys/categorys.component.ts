@@ -23,8 +23,9 @@ export class CategorysComponent {
     private http: HttpClient
   ) {}
   categorys: any;
-  AddNewCategoryModelStatus: boolean = true;
+  AddNewCategoryModelStatus: boolean = false;
   CategoryForm!: FormGroup;
+
   ngOnInit() {
     this.getCategorys();
     this.CategoryForm = new FormGroup({
@@ -32,6 +33,7 @@ export class CategorysComponent {
       description: new FormControl("", [Validators.required]),
     });
   }
+
   getCategorys(): void {
     this.categorysService.getCategorys().subscribe((res) => {
       this.categorys = res;
@@ -39,11 +41,11 @@ export class CategorysComponent {
   }
 
   showAddNewCategoryModel() {
-    this.AddNewCategoryModelStatus = false;
+    this.AddNewCategoryModelStatus = true;
   }
 
   hideAddNewCategoryModel() {
-    this.AddNewCategoryModelStatus = true;
+    this.AddNewCategoryModelStatus = false;
   }
 
   addNewCategory() {

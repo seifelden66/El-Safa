@@ -22,6 +22,7 @@ import { Router } from "@angular/router";
 export class AddNewAdminComponent {
   adminForm!: FormGroup;
   adminToken: any;
+  error!: any;
   constructor(
     private http: HttpClient,
     private CookieService: CookieService,
@@ -31,9 +32,15 @@ export class AddNewAdminComponent {
   ngOnInit() {
     this.adminToken = this.CookieService.get("adminToken");
     this.adminForm = new FormGroup({
-      name: new FormControl("", [Validators.required]),
-      email: new FormControl("", [Validators.required]),
-      password: new FormControl("", [Validators.required]),
+      name: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      email: new FormControl("", [
+        Validators.required,
+        Validators.pattern("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"),
+      ]),
+      password: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^(?=.*[A-Z])(?=.*\d).{8,}$/),
+      ]),
       phone: new FormControl("", [Validators.required]),
       location: new FormControl("", [Validators.required]),
       file: new FormControl(null),
@@ -41,6 +48,9 @@ export class AddNewAdminComponent {
   }
 
   onSubmit() {
+    if (this.adminForm.invalid) {
+      return;
+    }
     const formData = new FormData();
     formData.append("name", this.adminForm.get("name")!.value);
     formData.append("email", this.adminForm.get("email")!.value);
@@ -60,6 +70,7 @@ export class AddNewAdminComponent {
           this.router.navigate(["/admin/users"]);
         },
         (error) => {
+          this.error = error.error;
           console.log(error);
         }
       );
