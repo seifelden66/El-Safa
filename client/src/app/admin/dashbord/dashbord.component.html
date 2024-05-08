@@ -60,6 +60,23 @@
             </tr>
         </table>
     </div>
-  
+    
+    <div class="todo-container">
+        <input (ngModel)="newTaskTitle" placeholder="What do you need to do today?" />
+        <button (click)="addTask()">Add</button>
+        <ul>
+          <li *ngFor="let task of tasks" [class.completed]="task.completed">
+            <input type="checkbox" (click)="toggleCompletion(task.id)" [checked]="task.completed" />
+            {{ task.title }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="card ">
+        <h1>15,6834</h1>
+        <p>increased by 10%</p>
+      </div>
+     
+      
     <div>
       <div>

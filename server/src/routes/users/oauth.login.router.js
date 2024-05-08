@@ -54,8 +54,8 @@ loginWithGoogleOauth.get(
   }
 );
 
-loginWithGoogleOauth.get("/f-login", (req, res) => {
-  res.status(401).send("Authentication failed. Please register first.");
-});
+// loginWithGoogleOauth.get("/f-login", (req, res) => {
+//   res.status(401).send("Authentication failed. Please register first.");
+// });
 
 module.exports = loginWithGoogleOauth;
