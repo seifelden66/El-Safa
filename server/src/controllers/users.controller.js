@@ -93,7 +93,7 @@ async function httpAddUser(req, res) {
           )
         );
       }
-      res.status(400).json({ error: "email is already exist" });
+      res.status(400).json({ email: "email is already exist" });
     } else {
       console.error(error);
       return res.status(500).json({ error: "Internal server error" });
@@ -143,7 +143,7 @@ async function httpAddAdmin(req, res) {
           )
         );
       }
-      res.status(400).json({ error: "email is already exist" });
+      res.status(400).json({ email: "email is already exist" });
     } else {
       console.error(error);
       return res.status(500).json({ error: "Internal server error" });

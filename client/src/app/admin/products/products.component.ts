@@ -95,7 +95,10 @@ export class ProductsComponent implements OnInit {
       name: product.name,
       quantity: product.quantity,
       price: product.price,
+      discount: product.discount,
       category: product.category,
+      short_desc: product.short_desc,
+      desc: product.desc,
     });
   }
 
@@ -115,6 +118,7 @@ export class ProductsComponent implements OnInit {
       name: new FormControl("", [Validators.required]),
       quantity: new FormControl("", [Validators.required]),
       price: new FormControl("", [Validators.required]),
+      discount: new FormControl("", [Validators.required]),
       category: new FormControl("", [Validators.required]),
       short_desc: new FormControl("", [Validators.required]),
       desc: new FormControl("", [Validators.required]),

@@ -6,6 +6,7 @@ const {
   dispatchOrder,
   deliverOrder,
   PayOnline,
+  userOrders,
 } = require("../models/orders/orders.model");
 const { allItemsInCart } = require("../models/cart/cart.model");
 const { getOneUser } = require("../models/users/users.model");
@@ -69,6 +70,17 @@ async function httpNewOrders(req, res) {
 async function httpAllOrders(req, res) {
   try {
     const orders = await allOrders();
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+async function httpUserOrders(req, res) {
+  try {
+    const id = req.user.id;
+    const orders = await userOrders(id);
     res.status(200).json(orders);
   } catch (error) {
     console.error(error);
@@ -152,5 +164,6 @@ module.exports = {
   httpConfirmOrder,
   httpDispatchOrder,
   httpDeliverOrder,
+  httpUserOrders,
   httpOlinePayment,
 };

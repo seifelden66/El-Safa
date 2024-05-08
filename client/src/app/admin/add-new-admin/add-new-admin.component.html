@@ -25,6 +25,12 @@
                   placeholder="Full Name"
                   formControlName="name"
                 />
+                @if(adminForm.controls['name'].touched &&
+                adminForm.controls['name'].invalid){
+                <small class="small admin-error mx-3"
+                  >*name is requierd and It must be at least three letters
+                </small>
+                }
               </div>
             </div>
             <div class="mb-3 row">
@@ -37,6 +43,16 @@
                   placeholder="Email"
                   formControlName="email"
                 />
+                @if(adminForm.controls['email'].touched &&
+                adminForm.controls['email'].invalid){
+                <small class="small admin-error mx-3"
+                  >*Invalid email format
+                </small>
+                } @if (error?.email) {
+                <small class="small admin-error mx-3"
+                  >*{{ error.email }}
+                </small>
+                }
               </div>
             </div>
             <div class="mb-3 row">
@@ -51,6 +67,12 @@
                   placeholder="Password"
                   formControlName="password"
                 />
+                @if(adminForm.controls['password'].touched &&
+                adminForm.controls['password'].invalid){
+                <small class="small admin-error mx-3"
+                  >*Password must be at least 8 characters long
+                </small>
+                }
               </div>
             </div>
             <div class="mb-3 row">
@@ -63,6 +85,12 @@
                   placeholder="Phone"
                   formControlName="phone"
                 />
+                @if(adminForm.controls['phone'].touched &&
+                adminForm.controls['phone'].invalid){
+                <small class="small admin-error mx-3"
+                  >*Invalid Phone Number
+                </small>
+                }
               </div>
             </div>
             <div class="mb-3 row">
@@ -77,6 +105,12 @@
                   placeholder="Location"
                   formControlName="location"
                 />
+                @if(adminForm.controls['location'].touched &&
+                adminForm.controls['location'].invalid){
+                <small class="small mx-3 admin-error"
+                  >*Please provide us with your current location</small
+                >
+                }
               </div>
             </div>
             <div class="mb-3 row">

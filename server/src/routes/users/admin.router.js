@@ -49,7 +49,7 @@ adminRouter.get("/user", httpGetUser);
 // orders route just for admin
 adminRouter.get("/orders", httpAllOrders);
 
-adminRouter.get("/orders-details", httpOrderDetails);
+// adminRouter.get("/orders-details", httpOrderDetails);
 
 adminRouter.patch("/confirm-order", httpConfirmOrder);
 adminRouter.patch("/dispatch-order", httpDispatchOrder);

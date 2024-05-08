@@ -45,9 +45,15 @@
         </div>
         <!-- Edit product model -->
         <div
+          class="modelBackdrop"
+          [ngClass]="{
+            show: AddNewCategoryModelStatus
+          }"
+        ></div>
+        <div
           id="editmodel"
           class="ng-Modal"
-          [ngClass]="{ hide: AddNewCategoryModelStatus }"
+          [ngClass]="{ show: AddNewCategoryModelStatus }"
         >
           <div class="ng-Modal-header">
             <h3>Edit Product</h3>

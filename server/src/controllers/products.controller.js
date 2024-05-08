@@ -68,6 +68,7 @@ const postProduct = async (req, res) => {
       ...rest,
     };
     const product = await Product.create(productData);
+    console.log(product);
     res.status(200).json(product);
   } catch (error) {
     console.log(error);
@@ -116,12 +117,14 @@ const addComment = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const existingComment = product.comments.find(comment =>
-      comment.user.toString() === userId
+    const existingComment = product.comments.find(
+      (comment) => comment.user.toString() === userId
     );
 
     if (existingComment) {
-      return res.status(400).json({ message: "You have already commented on this product" });
+      return res
+        .status(400)
+        .json({ message: "You have already commented on this product" });
     } else {
       product.comments.push({ user: userId, text });
     }
@@ -149,12 +152,14 @@ const addRating = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const existingRating = product.ratings.find((rating) =>
-      rating.user.toString() === userId
+    const existingRating = product.ratings.find(
+      (rating) => rating.user.toString() === userId
     );
 
     if (existingRating) {
-      return res.status(400).json({ message: "You have already rated this product" });
+      return res
+        .status(400)
+        .json({ message: "You have already rated this product" });
     } else {
       product.ratings.push({ user: userId, value });
     }

@@ -53,7 +53,6 @@ async function allItemsInCart(id) {
       const cartItem = cartItems.items.find(
         (item) => item.productId.toString() === product._id.toString()
       );
-
       return {
         id: product._id,
         name: product.name,

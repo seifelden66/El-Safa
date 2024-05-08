@@ -57,3 +57,11 @@ html {
 .show{
   display: block;
 }
+
+
+.admin-error {
+  color: red;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 0.9em;
+}

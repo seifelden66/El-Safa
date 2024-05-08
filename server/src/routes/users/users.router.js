@@ -18,6 +18,7 @@ const {
   passportAuthenticate,
   passportInitialize,
 } = require("../../services/auth/isLogin");
+const { httpOrderDetails } = require("../../controllers/orders.controller");
 
 const usersRouter = express.Router();
 
@@ -62,11 +63,20 @@ usersRouter.post(
   passportAuthenticate,
   httpCheckCode
 );
+
 usersRouter.patch(
   "/new-password",
   passportInitialize,
   passportAuthenticate,
   httpResetPassword
+);
+
+// get order details for user and admin
+usersRouter.get(
+  "/orders-details",
+  passportInitialize,
+  passportAuthenticate,
+  httpOrderDetails
 );
 
 module.exports = usersRouter;
