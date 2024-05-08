@@ -26,21 +26,19 @@ export class SendCodeComponent {
   error!: any;
   emailToken!: any;
   timer: number = 30;
-
   private intervalId: any;
-
   ngOnInit() {
     this.sendCodeForm = new FormGroup({
       code: new FormControl("", [Validators.required]),
     });
     this.emailToken = this.cookieService.get("emailToken");
-    this.startTimer();
+    this.CodeExpireTime();
   }
   ngOnDestroy() {
     clearInterval(this.intervalId);
   }
 
-  startTimer() {
+  CodeExpireTime() {
     this.intervalId = setInterval(() => {
       if (this.timer === 0) {
         clearInterval(this.intervalId);
@@ -48,7 +46,7 @@ export class SendCodeComponent {
       } else {
         this.timer -= 1;
       }
-    }, 1100);
+    }, 1350);
   }
 
   onSubmit() {

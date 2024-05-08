@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-const { validationResult, check } = require("express-validator");
+const { ObjectId } = require("mongoose");
+const { validationResult } = require("express-validator");
 const {
   getAllUser,
   addNewUser,
@@ -13,6 +14,8 @@ const {
   saveResetCode,
   cheackCode,
   resetPassword,
+  addUserWithGoogleAccount,
+  LoginWithGoogleAccount,
 } = require("../models/users/users.model");
 const {
   generateAndSetToken,
@@ -38,7 +41,6 @@ async function httpAddUser(req, res) {
           "public",
           "browser",
           "assets",
-          "image",
           req.file.filename
         )
       );
@@ -88,7 +90,6 @@ async function httpAddUser(req, res) {
             "public",
             "browser",
             "assets",
-            "image",
             req.file.filename
           )
         );
@@ -116,7 +117,6 @@ async function httpAddAdmin(req, res) {
           "public",
           "browser",
           "assets",
-          "image",
           req.file.filename
         )
       );
@@ -140,7 +140,6 @@ async function httpAddAdmin(req, res) {
             "public",
             "browser",
             "assets",
-            "image",
             req.file.filename
           )
         );
@@ -238,7 +237,6 @@ async function httpEditUserProfile(req, res) {
           "public",
           "browser",
           "assets",
-          "image",
           req.file.filename
         )
       );
@@ -340,6 +338,52 @@ async function httpResetPassword(req, res) {
   }
 }
 // !SECTION - END SECTION USER AND ADMIN
+
+// SECTION - OAUTH GOOGLE ACCOUNT (RGISTER AND LOGIN);
+// register with google account
+async function httpAddUserWithGoogleAccount(
+  accessToken,
+  refreshToken,
+  user,
+  done
+) {
+
+  try {
+    const profile = {
+      _id: user._json.sub,
+      name: user._json.name,
+      email: user._json.email,
+      profile_picture: user._json.picture,
+      role: "user",
+    };
+    console.log(user);
+    const resp = await addUserWithGoogleAccount(profile);
+    done(null, user);
+  } catch (err) {
+    console.log(err);
+    done(null, false);
+  }
+}
+
+// login with google account
+async function httpLoginWithGoogleAccount(
+  accessToken,
+  refreshToken,
+  profile,
+  done
+) {
+  try {
+    const user = await LoginWithGoogleAccount(profile._json.email);
+    if (user) {
+      done(null, profile);
+    } else {
+      done(null, false);
+    }
+  } catch (error) {
+    done(null, false);
+  }
+}
+
 module.exports = {
   httpGetAllUser,
   httpGetUser,
@@ -351,4 +395,6 @@ module.exports = {
   httpForgotPasswordEmail,
   httpCheckCode,
   httpResetPassword,
+  httpAddUserWithGoogleAccount,
+  httpLoginWithGoogleAccount,
 };

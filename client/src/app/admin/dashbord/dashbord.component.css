@@ -1,3 +1,228 @@
 .wrapper {
   display: flex;
 }
+.body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:#f3e8ff /* Light gray background */
+}
+
+
+.dash {
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start; /* Align items at the start of the flex container */
+  /* height: 20vh; */
+}
+.box {
+  width: 200px;
+  min-height: 150px;
+  background-color: #f0f0f0; /* Lighter gray box background */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  transition: all 0.3s ease; /* Smooth transition on hover */
+}
+.box:hover {
+  transform: scale(1.05); /* Scale up on hover */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+}
+.box i {
+  font-size: 48px; /* Larger icon size */
+  margin-bottom: 10px;
+  color: #333; /* Dark icon color */
+}
+h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333; /* Dark text color */
+}
+p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #666; /* Medium text color */
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd; /* Light gray border */
+}
+th {
+  background-color: #f2f2f2; /* Light gray background for table header */
+}
+
+
+/* Colorful backgrounds */
+.users { background-color: #e1bee7 } /* Pastel orange */
+.products { background-color: #e1bee7 } /* Pastel blue */
+.orders { background-color: #e1bee7 } /* Pastel orange */
+.earnings { background-color:  #e1bee7 } /* Pastel green */
+.most-selling { background: linear-gradient(to right, #da8cff, #9a55ff);
+  width: 90%; margin: 55px;
+
+ } 
+ .marble {
+  width: 300px;
+  height: 300px;
+  background: 
+      radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 40%),
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 40%),
+      radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 40%);
+  background-size: 100px 100px; /* Marble pattern size */
+  border-radius: 50%;
+}
+/* Basic styling for the to-do list items */
+.todo-list li {
+  list-style: none;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Styling for the checkbox */
+.checkbox {
+  margin-right: 10px;
+}
+
+/* Styling for the remove icon */
+.remove {
+  cursor: pointer;
+  color: #ff6347; /* Red color for the remove icon */
+}
+
+/* Styling for the add button */
+.add {
+  margin-left: 10px;
+}
+
+/* Styling for the input field */
+.todo-list-input {
+  flex: 1; /* Take remaining space */
+  margin-right: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styling for the add-items container */
+.add-items {
+  margin-bottom: 20px;
+}
+
+/* Styling for the list wrapper */
+.list-wrapper {
+  max-height: 300px; /* Example max height; adjust as needed */
+  overflow-y: auto; /* Add scrollbar when list exceeds max height */
+}
+
+.card {
+  background-color: #007bff;
+  border-radius: 8px;
+  color: white;
+  padding: 20px;
+  max-width: 600px;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 200px;
+  height: 300px;
+  border-radius: 50%;
+  transform: scale(2);
+}
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: -50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  transform: scale(2);
+}
+.card h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+.card p {
+  font-size: 1em;
+  margin: 0;
+}
+
+/* app.component.css */
+.todo-list {
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+}
+
+.todo-input {
+  width: calc(100% - 60px);
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.add-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #0056b3;
+}
+
+.tasks {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.tasks li {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tasks li.completed {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.tasks input[type="checkbox"] {
+  margin-right: 10px;
+}

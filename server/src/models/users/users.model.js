@@ -86,6 +86,16 @@ async function resetPassword(email, password) {
     { new: true }
   );
 }
+
+// SECTION - GOOGLE OAUTH (REGISTER AND LOGIN)
+async function addUserWithGoogleAccount(user) {
+  return await usersSchema.create(user);
+}
+
+async function LoginWithGoogleAccount(email) {
+  return await usersSchema.findOne({ email: email });
+}
+
 module.exports = {
   getAllUser,
   addNewUser,
@@ -98,10 +108,8 @@ module.exports = {
   saveResetCode,
   cheackCode,
   resetPassword,
+  addUserWithGoogleAccount,
+  LoginWithGoogleAccount,
 };
-
-
-
-
 
 // TODO  add validation on reseet password function

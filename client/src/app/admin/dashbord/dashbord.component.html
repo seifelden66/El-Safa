@@ -1,4 +1,82 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
-  <app-navbar class="w-100"></app-navbar>
-</div>
+  
+  <div class="body w-100 ">
+    <app-navbar class="w-100"></app-navbar>
+    <div class="container ">
+      <div class="dash">
+      <div class="box users">
+          <i class="material-icons">person</i> <!-- User icon -->
+          <h2>Users</h2>
+          <!-- Display number of users -->
+          <p>1000</p>
+      </div>
+      <div class="box products">
+          <i class="material-icons">shopping_basket</i> <!-- Product icon -->
+          <h2>Products</h2>
+          <!-- Display number of products -->
+          <p>500</p>
+      </div>
+      <div class="box orders">
+          <i class="material-icons">shopping_cart</i> <!-- Shopping cart icon -->
+          <h2>Orders</h2>
+          <!-- Display number of orders -->
+          <p>2000</p>
+      </div>
+      <div class="box earnings">
+          <i class="material-icons">attach_money</i> <!-- Money icon -->
+          <h2>Monthly Earnings</h2>
+          <!-- Display monthly earnings -->
+          <p>$10,000</p>
+      </div>
+    </div>
+
+      <div class=" box most-selling      d-flex  justify-content-center ">
+        <i class="material-icons">bar_chart</i> <!-- Bar chart icon -->
+        <h2>Most Selling Product</h2>
+        <!-- Display most selling product -->
+       
+        <!-- Table for detailed information -->
+        <table >
+            <tr>
+                <th>Product Name</th>
+                <th>Units Sold</th>
+                <th>Revenue</th>
+            </tr>
+            <tr>
+                <td>Product A</td>
+                <td>100</td>
+                <td>$1000</td>
+            </tr>
+            <tr>
+                <td>Product B</td>
+                <td>80</td>
+                <td>$800</td>
+            </tr>
+            <tr>
+                <td>Product C</td>
+                <td>70</td>
+                <td>$700</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="todo-container">
+        <input (ngModel)="newTaskTitle" placeholder="What do you need to do today?" />
+        <button (click)="addTask()">Add</button>
+        <ul>
+          <li *ngFor="let task of tasks" [class.completed]="task.completed">
+            <input type="checkbox" (click)="toggleCompletion(task.id)" [checked]="task.completed" />
+            {{ task.title }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="card ">
+        <h1>15,6834</h1>
+        <p>increased by 10%</p>
+      </div>
+     
+      
+    <div>
+      <div>

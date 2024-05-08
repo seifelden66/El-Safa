@@ -5,106 +5,149 @@
   text-decoration: none;
 }
 
+/* Add this CSS to your stylesheet */
+/* ========================================== */
+.carousel_img{
+  width: 100%;
+  object-fit: fill;
+  height: 550px;
+}
+
+
 /* ============================ */
 .carusel_container {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-image: linear-gradient(
-    150deg,
-    #ead2f2,
-    #d9d5fc,
-    #d8d6fc,
-    #cde1fc,
-    #d1e5f0,
-    #d6e9e3,
-    #d9eadf,
-    #d9e9dd,
-    #dbeadb,
-    #dfebd7,
-    #eae9d7,
-    #eae8d6,
-    #eee3d7,
-    #efded6,
-    #efdad7,
-    #efd8d6
-  );
+
   border: none;
-  padding: 120px 0px ;
+  position: relative;
 }
 
 .data {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  text-align: center;
+  gap: 20px ;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #7C5ED8;
 }
 
-.data .offer {
-  background-color: #ffc728;
-  width: fit-content;
-  padding: 5px;
+.data > .offer {
+  background-color: #7C5ED8;
+  padding: 4px;
+  letter-spacing: 3px;
+  font-weight: 500;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%, 30px 50%);
 }
+
+
+
+
 
 .saless{
-  width: 100%;
-  font-size: 40px;
+  /* width: max-content; */
   flex-direction: column;
-  gap: 10px;
-  background: linear-gradient(
-    120deg,
-    #ad51ee,
-    #b04ce4,
-    #b449de,
-    #b844d3,
-    #bd3fc9,
-    #bf3bc1,
-    #bf3cc3,
-    #c339bc,
-    #c636b5,
-    #d52794,
-    #da228a,
-    #e31773,
-    #eb1064
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
+  /* display: flex; */
+  /* gap: 15px; */
+  font-size: 55px ;
+  padding: 20px 0px;
   font-weight: 700;
-  color: transparent;
+  color: white;
+  letter-spacing: 5px;
+
 }
 
-.carusel_btn {
-  border: solid #5c3dc3;
-  color: #5c3dc3;
-  background-color: transparent;
+.color{
+  color: #7C5ED8;
+  animation-name: sale-animation;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.color2{
+  color: white;
+  animation-name: sale-animation;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* 
+.sale {
+  font-size: 54px;
+  padding: 10px 0px;
+  
+} */
+
+.animated-text {
+  animation-name: sale-animation;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  font-size: 50px;
+  color: #7C5ED8;
   font-weight: 700;
+}
+
+@keyframes sale-animation {
+  0% {
+    font-weight: 500;
+  }
+  20% {
+    font-weight: 500;
+  }
+  40% {
+    font-weight: 600;
+  }
+  60% {
+    font-weight: 900;
+  }
+  80% {
+    font-weight: 600;
+  }
+  100% {
+    font-weight: 500;
+  }
+}
+
+.moredata{
+  color: white;
+  /* margin: 0px auto; */
+  font-weight: 500;
+}
+
+
+
+
+.carusel_btn {
+  border: solid white 2px;
+  background-color:  transparent;
+  font-weight: 500;
   transition: 0.5s;
+  margin: 0px auto;
+  font-size: 16px;
+  color: white;
 }
 
 .carusel_btn:hover {
-  border: solid #5c3dc3;
-  color: white;
   background-color: #5c3dc3;
-  font-weight: 700;
+  font-weight: 500;
+
 }
 
 
-
-.sale {
-  align-items: center;
-  color: transparent;
-  font-size: 30px;
-  font-weight: 700;
-} 
-
-.sale2 {
-  border: solid;
-  align-items: center; 
-  background-clip: text;
-  color: transparent;
-  font-size: 30px;
-  font-weight: 700;
-  
-}
 
 .carouserl_img {
   display: flex;
@@ -123,7 +166,7 @@
   justify-content: space-between;
   gap: 2px;
   padding: 30px 0px;
-  background-color: #eef0fc;
+  background-color: #F4F1FF;
 }
 
 .mostsells {
@@ -158,6 +201,10 @@
   border-radius: 5px;
 }
 
+.Launch_offer{
+  color: #c636b5;
+}
+
 
 /* ================================ */
 
@@ -166,7 +213,7 @@
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  background-color: #eef0fc;
+  background-color: #F4F1FF;
   /* margin: 10px 0px; */
   border-radius: 12px;
 }
@@ -207,6 +254,7 @@
 /* ======================= */
 .some_offers {
   padding: 20px;
+  background-color: #F4F1FF;
 }
 
 .best_product_container {
@@ -218,31 +266,14 @@
 
 .offer_card{
   width: 24%;
+  cursor: pointer;
 }
 
-
-
 .some_offersh {
-  background: linear-gradient(
-    120deg,
-    #ad51ee,
-    #b04ce4,
-    #b449de,
-    #b844d3,
-    #bd3fc9,
-    #bf3bc1,
-    #bf3cc3,
-    #c339bc,
-    #c636b5,
-    #d52794,
-    #da228a,
-    #e31773,
-    #eb1064
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: 35px;
+  color: #B34BE1;
+  font-size: 30px;
+  letter-spacing: 6px;
+  /* border: solid red; */
 }
 
 .card img {
@@ -314,6 +345,7 @@ background-color: transparent;
 /* ============================================== */
 /* media Quary */
 
+
 @media (width < 1000px) {
   .best_product_container {
     display: flex;
@@ -348,6 +380,15 @@ background-color: transparent;
     width: 95%;
   
   }
+  .saless{
+    font-size: 50px ;
+  }
+  
+  .saless span{
+    font-size: 40px;
+    font-weight: 500;
+  }
+
 }
 
 @media (width<800px) {
@@ -359,7 +400,19 @@ background-color: transparent;
     width: 80%;
   }
   
-
+  .some_offersh{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .saless{
+    font-size: 40px ;
+  }
+  
+  .saless span{
+    font-size: 35px;
+    font-weight: 500;
+  }
 }
 
 
@@ -369,4 +422,51 @@ background-color: transparent;
   }
 
   
+
+  
+}
+/* Add this CSS to your stylesheet Animation */
+
+@keyframes cardHover {
+  0% {
+    transform: scale(1);
+    font-weight: 500;
+  }
+  50% {
+    transform: scale(1.01);
+    font-weight: 900;
+
+  }
+  100% {
+    transform: scale(1);
+    font-weight: 500;
+
+  }
+}
+
+/* Apply the animation to the offer_card class */
+.mostsells , .some_offersh {
+  animation: cardHover 1.5s infinite;
+}
+
+
+/* animations for offer_card */
+/* Define a keyframe animation */
+/* Define a keyframe animation */
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(5px, -5px); }
+  50% { transform: translate(-5px, 5px); }
+  75% { transform: translate(5px, -5px); }
+  100% { transform: translate(0, 0); }
+}
+
+.offer_card {
+  /* Other styles for your card */
+  transition: transform 0.2s ease; /* Add smooth transition */
+}
+
+/* Apply the animation on hover */
+.offer_card:hover {
+  animation: shake 1s ease-in-out infinite;
 }

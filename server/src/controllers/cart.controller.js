@@ -11,6 +11,7 @@ async function httpAddToCart(req, res) {
     const items = await addToCart(req.body);
     return res.status(201).json({ items: items });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ error: "Internal server error" });
   }
 }
@@ -23,7 +24,7 @@ async function httpDeleteFromCart(req, res) {
   };
   try {
     const items = await DeleteFromCart(item);
-    return res.status(200).json({ items: items });
+    return res.status(200).json({ items });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal server error" });
@@ -35,7 +36,7 @@ async function httpAllItemsInCard(req, res) {
   const id = req.user.id;
   try {
     const items = await allItemsInCart(id);
-    return res.status(200).json({ items: items });
+    return res.status(200).json(items);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal server error" });

@@ -54,7 +54,7 @@ footer{
 
 }
 
-.links2 p:nth-child(1),.links2 p:nth-child(2),.links2 p:nth-child(3),.links2 p:nth-child(4) {
+/* .links2 p:nth-child(1),.links2 p:nth-child(2),.links2 p:nth-child(3),.links2 p:nth-child(4) {
     transition: .5s;
     cursor: pointer;
 }
@@ -77,4 +77,84 @@ footer{
 .links2 p:nth-child(4):hover{
     background-color: #d61f1f;
     color: white;
-}
+} */
+
+
+.links2 p i {
+    transition: color 0.5s, background-color 0.5s;
+  }
+  
+  .links2 p:nth-child(1)  {
+    animation: iconHighlight1 2s infinite;
+  }
+  
+  .links2 p:nth-child(2)  {
+    animation: iconHighlight2 2s 0.5s infinite;
+  }
+  
+  .links2 p:nth-child(3)  {
+    animation: iconHighlight3 2s 1s infinite;
+  }
+  
+  .links2 p:nth-child(4)  {
+    animation: iconHighlight4 2s 1.5s infinite;
+  }
+  
+  .links2 p i {
+    color: white;
+    font-size: 20px;
+  }
+  .links2 p {
+    border: solid;
+    padding: 15px ;
+  }
+  
+  @keyframes iconHighlight1 {
+    0% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: #2E51E6;
+    
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  
+  @keyframes iconHighlight2 {
+    0% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: black;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  
+  @keyframes iconHighlight3 {
+    0% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: #E6366C;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  
+  @keyframes iconHighlight4 {
+    0% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: #d61f1f;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  

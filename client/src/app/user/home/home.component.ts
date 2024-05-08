@@ -17,6 +17,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { FirestnavComponent } from '../firestnav/firestnav.component';
 
 type State = { id: number; name: string };
 
@@ -42,15 +43,16 @@ const states = [
     HttpClientModule,
     NgbRatingModule,
     SecondHeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FirestnavComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
   model: State | null = null;
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-
+  images = [944, 1011, 984].map((n) => `htps://picsum.photos/id/${n}/900/500`);
+  // images = [944, 1011, 984].map((n) =>  );
 
   formatter = (result: string) => result.toUpperCase();
 
@@ -79,7 +81,6 @@ export class HomeComponent implements OnInit {
 
     redirect2(){
       this.router.navigate([`invoice`])
-
       
     }
 
@@ -106,6 +107,7 @@ export class HomeComponent implements OnInit {
       this.http.get('https://dummyjson.com/products').subscribe((res:any)=>{this.productcenter=res.products}
     )
 
+// ============================================
     
 
     }

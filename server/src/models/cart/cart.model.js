@@ -1,6 +1,7 @@
 const cartSchema = require("./cart.mongo");
 const Product = require("../products/product.model");
 // ANCHOR add product to cart , if the product already in the cart Just update the quantity if it is updated
+
 async function addToCart(item) {
   const cart = await cartSchema.findOne({
     userId: item.userId,
@@ -48,7 +49,6 @@ async function allItemsInCart(id) {
       { _id: { $in: productId } },
       { createdAt: 0, updatedAt: 0, __v: 0 }
     );
-
     const result = product.map((product) => {
       const cartItem = cartItems.items.find(
         (item) => item.productId.toString() === product._id.toString()
@@ -57,7 +57,7 @@ async function allItemsInCart(id) {
       return {
         id: product._id,
         name: product.name,
-        images: product.images,
+        images: product.images[0],
         quantity: cartItem.quantity,
         price: product.price,
         totalPrice: product.price * cartItem.quantity,

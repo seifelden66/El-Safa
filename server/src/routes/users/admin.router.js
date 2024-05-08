@@ -5,6 +5,16 @@ const {
   httpGetAllUser,
   httpGetUser,
 } = require("../../controllers/users.controller");
+
+// protected order route , just available for admin
+const {
+  httpAllOrders,
+  httpOrderDetails,
+  httpConfirmOrder,
+  httpDispatchOrder,
+  httpDeliverOrder,
+} = require("../../controllers/orders.controller");
+
 const { validationUserDate } = require("../../services/validateUserData");
 const {
   passportAuthenticate,
@@ -35,4 +45,14 @@ adminRouter.post(
   httpAddAdmin
 );
 adminRouter.get("/user", httpGetUser);
+
+// orders route just for admin
+adminRouter.get("/orders", httpAllOrders);
+
+adminRouter.get("/orders-details", httpOrderDetails);
+
+adminRouter.patch("/confirm-order", httpConfirmOrder);
+adminRouter.patch("/dispatch-order", httpDispatchOrder);
+adminRouter.patch("/deliver-order", httpDeliverOrder);
+
 module.exports = adminRouter;

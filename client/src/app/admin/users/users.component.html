@@ -27,28 +27,16 @@
               </thead>
 
               <tbody>
-                <tr>
-                  <td>Caesar Vance</td>
-                  <td>Pre-Sales Support</td>
-                  <td>New York</td>
-                  <td>21</td>
-                  <td>2011/12/12</td>
-                </tr>
-                <tr>
-                  <td>Doris Wilder</td>
-                  <td>Sales Assistant</td>
-                  <td>Sidney</td>
-                  <td>23</td>
-                  <td>2010/09/20</td>
-                </tr>
+                @for(user of users; track user._id){
 
                 <tr>
-                  <td>Angelica Ramos</td>
-                  <td>Chief Executive Officer (CEO)</td>
-                  <td>London</td>
-                  <td>47</td>
-                  <td>2009/10/09</td>
+                  <td>{{ user?.name }}</td>
+                  <td>{{ user?.email }}</td>
+                  <td>{{ user?.phone }}</td>
+                  <td>{{ user?.location }}</td>
+                  <td>{{ user?.role }}</td>
                 </tr>
+                }
               </tbody>
             </table>
           </div>

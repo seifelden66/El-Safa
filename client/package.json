@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --output-path ../server/public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -30,8 +30,9 @@
     "chart.js": "^4.4.2",
     "ng2-charts": "^6.0.0",
     "ngx-cookie": "^6.0.1",
+    "ngx-toastr": "^18.0.0",
     "primeicons": "^7.0.0",
-    "primeng": "^17.13.0",
+    "primeng": "^17.15.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
