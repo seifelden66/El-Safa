@@ -55,8 +55,8 @@ registerWithGoogleOauth.get(
   }
 );
 
-registerWithGoogleOauth.get("/failure", (req, res) => {
-  res.status(400).send("This email is already registered.");
-});
+// registerWithGoogleOauth.get("/failure", (req, res) => {
+//   res.status(400).send("This email is already registered.");
+// });
 
 module.exports = registerWithGoogleOauth;

@@ -1,10 +1,82 @@
-.container-fluid {
-  overflow-x: auto;
-  margin: 120px 0px;
+.big_container {
+display: flex;
+justify-content: space-between;
+overflow-x: auto;
+gap: 10px;
+
+}
+
+
+
+/* ========================================= */
+.active{
+  background-color: #7C5ED8;
+  color: white;
+}
+
+.row{
+  display: flex;
+  align-items: center;
+  /* padding: 20p 0px ; */
+  row-gap:30px ;
+  text-align: center;
+}
+
+/* ==================================== */
+
+.sidebar{
+  background-color: #F4F1FF;
+  padding: 0px 7px;
+  min-width: 6%;  
+  margin: 20px 0px;
+
+
+}
+
+
+.sidebar_data{
+  padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
+
+.sidebar_data h3{
+  padding: 7px ;
+  cursor: pointer;
+  transition: .4s ease;
+  display: flex;
+  justify-content: center;
+  border-radius: 7px;
+}
+
+.sidebar_data h3:hover{
+  background-color: #7C5ED8;
+  color: white;
+}
+
+
+
+
+.sidebar_text{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+
+
+/* ======================================================================== */
+.table_container{
+overflow-x: auto;
+margin:120px 0px ;
 }
 
 .table {
   text-align: center;
+
+  flex: 1;
 }
 
 .product_data {
@@ -35,7 +107,18 @@
 .total {
   font-size: 22px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+
 }
+
+.font{
+  font-size: 20px;
+  font-weight: 500;
+}
+
 
 .payment_btn {
   background-color: blueviolet;
@@ -45,6 +128,11 @@
 .form_item label {
   font-weight: 400;
   font-size: 20px;
+}
+
+
+.product_data td{
+  text-align: center;
 }
 /* ==================================================== */
 
@@ -58,4 +146,15 @@
 .sec_page span {
   font-size: 50px;
   color: #ebb9f0;
+}
+
+
+/* =========media========================================== */
+
+@media (width<900px) {
+
+  .sidebar{
+    min-width: 10%;   
+  }
+  
 }

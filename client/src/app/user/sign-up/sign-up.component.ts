@@ -24,7 +24,6 @@ export class SignUpComponent {
       phone : new FormControl("", Validators.required),
       password: new FormControl("",Validators.required),
       img : new FormControl(""),
-      // rpassword: new FormControl("",Validators.required)
     })
   
   }
@@ -44,10 +43,11 @@ export class SignUpComponent {
             date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
             const expires = "expires=" + date.toUTCString();
             document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+
           }
   
+          this.route.navigate(['/home'])
           setCookie('userToken', token, 7);  // Set the token as a cookie
-          this.route.navigate(['home'])
           console.log(token); // Log the token
         } else {
           console.log('Token not found or is not a string');

@@ -5,11 +5,11 @@ import { FooterComponent } from '../footer/footer.component';
 import { FirestnavComponent } from '../firestnav/firestnav.component';
 import { SidebarModule } from 'primeng/sidebar';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [SecondHeaderComponent,FooterComponent,FirestnavComponent,SidebarModule],
+  imports: [SecondHeaderComponent,FooterComponent,FirestnavComponent,SidebarModule,RouterLinkActive,RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit  {
   
   ngOnInit(): void {
     this.usertoken=this.CookieService.get('userToken')
- 
     console.log(this.usertoken);
     this.getuserdata()
     
@@ -35,9 +34,11 @@ export class ProfileComponent implements OnInit  {
     }}).subscribe((res:any)=>{
       this.userdata = res.user;
       console.log(res);
-      
-
-    })
+    
+    },
+  error => {
+    console.log(error);
+  })
   }
 
 

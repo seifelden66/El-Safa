@@ -24,7 +24,8 @@ import { resetPasswordGuard } from "./services/reset-password.guard";
 import { SingleOrderComponent } from "./admin/single-order/single-order.component";
 import { CartComponent } from "./user/cart/cart.component";
 import { ContactComponent } from "./user/contact/contact.component";
-// import { TrackingComponent } from "./user/tracking/tracking.component";
+import { TrackingComponent } from "./user/tracking/tracking.component";
+import { UserProductComponent } from "./user/user-product/user-product.component";
 
 export const routes: Routes = [
   {
@@ -48,10 +49,10 @@ export const routes: Routes = [
     path: "regester",
     component: SignUpComponent,
   },
-  // {
-  //   path: "tracking",
-  //   component: TrackingComponent,
-  // },
+  {
+    path: "tracking",
+    component: TrackingComponent,
+  },
   {
     path: "product_details/:id",
     component: ProductDetailsComponent,
@@ -113,6 +114,10 @@ export const routes: Routes = [
   {
     path: "cart",
     component: CartComponent,
+  },
+  {
+    path: "user-product",
+    component: UserProductComponent,
   },
   {
     path: "contact",

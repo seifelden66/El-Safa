@@ -1,4 +1,7 @@
-
+.active{
+    background-color: #7C5ED8;
+    color: white;
+}
 
 .row{
     display: flex;
@@ -32,9 +35,11 @@
 }
 
 .sidebar_data h3:hover{
-background-color: #7C5ED8;
-color: white;
+    background-color: #7C5ED8;
+    color: white;
 }
+
+
 
 
 .sidebar_text{

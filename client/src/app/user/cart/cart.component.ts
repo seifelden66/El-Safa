@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import { Component, OnInit, inject } from '@angular/core';
-import { SecondHeaderComponent } from '../second-header/second-header.component';
-import { FooterComponent } from '../footer/footer.component';
-import { CartService } from '../services/cart.service';
-import { CommonModule } from '@angular/common';
-import { CounterService } from '../services/counter.service';
-import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { FirestnavComponent } from '../firestnav/firestnav.component';
-import { HttpClient } from '@angular/common/http';
-import { CookieService } from '../../services/cookie.service';
-=======
 import { CookieService } from "./../../services/cookie.service";
 import { PaymentService } from "./../services/payment.service";
 import { Component, OnInit, inject } from "@angular/core";
@@ -29,7 +16,9 @@ import {
 } from "@angular/animations";
 import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { HttpClient } from "@angular/common/http";
->>>>>>> 7dc9f605b1be427f9d909f5339dbb3048a76537b
+import { RouterLink, RouterLinkActive } from "@angular/router";
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { TableModule } from 'primeng/table';
 
 @Component({
   selector: "app-cart",
@@ -40,6 +29,10 @@ import { HttpClient } from "@angular/common/http";
     CommonModule,
     NgbRatingModule,
     FirestnavComponent,
+    RouterLink,
+    RouterLinkActive,
+    NgbTooltipModule,
+    TableModule
   ],
   templateUrl: "./cart.component.html",
   styleUrl: "./cart.component.css",
@@ -57,7 +50,6 @@ import { HttpClient } from "@angular/common/http";
   ],
 })
 export class CartComponent implements OnInit {
-<<<<<<< HEAD
   count:number = 0
   totalP:number=0
   userToken : any;
@@ -69,15 +61,8 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.userToken = this.cookieservice.get('userToken')
     this.getCartItems()
-
-
   }
 
-
-
-  
-
- 
   isClicked: boolean = false;
 
 
@@ -133,56 +118,6 @@ export class CartComponent implements OnInit {
 
   }
 
-=======
-  count: number = 0;
-  totalP: number = 0;
-  CartService = inject(CartService);
-  userToken!: any;
-  constructor(
-    private CounterService: CounterService,
-    private PaymentService: PaymentService,
-    private http: HttpClient,
-    private CookieService: CookieService
-  ) {}
-
-  ngOnInit(): void {
-    this.handleCartCount();
-
-    this.totalprice();
-    this.userToken = this.CookieService.get("userToken");
-  }
-  handleCartCount() {
-    const temp = this.CartService.getproduct().reduce((prev, curr) => {
-      return prev + curr.quantity;
-    }, 0);
-
-    this.CartService.setcount(temp);
-  }
-
-  isClicked: boolean = false;
-
-  delete(item: any) {
-    this.CartService.delete(item);
-    this.handleCartCount();
-    this.totalprice();
-  }
-
-  increase() {
-    this.handleCartCount();
-    this.totalprice();
-  }
-
-  decrease() {
-    this.handleCartCount();
-    this.totalprice();
-  }
-
-  totalprice() {
-    this.totalP = this.CartService.getproduct().reduce((total, item) => {
-      return total + item.price * item.quantity;
-    }, 0);
-  }
->>>>>>> 7dc9f605b1be427f9d909f5339dbb3048a76537b
 
   // payment flow functions with paymob
   private API_KEY =
@@ -326,7 +261,6 @@ export class CartComponent implements OnInit {
       );
   }
   // ================delet animations=============================
-<<<<<<< HEAD
 
 getCartItems(){
   this.http.get("http://localhost:8000/v1/cart/cartitems", {headers : {
@@ -356,6 +290,3 @@ deleteItem(id: string) {
 
   
 
-=======
-}
->>>>>>> 7dc9f605b1be427f9d909f5339dbb3048a76537b
