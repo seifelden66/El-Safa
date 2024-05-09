@@ -104,7 +104,9 @@ export class SecondHeaderComponent implements OnInit {
   }
 
   redirect3() {
+    this.CookieService.remove('userToken')
     this.router.navigate([`login`]);
+
   }
 
   redirect4() {
