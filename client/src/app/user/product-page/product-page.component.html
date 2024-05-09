@@ -33,15 +33,6 @@
 
         </div>
 
-        <div class="Rate">
-          <h4 class="p-3 search_type d-flex justify-content-end">
-            Filter by Price
-          </h4>
-          <div class="card">
-            <input type="text" pInputText [(ngModel)]="rangeValues" [readOnly]="true" class="w-75 d-flex mx-auto" />
-            <p-slider [(ngModel)]="rangeValues" class="p-4" [max]="500" [range]="true"></p-slider>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -67,13 +58,13 @@
                 <h2 class="m-0">{{ product?.name }}</h2>
                 <h4 class="m-0">{{ product?.category?.name }}</h4>
 
-                @if (product?.ratings['0'].value) {
+                <!-- @if (product?.ratings['0'].value) {
 
                   <div class="rate_product">
                     <ngb-rating [(rate)]="product?.ratings['0'].value" [max]="5" [readonly]="true" />
   
                   </div>
-                }
+                } -->
 
               </div>
 

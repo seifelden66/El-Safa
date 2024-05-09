@@ -1,3 +1,4 @@
+import { CookieService } from './../../services/cookie.service';
 import { CartService } from "./../services/cart.service";
 import { CounterService } from "../services/counter.service";
 import { JsonPipe } from "@angular/common";
@@ -57,6 +58,11 @@ const states = ["shose", "pens"];
 export class SecondHeaderComponent implements OnInit {
   model: State | null = null;
   count: number = 0;
+  products: any[] = [];
+  categories: string[] = [];
+  selectedCategory: string | null = null;
+  usertoken:any ;
+
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   formatter = (result: string) => result.toUpperCase();
@@ -80,11 +86,17 @@ export class SecondHeaderComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private CounterService: CounterService,
-    private CartService: CartService
+    private CartService: CartService,
+    private CookieService: CookieService
   ) {}
 
   redirect() {
-    this.router.navigate([`profile`]);
+    if (this.usertoken) {
+      this.router.navigate([`profile`]);
+      
+    }else{
+      alert('you Should Login Firest')
+    }
   }
 
   redirect2() {
@@ -112,12 +124,10 @@ export class SecondHeaderComponent implements OnInit {
   }
 
   // =============================
-  products: any[] = [];
-  categories: string[] = [];
-  selectedCategory: string | null = null;
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.usertoken = this.CookieService.get('userToken')
 
     // this.CartService.getcount().subscribe((res) => {
     //   this.count = res;

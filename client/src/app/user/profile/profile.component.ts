@@ -5,7 +5,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { FirestnavComponent } from '../firestnav/firestnav.component';
 import { SidebarModule } from 'primeng/sidebar';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -16,7 +16,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class ProfileComponent implements OnInit  {
 
 
-  constructor(private CookieService : CookieService, private http : HttpClient){}
+  constructor(private CookieService : CookieService, private http : HttpClient,private router : Router){}
 
   usertoken!:any
   userdata!:any
@@ -25,6 +25,12 @@ export class ProfileComponent implements OnInit  {
     this.usertoken=this.CookieService.get('userToken')
     console.log(this.usertoken);
     this.getuserdata()
+    if(this.usertoken){
+
+    }else{
+      this.router.navigate([`/regester`])
+      alert('Please login Firest')
+    }
     
   }
 

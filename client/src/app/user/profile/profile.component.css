@@ -17,6 +17,8 @@
     background-color: #F4F1FF;
     padding: 0px 7px;
     box-shadow: 3px 3px 15px rgb(170, 162, 162);
+    border-bottom-right-radius:12px ;
+    border-top-right-radius:12px ;
 
 }
 

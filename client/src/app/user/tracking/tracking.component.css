@@ -1,4 +1,4 @@
-/* 
+
 .steps .step {
     display: block;
     width: 100%;
@@ -102,4 +102,4 @@
     .flex-xl-nowrap .step .step-icon-wrap::after {
       display: none;
     }
-  } */
+  }

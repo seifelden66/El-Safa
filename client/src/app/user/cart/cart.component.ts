@@ -50,13 +50,13 @@ import { TableModule } from 'primeng/table';
   ],
 })
 export class CartComponent implements OnInit {
-  count:number = 0
-  totalP:number=0
-  userToken : any;
-  cartItems! : any;
+  count: number = 0
+  totalP: number = 0
+  userToken: any;
+  cartItems!: any;
   CartService = inject(CartService)
-  totalPrice! : number 
-  constructor(private CounterService : CounterService, private http : HttpClient, private cookieservice : CookieService){}
+  totalPrice!: number
+  constructor(private CounterService: CounterService, private http: HttpClient, private cookieservice: CookieService) { }
 
   ngOnInit(): void {
     this.userToken = this.cookieservice.get('userToken')
@@ -66,25 +66,27 @@ export class CartComponent implements OnInit {
   isClicked: boolean = false;
 
 
-  increase(item:any){
+  increase(item: any) {
 
 
-    if(item.quantity >= 1){
+    if (item.quantity >= 1) {
       item.quantity++
 
       // cartItems
 
-      this.http.post("http://localhost:8000/v1/cart/addToCart", {product : {id : item.id, quantity : item.quantity}}, {headers : {
-        Authorization : `Bearer ${this.userToken}`
-      }}).subscribe(
-        res =>{
+      this.http.post("http://localhost:8000/v1/cart/addToCart", { product: { id: item.id, quantity: item.quantity } }, {
+        headers: {
+          Authorization: `Bearer ${this.userToken}`
+        }
+      }).subscribe(
+        res => {
           console.log(res);
         },
         error => {
           console.log(error);
         }
       )
-    
+
 
 
     }
@@ -93,25 +95,27 @@ export class CartComponent implements OnInit {
   }
 
 
-  decrease(item:any) {
+  decrease(item: any) {
 
-    if(item.quantity > 1){
+    if (item.quantity > 1) {
       item.quantity--
 
-      this.http.post("http://localhost:8000/v1/cart/addToCart", {product : {id : item.id, quantity : item.quantity}}, {headers : {
-        Authorization : `Bearer ${this.userToken}`
-      }}).subscribe(
-        res =>{
+      this.http.post("http://localhost:8000/v1/cart/addToCart", { product: { id: item.id, quantity: item.quantity } }, {
+        headers: {
+          Authorization: `Bearer ${this.userToken}`
+        }
+      }).subscribe(
+        res => {
           console.log(res);
         },
         error => {
           console.log(error);
         }
       )
-    
 
 
-    
+
+
     }
 
 
@@ -262,31 +266,33 @@ export class CartComponent implements OnInit {
   }
   // ================delet animations=============================
 
-getCartItems(){
-  this.http.get("http://localhost:8000/v1/cart/cartitems", {headers : {
-    Authorization : `Bearer ${this.userToken}`
-  }}).subscribe((res:any)=>{
-    console.log(res); 
-    this.cartItems = res;
-   this.totalPrice= this.cartItems.totalPrice
-
-  })
-}
-
-deleteItem(id: string) {
-  this.http.delete(`http://localhost:8000/v1/cart/deleteFromCart?id=${id}`, { headers: { Authorization: `Bearer ${this.userToken}` } })
-    .subscribe(
-      (res: any) => {
-        this.cartItems.items = this.cartItems.items.filter((elem: any) => elem.id !== id);
-      },
-      error => {
-        console.log(error);
+  getCartItems() {
+    this.http.get("http://localhost:8000/v1/cart/cartitems", {
+      headers: {
+        Authorization: `Bearer ${this.userToken}`
       }
-    );
-}
+    }).subscribe((res: any) => {
+      console.log(res);
+      this.cartItems = res;
+      this.totalPrice = this.cartItems.totalPrice
+
+    })
+  }
+
+  deleteItem(id: string) {
+    this.http.delete(`http://localhost:8000/v1/cart/deleteFromCart?id=${id}`, { headers: { Authorization: `Bearer ${this.userToken}` } })
+      .subscribe(
+        (res: any) => {
+          this.cartItems.items = this.cartItems.items.filter((elem: any) => elem.id !== id);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
 
 }
 
 
-  
+
 

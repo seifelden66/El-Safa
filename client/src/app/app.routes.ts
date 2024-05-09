@@ -26,8 +26,9 @@ import { CartComponent } from "./user/cart/cart.component";
 import { ContactComponent } from "./user/contact/contact.component";
 import { TrackingComponent } from "./user/tracking/tracking.component";
 import { UserProductComponent } from "./user/user-product/user-product.component";
+import { OrderDetailsComponent } from "./user/order-details/order-details.component";
 
-export const routes: Routes = [
+export const routes: Routes = [  
   {
     path: "home",
     component: HomeComponent,
@@ -120,6 +121,10 @@ export const routes: Routes = [
     component: UserProductComponent,
   },
   {
+    path: "order-data/:id",
+    component: OrderDetailsComponent,
+  },
+  {
     path: "contact",
     component: ContactComponent,
   },
@@ -129,3 +134,4 @@ export const routes: Routes = [
   },
 
 ];
+

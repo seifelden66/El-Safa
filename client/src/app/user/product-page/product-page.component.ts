@@ -108,9 +108,6 @@ export class ProductPageComponent implements OnInit {
 
     this.getUniqueCategories();
 
-    this.CounterService.getcount().subscribe((value) => {
-      this.count = value;
-    });
     this.userToken = this.cookkeService.get('userToken');
   }
 
@@ -166,12 +163,7 @@ export class ProductPageComponent implements OnInit {
   }
   // ======================================
 
-  CartService = inject(CartService);
 
-  // redirecttocart(product_details: any) {
-  //   this.CartService.addtocart(product_details);
-  //   console.log(product_details);
-  // }
   // =============counter services=========================
 
 

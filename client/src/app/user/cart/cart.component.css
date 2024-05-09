@@ -29,7 +29,8 @@ gap: 10px;
   padding: 0px 7px;
   min-width: 6%;  
   margin: 20px 0px;
-
+  border-bottom-right-radius:12px ;
+  border-top-right-radius:12px ;
 
 }
 
@@ -147,7 +148,30 @@ margin:120px 0px ;
   font-size: 50px;
   color: #ebb9f0;
 }
+/* ================================================= */
 
+.empty_table{
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+  margin: auto ;
+  flex-direction: column;
+  padding:15px;
+  gap: 20px;
+}
+
+.empty_table h1{
+
+  font-size: 40px;
+}
+
+.empty_table h2{
+
+  font-size: 60px;
+  color: #7C5ED8;
+}
+
+/* ============= */
 
 /* =========media========================================== */
 

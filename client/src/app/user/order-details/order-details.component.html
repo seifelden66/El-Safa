@@ -10,7 +10,7 @@
           <h3 href="#" [routerLink]="['/home']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="Home"><i class="fa-solid fa-house"></i>  </h3>
           <h3 href="#" [routerLink]="['/product']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="All products" ><i class="fa-brands fa-product-hunt"></i>  </h3>
           <h3 href="#" [routerLink]="['/user-product']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="User order" ><i class="fa-solid fa-cart-shopping"></i>  </h3>
-          <h3 href="#" [routerLink]="['/a']" routerLinkActive="active" class="sidebar_text"placement="end" ngbTooltip="Wishlist" ><i class="fa-solid fa-heart"></i> </h3>
+          <h3 href="#" [routerLink]="['/wishlist']" routerLinkActive="active" class="sidebar_text"placement="end" ngbTooltip="Wishlist" ><i class="fa-solid fa-heart"></i> </h3>
           <h3 href="#" [routerLink]="['/cart']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="payment" ><i class="fa-solid fa-credit-card"></i></h3>
 
 
@@ -23,23 +23,26 @@
 
       <div class="card table my-5 ">
         <p-table
-          [value]="userorders"
+          [value]="order_details?.order?.orderItems"
           [paginator]="true"
           [rows]="5"
         >
           <ng-template  pTemplate="header">
             <tr class="product_data">
-              <th scope="col">Id</th>
-              <th scope="col">order_status</th>
-              <th scope="col">type_of_payment</th>
+              <th scope="col">image</th>
+              <th scope="col">name</th>
+              <th scope="col">price</th>
+              <th scope="col">quantity</th>
               <th scope="col">totalPrice</th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-item>
             <tr class="product_data">
-              <td (click)="order_data(item?._id)" class="pt-5 font"> {{ item?._id }}</td>
-              <td class="pt-5 font">{{ item?.order_status }}</td>
-              <td class="pt-5 font">{{ item?.type_of_payment }}</td>
+              <!-- <td (click)="order_data(item?._id)" class="pt-5 font"> {{ item?._id }}</td> -->
+              <td> <img class="table_img" src="/assets/{{ item?.images }}" alt=""> </td>
+              <td class="pt-5 font">{{ item?.name }}</td>
+              <td class="pt-5 font">{{ item?.price }}</td>
+              <td class="pt-5 font">{{ item?.quantity }}</td>
               <td class="pt-5 font">${{ item?.totalPrice }}</td>
     
             </tr>
