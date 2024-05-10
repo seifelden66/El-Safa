@@ -184,6 +184,20 @@ h1,h2,h3,h4,h5,h6,p{
     font-weight: 600;
   
 }
+
+
+.user_comment{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0px;
+}
+
+.user_comment img{
+  width: 30px;
+  height: 30px;
+}
 /* ============================== */
 .rating_bigcontainer{
   display: flex;
@@ -242,6 +256,12 @@ h1,h2,h3,h4,h5,h6,p{
 .register_rateing{
   color: #FFC107;
   font-size: 40px;
+}
+
+.btn1{
+  border: none ;
+  padding: 7px;
+  color: black;
 }
 /* =========================================== */
 @media (width<900px) {

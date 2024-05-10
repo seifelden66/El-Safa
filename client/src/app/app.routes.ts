@@ -24,8 +24,11 @@ import { resetPasswordGuard } from "./services/reset-password.guard";
 import { SingleOrderComponent } from "./admin/single-order/single-order.component";
 import { CartComponent } from "./user/cart/cart.component";
 import { ContactComponent } from "./user/contact/contact.component";
+import { TrackingComponent } from "./user/tracking/tracking.component";
+import { UserProductComponent } from "./user/user-product/user-product.component";
+import { OrderDetailsComponent } from "./user/order-details/order-details.component";
 
-export const routes: Routes = [
+export const routes: Routes = [  
   {
     path: "home",
     component: HomeComponent,
@@ -44,12 +47,12 @@ export const routes: Routes = [
     component: ProfileComponent,
   },
   {
-    path: "user",
+    path: "regester",
     component: SignUpComponent,
   },
   {
-    path: "invoice",
-    component: InvoiceComponent,
+    path: "tracking",
+    component: TrackingComponent,
   },
   {
     path: "product_details/:id",
@@ -108,13 +111,18 @@ export const routes: Routes = [
     component: ResetPasswordComponent,
     canActivate: [resetPasswordGuard],
   },
-  {
-    path: "product_details/:id",
-    component: ProductDetailsComponent,
-  },
+
   {
     path: "cart",
     component: CartComponent,
+  },
+  {
+    path: "user-product",
+    component: UserProductComponent,
+  },
+  {
+    path: "order-data/:id",
+    component: OrderDetailsComponent,
   },
   {
     path: "contact",
@@ -125,3 +133,4 @@ export const routes: Routes = [
     component: HomeComponent,
   },
 ];
+

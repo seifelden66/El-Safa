@@ -14,7 +14,7 @@ import {
 } from "@angular/core";
 
 import { SliderModule } from "primeng/slider";
-import { FormsModule } from "@angular/forms";
+import { FormControl, FormGroup, FormsModule } from "@angular/forms";
 import { SecondHeaderComponent } from "../second-header/second-header.component";
 import { FooterComponent } from "../footer/footer.component";
 import { NgbModal, NgbModalConfig } from "@ng-bootstrap/ng-bootstrap";
@@ -23,7 +23,7 @@ import { HttpClientModule } from "@angular/common/http"; // Import HttpClientMod
 
 import { Toast, ToastModule } from "primeng/toast"; // Correct import path
 import { FirestnavComponent } from "../firestnav/firestnav.component";
-
+import { RatingModule } from 'primeng/rating';
 import { ToastrService } from "ngx-toastr";
 import { CookieService } from "../../services/cookie.service";
 
@@ -41,6 +41,8 @@ import { CookieService } from "../../services/cookie.service";
     HttpClientModule,
     ToastModule,
     FirestnavComponent,
+    FormsModule,
+    RatingModule
   ],
   templateUrl: "./product-page.component.html",
   styleUrl: "./product-page.component.css",
@@ -51,6 +53,9 @@ export class ProductPageComponent implements OnInit {
   currentPage: number = 1;
   totalPages: number = 1;
   userToken : any;
+	rating = 4;
+
+
 
   constructor(
     private http: HttpClient,
@@ -59,24 +64,39 @@ export class ProductPageComponent implements OnInit {
     private modalService: NgbModal,
     private CounterService: CounterService,
     private messageService: MessageService,
-    private cookkeService : CookieService
+    private cookkeService : CookieService,
+    
   ) {
     config.backdrop = "static";
     config.keyboard = false;
+
   }
 
   allproducts: any = [];
   count: number = 0;
   selectedCategory: string | null = null;
   category : any[] = [];
+   heartToggled: { [id: string]: boolean } = {};
 
   toster = inject(ToastrService);
 
   show() {
     this.toster.success("added to Cart", "Success");
   }
-  show2() {
+
+
+  toggleHeart(prod_id :any) {
+    
+    // this.toster.success("added to Wishlist", "Success");
+    this.heartToggled[prod_id] = !this.heartToggled[prod_id];
+    console.log(this.heartToggled);
+    if(this.heartToggled[prod_id]){
     this.toster.success("added to Wishlist", "Success");
+      
+    }else{
+      
+      this.toster.error("removed from Wishlist", "Removed");
+    }
   }
 
   trackByIndex(index: number, item: any): number {
@@ -88,9 +108,6 @@ export class ProductPageComponent implements OnInit {
 
     this.getUniqueCategories();
 
-    this.CounterService.getcount().subscribe((value) => {
-      this.count = value;
-    });
     this.userToken = this.cookkeService.get('userToken');
   }
 
@@ -122,7 +139,7 @@ export class ProductPageComponent implements OnInit {
       (res: any) => {
         if (res && Array.isArray(res.products)) {
           const uniqueCategoriesSet = new Set(
-            res.products.map((item: any) => item.category['name'])
+            res.products.map((item: any) => item.category?.name)
           );
           this.category = Array.from(uniqueCategoriesSet);
         } else {
@@ -146,16 +163,9 @@ export class ProductPageComponent implements OnInit {
   }
   // ======================================
 
-  CartService = inject(CartService);
 
-  redirecttocart(product_details: any) {
-    this.CartService.addtocart(product_details);
-    console.log(product_details);
-  }
   // =============counter services=========================
-  increase() {
-    this.CartService.setcount((this.count += 1));
-  }
+
 
   // =======filter by category====================================
 
@@ -208,6 +218,11 @@ addToCart(id : string){
     }
   )
 }
+
+// =============rating form===============================
+
+
+
 
 }
 

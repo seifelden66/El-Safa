@@ -1,0 +1,74 @@
+<app-second-header></app-second-header>
+<app-firestnav></app-firestnav>
+
+<div class="card mb-3 py-4">
+
+    <div
+      class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 "
+    >
+      <div class="w-100 text-center py-1 px-2">
+        <span class="text-medium">Shipped Via:</span> UPS Ground
+      </div>
+      <div class="w-100 text-center py-1 px-2">
+        <span class="text-medium">Status:</span> Checking Quality
+      </div>
+      <div class="w-100 text-center py-1 px-2">
+        <span class="text-medium">Expected Date:</span> SEP 09, 2024
+      </div>
+    </div>
+    <div class="card-body">
+      <div
+        class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x"
+      >
+
+
+      <div
+          class="step"
+          [ngClass]="{
+            completed:
+              orderStatus == 'confirmed' ||
+              orderStatus == 'dispatched' ||
+              orderStatus == 'delivered'
+          }"
+        >
+          <div class="step-icon-wrap">
+            <div class="step-icon">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+          </div>
+          <h4 class="step-title">Confirmed Order</h4>
+        </div>
+        <div
+          class="step"
+          [ngClass]="{
+            completed:
+              orderStatus == 'dispatched' || orderStatus == 'delivered'
+          }"
+        >
+          <div class="step-icon-wrap">
+            <div class="step-icon"><i class="fas fa-truck"></i></div>
+          </div>
+          <h4 class="step-title">Product Dispatched</h4>
+        </div>
+        <div
+          class="step"
+          [ngClass]="{
+            completed: orderStatus == 'delivered'
+          }"
+        >
+          <div class="step-icon-wrap">
+            <div class="step-icon">
+              <i class="fa-solid fa-house-chimney"></i>
+            </div>
+          </div>
+          <h4 class="step-title">Product Delivered</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-sm-between align-items-center"
+  ></div>
+
+
+  <app-footer></app-footer>

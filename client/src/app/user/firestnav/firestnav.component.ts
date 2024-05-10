@@ -1,3 +1,4 @@
+import { CookieService } from './../../services/cookie.service';
 import { CartService } from './../services/cart.service';
 import { CounterService } from '../services/counter.service';
 import { JsonPipe } from '@angular/common';
@@ -17,6 +18,22 @@ import { OrderListModule } from 'primeng/orderlist';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 
+interface ProductResponse {
+  currentPage: number;
+  totalPages: number;
+  pageSize: number;
+  totalCount: number;
+  products: Product[];
+}
+
+interface Product {
+  _id: string;
+  name: string;
+  short_desc: string;
+  desc: string;
+  quantity: number;
+  // Add any other properties here
+} 
 @Component({
   selector: 'app-firestnav',
   standalone: true,
@@ -43,7 +60,9 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './firestnav.component.css'
 })
 export class FirestnavComponent {
-  constructor(private router : Router ,private http :HttpClient,private CounterService :CounterService,private CartService :CartService){}
+  constructor(private router : Router ,private http :HttpClient,private CounterService :CounterService,private CartService :CartService,private CookieService :CookieService){}
+
+
 
   redirect(){
   
@@ -90,36 +109,26 @@ export class FirestnavComponent {
   categories: string[] = [];
   selectedCategory: string | null = null;
   count:number=0
-  
+  category: any[] = [];
+  usertoken: any;
+
   ngOnInit(): void {
-    this.getAllProducts();
     
-    this.CartService.getcount().subscribe((res)=>{
-      this.count=res
-    })
-  
-  
-    // this.CartService.addtocart
-  
+    this.getProduct()
+    this.usertoken = this.CookieService.get('userToken')
+    // console.log(this.usertoken);
+    
   
   }
-  
-  getAllProducts(): void {
-    this.http.get('https://dummyjson.com/products').subscribe((res: any) => {
-      if (res && res.products && Array.isArray(res.products)) {
-        this.products = res.products;
-        // Extract unique categories
-        this.categories = Array.from(new Set(this.products.map((product: any) => product.category)));
-      } else {
-        console.error('Failed to retrieve products');
-      }
-    }, (error) => {
-      console.error('Error fetching products:', error);
+
+
+  getProduct() {
+    this.http.get<ProductResponse>('http://localhost:8000/v1/products').subscribe((res) => {
+      this.category =res.products
+      console.log(res.products);
     });
   }
   
-  filterProductsByCategory(category: string): void {
-    this.selectedCategory = category;            
-  }
+
   
 }

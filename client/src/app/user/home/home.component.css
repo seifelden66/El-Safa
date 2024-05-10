@@ -5,6 +5,9 @@
   text-decoration: none;
 }
 
+.container-fluid{
+  background-color:#F4F1FF ;
+}
 /* Add this CSS to your stylesheet */
 /* ========================================== */
 .carousel_img{
@@ -177,7 +180,59 @@
   border-radius: 6px;
   padding: 15px;
   width: 49%;
+  position: relative;
+  overflow: hidden;
 
+}
+
+.product_data{
+  position: relative;
+  z-index: 2;
+  
+}
+
+.shap{
+  border-radius:0% 100% 100% 0% / 100% 0% 100% 0%    ;
+  position: absolute;
+  width: 50%  ;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient( 180deg ,#E4BBE5,#C676CA,#9B11A3,#8931B0,#5D74C9,#1ED1ED );
+}
+
+.shap2{
+  position: absolute;
+  top: 0;
+  right:10%;
+  display: flex;
+  gap: 30px;
+  
+}
+
+.shap2_1{
+  height: 180px;
+  width: 30px;
+  background: linear-gradient(to bottom ,#E4BBE5,#C676CA,#9B11A3,#8931B0,#5D74C9,#1ED1ED );
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  
+}
+
+.shap2_2{
+  height: 230px;
+  width: 30px;
+  background: linear-gradient(to bottom ,#E4BBE5,#C676CA,#9B11A3,#8931B0,#5D74C9,#1ED1ED );
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.shap2_3{
+  height: 180px;
+  width: 30px;
+  background: linear-gradient(to bottom ,#E4BBE5,#C676CA,#9B11A3,#8931B0,#5D74C9,#1ED1ED );
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
 .product_img {
@@ -253,7 +308,7 @@
 
 /* ======================= */
 .some_offers {
-  padding: 20px;
+  padding: 20px ;
   background-color: #F4F1FF;
 }
 
@@ -316,9 +371,10 @@ background-color: transparent;
 .services_container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 60px 20px;
   /* gap: 7px ; */
-  background-color: #eceefa;
+  background-color: #F4F1FF;
+
 }
 
 .service{

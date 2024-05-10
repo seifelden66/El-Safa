@@ -38,7 +38,7 @@ export class CartService {
   increase(id:any){
 
     let item = this.item.find((item)=> item.id === id)
-    // console.log(item);
+    console.log(id);
 
     if(item.quantity >= 1){
       item.quantity++
