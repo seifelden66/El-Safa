@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const { ObjectId } = require("mongoose");
 const { validationResult } = require("express-validator");
 const {
   getAllUser,
@@ -15,6 +14,7 @@ const {
   cheackCode,
   resetPassword,
   GoogleAccountOauth,
+  DashboardDetails,
 } = require("../models/users/users.model");
 const {
   generateAndSetToken,
@@ -363,6 +363,17 @@ async function httpGoogleAccountOauth(accessToken, refreshToken, user, done) {
     done(null, false);
   }
 }
+// !SECTION end oauth with google
+
+async function httpDashboardDetails(req, res) {
+  try {
+    const data = await DashboardDetails();
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
 
 module.exports = {
   httpGetAllUser,
@@ -376,4 +387,5 @@ module.exports = {
   httpCheckCode,
   httpResetPassword,
   httpGoogleAccountOauth,
+  httpDashboardDetails,
 };

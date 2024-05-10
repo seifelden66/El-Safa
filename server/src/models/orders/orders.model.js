@@ -14,6 +14,13 @@ async function userOrders(id) {
   return await ordersSchema.find({ userId: id }, { orderItems: 0, __v: 0 });
 }
 
+async function pendingOrders() {
+  return await ordersSchema.find(
+    { order_status: "pending" },
+    { orderItems: 0, __v: 0 }
+  );
+}
+
 async function orderDetails(id) {
   return await ordersSchema.findById(id);
 }
@@ -55,4 +62,5 @@ module.exports = {
   deliverOrder,
   userOrders,
   PayOnline,
+  pendingOrders,
 };
