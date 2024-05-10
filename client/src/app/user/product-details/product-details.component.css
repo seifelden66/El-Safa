@@ -11,6 +11,10 @@ h1,h2,h3,h4,h5,h6,p{
   background-color: #EEF0FC;
 }
 
+.big_container{
+  background-color: #F4F1FF;
+}
+
 .title{
 
   padding: 0px 10px ;
@@ -35,7 +39,10 @@ h1,h2,h3,h4,h5,h6,p{
 .gallary_images {
   display: flex;
   align-items: center;
+  border: solid;
   justify-content: space-around;
+  
+  
 }
 
 .main_img {
@@ -46,9 +53,10 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 .main_img img {
-  width: 70%;
+  width: 100%;
   height: 200px;
   object-fit: contain;
+  
 }
 
 .img1 {
@@ -159,6 +167,9 @@ h1,h2,h3,h4,h5,h6,p{
 /* =============================== */
 .product_descusion{
   margin: 0px auto;
+  background-color: white;
+  padding: 20px ;
+  
 
 }
 
@@ -237,32 +248,50 @@ h1,h2,h3,h4,h5,h6,p{
   color: black;
 
 }
+
 /* ===================================== */
-.register_rate{
+.nav1{
+  padding: 10px ;
+  background-color: #7C5CD3;
+  color: white;
+}
+
+.rate_comment{
   display: flex;
   flex-direction: column;
-  gap: 10px ;
+  gap: 20px;
 }
 
-.thefirestreview{
-  font-weight: 500;
-  color: #1E293B;
+.rating_form{
+  display: flex;
+  flex-direction: column;
 }
 
-.input-group input , .input-group span{
-  padding: 10px;
+.rating_input{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 5px 2px;
+}
+.rating_input input{
+  width: 200px ;
+  border: none;
+  outline: none;
+  padding: 7px ;
+  border-radius: 7px;
+  background-color: #F4F1FF;
+  font-size: 16px;
+
 }
 
-.register_rateing{
-  color: #FFC107;
-  font-size: 40px;
+.rating_input button{
+  width: 100px;
+  padding: 3px 5px ;
+  background-color: #7C5CD3;
+  border: none;
+
 }
 
-.btn1{
-  border: none ;
-  padding: 7px;
-  color: black;
-}
 /* =========================================== */
 @media (width<900px) {
 

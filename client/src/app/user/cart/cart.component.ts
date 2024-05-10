@@ -286,6 +286,7 @@ export class CartComponent implements OnInit {
           this.cartItems.items = this.cartItems.items.filter((elem: any) => elem.id !== id);
         },
         error => {
+          
           console.log(error);
         }
       );
