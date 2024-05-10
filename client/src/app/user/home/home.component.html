@@ -98,11 +98,16 @@
   
   <div class="row mostsells_container py-5 px-3">
     <h3 class="some_offersh d-flex justify-content-center" > New Collection</h3>
-    <div class="mostsells">
-      <div class="product_data">
-        <h1>! New Collection</h1>
-        <p class="my-3 Launch_offer ">Launch Offer 15% Off!</p>
-        <button (click)="redirect4()" type="button" class="btn carusel_bt btn-outline-secondary w-100 p-2 my-5">
+    <div data-aos="zoom-in" class="mostsells">
+
+      <div class="shap">
+        
+      </div>
+
+      <div class="product_data ">
+        <h1 style="color: white; "> New Collection !</h1>
+        <p style="color: white;" class="my-3 Launch_offer  ">Launch Offer 15% Off!</p>
+        <button style="border: none;" (click)="redirect4()" type="button" class="btn carusel_bt btn-outline-secondary w-100 p-2 my-5">
           View collection
         </button>
       </div>
@@ -112,7 +117,12 @@
       </div>
     </div>
   
-    <div class="mostsells">
+    <div data-aos="zoom-in" class="mostsells">
+      <div class="shap2">
+        <div class="shap2_1"></div>
+        <div class="shap2_2"></div>
+        <div class="shap2_3"></div>
+      </div>
       <div class="product_data">
         <h1>! New Collection</h1>
         <p class="my-3 Launch_offer ">Launch Offer 15% Off!</p>
@@ -127,7 +137,7 @@
     </div>
   </div>
   
-  <div class="row brands ">
+  <div  class="row brands ">
     <div class="col-10 col-xl-4 col-xxl-5">
       <div class="brand_names">
         <h1>Most Populer Brands</h1>
@@ -137,23 +147,23 @@
   
     <div class="col-10 col-xl-5 col-xxl-5">
       <div class="brand_imgs_container">
-        <div class="brands_imgs">
+        <div class="brands_imgs" data-aos="zoom-in">
           <img src="../../assets/brand1.png" alt="" />
         </div>
   
-        <div class="brands_imgs">
+        <div class="brands_imgs" data-aos="zoom-in">
           <img src="../../assets/brand2.png" alt="" />
         </div>
   
-        <div class="brands_imgs">
+        <div class="brands_imgs" data-aos="zoom-in">
           <img src="../../assets/brand3.png" alt="" />
         </div>
   
-        <div class="brands_imgs">
+        <div class="brands_imgs" data-aos="zoom-in">
           <img src="../../assets/brand4.png" alt="" />
         </div>
   
-        <div class="brands_imgs">
+        <div class="brands_imgs" data-aos="zoom-in">
           <img src="../../assets/brand5.png" alt="" />
         </div>
       </div>
@@ -167,7 +177,7 @@
       @for (product of productcenter.slice(0,8); track $index) {
 
         <div class="col-9 col-xxl-2 col-xl-3 col-md-5 offer_card my-2 ">
-          <div class="card offer_data p-4 h-100 ">
+          <div data-aos="zoom-in" class="card offer_data p-4 h-100 ">
             
             <img
               [src]="product.thumbnail"
@@ -184,7 +194,7 @@
 
     
               <button type="button" (click)="redirect4()" class="btn  carusel_Btnss btn-success d-flex w-100 p-1 mt-3">
-                <span>Show More details</span> 
+                <span>Most selling</span> 
               </button>
             </div>
           </div>
@@ -198,7 +208,7 @@
   
   <div class="services">
     <div class="row services_container">
-      <div class="service">
+      <div class="service" data-aos="zoom-in"  data-aos-easing="linear">
         <div class="card flex justify-content-center">
           <p-card header="">
             <i class="pi pi-truck icon_color1" style="font-size: 2rem"></i>
@@ -213,7 +223,7 @@
         </div>
       </div>
   
-      <div class="service">
+      <div class="service" data-aos="zoom-in"  data-aos-easing="linear">
         <div class="card flex justify-content-center">
           <p-card header="">
             <i class="pi pi-server      icon_color3    " style="font-size: 2rem"></i>
@@ -227,7 +237,7 @@
         </div>
       </div>
   
-      <div class="service">
+      <div class="service" data-aos="zoom-in"  data-aos-easing="linear">
         <div class="card flex justify-content-center">
           <p-card header="">
             <i class="pi pi-credit-card icon_color4" style="font-size: 2rem"></i>
@@ -241,7 +251,7 @@
         </div>
       </div>
 
-      <div class="service">
+      <div class="service" data-aos="zoom-in"  data-aos-easing="linear">
         <div class="card flex justify-content-center">
           <p-card header="">
             <i class="fa-solid fa-truck-fast icon_color2"style="font-size: 2rem" ></i>
