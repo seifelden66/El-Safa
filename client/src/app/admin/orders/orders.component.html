@@ -1,48 +1,77 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
-  <div class="body w-100">
+  <div class="admin-body w-100">
     <app-navbar class="w-100"></app-navbar>
     <div class="container-fluid">
       <h1 class="h3 my-4 text-gray-800">Orders</h1>
       <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h3 class="m-0 font-weight-bold text-primary">Orders Tables</h3>
+        <div
+          class="card-header py-3 d-flex justify-content-between align-items-center"
+        >
+          <button class="admin-btn" (click)="filterByStatus('pending')">
+            Pending
+          </button>
+          <button class="admin-btn" (click)="filterByStatus('confirmed')">
+            Confirmed
+          </button>
+          <button class="admin-btn" (click)="filterByStatus('dispatched')">
+            Dispatched
+          </button>
+          <button class="admin-btn" (click)="filterByStatus('delivered')">
+            Delivered
+          </button>
+          <input
+            class="form-control w-25"
+            type="text"
+            pInputText
+            placeholder="Search by order id ..."
+            (input)="applyFilter($event)"
+          />
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table
+            <p-table
+              [value]="filterOrders"
               class="table table-bordered"
-              id="dataTable"
-              width="100%"
-              cellspacing="0"
+              [paginator]="true"
+              [rows]="rows"
+              [totalRecords]="totalRecords"
+              [rowsPerPageOptions]="rowsPerPageOptions"
+              (onPageChange)="onPageChange($event)"
             >
-              <thead>
-                <tr>
+              <ng-template pTemplate="header">
+                <tr class="table-header-tr">
                   <th>ORDERID</th>
                   <th>ADDRESS</th>
                   <th>TOTAL</th>
                   <th>TYPE</th>
                   <th>STATUS</th>
                 </tr>
-              </thead>
-
-              <tbody>
-                @for(order of orders; track order._id){
-
-                <tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-order>
+                <tr class="table-body-tr">
                   <td>
-                    <a routerLink="/admin/order-details/{{ order!._id }}">{{
-                      order!._id
+                    <a routerLink="/admin/order-details/{{ order._id }}">{{
+                      order._id
                     }}</a>
                   </td>
-                  <td>{{ order!.Delivery_address }}</td>
-                  <td>${{ order!.totalPrice }}</td>
-                  <td>{{ order!.type_of_payment }}</td>
-                  <td>{{ order!.order_status }}</td>
+                  <td>{{ order.Delivery_address }}</td>
+                  <td>${{ order.totalPrice }}</td>
+                  <td>{{ order.type_of_payment }}</td>
+                  <td
+                    class="order-status"
+                    [ngClass]="{
+                      'status-pending': order.order_status === 'pending',
+                      'status-confirmed': order.order_status === 'confirmed',
+                      'status-dispatched': order.order_status === 'dispatched',
+                      'status-delivered': order.order_status === 'delivered'
+                    }"
+                  >
+                    {{ order.order_status }}
+                  </td>
                 </tr>
-                }
-              </tbody>
-            </table>
+              </ng-template>
+            </p-table>
           </div>
         </div>
       </div>

@@ -4,35 +4,6 @@
 .h3 {
   color: rgb(118, 118, 235);
 }
-/* Override Bootstrap styles for the table */
-#dataTable_wrapper {
-  padding: 20px;
-}
-
-#dataTable_length label {
-  margin-bottom: 0;
-}
-
-.table thead th {
-  background-color: #f8f9fc;
-  color: #6c757d;
-  border-bottom: 2px solid #dee2e6;
-}
-
-.table th,
-.table td {
-  padding: 10px;
-  color: #6c757d;
-  text-align: center;
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #f3f3f3;
-}
-
-.table-hover tbody tr:hover {
-  background-color: #e2e6ea;
-}
 
 .card {
   border: none;
@@ -41,54 +12,4 @@
 .card-header {
   background-color: #fff;
   border-bottom: 1px solid #ddd;
-}
-
-.btn-sm {
-  padding: 6px 12px;
-  font-size: 0.875rem;
-}
-/* Search input style */
-.input-group {
-  width: 250px;
-  margin-bottom: 20px;
-}
-
-.input-group input[type="text"] {
-  border-radius: 0;
-}
-
-.input-group button {
-  border-radius: 0;
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #f3f3f3;
-}
-
-.table-hover tbody tr:hover {
-  background-color: #e2e6ea;
-}
-
-/* Action buttons style */
-
-.btn i {
-  margin-right: 0.1rem;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
-  border-color: #bd2130;
-}
-
-.delete-product {
-  color: red;
-}
-
-.edit-product {
-  color: blue;
-}
-
-/* Custom CSS for table borders */
-table.table-bordered tbody tr {
-  border-bottom: 1px solid #dee2e6; /* Add bottom border between rows */
 }

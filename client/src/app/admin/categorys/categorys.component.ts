@@ -1,3 +1,4 @@
+import { PaginatorModule } from "primeng/paginator";
 import { Component } from "@angular/core";
 import { NavbarComponent } from "../navbar/navbar.component";
 import { SidebarComponent } from "../sidebar/sidebar.component";
@@ -10,10 +11,18 @@ import {
   Validators,
 } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
+import { TableModule } from "primeng/table";
 @Component({
   selector: "app-categorys",
   standalone: true,
-  imports: [NavbarComponent, SidebarComponent, NgClass, ReactiveFormsModule],
+  imports: [
+    NavbarComponent,
+    SidebarComponent,
+    NgClass,
+    ReactiveFormsModule,
+    TableModule,
+    PaginatorModule,
+  ],
   templateUrl: "./categorys.component.html",
   styleUrl: "./categorys.component.css",
 })
@@ -22,6 +31,11 @@ export class CategorysComponent {
     private categorysService: CategorysService,
     private http: HttpClient
   ) {}
+
+  totalRecords!: number;
+  rowsPerPageOptions = [5, 10, 20];
+  rows = 10;
+  first = 0;
   categorys: any;
   AddNewCategoryModelStatus: boolean = false;
   CategoryForm!: FormGroup;
@@ -61,6 +75,12 @@ export class CategorysComponent {
           console.log(error);
         }
       );
+  }
+
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.getCategorys();
   }
 }
 

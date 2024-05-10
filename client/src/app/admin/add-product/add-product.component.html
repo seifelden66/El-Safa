@@ -1,6 +1,6 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
-  <div class="body w-100">
+  <div class="admin-body w-100">
     <app-navbar class="w-100"></app-navbar>
     <div class="container-fluid">
       <h1 class="h3 my-4 text-gray-800">Add New Product</h1>
@@ -39,7 +39,9 @@
               />
               @if(productForm.controls['quantity'].touched &&
               productForm.controls['quantity'].invalid){
-              <small class="small admin-error mx-3">*Quantity is requird </small>
+              <small class="small admin-error mx-3"
+                >*Quantity is requird
+              </small>
               }
             </div>
           </div>
@@ -140,7 +142,7 @@
             >
             }
           </div>
-          <button class="btn btn-primary">Add Product</button>
+          <button class="admin-btn">Add Product</button>
         </form>
       </div>
     </div>

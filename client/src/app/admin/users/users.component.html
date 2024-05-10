@@ -1,45 +1,50 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
-  <div class="body w-100">
+  <div class="admin-body w-100">
     <app-navbar class="w-100"></app-navbar>
     <div class="container-fluid">
       <h1 class="h3 my-4 text-gray-800">Users</h1>
       <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h3 class="m-0 font-weight-bold text-primary">Users Tables</h3>
+        <div class="card-header py-3 d-flex justify-content-center">
+          <div class="input-group w-50">
+            <input
+              type="text"
+              pInputText
+              class="form-control"
+              placeholder="Search by email..."
+              (input)="applyFilter($event)"
+            />
+          </div>
         </div>
         <div class="card-body">
-          <div class="table-responsive">
-            <table
-              class="table table-bordered"
-              id="dataTable"
-              width="100%"
-              cellspacing="0"
-            >
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>email</th>
-                  <th>phone</th>
-                  <th>location</th>
-                  <th>role</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                @for(user of users; track user._id){
-
-                <tr>
-                  <td>{{ user?.name }}</td>
-                  <td>{{ user?.email }}</td>
-                  <td>{{ user?.phone }}</td>
-                  <td>{{ user?.location }}</td>
-                  <td>{{ user?.role }}</td>
-                </tr>
-                }
-              </tbody>
-            </table>
-          </div>
+          <p-table
+            class="table table-bordered"
+            [value]="filteredUsers || users"
+            [paginator]="true"
+            [rows]="rows"
+            [totalRecords]="totalRecords"
+            [rowsPerPageOptions]="rowsPerPageOptions"
+            (onPageChange)="onPageChange($event)"
+          >
+            <ng-template pTemplate="header">
+              <tr class="table-header-tr">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Location</th>
+                <th>Role</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+              <tr class="table-body-tr">
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.location }}</td>
+                <td>{{ user.role }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
         </div>
       </div>
     </div>
