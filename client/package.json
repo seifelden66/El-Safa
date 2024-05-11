@@ -31,6 +31,7 @@
     "chart.js": "^4.4.2",
     "ng2-charts": "^6.0.0",
     "ngx-cookie": "^6.0.1",
+    "ngx-owl-carousel-o": "^17.0.0",
     "ngx-toastr": "^18.0.0",
     "primeicons": "^7.0.0",
     "primeng": "^17.15.0",

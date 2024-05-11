@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  padding: 13px;
+  padding: 13px ;
   background-color: #FFFFFF;
 }
 
@@ -26,7 +26,19 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+
 }
+
+.Companyandsearch img{
+  width: 150px;
+  height: 65px;
+  object-fit: cover;
+  display: flex;
+  justify-content: start;
+  color: #AE4EE8;
+}
+
+
 .searchbar{
   border-radius: 8px;
   color: #7C5ED8 ;
