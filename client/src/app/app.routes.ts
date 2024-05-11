@@ -40,6 +40,10 @@ export const routes: Routes = [
     canActivate: [isLoginGuard],
   },
   {
+    path: "product/:search",
+    component: ProductPageComponent,
+  },
+  {
     path: "product",
     component: ProductPageComponent,
   },

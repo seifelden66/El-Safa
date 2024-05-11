@@ -183,6 +183,27 @@ const getTopRatedProducts = async (req, res) => {
   }
 };
 
+const searchProduct = async (req, res) => {
+  const searchQuery = req.query.search;
+  try {
+    const searchResult = await Product.aggregate([
+      {
+        $search: {
+          index: "productSearch",
+          text: {
+            query: searchQuery,
+            path: "name",
+          },
+        },
+      },
+    ]);
+    res.status(200).json(searchResult);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getProducts,
   getProduct,
@@ -192,4 +213,5 @@ module.exports = {
   addComment,
   addRating,
   getTopRatedProducts,
+  searchProduct,
 };

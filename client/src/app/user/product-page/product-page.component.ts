@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { NgbRatingModule } from "@ng-bootstrap/ng-bootstrap";
 import { BrowserModule } from "@angular/platform-browser";
 import { ButtonModule } from "primeng/button";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   Component,
   OnInit,
@@ -23,7 +23,7 @@ import { HttpClientModule } from "@angular/common/http"; // Import HttpClientMod
 
 import { Toast, ToastModule } from "primeng/toast"; // Correct import path
 import { FirestnavComponent } from "../firestnav/firestnav.component";
-import { RatingModule } from 'primeng/rating';
+import { RatingModule } from "primeng/rating";
 import { ToastrService } from "ngx-toastr";
 import { CookieService } from "../../services/cookie.service";
 
@@ -42,7 +42,7 @@ import { CookieService } from "../../services/cookie.service";
     ToastModule,
     FirestnavComponent,
     FormsModule,
-    RatingModule
+    RatingModule,
   ],
   templateUrl: "./product-page.component.html",
   styleUrl: "./product-page.component.css",
@@ -52,10 +52,9 @@ export class ProductPageComponent implements OnInit {
   // rating = 8;
   currentPage: number = 1;
   totalPages: number = 1;
-  userToken : any;
-	rating = 4;
-
-
+  userToken: any;
+  rating = 4;
+  search!: string;
 
   constructor(
     private http: HttpClient,
@@ -64,34 +63,29 @@ export class ProductPageComponent implements OnInit {
     private modalService: NgbModal,
     private CounterService: CounterService,
     private messageService: MessageService,
-    private cookkeService : CookieService,
-    
+    private cookkeService: CookieService,
+    private ActivatedRoute: ActivatedRoute
   ) {
     config.backdrop = "static";
     config.keyboard = false;
-
   }
 
   allproducts: any = [];
   count: number = 0;
   selectedCategory: string | null = null;
-  category : any[] = [];
-   heartToggled: { [id: string]: boolean } = {};
+  category: any[] = [];
+  heartToggled: { [id: string]: boolean } = {};
 
   toster = inject(ToastrService);
 
 
-
-  toggleHeart(prod_id :any) {
-    
+  toggleHeart(prod_id: any) {
     // this.toster.success("added to Wishlist", "Success");
     this.heartToggled[prod_id] = !this.heartToggled[prod_id];
     console.log(this.heartToggled);
-    if(this.heartToggled[prod_id]){
-    this.toster.success("added to Wishlist", "Success");
-      
-    }else{
-      
+    if (this.heartToggled[prod_id]) {
+      this.toster.success("added to Wishlist", "Success");
+    } else {
       this.toster.error("removed from Wishlist", "Removed");
     }
   }
@@ -101,35 +95,39 @@ export class ProductPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getallproduct();
-
     this.getUniqueCategories();
 
-    this.userToken = this.cookkeService.get('userToken');
+    this.userToken = this.cookkeService.get("userToken");
+
+    this.ActivatedRoute.params.subscribe((param) => {
+      if (param["search"]) {
+        this.search = param["search"];
+        console.log(param["search"]);
+      } else {
+        this.getallproduct();
+      }
+    });
   }
 
+  searchOnProduct() {
+    this.http.get("");
+  }
 
   getallproduct(page = 1) {
-    this.http
-      .get("http://localhost:8000/v1/products")
-      .subscribe((res: any) => {
-        this.allproducts = res.products;
-        this.totalPages = res.totalPages;
-        console.log(this.allproducts);
-        
-      });
+    this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
+      this.allproducts = res.products;
+      this.totalPages = res.totalPages;
+      console.log(this.allproducts);
+    });
   }
   onPageChange(pageNumber: number) {
     this.currentPage = pageNumber;
     this.getallproduct(pageNumber);
   }
 
-
   redirect(product_id: any) {
-    this.router.navigate([`/product_details`,product_id]);
+    this.router.navigate([`/product_details`, product_id]);
   }
-
-
 
   getUniqueCategories(): void {
     this.http.get("http://localhost:8000/v1/products").subscribe(
@@ -148,7 +146,6 @@ export class ProductPageComponent implements OnInit {
       }
     );
   }
-  
 
   // ===================================
 
@@ -160,72 +157,69 @@ export class ProductPageComponent implements OnInit {
   }
   // ======================================
 
-
   // =============counter services=========================
-
 
   // =======filter by category====================================
 
-// Inside ProductPageComponent class
-selectedCategories: string[] = []; // Track selected categories
+  // Inside ProductPageComponent class
+  selectedCategories: string[] = []; // Track selected categories
 
-onCategoryChange(category: string): void {
-  if (category === 'All Products') {
-    this.selectedCategory = null; // Reset selected category to null
-  } else {
-    this.selectedCategory = category; // Set selected category
-  }
-  this.filterProducts(); // Apply filtering
-}
-
-filterProducts(): void {
-  if (!this.selectedCategory) {
-    // If no category is selected, show all products
-    this.getallproduct();
-    return;
+  onCategoryChange(category: string): void {
+    if (category === "All Products") {
+      this.selectedCategory = null; // Reset selected category to null
+    } else {
+      this.selectedCategory = category; // Set selected category
+    }
+    this.filterProducts(); // Apply filtering
   }
 
-  // Filter products based on the selected category
-  this.http.get("http://localhost:8000/v1/products").subscribe(
-    (res: any) => {
-      if (res && Array.isArray(res.products)) {
-        this.allproducts = res.products.filter(
-          (product: any) => product.category && product.category.name === this.selectedCategory
-        );
-        this.totalPages = res.totalPages;
-      } else {
-        console.log("Products not found or is not an array");
+  filterProducts(): void {
+    if (!this.selectedCategory) {
+      // If no category is selected, show all products
+      this.getallproduct();
+      return;
+    }
+
+    // Filter products based on the selected category
+    this.http.get("http://localhost:8000/v1/products").subscribe(
+      (res: any) => {
+        if (res && Array.isArray(res.products)) {
+          this.allproducts = res.products.filter(
+            (product: any) =>
+              product.category &&
+              product.category.name === this.selectedCategory
+          );
+          this.totalPages = res.totalPages;
+        } else {
+          console.log("Products not found or is not an array");
+        }
+      },
+      (err) => {
+        console.log(err.error);
       }
-    },
-    (err) => {
-      console.log(err.error);
-    }
-  );
+    );
+  }
+
+  addToCart(id: string) {
+    this.http
+      .post(
+        "http://localhost:8000/v1/cart/addToCart",
+        { product: { id: id, quantity: 1 } },
+        {
+          headers: {
+            Authorization: `Bearer ${this.userToken}`,
+          },
+        }
+      )
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  // =============rating form===============================
 }
-
-addToCart(id : string){  
-    
-  this.http.post("http://localhost:8000/v1/cart/addToCart", {product : {id : id, quantity : 1}}, {headers : {
-    Authorization : `Bearer ${this.userToken}`
-  }}).subscribe(
-    res =>{
-      console.log(res);
-        this.toster.success("added to Cart", "Success");
-    
-    },
-    error => {
-      console.log(error);
-      this.toster.error("Please Login Firest", "Error");
-
-    }
-  )
-}
-
-// =============rating form===============================
-
-
-
-
-}
-
-

@@ -12,27 +12,27 @@
 
           <div class="item_name">
             <p class="m-0">All Products</p>
-            <input type="radio" name="category" (change)="onCategoryChange('All Products')" />
+            <input
+              type="radio"
+              name="category"
+              (change)="onCategoryChange('All Products')"
+            />
           </div>
 
           <ng-container>
-            @if (category && category.length) {
-
-            @for (cat of category; track $index) {
+            @if (category && category.length) { @for (cat of category; track
+            $index) {
             <div class="item_name">
               <p class="m-0">{{ cat }}</p>
-              <input type="radio" name="category" (change)="onCategoryChange(cat)" />
+              <input
+                type="radio"
+                name="category"
+                (change)="onCategoryChange(cat)"
+              />
             </div>
-            }
-
-            }
-
+            } }
           </ng-container>
-
-
-
         </div>
-
       </div>
     </div>
 
@@ -51,8 +51,6 @@
           </div>
 
           <div class="product_price p-1">
-
-
             <div class="product_data_card">
               <div class="data1">
                 <h2 class="m-0">{{ product?.name }}</h2>
@@ -65,20 +63,14 @@
   
                   </div>
                 } -->
-
               </div>
 
               <div class="data2">
                 <h1 class="m-0">${{ product?.price }}</h1>
               </div>
-
             </div>
 
-
-
-
-            <div class="add_fav_btn Btns   ">
-
+            <div class="add_fav_btn Btns">
               <div class="card w-75">
                 <p-toast></p-toast>
                 <button type="button" pButton (click)="addToCart(product?._id)" label="" class="btn1">Add to
@@ -88,35 +80,27 @@
 
               <div class="card w-25">
                 <p-toast></p-toast>
-                <button type="button" pButton (click)="toggleHeart(product?._id)" (click)="addToCart(product?._id)"
-                  label="" class="fav_btn btn2"><i class="fa-solid fa-heart hearts "
-                    [class.hideen]="!heartToggled[product?._id]"></i></button>
-
+                <button
+                  type="button"
+                  pButton
+                  (click)="toggleHeart(product?._id)"
+                  (click)="addToCart(product?._id)"
+                  label=""
+                  class="fav_btn btn2"
+                >
+                  <i
+                    class="fa-solid fa-heart hearts"
+                    [class.hideen]="!heartToggled[product?._id]"
+                  ></i>
+                </button>
               </div>
-
-
-
-
-
             </div>
-
           </div>
-
-
-
         </div>
 
-
         }
-
       </div>
-
-
-
     </div>
-
-
-
   </div>
 </div>
 

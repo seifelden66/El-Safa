@@ -64,6 +64,7 @@ export class ProductsComponent implements OnInit {
       this.totalRecords = this.products.length;
     });
   }
+
   // for pagination
   onPageChange(event: any) {
     this.first = event.first;
