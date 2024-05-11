@@ -38,8 +38,13 @@
           </div>
           
           <div class="user_img">
-            
-            <img data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" src="../../assets/icon-256x256-removebg-preview.png" alt="" />
+            @if (userdata?.profile_picture) {
+            <img data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" src="/assets/{{ userdata?.profile_picture }}" alt="" />
+
+            }@else {
+              <img data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" src="../../assets/icon-256x256-removebg-preview.png"z alt="" />
+
+            }
             <div class="offcanvas offcanvas-start big_sidebar" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
               <h2 class="d-flex justify-content-center py-4">User options</h2>
               <!-- <div class="offcanvas-header">

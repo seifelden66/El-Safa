@@ -96,7 +96,7 @@ export class SignUpComponent {
                 ";path=/";
             }
 
-            // this.route.navigate(["/home"]);
+            this.route.navigate(["/home"]);
             setCookie("userToken", token, 7); // Set the token as a cookie
             console.log(token); // Log the token
           } else {
