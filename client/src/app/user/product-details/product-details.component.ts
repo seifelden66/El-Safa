@@ -11,6 +11,7 @@ import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { CookieService } from "../../services/cookie.service";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatTabsModule } from "@angular/material/tabs";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-product-details",
@@ -141,6 +142,8 @@ export class ProductDetailsComponent implements OnInit {
   commentError: string = "";
   ratingSubmitted: boolean = false;
   commentSubmitted: boolean = false;
+  toster = inject(ToastrService);
+
 
   @Input() id?: any;
 
@@ -228,12 +231,27 @@ submitComments() {
   )
 }
 
-addtocart(product_details : any) {
-  this.cartService.addtocart(product_details);
-  this.router.navigate([`cart`]);
+show() {
+  this.toster.success("added to Cart", "Success");
 }
-  
+redirect(){
+  this.router.navigate([`home`])
+}
 
+addToCart(id : string){  
+  this.http.post("http://localhost:8000/v1/cart/addToCart", {product : {id : id, quantity : 1}}, {headers : {
+    Authorization : `Bearer ${this.userToken}`
+  }}).subscribe(
+    res =>{
+      console.log(res);
+    },
+    error => {
+      console.log(error);
+    }
+  )
+}
+
+  
 }
     // =================================================
 

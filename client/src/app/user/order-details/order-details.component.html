@@ -39,7 +39,7 @@
           <ng-template pTemplate="body" let-item>
             <tr class="product_data">
               <!-- <td (click)="order_data(item?._id)" class="pt-5 font"> {{ item?._id }}</td> -->
-              <td> <img class="table_img" src="/assets/{{ item?.images }}" alt=""> </td>
+              <td> <img class="table_img" src="/assets/{{ item!.images }}" alt=""> </td>
               <td class="pt-5 font">{{ item?.name }}</td>
               <td class="pt-5 font">{{ item?.price }}</td>
               <td class="pt-5 font">{{ item?.quantity }}</td>
