@@ -1,37 +1,23 @@
-.bg-gradient-primary {
-  background: rgb(147,51,234); /* Purple gradient */
-  background-image:  linear-gradient(360deg, rgba(147,51,234,1) 2%, rgba(192,132,240,1) 72%, rgba(216,180,254,1) 100%);/* Purple gradient */
-  background-size: cover;
-}
-
 .sidebar {
+  background-color: #f5f3ff;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+  color: #1d1430;
   width: 6.5rem;
   height: 100%;
+  transition: width 0.5s;
+  font-weight: 600;
+  font-size: 1.2em;
+  opacity: 0.7;
+  font-family: "Arial", sans-serif;
 }
 
-.sidebar .nav-item {
-  position: relative;
+/* Hover effect for nav links */
+.sidebar .nav-item .nav-link:hover {
+  color: #a21caf;
+  background-color: #f5d0fe;
 }
 
-.sidebar .nav-item:last-child {
-  margin-bottom: 1rem;
-}
-
-.sidebar .nav-item .nav-link {
-  text-align: center;
-  padding: 0.75rem 1rem;
-  width: 6.5rem;
-}
-
-.sidebar .nav-item .nav-link span {
-  font-size: 0.65rem;
-  display: block;
-}
-
-.sidebar .nav-item.active .nav-link {
-  font-weight: 700;
-}
-
+/* Styles for the sidebar brand */
 .sidebar .sidebar-brand {
   height: 4.375rem;
   text-decoration: none;
@@ -41,141 +27,129 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
-  z-index: 1;
 }
 
-.sidebar .sidebar-brand .sidebar-brand-icon i {
-  font-size: 2rem;
+/* Adjusting icon sizes and margins */
+.sidebar .nav-item .nav-link i {
+  font-size: 1.2rem; /* Larger icons */
+  margin-right: 0.5rem; /* More space between icon and text */
 }
 
-.sidebar .sidebar-brand .sidebar-brand-text {
-  display: none;
-}
-
+/* Divider style */
 .sidebar hr.sidebar-divider {
-  margin: 0 1rem 1rem;
+  border-top: 1px solid #dee2e6; /* Light grey divider */
 }
 
+/* Sidebar heading style */
 .sidebar .sidebar-heading {
-  text-align: center;
   padding: 0 1rem;
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: 0.85rem;
 }
 
-@media (min-width: 768px) {
-  .sidebar {
-    width: 14rem !important;
-    height: 100%;
-  }
-
-  .sidebar .nav-item .nav-link {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 1rem;
-    width: 14rem;
-  }
-  .sidebar .nav-item .nav-link i {
-    font-size: 0.85rem;
-    margin-right: 0.25rem;
-  }
-  .sidebar .nav-item .nav-link span {
-    font-size: 0.85rem;
-    display: inline;
-  }
-
-  .sidebar .sidebar-brand .sidebar-brand-icon i {
-    font-size: 2rem;
-  }
-  .sidebar .sidebar-brand .sidebar-brand-text {
-    display: inline;
-  }
-  .sidebar .sidebar-heading {
-    text-align: left;
-  }
+/* Additional styles for better aesthetics */
+.sidebar .nav-item {
+  margin-bottom: 0.5rem; /* Space between nav items */
 }
 
-.sidebar-light .sidebar-brand {
-  color: #6e707e;
+.sidebar .nav-item:last-child {
+  margin-bottom: 1rem; /* Extra space for the last item */
 }
 
-.sidebar-light .sidebar-heading {
-  color: #b7b9cc;
+.sidebar .nav-item .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1rem;
 }
 
-.sidebar-light .nav-item .nav-link {
-  color: #858796;
+.sidebar .nav-item .nav-link span {
+  font-size: 0.85rem; /* Larger font size for text */
 }
 
-.sidebar-light .nav-item .nav-link i {
-  color: #d1d3e2;
-}
-
-.sidebar-light .nav-item .nav-link:active,
-.sidebar-light .nav-item .nav-link:focus,
-.sidebar-light .nav-item .nav-link:hover {
-  color: #6e707e;
-}
-
-.sidebar-light .nav-item .nav-link:active i,
-.sidebar-light .nav-item .nav-link:focus i,
-.sidebar-light .nav-item .nav-link:hover i {
-  color: #6e707e;
-}
-
-.sidebar-light .nav-item.active .nav-link {
-  color: #6e707e;
-}
-
-.sidebar-light .nav-item.active .nav-link i {
-  color: #6e707e;
-}
-
-.sidebar-dark .sidebar-brand {
-  color: #fff;
-}
-
-.sidebar-dark hr.sidebar-divider {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.sidebar-dark .sidebar-heading {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.sidebar-dark .nav-item .nav-link {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.sidebar-dark .nav-item .nav-link i {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.sidebar-dark .nav-item .nav-link:active,
-.sidebar-dark .nav-item .nav-link:focus,
-.sidebar-dark .nav-item .nav-link:hover {
-  color: #fff;
-}
-
-.sidebar-dark .nav-item .nav-link:active i,
-.sidebar-dark .nav-item .nav-link:focus i,
-.sidebar-dark .nav-item .nav-link:hover i {
-  color: #fff;
-}
-
-.sidebar-dark .nav-item .nav-link[data-toggle="collapse"]::after {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.sidebar-dark .nav-item.active .nav-link {
-  color: #fff;
-}
-
-.sidebar-dark .nav-item.active .nav-link i {
-  color: #fff;
+/* Hide brand icon rotation animation */
+.sidebar .sidebar-brand-icon.rotate-n-15 {
+  transform: none;
 }
 
 .hide {
   display: none;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .sidebar {
+    width: 14rem;
+  }
+
+  .sidebar .nav-item .nav-link {
+    text-align: left;
+    padding: 1rem;
+    justify-content: flex-start;
+  }
+
+  .sidebar .sidebar-brand .sidebar-brand-text {
+    display: inline;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 6.5rem;
+  }
+
+  .sidebar .sidebar-brand-text,
+  .sidebar .nav-link span {
+    display: none;
+  }
+
+  .sidebar .nav-item .nav-link {
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .sidebar .nav-item {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 576px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .sidebar .nav-item {
+    justify-content: start;
+  }
+}
+
+.animate-charcter {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #8000ff 0%,
+    #e879f9 29%,
+    #4a044e 67%,
+    #b65942 80%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 4s linear infinite;
+  display: inline-block;
+  font-size: var(--fsize-800);
+}
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }

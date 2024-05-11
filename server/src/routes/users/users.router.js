@@ -9,6 +9,7 @@ const {
   httpForgotPasswordEmail,
   httpResetPassword,
   httpCheckCode,
+  httpContactUs,
 } = require("../../controllers/users.controller");
 const {
   validationUserDate,
@@ -78,5 +79,8 @@ usersRouter.get(
   passportAuthenticate,
   httpOrderDetails
 );
+
+// contact us ( send email )
+usersRouter.post("/sendEmail", httpContactUs);
 
 module.exports = usersRouter;

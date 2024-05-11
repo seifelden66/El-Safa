@@ -24,11 +24,12 @@ import { resetPasswordGuard } from "./services/reset-password.guard";
 import { SingleOrderComponent } from "./admin/single-order/single-order.component";
 import { CartComponent } from "./user/cart/cart.component";
 import { ContactComponent } from "./user/contact/contact.component";
+import { AdminProfileComponent } from "./admin/admin-profile/admin-profile.component";
 import { TrackingComponent } from "./user/tracking/tracking.component";
 import { UserProductComponent } from "./user/user-product/user-product.component";
 import { OrderDetailsComponent } from "./user/order-details/order-details.component";
 
-export const routes: Routes = [  
+export const routes: Routes = [
   {
     path: "home",
     component: HomeComponent,
@@ -94,6 +95,10 @@ export const routes: Routes = [
         path: "add-new-admin",
         component: AddNewAdminComponent,
       },
+      {
+        path: "adminProfile",
+        component: AdminProfileComponent,
+      },
     ],
     canActivate: [adminAuthGaurdGuard],
   },
@@ -133,4 +138,3 @@ export const routes: Routes = [
     component: HomeComponent,
   },
 ];
-

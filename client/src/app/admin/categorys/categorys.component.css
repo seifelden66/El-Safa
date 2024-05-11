@@ -14,27 +14,6 @@
   margin-bottom: 0;
 }
 
-.table thead th {
-  background-color: #f8f9fc;
-  color: #6c757d;
-  border-bottom: 2px solid #dee2e6;
-}
-
-.table th,
-.table td {
-  padding: 10px;
-  color: #6c757d;
-  text-align: center;
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #f3f3f3;
-}
-
-.table-hover tbody tr:hover {
-  background-color: #e2e6ea;
-}
-
 .card {
   border: none;
 }
@@ -47,27 +26,6 @@
 .btn-sm {
   padding: 6px 12px;
   font-size: 0.875rem;
-}
-/* Search input style */
-.input-group {
-  width: 250px;
-  margin-bottom: 20px;
-}
-
-.input-group input[type="text"] {
-  border-radius: 0;
-}
-
-.input-group button {
-  border-radius: 0;
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #f3f3f3;
-}
-
-.table-hover tbody tr:hover {
-  background-color: #e2e6ea;
 }
 
 /* Action buttons style */
@@ -87,11 +45,6 @@
 
 .edit-product {
   color: blue;
-}
-
-/* Custom CSS for table borders */
-table.table-bordered tbody tr {
-  border-bottom: 1px solid #dee2e6; /* Add bottom border between rows */
 }
 
 #editmodel {

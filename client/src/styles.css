@@ -67,3 +67,61 @@ html {
   font-family: sans-serif;
   font-size: 0.9em;
 }
+
+.admin-btn {
+  padding: 10px 20px;
+  background: linear-gradient(to right, #da8cff, #9a55ff);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* background: linear-gradient(to right, #cbaacb 0%, #e6e6fa 100%); */
+}
+
+.admin-btn:hover {
+  opacity: 0.7;
+}
+
+.admin-body {
+  font-family: "Arial", sans-serif;
+  background-color: #f3e8ff;
+}
+
+/* table design for admin  */
+
+.table th {
+  color: #0d0b13;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2em;
+  opacity: 0.7;
+  font-family: "Arial", sans-serif;
+}
+
+.table td {
+  color: #171718;
+  padding: 10px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+  opacity: 0.7;
+  font-family: "Arial", sans-serif;
+}
+
+.table-body-tr {
+  border-bottom: solid 0.5px rgb(234, 230, 235);
+  background-color: #fdf4ff;
+}
+.table-body-tr:hover {
+  background-color: #f5cefc !important;
+}
+
+.table-header-tr {
+  background-color: #f0abfc !important;
+  border: solid 0.5px rgb(208, 183, 214);
+}
+
+.searchInput {
+  background-color: #fdf4ff !important;
+}

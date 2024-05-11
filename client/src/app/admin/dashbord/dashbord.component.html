@@ -1,61 +1,42 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
 
-  <div class="body w-100">
+  <div class="admin-body w-100">
     <app-navbar class="w-100"></app-navbar>
     <div class="container mt-5">
-      <section class="row dashboar-cards">
-        <!-- <div class="box users">
-          <i class="material-icons">person</i>
-          <h2>Users</h2>
-          <p>1000</p>
-        </div>
-        <div class="box products">
-          <i class="material-icons">shopping_basket</i>
-          <h2>Products</h2>
-          <p>500</p>
-        </div>
-        <div class="box orders">
-          <i class="material-icons">shopping_cart</i>
-          <h2>Orders</h2>
-          <p>2000</p>
-        </div>
-        <div class="box earnings">
-          <i class="material-icons">attach_money</i>
-          <h2>Monthly Earnings</h2>
-          <p>$10,000</p>
-        </div> -->
+      <section class="row dashboar-cards my-5">
         <div class="card">
           <div class="bubble"></div>
           <div class="content">
-            <h2>Weekly Sales</h2>
-            <p>$15,000</p>
+            <h2>Users</h2>
+            <p>{{ dashboardDetails?.usersCount }}</p>
+            <p>Increased by 40%</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="bubble"></div>
+          <div class="content">
+            <h2>Prouducts</h2>
+            <p>{{ dashboardDetails?.productCount }}</p>
             <p>Increased by 60%</p>
           </div>
         </div>
         <div class="card">
           <div class="bubble"></div>
           <div class="content">
-            <h2>Weekly Sales</h2>
-            <p>$15,000</p>
+            <h2>Peinging Orders</h2>
+            <p>{{ dashboardDetails?.peindingOrder }}</p>
             <p>Increased by 60%</p>
           </div>
         </div>
         <div class="card">
           <div class="bubble"></div>
           <div class="content">
-            <h2>Weekly Sales</h2>
-            <p>$15,000</p>
+            <h2>total Funds</h2>
+            <p>${{ dashboardDetails?.totalFundsAggregate[0].totalFunds }}</p>
             <p>Increased by 60%</p>
           </div>
         </div>
-
-        <!-- <div class="dahsboard_card col-lg-4 col-md-6 col-sm-12">
-          <div class="d-flex justify-content-between w-100">
-            <h1>user</h1>
-            <i class="fa-solid fa-users"></i>
-          </div>
-        </div> -->
       </section>
 
       <!-- <section class="box most-selling">
@@ -89,7 +70,7 @@
         </table>
       </section> -->
 
-      <section class="row mt-5">
+      <section class="row my-5">
         <div class="col-lg-5 col-md-11 col-sm-12 todo-list p-5">
           <div class="todo-container">
             <div class="d-flex gap-2 mb-3">
@@ -128,7 +109,7 @@
         </div>
         <div class="calendar-container col-lg-5 col-md-11 col-sm-12">
           <iframe
-            src="https://calendar.google.com/calendar/embed?src=kareem.zaher.elnady%40gmail.com&ctz=Africa%2FCairo"
+            src="https://calendar.google.com/calendar/embed?src=5addf0142c89e554acbf49784868e31dc14865543d8afd6500cadf7d99260421%40group.calendar.google.com&ctz=Africa%2FCairo"
             style="border: 0"
             width="600"
             height="500"
