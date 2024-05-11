@@ -1,1 +1,81 @@
-<p>admin-profile works!</p>
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="admin-body w-100">
+    <app-navbar class="w-100"></app-navbar>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-xxl-8 col-xl-10 col-md-7">
+          <div class="profiledata">
+            <div class="profile_data">
+              <div class="user_img">
+                <img
+                  src="/assets/{{ adminData?.profile_picture }}"
+                  (error)="errorHandler($event)"
+                  class="rounded-3 user-image"
+                  height="120"
+                  alt=""
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="user_data">
+                <div class="input">
+                  <label for="name">Name</label>
+                  <div class="input_filed">
+                    <input
+                      type="text"
+                      readonly="true"
+                      value="{{ adminData?.name }}"
+                      id="name"
+                    />
+                    <i class="fa-solid icon fa-pen-to-square"></i>
+                  </div>
+                </div>
+
+                <div class="input">
+                  <label for="email">Email Address</label>
+                  <div class="input_filed">
+                    <input
+                      value="{{ adminData?.email }}"
+                      type="text"
+                      readonly="true"
+                      id="email"
+                    />
+                    <i class="fa-solid icon fa-pen-to-square"></i>
+                  </div>
+                </div>
+
+                <div class="input">
+                  <label for="City">City</label>
+
+                  <div class="input_filed">
+                    <input
+                      value="{{ adminData?.location }}"
+                      type="text"
+                      readonly="true"
+                      id="City"
+                    />
+                    <i class="fa-solid icon fa-pen-to-square"></i>
+                  </div>
+                </div>
+
+                <div class="input">
+                  <label for="Mobile">Mobile phone</label>
+                  <div class="input_filed">
+                    <input
+                      value="{{ adminData?.phone }}"
+                      type="text"
+                      readonly="true"
+                      id="Mobile"
+                    />
+                    <i class="fa-solid icon fa-pen-to-square"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

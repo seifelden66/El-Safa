@@ -9,8 +9,9 @@
           <div class="profile-img">
             <img
               class="w-100"
-              src="https://w7.pngwing.com/pngs/4/736/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
-              alt=""
+              src="/assets/{{ user?.profile_picture }}"
+              (error)="errorHandler($event)"
+              loading="lazy"
             />
           </div>
           <div class="user-details d-flex flex-column gap-2">
@@ -126,8 +127,9 @@
               <td class="d-flex justify-content-center product-info">
                 <div class="product-img">
                   <img
-                    src="https://media.istockphoto.com/id/1672317574/photo/ama-dablam-mountain-peak.webp?b=1&s=170667a&w=0&k=20&c=Ea8yDEHpUemrRuMZUKGPDBE11YTWVksIupMN8FkEBf8="
-                    alt="Product Image"
+                    src="/assets/{{ order?.images }}"
+                    (error)="errorHandler($event)"
+                    loading="lazy"
                   />
                 </div>
                 <a

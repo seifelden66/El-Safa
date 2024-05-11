@@ -1,13 +1,13 @@
 import { CookieService } from "./../../services/cookie.service";
 import { Component, OnInit } from "@angular/core";
 import { ToggleSidebarService } from "../services/toggle-sidebar.service";
-import { Router } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { CalendarModule } from "primeng/calendar";
 import { FormsModule } from "@angular/forms";
 @Component({
   selector: "app-navbar",
   standalone: true,
-  imports: [CalendarModule, FormsModule],
+  imports: [CalendarModule, FormsModule, RouterLink],
   templateUrl: "./navbar.component.html",
   styleUrl: "./navbar.component.css",
 })

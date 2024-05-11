@@ -63,6 +63,16 @@ export class CategorysComponent {
   }
 
   addNewCategory() {
+    Object.keys(this.CategoryForm.controls).forEach((field) => {
+      const control = this.CategoryForm.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
+    if (this.CategoryForm.invalid) {
+      return;
+    }
+
     this.http
       .post("http://localhost:8000/v1/categories", this.CategoryForm.value)
       .subscribe(

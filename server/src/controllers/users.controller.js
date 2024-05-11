@@ -375,6 +375,24 @@ async function httpDashboardDetails(req, res) {
   }
 }
 
+async function httpContactUs(req, res) {
+  try {
+    await sendEmail({
+      from: req.body.email,
+      to: "kareem.345@outlook.com",
+      subject: `Email From ${req.body.name}`,
+      html: `<h1>ElSafa!</h1>
+      <p>From : <strong>${req.body.name}</strong>,</p>
+      <p>Email : <strong>${req.body.email}</strong>,</p>
+      <p>${req.body.message}</p>
+      <p>Best regards,<br/>The ElSafa Team</p>`,
+    });
+    res.status(200).json({ message: "the message is send successfuly" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
 module.exports = {
   httpGetAllUser,
   httpGetUser,
@@ -388,4 +406,5 @@ module.exports = {
   httpResetPassword,
   httpGoogleAccountOauth,
   httpDashboardDetails,
+  httpContactUs,
 };

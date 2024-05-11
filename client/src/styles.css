@@ -118,3 +118,7 @@ html {
   background-color: #f0abfc !important;
   border: solid 0.5px rgb(208, 183, 214);
 }
+
+.searchInput {
+  background-color: #fdf4ff !important;
+}
