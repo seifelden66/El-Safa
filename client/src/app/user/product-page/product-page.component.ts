@@ -80,9 +80,6 @@ export class ProductPageComponent implements OnInit {
 
   toster = inject(ToastrService);
 
-  show() {
-    this.toster.success("added to Cart", "Success");
-  }
 
 
   toggleHeart(prod_id :any) {
@@ -207,14 +204,19 @@ filterProducts(): void {
 }
 
 addToCart(id : string){  
+    
   this.http.post("http://localhost:8000/v1/cart/addToCart", {product : {id : id, quantity : 1}}, {headers : {
     Authorization : `Bearer ${this.userToken}`
   }}).subscribe(
     res =>{
       console.log(res);
+        this.toster.success("added to Cart", "Success");
+    
     },
     error => {
       console.log(error);
+      this.toster.error("Please Login Firest", "Error");
+
     }
   )
 }

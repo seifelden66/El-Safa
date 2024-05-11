@@ -238,23 +238,20 @@
     <h1 class="some_offersh m-0 d-flex justify-content-center py-4 ">Some of our Products</h1>
   
     <div class="row best_product_container row-cols-1 row-cols-md-3 g-4 ">
-      @for (product of productcenter.slice(0,8); track $index) {
+      @for (product of productcenter.slice(0,8);  track $index) {
 
         <div class="col-9 col-xxl-2 col-xl-3 col-md-5 offer_card my-2 ">
           <div data-aos="zoom-in" class="card offer_data p-4 h-100 ">
-            
-            <img
-              [src]="product.thumbnail"
-              class="card-img-top"
-              alt="..."
-            />
+
+              <img src="/assets/{{ product.images['0']}}" alt="">
+
             <div class="card-body my-4">
               <h2 class="card-title">{{ product.title }}</h2>
               <h3 class="card-title">${{ product.price }}</h3>
-              <div class="rating">
+              <!-- <div class="rating">
                 
                 <ngb-rating  [(rate)]="product.rating" [readonly]="true" [max]="5"></ngb-rating>
-              </div>
+              </div> -->
 
     
               <button type="button" (click)="redirect4()" class="btn  carusel_Btnss btn-success d-flex w-100 p-1 mt-3">

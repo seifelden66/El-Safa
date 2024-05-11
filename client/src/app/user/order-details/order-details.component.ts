@@ -1,11 +1,12 @@
 import { CookieService } from './../../services/cookie.service';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { FirestnavComponent } from '../firestnav/firestnav.component';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
 import { TableModule } from 'primeng/table';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-order-details',
@@ -18,7 +19,10 @@ export class OrderDetailsComponent implements OnInit {
   order_id!: any;
   user_token! : any;
   order_details!: any
-  constructor(private http : HttpClient , private ActivatedRoute : ActivatedRoute,private CookieService : CookieService   ){}
+  constructor(private http : HttpClient , private ActivatedRoute : ActivatedRoute,private CookieService : CookieService, private router : Router   ){}
+
+  
+  toster = inject(ToastrService);
 
 
   ngOnInit(): void {
@@ -26,6 +30,9 @@ export class OrderDetailsComponent implements OnInit {
     console.log(this.order_id);
     this.user_token = this.CookieService.get("userToken")
     this.getorder_details()
+
+  
+
   }
 
 
