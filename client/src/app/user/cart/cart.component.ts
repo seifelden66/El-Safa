@@ -17,8 +17,8 @@ import {
 import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { HttpClient } from "@angular/common/http";
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { TableModule } from 'primeng/table';
+import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
+import { TableModule } from "primeng/table";
 
 @Component({
   selector: "app-cart",
@@ -32,7 +32,7 @@ import { TableModule } from 'primeng/table';
     RouterLink,
     RouterLinkActive,
     NgbTooltipModule,
-    TableModule
+    TableModule,
   ],
   templateUrl: "./cart.component.html",
   styleUrl: "./cart.component.css",
@@ -50,78 +50,76 @@ import { TableModule } from 'primeng/table';
   ],
 })
 export class CartComponent implements OnInit {
-  count: number = 0
-  totalP: number = 0
+  count: number = 0;
+  totalP: number = 0;
   userToken: any;
   cartItems!: any;
-  CartService = inject(CartService)
-  totalPrice!: number
-  constructor(private CounterService: CounterService, private http: HttpClient, private cookieservice: CookieService) { }
+  CartService = inject(CartService);
+  totalPrice!: number;
+  constructor(
+    private CounterService: CounterService,
+    private http: HttpClient,
+    private cookieservice: CookieService
+  ) {}
 
   ngOnInit(): void {
-    this.userToken = this.cookieservice.get('userToken')
-    this.getCartItems()
+    this.userToken = this.cookieservice.get("userToken");
+    this.getCartItems();
   }
 
   isClicked: boolean = false;
 
-
   increase(item: any) {
-
-
     if (item.quantity >= 1) {
-      item.quantity++
+      item.quantity++;
 
       // cartItems
 
-      this.http.post("http://localhost:8000/v1/cart/addToCart", { product: { id: item.id, quantity: item.quantity } }, {
-        headers: {
-          Authorization: `Bearer ${this.userToken}`
-        }
-      }).subscribe(
-        res => {
-          console.log(res);
-        },
-        error => {
-          console.log(error);
-        }
-      )
-
-
-
+      this.http
+        .post(
+          "http://localhost:8000/v1/cart/addToCart",
+          { product: { id: item.id, quantity: item.quantity } },
+          {
+            headers: {
+              Authorization: `Bearer ${this.userToken}`,
+            },
+          }
+        )
+        .subscribe(
+          (res) => {
+            console.log(res);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     }
-
-
   }
-
 
   decrease(item: any) {
-
     if (item.quantity > 1) {
-      item.quantity--
+      item.quantity--;
 
-      this.http.post("http://localhost:8000/v1/cart/addToCart", { product: { id: item.id, quantity: item.quantity } }, {
-        headers: {
-          Authorization: `Bearer ${this.userToken}`
-        }
-      }).subscribe(
-        res => {
-          console.log(res);
-        },
-        error => {
-          console.log(error);
-        }
-      )
-
-
-
-
+      this.http
+        .post(
+          "http://localhost:8000/v1/cart/addToCart",
+          { product: { id: item.id, quantity: item.quantity } },
+          {
+            headers: {
+              Authorization: `Bearer ${this.userToken}`,
+            },
+          }
+        )
+        .subscribe(
+          (res) => {
+            console.log(res);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     }
-
-
-
   }
-
 
   // payment flow functions with paymob
   private API_KEY =
@@ -267,32 +265,33 @@ export class CartComponent implements OnInit {
   // ================delet animations=============================
 
   getCartItems() {
-    this.http.get("http://localhost:8000/v1/cart/cartitems", {
-      headers: {
-        Authorization: `Bearer ${this.userToken}`
-      }
-    }).subscribe((res: any) => {
-      console.log(res);
-      this.cartItems = res;
-      this.totalPrice = this.cartItems.totalPrice
-
-    })
+    this.http
+      .get("http://localhost:8000/v1/cart/cartitems", {
+        headers: {
+          Authorization: `Bearer ${this.userToken}`,
+        },
+      })
+      .subscribe((res: any) => {
+        console.log(res);
+        this.cartItems = res;
+        this.totalPrice = this.cartItems.totalPrice;
+      });
   }
 
   deleteItem(id: string) {
-    this.http.delete(`http://localhost:8000/v1/cart/deleteFromCart?id=${id}`, { headers: { Authorization: `Bearer ${this.userToken}` } })
+    this.http
+      .delete(`http://localhost:8000/v1/cart/deleteFromCart?id=${id}`, {
+        headers: { Authorization: `Bearer ${this.userToken}` },
+      })
       .subscribe(
         (res: any) => {
-          this.cartItems.items = this.cartItems.items.filter((elem: any) => elem.id !== id);
+          this.cartItems.items = this.cartItems.items.filter(
+            (elem: any) => elem.id !== id
+          );
         },
-        error => {
+        (error) => {
           console.log(error);
         }
       );
   }
-
 }
-
-
-
-
