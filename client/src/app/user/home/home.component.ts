@@ -55,8 +55,8 @@ const states = [
 })
 export class HomeComponent implements OnInit {
   model: State | null = null;
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-
+  images = [944, 1011, 984].map((n) => `htps://picsum.photos/id/${n}/900/500`);
+  // images = [944, 1011, 984].map((n) =>  );
 
   formatter = (result: string) => result.toUpperCase();
 
@@ -85,7 +85,6 @@ export class HomeComponent implements OnInit {
 
     redirect2(){
       this.router.navigate([`invoice`])
-
       
     }
 

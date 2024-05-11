@@ -2,14 +2,14 @@
   "name": "el-safa",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
+   "scripts": {
     "install-server": "npm install --prefix server",
     "install-client": "npm install --prefix client",
     "install": "npm run install-server && npm run install client",
     "server": "npm run watch --prefix server",
     "client": "npm run start --prefix client",
-    "watch": "concurrently \"npm run server\" \"npm run client\"",
-    "deploy": "cd client && npm run build && cd ../server && npm run start",
+    "watch": "npm run server & npm run client",
+    "deploy": "npm run build --prefix client && npm run start --prefix server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

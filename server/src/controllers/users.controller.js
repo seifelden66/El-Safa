@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const { ObjectId } = require("mongoose");
 const { validationResult } = require("express-validator");
 const {
   getAllUser,
@@ -15,6 +14,7 @@ const {
   cheackCode,
   resetPassword,
   GoogleAccountOauth,
+  DashboardDetails,
 } = require("../models/users/users.model");
 const {
   generateAndSetToken,
@@ -363,7 +363,36 @@ async function httpGoogleAccountOauth(accessToken, refreshToken, user, done) {
     done(null, false);
   }
 }
+// !SECTION end oauth with google
 
+async function httpDashboardDetails(req, res) {
+  try {
+    const data = await DashboardDetails();
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+async function httpContactUs(req, res) {
+  try {
+    await sendEmail({
+      from: req.body.email,
+      to: "kareem.345@outlook.com",
+      subject: `Email From ${req.body.name}`,
+      html: `<h1>ElSafa!</h1>
+      <p>From : <strong>${req.body.name}</strong>,</p>
+      <p>Email : <strong>${req.body.email}</strong>,</p>
+      <p>${req.body.message}</p>
+      <p>Best regards,<br/>The ElSafa Team</p>`,
+    });
+    res.status(200).json({ message: "the message is send successfuly" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
 module.exports = {
   httpGetAllUser,
   httpGetUser,
@@ -376,4 +405,6 @@ module.exports = {
   httpCheckCode,
   httpResetPassword,
   httpGoogleAccountOauth,
+  httpDashboardDetails,
+  httpContactUs,
 };

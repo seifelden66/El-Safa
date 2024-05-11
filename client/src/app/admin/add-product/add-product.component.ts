@@ -66,6 +66,13 @@ export class AddProductComponent implements OnInit {
   }
 
   addNewProduct() {
+    Object.keys(this.productForm.controls).forEach((field) => {
+      const control = this.productForm.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
+
     if (this.productForm.invalid) {
       return;
     }

@@ -6,6 +6,10 @@
     </span>
     <div>
       <ul class="navbar-nav d-flex flex-row ms-auto me-3 align-items-center">
+        <li class="nav-item mx-3 position-relative">
+          <p-calendar [(ngModel)]="date"></p-calendar>
+        </li>
+
         <li class="nav-item mx-2 position-relative">
           <button
             class="nav-link d-flex align-items-center"
@@ -17,7 +21,7 @@
             <span
               class="badge bg-danger rounded-circle position-absolute top-5 start-100 translate-middle"
             >
-              3
+              0
               <!-- Change this number dynamically -->
             </span>
           </button>
@@ -27,13 +31,7 @@
             aria-labelledby="navbarDropdownMenuLink"
           >
             <li>
-              <a class="dropdown-item" href="#">test</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">test</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">test</a>
+              <a class="dropdown-item" href="#">this feature is coming soon</a>
             </li>
           </ul>
         </li>
@@ -51,7 +49,7 @@
             <span
               class="badge bg-danger rounded-circle position-absolute top-5 start-100 translate-middle"
             >
-              7
+              0
               <!-- Change this number dynamically -->
             </span>
           </button>
@@ -61,13 +59,7 @@
             aria-labelledby="messageDropdownMenuLink"
           >
             <li>
-              <a class="dropdown-item" href="#">test</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">test</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">test</a>
+              <a class="dropdown-item" href="#">this feature is coming soon</a>
             </li>
           </ul>
         </li>
@@ -95,7 +87,7 @@
             [class.show]="isDropdownOpen.userDropdown"
             aria-labelledby="userDropdownMenuLink"
           >
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" routerLink="/admin/adminProfile">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               Profile
             </a>

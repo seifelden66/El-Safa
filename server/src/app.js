@@ -12,7 +12,7 @@ const api = require("./routes/api");
 // const cspConfig = require("./util/helmet.config");
 const OauthGoogle = require("./routes/users/oauth-register.router");
 const { httpOlinePayment } = require("./controllers/orders.controller");
-const {httpNewOrders} = require("./controllers/orders.controller")
+const { httpNewOrders } = require("./controllers/orders.controller");
 const {
   passportInitialize,
   passportAuthenticate,

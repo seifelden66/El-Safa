@@ -47,7 +47,29 @@ export class AddNewAdminComponent {
     });
   }
 
+  onFileSelect(event: Event) {
+    const element = event.currentTarget as HTMLInputElement;
+    if (element.files && element.files.length > 0) {
+      let file: File = element.files[0];
+      this.adminForm.patchValue({
+        file: file,
+      });
+      // Safely trigger the value changes detection
+      const fileControl = this.adminForm.get("file");
+      if (fileControl) {
+        fileControl.updateValueAndValidity();
+      }
+    }
+  }
+
   onSubmit() {
+    Object.keys(this.adminForm.controls).forEach((field) => {
+      const control = this.adminForm.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
+
     if (this.adminForm.invalid) {
       return;
     }
@@ -57,7 +79,10 @@ export class AddNewAdminComponent {
     formData.append("password", this.adminForm.get("password")!.value);
     formData.append("phone", this.adminForm.get("phone")!.value);
     formData.append("location", this.adminForm.get("location")!.value);
-    formData.append("file", this.adminForm.get("file")!.value);
+    const fileControl = this.adminForm.get("file");
+    if (fileControl && fileControl.value) {
+      formData.append("file", fileControl.value);
+    }
 
     this.http
       .post("http://localhost:8000/v1/admin/register", formData, {

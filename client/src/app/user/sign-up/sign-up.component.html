@@ -13,77 +13,111 @@
 
               <form
                 class="user"
+                enctype="multipart/form-data"
                 [formGroup]="singin"
                 (ngSubmit)="submithandel()"
               >
-                <div class="form-group row">
+                <div class="form-group row mb-3">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input
                       type="text"
-                      class="form-control form-control-user mb4"
+                      class="form-control form-control-user"
                       id="exampleFirstName"
                       placeholder="First Name"
                       name="name"
                       formControlName="name"
                     />
+                    @if(singin.controls['name'].touched &&
+                    singin.controls['name'].invalid){
+                    <small class="small admin-error mx-3"
+                      >*name is requierd least three letters
+                    </small>
+                    }
                   </div>
                   <div class="col-sm-6">
                     <input
                       type="text"
-                      class="form-control form-control-user mb-4"
+                      class="form-control form-control-user"
                       id="exampleAddress"
                       placeholder="Address "
                       name="location"
                       formControlName="location"
                     />
+                    @if(singin.controls['location'].touched &&
+                    singin.controls['location'].invalid){
+                    <small class="small admin-error mx-3"
+                      >*Please provide your location
+                    </small>
+                    }
                   </div>
                 </div>
-                <div class="form-group">
-             
-                <input
-                  type="email"
-                  class="form-control form-control-user mb-4"
-                  id="exampleInpu tEmail"
-                  placeholder="Email Address"
-                  name="email"
-                  formControlName="email"
-                />
-                  
+                <div class="form-group mb-3">
+                  <input
+                    type="email"
+                    class="form-control form-control-user"
+                    id="exampleInpu tEmail"
+                    placeholder="Email Address"
+                    name="email"
+                    formControlName="email"
+                  />
+                  @if(singin.controls['email'].touched &&
+                  singin.controls['email'].invalid){
+                  <small class="small admin-error mx-3"
+                    >*Invalid email format
+                  </small>
+                  } @if (error?.email) {
+                  <small class="small admin-error mx-3"
+                    >*{{ error.email }}
+                  </small>
+                  }
                 </div>
-                <div class="form-group">
-                    <input
-                      type="text"
-                      class="form-control form-control-user mb-4"
-                      id="exampleInputPhone"
-                      placeholder="Phone Number"
-                      name="phone"
-                      formControlName="phone"
-                    />
-                  </div>
-                <div class="form-group row">
+                <div class="form-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control form-control-user"
+                    id="exampleInputPhone"
+                    placeholder="Phone Number"
+                    name="phone"
+                    formControlName="phone"
+                  />
+                  @if(singin.controls['phone'].touched &&
+                  singin.controls['phone'].invalid){
+                  <small class="small admin-error mx-3"
+                    >*Invalid Phone Number
+                  </small>
+                  }
+                </div>
+                <div class="form-group row mb-3">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input
                       type="password"
-                      class="form-control form-control-user mb-4"
+                      class="form-control form-control-user"
                       id="exampleInputPassword"
                       placeholder="Password"
                       name="password"
                       formControlName="password"
                     />
+                    @if(singin.controls['password'].touched &&
+                    singin.controls['password'].invalid){
+                    <small class="small admin-error mx-3"
+                      >*Password must be at least 8 characters [0-9 A-z]
+                    </small>
+                    }
                   </div>
                   <div class="col-sm-6">
-                      <input
-                        type="file"
-                        class="form-control form-control-user mb-4"
-                        id="exampleRepeatPassword"
-                        placeholder="Repeat Password"
-                        name="img"
-                        formControlName="img"
-                      />
-                    </div>
+                    <input
+                      type="file"
+                      class="form-control form-control-user"
+                      formControlName="file"
+                      (change)="onFileSelect($event)"
+                    />
+                  </div>
                 </div>
 
-                <button (click)="insertuser()" class="btn btn-primary w-100">
+                <button
+                  (click)="insertuser()"
+                  class="btn btn-primary w-100 mt-4"
+                >
                   Register Now
                 </button>
 
@@ -98,7 +132,7 @@
 
               <hr />
               <div class="text-center">
-                <a class="small" href="login.html"
+                <a class="small" routerLink="/login"
                   >Already have an account? Login!</a
                 >
               </div>
