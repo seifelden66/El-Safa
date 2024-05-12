@@ -1,4 +1,5 @@
-import { CookieService } from './../../services/cookie.service';
+import { SearchService } from "./../services/search.service";
+import { CookieService } from "./../../services/cookie.service";
 import { CartService } from "./../services/cart.service";
 import { CounterService } from "../services/counter.service";
 import { JsonPipe } from "@angular/common";
@@ -61,7 +62,7 @@ export class SecondHeaderComponent implements OnInit {
   products: any[] = [];
   categories: string[] = [];
   selectedCategory: string | null = null;
-  usertoken:any ;
+  usertoken: any;
 
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
@@ -87,15 +88,21 @@ export class SecondHeaderComponent implements OnInit {
     private http: HttpClient,
     private CounterService: CounterService,
     private CartService: CartService,
-    private CookieService: CookieService
+    private CookieService: CookieService,
+    private SearchService: SearchService
   ) {}
+
+  onSearch(query: string) :void {
+    if (query) {
+      this.SearchService.perFormsearch(query);
+    }
+  }
 
   redirect() {
     if (this.usertoken) {
       this.router.navigate([`profile`]);
-      
-    }else{
-      alert('you Should Login Firest')
+    } else {
+      alert("you Should Login Firest");
     }
   }
 
@@ -104,9 +111,8 @@ export class SecondHeaderComponent implements OnInit {
   }
 
   redirect3() {
-    this.CookieService.remove('userToken')
+    this.CookieService.remove("userToken");
     this.router.navigate([`login`]);
-
   }
 
   redirect4() {
@@ -129,7 +135,7 @@ export class SecondHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
-    this.usertoken = this.CookieService.get('userToken')
+    this.usertoken = this.CookieService.get("userToken");
 
     // this.CartService.getcount().subscribe((res) => {
     //   this.count = res;

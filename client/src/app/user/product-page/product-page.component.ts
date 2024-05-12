@@ -54,7 +54,6 @@ export class ProductPageComponent implements OnInit {
   totalPages: number = 1;
   userToken: any;
   rating = 4;
-  search!: string;
 
   constructor(
     private http: HttpClient,
@@ -104,23 +103,30 @@ export class ProductPageComponent implements OnInit {
 
     this.ActivatedRoute.params.subscribe((param) => {
       if (param["search"]) {
-        this.search = param["search"];
-        console.log(param["search"]);
+        this.searchOnProduct(param["search"]);
       } else {
         this.getallproduct();
       }
     });
   }
 
-  searchOnProduct() {
-    this.http.get("");
+  searchOnProduct(query: string) {
+    this.http
+      .get(`http://localhost:8000/v1/products/search?search=${query}`)
+      .subscribe(
+        (res: any) => {
+          this.allproducts = res;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   getallproduct(page = 1) {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
       this.allproducts = res.products;
       this.totalPages = res.totalPages;
-      console.log(this.allproducts);
     });
   }
   onPageChange(pageNumber: number) {
