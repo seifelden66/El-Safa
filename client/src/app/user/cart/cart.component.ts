@@ -289,7 +289,8 @@ export class CartComponent implements OnInit {
             (elem: any) => elem.id !== id
           );
         },
-        (error) => {
+        error => {
+          
           console.log(error);
         }
       );

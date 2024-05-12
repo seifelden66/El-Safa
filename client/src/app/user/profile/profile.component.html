@@ -61,10 +61,21 @@
       <div class="profiledata">
         <div class="profile_data">
           <div class="user_img">
-            <img
-              src="../../../assets/icon-256x256-removebg-preview.png"
+            @if (userdata?.profile_picture) {
+
+              <img
+              src="/assets/{{ userdata?.profile_picture }}"
               alt=""
             />
+
+              
+            }@else {
+              <img
+                src="../../../assets/icon-256x256-removebg-preview.png"
+                alt=""
+              />
+
+            }
           </div>
 
           <div class="user_data">

@@ -70,14 +70,12 @@ gap: 10px;
 
 /* ======================================================================== */
 .table_container{
-overflow-x: auto;
-margin:120px 0px ;
+  margin:120px 0px ;
 }
 
 .table {
-  text-align: center;
-
-  flex: 1;
+  width: 100%;
+  /* overflow-x: auto; */
 }
 
 .product_data {
@@ -96,58 +94,16 @@ margin:120px 0px ;
   cursor: pointer;
 }
 
-.rating {
-  color: #ffd869;
-  font-size: 20px;
-}
 
 .table_img img {
   height: 100px;
   object-fit: contain;
 }
-.total {
-  font-size: 22px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-
-}
-
-.font{
-  font-size: 20px;
-  font-weight: 500;
-}
-
-
-.payment_btn {
-  background-color: blueviolet;
-  color: white;
-}
-
-.form_item label {
-  font-weight: 400;
-  font-size: 20px;
-}
-
-
 .product_data td{
   text-align: center;
 }
 /* ==================================================== */
 
-.sec_page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 30px;
-}
-
-.sec_page span {
-  font-size: 50px;
-  color: #ebb9f0;
-}
 /* ================================================= */
 
 .empty_table{
@@ -167,11 +123,55 @@ margin:120px 0px ;
 
 .empty_table h2{
 
-  font-size: 60px;
+  font-size: 50px;
   color: #7C5ED8;
 }
 
 /* ============= */
+
+.cart_container{
+  flex: 1;
+  padding: 20px;
+}
+
+/* ============================================= */
+.payment_conatiner{
+  border: double  #7C5ED8 ;
+  width: 50%;
+  margin-left: auto;
+  padding: 10px ;
+  border-radius: 10px;
+}
+
+.inputs{
+  display: flex;
+  flex-direction: column;
+  padding: 7px 3px;
+  gap: 5px;
+}
+
+.inputs input{
+  padding: 8px  5px ;
+  border-radius: 7px;
+  border: white 1px;
+  background-color: #F4F1FF;
+  outline: none;
+  font-size: 14px;
+
+}
+
+.inputs select{
+  padding: 5px;
+  border-radius: 7px;
+}
+
+.payment_btn {
+  background-color:#7C5ED8;
+  color: white;
+}
+
+
+
 
 /* =========media========================================== */
 

@@ -63,6 +63,7 @@ export class SecondHeaderComponent implements OnInit {
   categories: string[] = [];
   selectedCategory: string | null = null;
   usertoken: any;
+  userdata!: any;
 
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
@@ -92,7 +93,7 @@ export class SecondHeaderComponent implements OnInit {
     private SearchService: SearchService
   ) {}
 
-  onSearch(query: string) :void {
+  onSearch(query: string): void {
     if (query) {
       this.SearchService.perFormsearch(query);
     }
@@ -165,6 +166,24 @@ export class SecondHeaderComponent implements OnInit {
 
   filterProductsByCategory(category: string): void {
     this.selectedCategory = category;
+  }
+
+  getuserdata() {
+    this.http
+      .get("http://localhost:8000/v1/users/profile", {
+        headers: {
+          Authorization: `Bearer ${this.usertoken}`,
+        },
+      })
+      .subscribe(
+        (res: any) => {
+          this.userdata = res.user;
+          console.log(res);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   // ======counter======================================

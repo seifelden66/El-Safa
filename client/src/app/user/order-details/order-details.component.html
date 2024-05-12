@@ -20,40 +20,110 @@
 
 
       <!-- ===================================================== -->
+      <div class="bigcontiner2">
+        <div class="card mb-3 py-4">
 
-      <div class="card table my-5 ">
-        <p-table
-          [value]="order_details?.order?.orderItems"
-          [paginator]="true"
-          [rows]="5"
-        >
-          <ng-template  pTemplate="header">
-            <tr class="product_data">
-              <th scope="col">image</th>
-              <th scope="col">name</th>
-              <th scope="col">price</th>
-              <th scope="col">quantity</th>
-              <th scope="col">totalPrice</th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-item>
-            <tr class="product_data">
-              <!-- <td (click)="order_data(item?._id)" class="pt-5 font"> {{ item?._id }}</td> -->
-              <td> <img class="table_img" src="/assets/{{ item?.images }}" alt=""> </td>
-              <td class="pt-5 font">{{ item?.name }}</td>
-              <td class="pt-5 font">{{ item?.price }}</td>
-              <td class="pt-5 font">{{ item?.quantity }}</td>
-              <td class="pt-5 font">${{ item?.totalPrice }}</td>
-    
-            </tr>
-          </ng-template>
-        </p-table>
+          <div
+            class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 "
+          >
+            <div class="w-100 text-center py-1 px-2">
+              <span class="text-medium">Shipped Via:</span> UPS Ground
+            </div>
+            <div class="w-100 text-center py-1 px-2">
+              <span class="text-medium">Status:</span> Checking Quality
+            </div>
+            <div class="w-100 text-center py-1 px-2">
+              <span class="text-medium">Expected Date:</span> SEP 09, 2024
+            </div>
+          </div>
+          <div class="card-body">
+            <div
+              class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x"
+            >
       
+      
+            <div
+                class="step"
+                [ngClass]="{
+                  completed:
+                    orderStatus == 'confirmed' ||
+                    orderStatus == 'dispatched' ||
+                    orderStatus == 'delivered'
+                }"
+              >
+                <div class="step-icon-wrap">
+                  <div class="step-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </div>
+                </div>
+                <h4 class="step-title">Confirmed Order</h4>
+              </div>
+              <div
+                class="step"
+                [ngClass]="{
+                  completed:
+                    orderStatus == 'dispatched' || orderStatus == 'delivered'
+                }"
+              >
+                <div class="step-icon-wrap">
+                  <div class="step-icon"><i class="fas fa-truck"></i></div>
+                </div>
+                <h4 class="step-title">Product Dispatched</h4>
+              </div>
+              <div
+                class="step"
+                [ngClass]="{
+                  completed: orderStatus == 'delivered'
+                }"
+              >
+                <div class="step-icon-wrap">
+                  <div class="step-icon">
+                    <i class="fa-solid fa-house-chimney"></i>
+                  </div>
+                </div>
+                <h4 class="step-title">Product Delivered</h4>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      
-      
+
+        
+        <div class="card table my-5 ">
+                <p-table
+                  [value]="order_details?.order?.orderItems"
+                  [paginator]="true"
+                  [rows]="5"
+                >
+                  <ng-template  pTemplate="header">
+                    <tr class="product_data">
+                      <th scope="col">image</th>
+                      <th scope="col">name</th>
+                      <th scope="col">price</th>
+                      <th scope="col">quantity</th>
+                      <th scope="col">totalPrice</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-item>
+                    <tr class="product_data">
+                      <!-- <td (click)="order_data(item?._id)" class="pt-5 font"> {{ item?._id }}</td> -->
+                      <td> <img class="table_img" src="/assets/{{ item!.images }}" alt=""> </td>
+                      <td class="pt-5 font">{{ item?.name }}</td>
+                      <td class="pt-5 font">{{ item?.price }}</td>
+                      <td class="pt-5 font">{{ item?.quantity }}</td>
+                      <td class="pt-5 font">${{ item?.totalPrice }}</td>
+            
+                    </tr>
+                  </ng-template>
+                </p-table>
+              
+        
+              
+              
+        </div>
+              
       </div>
-      
+
 
 </div>
 

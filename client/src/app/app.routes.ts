@@ -25,7 +25,6 @@ import { SingleOrderComponent } from "./admin/single-order/single-order.componen
 import { CartComponent } from "./user/cart/cart.component";
 import { ContactComponent } from "./user/contact/contact.component";
 import { AdminProfileComponent } from "./admin/admin-profile/admin-profile.component";
-import { TrackingComponent } from "./user/tracking/tracking.component";
 import { UserProductComponent } from "./user/user-product/user-product.component";
 import { OrderDetailsComponent } from "./user/order-details/order-details.component";
 
@@ -54,10 +53,6 @@ export const routes: Routes = [
   {
     path: "regester",
     component: SignUpComponent,
-  },
-  {
-    path: "tracking",
-    component: TrackingComponent,
   },
   {
     path: "product_details/:id",
