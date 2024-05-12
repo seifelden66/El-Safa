@@ -65,87 +65,114 @@
     </div>
   </div>
 
-  <div class="sidebar">
-    <div class="sidebar_data">
-      <h3 [routerLink]="['/profile']" routerLinkActive="active" class="sidebar_text" placement="end"
-        ngbTooltip="User informations">
-        <i class="fa-solid fa-user"></i>
-      </h3>
-      <h3 href="#" [routerLink]="['/home']" routerLinkActive="active" class="sidebar_text" placement="end"
-        ngbTooltip="Home"><i class="fa-solid fa-house"></i> </h3>
-      <h3 href="#" [routerLink]="['/product']" routerLinkActive="active" class="sidebar_text" placement="end"
-        ngbTooltip="All products"><i class="fa-brands fa-product-hunt"></i> </h3>
-      <h3 href="#" [routerLink]="['/user-product']" routerLinkActive="active" class="sidebar_text" placement="end"
-        ngbTooltip="User order"><i class="fa-solid fa-cart-shopping"></i> </h3>
-      <h3 href="#" [routerLink]="['/a']" routerLinkActive="active" class="sidebar_text" placement="end"
-        ngbTooltip="Wishlist"><i class="fa-solid fa-heart"></i> </h3>
-      <h3 href="#" [routerLink]="['/cart']" routerLinkActive="active" class="sidebar_text" placement="end"
-        ngbTooltip="payment"><i class="fa-solid fa-credit-card"></i></h3>
-
-
-    </div>
-  </div>
-
 
 
   <!-- ================================================= -->
 
-  @if (cartItems?.items?.length > 0) {
 
-  <div class="card table m-5">
-    <p-table [value]="cartItems?.items" [paginator]="true" [rows]="5">
-      <ng-template pTemplate="header">
-        <tr class="product_data">
-          <th scope="col">image</th>
-          <th scope="col">Name</th>
-          <th scope="col">Price</th>
-          <th scope="col">Options</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-item>
-        <tr class="product_data">
-          <!-- <td class="table_img pt-5"><img src="../../../assets/cinthia-becher-z_WgCHcIkrs-unsplash.jpg" alt=""></td> -->
-          <td class="table_img pt-5"><img src="/assets/{{ item?.images}}" alt="/assets/{{ item?.images}}"></td>
-          <td class="pt-5 font">{{ item?.name }}</td>
-          <td class="pt-5 font">
-            ${{ (item?.price * item?.quantity).toFixed(2) }}
-          </td>
-          <td>
-            <div class="Btns d-flex gap-2  justify-content-center">
-              <button type="button" (click)="increase(item)" class="btn btn-success">+</button>
-              <p class="pt-2">{{item?.quantity}}</p>
-              <button type="button" (click)="decrease(item)" class="btn btn-danger">-</button>
-            </div>
-          </td>
-          <td class="delete pt-5 font">
-            <i (click)="deleteItem(item?.id)" class="fa-solid fa-trash delete-icon"></i>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
+  <div class="cart_container">
+    @if (cartItems?.items?.length > 0) {
+  
+    <div class="card table">
+      <p-table [value]="cartItems?.items" [paginator]="true" [rows]="5">
+        <ng-template pTemplate="header">
+          <tr class="product_data">
+            <th scope="col">image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Options</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr class="product_data">
+            <!-- <td class="table_img pt-5"><img src="../../../assets/cinthia-becher-z_WgCHcIkrs-unsplash.jpg" alt=""></td> -->
+            <td class="table_img pt-5"><img src="/assets/{{ item?.images}}" alt="/assets/{{ item?.images}}"></td>
+            <td class="pt-5 font">{{ item?.name }}</td>
+            <td class="pt-5 font">
+              ${{ (item?.price * item?.quantity).toFixed(2) }}
+            </td>
+            <td>
+              <div class="Btns d-flex gap-2  justify-content-center">
+                <button type="button" (click)="increase(item)" class="btn payment_btn">+</button>
+                <p class="pt-2">{{item?.quantity}}</p>
+                <button type="button" (click)="decrease(item)" class="btn payment_btn ">-</button>
+              </div>
+            </td>
+            <td class="delete pt-5 font">
+              <i (click)="deleteItem(item?.id)" class="fa-solid fa-trash delete-icon"></i>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
 
-    <div class="total  ">
-      <td class="py-4" colspan="4">Total Price : ${{ totalPrice!.toFixed(2) }}</td>
-      <button (click)="payment()" class="btn btn-primary">pay online</button>
+  
+  
+    </div>
+
+    <div class="payment_conatiner">
+      <h1 class="m-0">Payment </h1>
+      <hr>
+      <h2 class="m-0">Total Price : ${{ totalPrice!.toFixed(2) }}</h2>
+
+      <hr>
+
+      <div class="payment_form">
+
+        <h2 class="d-flex justify-content-center ">Please Enter your data</h2>
+
+        <form action="">
+
+          <div class="inputs">
+            <label for="name">User Name</label>
+            <input type="text" name="name" id="name">
+          </div>
+
+          <div class="inputs">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email">
+          </div>
+
+          <div class="inputs">
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address">
+          </div>
+
+
+
+
+        </form>
+
+        <hr>
+
+        <h2 class="m-0 py-3">Total Price : ${{ totalPrice!.toFixed(2) }}</h2>
+
+        <div class="Btns d-flex gap-5">
+          <button (click)="payment()" class="btn payment_btn">Buy online</button>
+          <button (click)="payment()" class="btn payment_btn">Buy Cash</button>
+
+        </div>
+
+
+      </div>
 
 
     </div>
-
-
-  </div>
-
   
-  }@else {
-
-  <div class="empty_table">
-    <h1 class="m-0">THER IS NO THING IN THE CART.. !</h1>
-
-    <h2><i class="fa-solid fa-cart-plus"></i></h2>
+    
+    }@else {
+  
+    <div class="empty_table">
+      <h1 class="m-0">THER IS NO THING IN THE CART.. !</h1>
+  
+      <h2><i class="fa-solid fa-cart-plus"></i></h2>
+  
+    </div>
+  
+  }
 
   </div>
 
-  }
 
 
   <!-- ================================================= -->

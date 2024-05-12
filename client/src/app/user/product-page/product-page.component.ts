@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { NgbRatingModule } from "@ng-bootstrap/ng-bootstrap";
 import { BrowserModule } from "@angular/platform-browser";
 import { ButtonModule } from "primeng/button";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import {
   Component,
   OnInit,
@@ -43,6 +43,8 @@ import { CookieService } from "../../services/cookie.service";
     FirestnavComponent,
     FormsModule,
     RatingModule,
+    RouterLink,
+    
   ],
   templateUrl: "./product-page.component.html",
   styleUrl: "./product-page.component.css",
@@ -214,9 +216,13 @@ export class ProductPageComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          this.toster.success('Product added to cart','Success')
+
         },
         (error) => {
           console.log(error);
+          this.toster.error('Please Login Firest')
+
         }
       );
   }

@@ -28,95 +28,6 @@
 }
 
 /* ===================================== */
-.catogury {
-  border-radius: 12px;
-  padding: 10px;
-  background-color: white;
-  margin-top: 15px;
-}
-
-
-.type {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-}
-
-.search_type {
-  background: linear-gradient(120deg, #ad51ee, #b04ce4, #b449de, #b844d3, #bd3fc9, #bf3bc1, #bf3cc3, #c339bc, #c636b5, #d52794, #da228a, #e31773, #eb1064);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 700;
-  font-size: 16px;
-  padding: 10px 0px;
-  border: solid;
-}
-
-.item_name {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.item_name input[type="checkbox"] {
-  margin-left: 5px;
-}
-
-
-.Categories_items {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
-}
-
-.Rate {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
-}
-
-.search_type.Rate {
-  background: linear-gradient(
-    120deg,
-    #ad51ee,
-    #b04ce4,
-    #b449de,
-    #b844d3,
-    #bd3fc9,
-    #bf3bc1,
-    #bf3cc3,
-    #c339bc,
-    #c636b5,
-    #d52794,
-    #da228a,
-    #e31773,
-    #eb1064
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 700;
-  font-size: 18px;
-  padding: 10px 0px;
-  border: solid;
-}
 
 
 .Btns {
@@ -247,6 +158,45 @@
       gap: 20px;
       text-align: center;
     }
+
+
+    /* =============================================================== */
+
+    .sidebar{
+      border: double  #7C5CD3;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 100%;
+      font-size: 16px;
+      font-weight: 500;
+      
+  }
+
+  .item_name{
+    transition: .7s;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .item_name:hover {
+    background-color: #7C5CD3;
+    color: white;
+  }
+
+  .item_name p {
+    /* border: solid; */
+    width: 100%;
+    padding: 15px;
+  }
+
+  .selected-item{
+    background-color: #7C5CD3;
+    color: white;  
+  }
+
+  
+  
+  
 
 /* ======================================================== */
 /* media quary */
