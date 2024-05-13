@@ -26,6 +26,12 @@ type State = { id: number; name: string };
 
 const states = ["shose", "pens"];
 
+interface Rating {
+  value: number;
+  _id: string;
+  date: string;
+}
+
 @Component({
   selector: "app-home",
   standalone: true,
@@ -93,31 +99,65 @@ export class HomeComponent implements OnInit {
   //s=======================================
 
   productcenter: any = [];
+  topproduct: any = [];
+  averageRatings: { [productId: string]: number } = {};
 
   ngOnInit(): void {
     this.getallproduct();
-    // AOS.init();
+    this.getTopproduct();
   }
 
   getallproduct() {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
       this.productcenter = res.products;
+      this.averageRatings = this.getAverageRatings(this.productcenter);
+      console.log("Average Ratings:", this.averageRatings);
+    });
+  }
+
+  // =================getAverageRatings==============================
+
+  getAverageRatings(products: any[]): { [productId: string]: number } {
+    const averageRatings: { [productId: string]: number } = {};
+
+    products.forEach((product: any) => {
+      let totalRating = 0;
+      let totalRatingsCount = 0;
+
+      product.ratings.forEach((rating: Rating) => {
+        totalRating += rating.value;
+        totalRatingsCount++;
+      });
+
+      if (totalRatingsCount === 0) {
+        averageRatings[product._id] = 0; // If no ratings, assign 0
+      } else {
+        averageRatings[product._id] = totalRating / totalRatingsCount; // Calculate average rating
+      }
     });
 
-    // ============================================
+    return averageRatings;
   }
-  getLatestAddedProducts() {
-    this.http.get("http://localhost:8000/v1/products/latestProducts").subscribe(
+
+  // ===============getTopproduct=============================
+
+  getTopproduct() {
+    this.http.get("http://localhost:8000/v1/products/top-rated").subscribe(
       (res: any) => {
+        this.topproduct = res;
         console.log(res);
-        this.latestAddedProducts = res;
-      },
-      (error) => {
-        console.log(error);
       }
+      // http://localhost:8000/v1/products/top-rated
     );
   }
-  // ===============================================================
+
+  // =================redirectproduct===========================
+
+  redirectproduct(id: string) {
+    this.router.navigate([`/product_details`, id]);
+  }
+
+  // ===============Owl carousel================================================
 
   customOptions: OwlOptions = {
     loop: true,
