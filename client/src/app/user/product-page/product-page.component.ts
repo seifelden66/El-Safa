@@ -118,14 +118,8 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
-  searchOnProduct() {
-    this.http.get("");
-  }
 
-
-  
-
-  getallproduct(page = 1) {
+  getallproduct() {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
       this.allproducts = res.products;
       this.averageRatings = this.getAverageRatings(this.allproducts);
@@ -133,14 +127,24 @@ export class ProductPageComponent implements OnInit {
       console.log(this.allproducts);
     });
   }
-  onPageChange(pageNumber: number) {
-    this.currentPage = pageNumber;
-    this.getallproduct(pageNumber);
-  }
+
 
   redirect(product_id: any) {
     this.router.navigate([`/product_details`, product_id]);
   }
+// ======================================================
+
+
+
+  // =====================================
+  open(content: any) {
+    this.modalService.open(content);
+  }
+
+
+  // =======filter by category====================================
+
+  selectedCategories: string[] = []; // Track selected categories
 
   getUniqueCategories(): void {
     this.http.get("http://localhost:8000/v1/products").subscribe(
@@ -160,22 +164,6 @@ export class ProductPageComponent implements OnInit {
     );
   }
 
-  // ===================================
-
-  rangeValues: number[] = [0, 500];
-
-  // =====================================
-  open(content: any) {
-    this.modalService.open(content);
-  }
-  // ======================================
-
-  // =============counter services=========================
-
-  // =======filter by category====================================
-
-  // Inside ProductPageComponent class
-  selectedCategories: string[] = []; // Track selected categories
 
   onCategoryChange(category: string): void {
     if (category === "All Products") {
@@ -212,7 +200,7 @@ export class ProductPageComponent implements OnInit {
       }
     );
   }
-
+  // ================add to cart===============================
   addToCart(id: string) {
     this.http
       .post(

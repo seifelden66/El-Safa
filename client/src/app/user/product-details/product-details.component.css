@@ -292,6 +292,11 @@ h1,h2,h3,h4,h5,h6,p{
 
 }
 
+.product_descreption{
+overflow-wrap: break-word;
+
+}
+
 /* =========================================== */
 @media (width<900px) {
 

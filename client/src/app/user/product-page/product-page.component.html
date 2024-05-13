@@ -12,7 +12,7 @@
         </h4>
         <div  class="sidebar_data">
           <div class="item_name">
-            <p (click)="onCategoryChange('All Products')"  class="m-0">All Products</p>
+            <p  (click)="onCategoryChange('All Products')"  class="m-0">All Products</p>
 
           </div>
           <hr>
@@ -20,7 +20,7 @@
             @if (category && category.length) { @for (cat of category; track
             $index) {
             <div class="item_name">
-              <p         [class.selected-item]="cat === selectedCategory"               (click)="onCategoryChange(cat)" class="m-0 sidebar_text">{{ cat }}</p>
+              <p         [class.selected-item]="cat === selectedCategory"   (click)="onCategoryChange(cat)" class="m-0 sidebar_text">{{ cat }}</p>
               <hr>
             </div>
             } }

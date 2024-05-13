@@ -80,6 +80,7 @@ getProduct(){
     .get(`http://localhost:8000/v1/products/${this.product_id}`)
     .subscribe((res: any) => {
       this.product_details = res;
+      console.log(res);      
       this.main_img = this.product_details.images[0];
       this.averageRatings = this.getAverageRatings([this.product_details]); // Pass an array with a single product
     });

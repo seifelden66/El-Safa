@@ -125,7 +125,8 @@ export class HomeComponent implements OnInit {
     }
     
 
-  // ===============================================
+  // =================getAverageRatings==============================
+
   getAverageRatings(products: any[]): { [productId: string]: number } {
     const averageRatings: { [productId: string]: number } = {};
 
@@ -150,25 +151,33 @@ export class HomeComponent implements OnInit {
 
 
 
-  // ============================================
+  // ===============getTopproduct=============================
 
     getTopproduct(){
       this.http.get('http://localhost:8000/v1/products/top-rated').subscribe((res:any)=>{this.topproduct=res;
+      console.log(res);
+      
     
       }
       // http://localhost:8000/v1/products/top-rated
       
     )
+  }
 
 
 
-// ============================================
+// =================redirectproduct===========================
+
+    redirectproduct(id : string){
+
+      this.router.navigate([`/product_details`,id])
+
+    } 
     
 
-    }
 
 
-    // ===============================================================
+    // ===============Owl carousel================================================
 
     customOptions: OwlOptions = {
       loop: true,

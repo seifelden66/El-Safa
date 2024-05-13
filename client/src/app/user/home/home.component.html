@@ -244,14 +244,14 @@
         <div class="col-9 col-xxl-2 col-xl-3 col-md-5 offer_card my-2 ">
           <div data-aos="zoom-in" class="card offer_data p-4 h-100 ">
 
-              <img src="/assets/{{ product?.images['0']}}" alt="">
+            <img (click)="redirectproduct(product?._id)" src="/assets/{{ product?.images['0']}}" alt="">
 
             <div class="card-body my-4">
               <h2 class="card-title">{{ product?.name }}</h2>
               <h3 class="card-title">${{ product?.price }}</h3>
               <div class="rating">
                 
-                <ngb-rating [rate]="averageRatings[product._id]" [readonly]="true" [max]="5"></ngb-rating>
+                <ngb-rating [rate]="averageRatings[product?._id]" [readonly]="true" [max]="5"></ngb-rating>
               </div>
 
     
