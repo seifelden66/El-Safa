@@ -13,6 +13,11 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angul
 import { MatTabsModule } from "@angular/material/tabs";
 import { ToastrService } from "ngx-toastr";
 
+interface Rating {
+  value: number;
+  _id: string;
+  date: string;
+}
 @Component({
   selector: "app-product-details",
   standalone: true,
@@ -31,106 +36,7 @@ import { ToastrService } from "ngx-toastr";
   templateUrl: "./product-details.component.html",
   styleUrl: "./product-details.component.css",
 })
-// export class ProductDetailsComponent implements OnInit {
-//   main_img: any;
-//   userToken!: any;
-//   product_details: any;
-//   rating!: number;
-//   @Input() id?: any;
 
-//   reternsrc(newsrc: any) {
-//     this.main_img = newsrc;
-//   }
-
-//   constructor(
-//     private ActivatedRoute: ActivatedRoute,
-//     private http: HttpClient,
-//     private CartService: CartService,
-//     private router: Router,
-//     private cookieService: CookieService
-//   ) {
-//   }
-//   ngOnInit(): void {
-//     // console.log(this.ActivatedRoute.snapshot.params['id']);
-//     const product_id = this.ActivatedRoute.snapshot.params["id"];
-//     // console.log(product_id);
-
-//     this.http
-//       .get(`http://localhost:8000/v1/products/${product_id}`)
-//       .subscribe((res: any) => {
-//         this.product_details = res;
-//         this.main_img = this.product_details.images[0];
-//         console.log(this.product_details);
-
-//       });
-//     this.userToken = this.cookieService.get("userToken");
-//   }
-
-//   //  ==================================
-
-//   activeIndex: number = 0;
-
-//   // =======cart operations==============================
-
-//   addtocart(product_details: any) {
-//     // console.log(product_details);
-//     this.CartService.addtocart(product_details);
-//     // console.log(product_details);
-//     this.router.navigate([`cart`]);
-//   }
-
-//   // ===================rating and comments============================
-
-//   submitRating() {
-//     const productId = product_id;
-//     const apiUrl = `http://localhost:8000/v1/products/${productId}/ratings`;
-//     const token = 'YOUR_USER_TOKEN_HERE';
-
-//     const headers = new HttpHeaders({
-//       'Authorization': `Bearer ${token}`
-//     });
-
-//     const body = {
-//       value: this.rating
-//     };
-
-//     this.http.post(apiUrl, body, { headers }).subscribe(
-//       response => {
-//         console.log('Rating submitted successfully:', response);
-//       },
-//       error => {
-//         console.error('Error submitting rating:', error);
-//       }
-//     );
-//   }
-
-//   // =================================================
-
-//   submitComments() {
-//     const productId = 'YOUR_PRODUCT_ID_HERE';
-//     const apiUrl = `http://localhost:8000/v1/products/${productId}/ratings`;
-//     const token = 'YOUR_USER_TOKEN_HERE';
-
-//     const headers = new HttpHeaders({
-//       'Authorization': `Bearer ${token}`
-//     });
-
-//     const body = {
-//       value: this.rating
-//     };
-
-//     this.http.post(apiUrl, body, { headers }).subscribe(
-//       response => {
-//         console.log('Rating submitted successfully:', response);
-//       },
-//       error => {
-//         console.error('Error submitting rating:', error);
-//       }
-//     );
-//   }
-//   active = 1;
-
-// }
 export class ProductDetailsComponent implements OnInit {
   main_img: any;
   userToken!: any;
@@ -142,6 +48,8 @@ export class ProductDetailsComponent implements OnInit {
   commentError: string = "";
   ratingSubmitted: boolean = false;
   commentSubmitted: boolean = false;
+  averageRatings: { [productId: string]: number } = {};
+
   toster = inject(ToastrService);
 
 
@@ -173,9 +81,34 @@ getProduct(){
     .subscribe((res: any) => {
       this.product_details = res;
       this.main_img = this.product_details.images[0];
+      this.averageRatings = this.getAverageRatings([this.product_details]); // Pass an array with a single product
     });
   this.userToken = this.cookieService.get("userToken");
 }
+
+
+getAverageRatings(products: any[]): { [productId: string]: number } {
+  const averageRatings: { [productId: string]: number } = {};
+
+  products.forEach((product: any) => {
+      let totalRating = 0;
+      let totalRatingsCount = 0;
+
+      product.ratings.forEach((rating: Rating) => {
+          totalRating += rating.value;
+          totalRatingsCount++;
+      });
+
+      if (totalRatingsCount === 0) {
+          averageRatings[product._id] = 0; // If no ratings, assign 0
+      } else {
+          averageRatings[product._id] = totalRating / totalRatingsCount; // Calculate average rating
+      }
+  });
+
+  return averageRatings;
+}
+
 
 submitRating() {
   const apiUrl = `http://localhost:8000/v1/products/${this.product_id}/ratings`;
@@ -250,6 +183,8 @@ addToCart(id : string){
     }
   )
 }
+
+
 
   
 }

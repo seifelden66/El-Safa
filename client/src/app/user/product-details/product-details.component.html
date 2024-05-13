@@ -40,8 +40,7 @@
 
           <h2>quantity: {{ product_details?.quantity }}</h2>
           <div class="rate_product">
-            <ngb-rating [(rate)]="product_details?.ratings['0'].value" [max]="5" [readonly]="true" />
-
+            <ngb-rating [rate]="averageRatings[product_details?._id]" [readonly]="true" [max]="5"></ngb-rating>
           </div>
           
 

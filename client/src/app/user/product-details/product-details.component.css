@@ -34,12 +34,12 @@ h1,h2,h3,h4,h5,h6,p{
   display: flex;
   justify-content: space-around;
   margin: 0px auto;
+  overflow: auto;
 }
 
 .gallary_images {
   display: flex;
   align-items: center;
-  border: solid;
   justify-content: space-around;
   
   

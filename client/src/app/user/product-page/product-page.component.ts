@@ -27,6 +27,11 @@ import { RatingModule } from "primeng/rating";
 import { ToastrService } from "ngx-toastr";
 import { CookieService } from "../../services/cookie.service";
 
+interface Rating {
+  value: number;
+  _id: string;
+  date: string;
+}
 @Component({
   selector: "app-product-page",
   standalone: true,
@@ -77,6 +82,8 @@ export class ProductPageComponent implements OnInit {
   selectedCategory: string | null = null;
   category: any[] = [];
   heartToggled: { [id: string]: boolean } = {};
+  averageRatings: { [productId: string]: number } = {};
+
 
   toster = inject(ToastrService);
 
@@ -115,10 +122,14 @@ export class ProductPageComponent implements OnInit {
     this.http.get("");
   }
 
+
+  
+
   getallproduct(page = 1) {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
       this.allproducts = res.products;
-      this.totalPages = res.totalPages;
+      this.averageRatings = this.getAverageRatings(this.allproducts);
+
       console.log(this.allproducts);
     });
   }
@@ -227,5 +238,33 @@ export class ProductPageComponent implements OnInit {
       );
   }
 
+    // ===============================================
+    getAverageRatings(products: any[]): { [productId: string]: number } {
+      const averageRatings: { [productId: string]: number } = {};
+  
+      products.forEach((product: any) => {
+          let totalRating = 0;
+          let totalRatingsCount = 0;
+  
+          product.ratings.forEach((rating: Rating) => {
+              totalRating += rating.value;
+              totalRatingsCount++;
+          });
+  
+          if (totalRatingsCount === 0) {
+              averageRatings[product._id] = 0; // If no ratings, assign 0
+          } else {
+              averageRatings[product._id] = totalRating / totalRatingsCount; // Calculate average rating
+          }
+      });
+  
+      return averageRatings;
+  }
+
   // =============rating form===============================
+
+
+
+
+
 }
