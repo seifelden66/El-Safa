@@ -40,19 +40,11 @@
 
           <h2>quantity: {{ product_details?.quantity }}</h2>
           <div class="rate_product">
-            <ngb-rating [(rate)]="product_details?.ratings['0'].value" [max]="5" [readonly]="true" />
-
+            <ngb-rating [rate]="averageRatings[product_details?._id]" [readonly]="true" [max]="5"></ngb-rating>
           </div>
           
-
-
-
-
-          <!-- rate -->
-          <form action="post"></form>
-
           <h5 class="detal">description:</h5>
-          <h2 class="card-text">{{ product_details?.description }}</h2>
+          <h2 class="card-text">{{ product_details?.short_desc}}</h2>
         </div>
 
 
@@ -94,17 +86,13 @@
           <div class="row d-flex py-4 gap-5">
             <div class="col-12">
               <h1>Product descriptions</h1>
-              {{ product_details?.description }}
-              <p class="w-75">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusantium incidunt id ut inventore assumenda mollitia vel nisi
-                dignissimos dolor beatae dolorem velit distinctio, cupiditate
-                nam consequatur rem, ipsum rerum unde?
+              <p class="product_descreption w-75 ">
+                {{ product_details?.desc }}
               </p>
             </div>
 
             <div class="col-12">
-              <h1 style="font-weight: 500">Other User review</h1>
+              <h1 style="font-weight: 400">Other User review</h1>
 
               <div class="review_container py-3 w-75">
                 
@@ -140,10 +128,12 @@
           <form class="rating_form" (ngSubmit)="submitRating()">
             <label for="rating">Rate this product:</label>
             <div class="rating_input">
-              <input type="number" id="rating" name="rating" [(ngModel)]="rating" required min="1" max="5" />
+              <!-- <input type="number" id="rating" name="rating" [(ngModel)]="rating" required min="1" max="5" /> -->
+              <ngb-rating [(ngModel)]="rating" id="rating" name="rating" min="1"  [max]="5"></ngb-rating>
+
               <button class="btn btn-secondary" type="submit">Submit</button>
               @if (ratingError) {
-                <h1>{{ ratingError }}</h1>
+                <p>{{ ratingError }}</p>
               }
 
             </div>
@@ -152,6 +142,7 @@
             <label for="rating">comment this product:</label>
             <div class="rating_input">
               <input type="text" id="rating" name="comments" [(ngModel)]="comment" required  />
+
               <button class="btn btn-secondary" type="submit">Submit</button>
 
             </div>

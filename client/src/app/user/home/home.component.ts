@@ -158,7 +158,6 @@ export class HomeComponent implements OnInit {
   }
 
   // ===============Owl carousel================================================
-
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,

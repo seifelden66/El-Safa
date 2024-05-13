@@ -27,6 +27,11 @@ import { RatingModule } from "primeng/rating";
 import { ToastrService } from "ngx-toastr";
 import { CookieService } from "../../services/cookie.service";
 
+interface Rating {
+  value: number;
+  _id: string;
+  date: string;
+}
 @Component({
   selector: "app-product-page",
   standalone: true,
@@ -44,7 +49,6 @@ import { CookieService } from "../../services/cookie.service";
     FormsModule,
     RatingModule,
     RouterLink,
-    
   ],
   templateUrl: "./product-page.component.html",
   styleUrl: "./product-page.component.css",
@@ -76,9 +80,9 @@ export class ProductPageComponent implements OnInit {
   selectedCategory: string | null = null;
   category: any[] = [];
   heartToggled: { [id: string]: boolean } = {};
+  averageRatings: { [productId: string]: number } = {};
 
   toster = inject(ToastrService);
-
 
   toggleHeart(prod_id: any) {
     // this.toster.success("added to Wishlist", "Success");
@@ -122,20 +126,28 @@ export class ProductPageComponent implements OnInit {
       );
   }
 
-  getallproduct(page = 1) {
+  getallproduct() {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
       this.allproducts = res.products;
-      this.totalPages = res.totalPages;
+      this.averageRatings = this.getAverageRatings(this.allproducts);
+
+      console.log(this.allproducts);
     });
-  }
-  onPageChange(pageNumber: number) {
-    this.currentPage = pageNumber;
-    this.getallproduct(pageNumber);
   }
 
   redirect(product_id: any) {
     this.router.navigate([`/product_details`, product_id]);
   }
+  // ======================================================
+
+  // =====================================
+  open(content: any) {
+    this.modalService.open(content);
+  }
+
+  // =======filter by category====================================
+
+  selectedCategories: string[] = []; // Track selected categories
 
   getUniqueCategories(): void {
     this.http.get("http://localhost:8000/v1/products").subscribe(
@@ -154,23 +166,6 @@ export class ProductPageComponent implements OnInit {
       }
     );
   }
-
-  // ===================================
-
-  rangeValues: number[] = [0, 500];
-
-  // =====================================
-  open(content: any) {
-    this.modalService.open(content);
-  }
-  // ======================================
-
-  // =============counter services=========================
-
-  // =======filter by category====================================
-
-  // Inside ProductPageComponent class
-  selectedCategories: string[] = []; // Track selected categories
 
   onCategoryChange(category: string): void {
     if (category === "All Products") {
@@ -207,7 +202,7 @@ export class ProductPageComponent implements OnInit {
       }
     );
   }
-
+  // ================add to cart===============================
   addToCart(id: string) {
     this.http
       .post(
@@ -222,15 +217,36 @@ export class ProductPageComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
-          this.toster.success('Product added to cart','Success')
-
+          this.toster.success("Product added to cart", "Success");
         },
         (error) => {
           console.log(error);
-          this.toster.error('Please Login Firest')
-
+          this.toster.error("Please Login Firest");
         }
       );
+  }
+
+  // ===============================================
+  getAverageRatings(products: any[]): { [productId: string]: number } {
+    const averageRatings: { [productId: string]: number } = {};
+
+    products.forEach((product: any) => {
+      let totalRating = 0;
+      let totalRatingsCount = 0;
+
+      product.ratings.forEach((rating: Rating) => {
+        totalRating += rating.value;
+        totalRatingsCount++;
+      });
+
+      if (totalRatingsCount === 0) {
+        averageRatings[product._id] = 0; // If no ratings, assign 0
+      } else {
+        averageRatings[product._id] = totalRating / totalRatingsCount; // Calculate average rating
+      }
+    });
+
+    return averageRatings;
   }
 
   // =============rating form===============================

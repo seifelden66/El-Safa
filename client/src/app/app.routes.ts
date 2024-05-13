@@ -4,7 +4,6 @@ import { HomeComponent } from "./user/home/home.component";
 import { ProductPageComponent } from "./user/product-page/product-page.component";
 import { ProfileComponent } from "./user/profile/profile.component";
 import { SignUpComponent } from "./user/sign-up/sign-up.component";
-import { InvoiceComponent } from "./user/invoice/invoice.component";
 import { ProductDetailsComponent } from "./user/product-details/product-details.component";
 import { DashbordComponent } from "./admin/dashbord/dashbord.component";
 import { ProductsComponent } from "./admin/products/products.component";
