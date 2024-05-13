@@ -19,6 +19,12 @@ import { HttpClient } from "@angular/common/http";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 import { TableModule } from "primeng/table";
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from "@angular/forms";
 
 @Component({
   selector: "app-cart",
@@ -33,6 +39,7 @@ import { TableModule } from "primeng/table";
     RouterLinkActive,
     NgbTooltipModule,
     TableModule,
+    ReactiveFormsModule,
   ],
   templateUrl: "./cart.component.html",
   styleUrl: "./cart.component.css",
@@ -56,6 +63,9 @@ export class CartComponent implements OnInit {
   cartItems!: any;
   CartService = inject(CartService);
   totalPrice!: number;
+  userDetails!: FormGroup;
+  isClicked: boolean = false;
+
   constructor(
     private CounterService: CounterService,
     private http: HttpClient,
@@ -65,9 +75,18 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.userToken = this.cookieservice.get("userToken");
     this.getCartItems();
+    this.userDetails = new FormGroup({
+      name: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.email]),
+      Delivery_address: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+    });
   }
 
-  isClicked: boolean = false;
+  payCash() {}
+  payOnline() {}
 
   increase(item: any) {
     if (item.quantity >= 1) {
@@ -121,7 +140,7 @@ export class CartComponent implements OnInit {
     }
   }
 
-  // payment flow functions with paymob
+  // SECTION - payment flow functions with paymob
   private API_KEY =
     "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2T1RjME1ETXdMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuTnp3cS1sdHNhaDl1VFMyWXBTUjlUSWFYOVQ0bFp3UGNPRFVKZG9wRER6MUFmbm9uRl9oTEJoeTlMYUpVbmkyTl8td1NMTzdTbGtnMXFkZGJsYXVKemc=";
 
@@ -236,7 +255,7 @@ export class CartComponent implements OnInit {
       console.error("Error in cardPayment:", error);
     }
   }
-
+  // !SECTION end section payment flow with paymob
   postOrder() {
     this.http
       .post(
@@ -289,8 +308,7 @@ export class CartComponent implements OnInit {
             (elem: any) => elem.id !== id
           );
         },
-        error => {
-          
+        (error) => {
           console.log(error);
         }
       );

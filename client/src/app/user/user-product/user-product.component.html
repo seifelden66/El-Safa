@@ -2,58 +2,96 @@
 <app-firestnav></app-firestnav>
 
 <div class="big_container">
-    <div class="sidebar">
-        <div class="sidebar_data">
-          <h3 [routerLink]="['/profile']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="User informations">
-            <i class="fa-solid fa-user"></i>
-          </h3>
-          <h3 href="#" [routerLink]="['/home']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="Home"><i class="fa-solid fa-house"></i>  </h3>
-          <h3 href="#" [routerLink]="['/product']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="All products" ><i class="fa-brands fa-product-hunt"></i>  </h3>
-          <h3 href="#" [routerLink]="['/user-product']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="User order" ><i class="fa-solid fa-cart-shopping"></i>  </h3>
-          <h3 href="#" [routerLink]="['/a']" routerLinkActive="active" class="sidebar_text"placement="end" ngbTooltip="Wishlist" ><i class="fa-solid fa-heart"></i> </h3>
-          <h3 href="#" [routerLink]="['/cart']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="payment" ><i class="fa-solid fa-credit-card"></i></h3>
+  <div class="sidebar">
+    <div class="sidebar_data">
+      <h3
+        [routerLink]="['/profile']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="User informations"
+      >
+        <i class="fa-solid fa-user"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/home']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="Home"
+      >
+        <i class="fa-solid fa-house"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/product']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="All products"
+      >
+        <i class="fa-brands fa-product-hunt"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/user-product']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="User order"
+      >
+        <i class="fa-solid fa-cart-shopping"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/a']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="Wishlist"
+      >
+        <i class="fa-solid fa-heart"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/cart']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="payment"
+      >
+        <i class="fa-solid fa-credit-card"></i>
+      </h3>
+    </div>
+  </div>
 
+  <!-- ===================================================== -->
 
-        </div>
-      </div>
-
-
-
-      <!-- ===================================================== -->
-
-      <div class="card table my-5 ">
-        <p-table
-          [value]="userorders"
-          [paginator]="true"
-          [rows]="5"
-        >
-          <ng-template  pTemplate="header">
-            <tr class="product_data">
-              <th scope="col">Id</th>
-              <th scope="col">order_status</th>
-              <th scope="col">type_of_payment</th>
-              <th scope="col">totalPrice</th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-item>
-            <tr class="product_data">
-              <td (click)="order_data(item?._id)" class="pt-5 font"> {{ item?._id }}</td>
-              <td class="pt-5 font">{{ item?.order_status }}</td>
-              <td class="pt-5 font">{{ item?.type_of_payment }}</td>
-              <td class="pt-5 font">${{ item?.totalPrice }}</td>
-    
-            </tr>
-          </ng-template>
-        </p-table>
-      
-
-      
-      
-      </div>
-      
-
+  <div class="card table my-5">
+    <p-table [value]="userorders" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="header">
+        <tr class="user-table-header-tr">
+          <th scope="col">Id</th>
+          <th scope="col">order_status</th>
+          <th scope="col">type_of_payment</th>
+          <th scope="col">totalPrice</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-item>
+        <tr class="user-table-body-tr">
+          <td>
+            <a routerLink="/order-data/{{ item?._id }}">
+              {{ item?._id }}
+            </a>
+          </td>
+          <td class="pt-5 font">{{ item?.order_status }}</td>
+          <td class="pt-5 font">{{ item?.type_of_payment }}</td>
+          <td class="pt-5 font">${{ item?.totalPrice }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>
-
-
 
 <app-footer></app-footer>
