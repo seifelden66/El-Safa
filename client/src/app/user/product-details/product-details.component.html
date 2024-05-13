@@ -1,3 +1,12 @@
+@if (showLoader) {
+  <div class="loader-container d-flex justify-content-center ">
+    <mat-spinner></mat-spinner>
+    <h1>Loading...</h1>
+  </div>
+}
+
+@if (!showLoader) {
+
 <app-second-header></app-second-header>
 <app-firestnav></app-firestnav>
 
@@ -171,3 +180,4 @@
 </div>
 
 <app-footer></app-footer>
+}

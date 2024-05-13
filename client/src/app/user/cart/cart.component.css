@@ -1,3 +1,14 @@
+
+.loader-container{
+  margin: 200px 0px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 100px 0px;
+  background-color: #EEF0FC;
+}
+
+
 .big_container {
 display: flex;
 justify-content: space-between;
@@ -5,6 +16,7 @@ overflow-x: auto;
 gap: 10px;
 
 }
+
 
 
 

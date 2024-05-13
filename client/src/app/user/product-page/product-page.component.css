@@ -1,12 +1,24 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-.container-fluid{
+
+.loader-container{
+  margin: 200px 0px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 100px 0px;
+  background-color: #EEF0FC;
+}
+
+
+.container-fluid {
   background-color: #F4F1FF;
 
 }
+
 .allproduct_container {
   display: flex;
   align-items: start;
@@ -18,10 +30,10 @@
 .allproduct {
   display: flex;
   justify-content: space-around;
-  
+
 }
 
-.product_name{
+.product_name {
   overflow: hidden;
   font-size: 13px;
   font-weight: 600;
@@ -38,38 +50,39 @@
   align-items: center;
 }
 
-    .Btns button{
-      display: flex;
-      justify-content: center;
-      border: none;
-      font-size: 16px ; 
-    }
-    
-    .btn1{
-      background-color: #7C5ED8;
-      color: white !important;
-      font-weight: 400;
-      border-radius: 5px;
-      padding: 10px 0px;
-       
-    }
+.Btns button {
+  display: flex;
+  justify-content: center;
+  border: none;
+  font-size: 16px;
+}
 
-    .btn2{
-      color: white !important;
-      font-weight: 300;
-      border-radius: 5px;
-      padding: 10px 0px;
-      border: none;
-      background-color: transparent;
-    }
+.btn1 {
+  background-color: #7C5ED8;
+  color: white !important;
+  font-weight: 400;
+  border-radius: 5px;
+  padding: 10px 0px;
+
+}
+
+.btn2 {
+  color: white !important;
+  font-weight: 300;
+  border-radius: 5px;
+  padding: 10px 0px;
+  border: none;
+  background-color: transparent;
+}
 
 
-.fav_btn{
+.fav_btn {
   color: red !important;
 
 }
+
 .hideen {
-  color: rgb(226, 220, 220) !important ;
+  color: rgb(226, 220, 220) !important;
 
 }
 
@@ -78,7 +91,7 @@
 
 
 /* ================================================== */
-.product_img{
+.product_img {
   position: relative;
   width: 100%;
 
@@ -93,29 +106,30 @@
   background-color: white;
   cursor: pointer;
   width: 100% !important;
-  
+
 }
 
 .product_data {
   border-radius: 6px;
-  width: 30% ;
+  width: 30%;
   overflow: hidden;
 }
 
-.product_data_card{
+.product_data_card {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.data1{
+.data1 {
   display: flex;
   flex-direction: column;
   align-items: start;
   width: 60%;
   padding: 0px 10px;
 }
-.data2{
+
+.data2 {
   width: 40%;
   display: flex;
   justify-content: end;
@@ -123,12 +137,12 @@
 
 }
 
-.product_price{
+.product_price {
   background-color: #FFFFFF;
 }
 
-.rate_product{
-  color:#FFD869 ;
+.rate_product {
+  color: #FFD869;
   font-size: 20px;
 }
 
@@ -136,67 +150,69 @@
 
 
 
-      .modal-title{
-        display: flex;
-        margin: auto;        
-        font-size: 25px;
-        padding: 10px 0px;
-      }
-      .modal-header button{
-        border: solid ;
-        display: flex;
-        padding: 10px;
-        
-      }
-    /* ============================== */
+.modal-title {
+  display: flex;
+  margin: auto;
+  font-size: 25px;
+  padding: 10px 0px;
+}
 
-    .Rate .card {
-      display: flex;
-      border: none;
-      flex-direction: column;
-      width: 100%;
-      gap: 20px;
-      text-align: center;
-    }
+.modal-header button {
+  border: solid;
+  display: flex;
+  padding: 10px;
+
+}
+
+/* ============================== */
+
+.Rate .card {
+  display: flex;
+  border: none;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  text-align: center;
+}
 
 
-    /* =============================================================== */
+/* =============================================================== */
 
-    .sidebar{
-      border: double  #7C5CD3;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 100%;
-      font-size: 16px;
-      font-weight: 500;
-      
-  }
+.sidebar {
+  border: double #7C5CD3;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 500;
 
-  .item_name{
-    transition: .7s;
-    cursor: pointer;
-    padding: 0;
-  }
+}
 
-  .item_name:hover {
-    background-color: #7C5CD3;
-    color: white;
-  }
+.item_name {
+  transition: .7s;
+  cursor: pointer;
+  padding: 0;
+}
 
-  .item_name p {
-    /* border: solid; */
-    width: 100%;
-    padding: 15px;
-  }
+.item_name:hover {
+  background-color: #7C5CD3;
+  color: white;
+}
 
-  .selected-item{
-    background-color: #7C5CD3;
-    color: white;  
-  }
+.item_name p {
+  /* border: solid; */
+  width: 100%;
+  padding: 15px;
+}
 
-  
-  
-  
+.selected-item {
+  background-color: #7C5CD3;
+  color: white;
+}
+
+
+
+
 
 /* ======================================================== */
 /* media quary */
@@ -226,12 +242,14 @@
     width: 90%;
   }
 }
+
 /* ===========animatio========================== */
 
 @keyframes fadeInOut {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -248,9 +266,11 @@
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
+
   100% {
     transform: scale(1);
   }

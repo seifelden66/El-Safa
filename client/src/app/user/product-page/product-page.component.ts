@@ -26,6 +26,7 @@ import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { RatingModule } from "primeng/rating";
 import { ToastrService } from "ngx-toastr";
 import { CookieService } from "../../services/cookie.service";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 interface Rating {
   value: number;
@@ -49,6 +50,7 @@ interface Rating {
     FormsModule,
     RatingModule,
     RouterLink,
+    MatProgressSpinnerModule
     
   ],
   templateUrl: "./product-page.component.html",
@@ -83,8 +85,7 @@ export class ProductPageComponent implements OnInit {
   category: any[] = [];
   heartToggled: { [id: string]: boolean } = {};
   averageRatings: { [productId: string]: number } = {};
-
-
+  showLoader: boolean = true;
   toster = inject(ToastrService);
 
 
@@ -116,6 +117,11 @@ export class ProductPageComponent implements OnInit {
         this.getallproduct();
       }
     });
+
+    setTimeout(() => {
+      this.showLoader = false;
+    }, 3000);
+
   }
 
 

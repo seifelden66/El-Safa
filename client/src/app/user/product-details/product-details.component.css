@@ -4,6 +4,17 @@
   box-sizing: border-box;
 }
 
+
+.loader-container{
+  margin: 200px 0px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 100px 0px;
+  background-color: #EEF0FC;
+}
+
+
 h1,h2,h3,h4,h5,h6,p{
   margin:0px 0px ;
 }

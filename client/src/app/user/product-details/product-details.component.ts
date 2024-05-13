@@ -12,6 +12,7 @@ import { CookieService } from "../../services/cookie.service";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatTabsModule } from "@angular/material/tabs";
 import { ToastrService } from "ngx-toastr";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 interface Rating {
   value: number;
@@ -32,6 +33,7 @@ interface Rating {
     ReactiveFormsModule,
     MatTabsModule,
     FormsModule,
+    MatProgressSpinnerModule
   ],
   templateUrl: "./product-details.component.html",
   styleUrl: "./product-details.component.css",
@@ -49,7 +51,7 @@ export class ProductDetailsComponent implements OnInit {
   ratingSubmitted: boolean = false;
   commentSubmitted: boolean = false;
   averageRatings: { [productId: string]: number } = {};
-
+  showLoader: boolean = true;
   toster = inject(ToastrService);
 
 
@@ -70,8 +72,11 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.product_id = this.activatedRoute.snapshot.params["id"];
     this.userToken = this.cookieService.get("userToken"); // Get user token from cookies
-
     this.getProduct()
+
+    setTimeout(() => {
+      this.showLoader = false;
+    }, 3000);
 
 }
 

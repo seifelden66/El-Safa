@@ -21,6 +21,7 @@ import { FirestnavComponent } from '../firestnav/firestnav.component';
 import Aos from 'aos'
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 type State = { id: number; name: string };
 
@@ -34,6 +35,7 @@ interface Rating {
   _id: string;
   date: string;
 }
+
 
 @Component({
   selector: 'app-home',
@@ -54,7 +56,8 @@ interface Rating {
     SecondHeaderComponent,
     FooterComponent,
     FirestnavComponent,
-    CarouselModule
+    CarouselModule,
+    MatProgressSpinnerModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -83,6 +86,8 @@ export class HomeComponent implements OnInit {
 
     // redirect btns
     constructor(private router :Router,private http : HttpClient){}
+    showLoader: boolean = true; // Flag to control loader visibility
+    // Your other component variables and methods go here...
     redirect(){
 
       this.router.navigate([`profile`])
@@ -114,6 +119,11 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
       this.getallproduct()
       this.getTopproduct()
+          // Simulate loading by hiding the loader after 5 seconds
+    setTimeout(() => {
+      this.showLoader = false;
+    },4000);
+
     }
 
     getallproduct() {

@@ -19,6 +19,7 @@ import { HttpClient } from "@angular/common/http";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 import { TableModule } from "primeng/table";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: "app-cart",
@@ -33,6 +34,7 @@ import { TableModule } from "primeng/table";
     RouterLinkActive,
     NgbTooltipModule,
     TableModule,
+    MatProgressSpinnerModule
   ],
   templateUrl: "./cart.component.html",
   styleUrl: "./cart.component.css",
@@ -50,21 +52,28 @@ import { TableModule } from "primeng/table";
   ],
 })
 export class CartComponent implements OnInit {
+  
+  constructor(
+    private CounterService: CounterService,
+    private http: HttpClient,
+    private cookieservice: CookieService
+  ) {}
   count: number = 0;
   totalP: number = 0;
   userToken: any;
   cartItems!: any;
   CartService = inject(CartService);
   totalPrice!: number;
-  constructor(
-    private CounterService: CounterService,
-    private http: HttpClient,
-    private cookieservice: CookieService
-  ) {}
-
+  showLoader: boolean = true;
+  
   ngOnInit(): void {
     this.userToken = this.cookieservice.get("userToken");
     this.getCartItems();
+
+    setTimeout(() => {
+      this.showLoader = false;
+    }, 3000);
+
   }
 
   isClicked: boolean = false;
