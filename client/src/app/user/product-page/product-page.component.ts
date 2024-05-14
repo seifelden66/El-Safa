@@ -206,6 +206,8 @@ export class ProductPageComponent implements OnInit {
       }
     );
   }
+
+  
   // ================add to cart===============================
   addToCart(id: string) {
     this.http

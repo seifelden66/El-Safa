@@ -2,21 +2,37 @@
 const mongoose = require("mongoose");
 const multer = require("multer");
 const Product = require("../models/products/product.model");
+const Category = require("../models/categories/categories.model");
 const User = require("../models/users/users.mongo");
 
 const ObjectId = mongoose.Types.ObjectId;
 
-const getProducts = async (req, res) => {
-  const page = parseInt(req.query.page) || 1;
-  const pageSize = 10;
 
+const getProducts = async (req, res) => {
   try {
-    const totalCount = await Product.countDocuments();
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = 10;
+
+    let filter = {};
+    if (req.query.category) {
+      // Find the category ObjectId by name
+      const category = await Category.findOne({ name: req.query.category });
+      if (!category) {
+        return res.status(404).json({ message: "Category not found" });
+      }
+      filter.category = category._id;
+    }
+
+    const totalCount = await Product.countDocuments(filter);
     const totalPages = Math.ceil(totalCount / pageSize);
-    const products = await Product.find({})
+    const products = await Product.find(filter)
       .skip((page - 1) * pageSize)
       .populate("category")
       .limit(pageSize);
+
+    if (products.length === 0) {
+      return res.status(404).json({ message: "No products found for this category" });
+    }
 
     res.status(200).json({
       currentPage: page,
@@ -26,9 +42,11 @@ const getProducts = async (req, res) => {
       products: products,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
+
 
 const getProduct = async (req, res) => {
   try {
@@ -213,5 +231,9 @@ module.exports = {
   addComment,
   addRating,
   getTopRatedProducts,
+<<<<<<< HEAD
   searchProduct,
+=======
+  
+>>>>>>> c065d948db290dd8c6bc298b24a7356f061bd190
 };
