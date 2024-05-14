@@ -17,11 +17,13 @@ const {
   addComment,
   getTopRatedProducts,
   searchProduct,
+  httpLatestProducts,
 } = require("../../controllers/products.controller");
 const { upload } = require("../../services/handleFile");
 const router = express.Router();
 
 router.get("/search", searchProduct);
+router.get("/latestProducts", httpLatestProducts);
 
 router.get("/top-rated", getTopRatedProducts);
 router.get("/", getProducts);

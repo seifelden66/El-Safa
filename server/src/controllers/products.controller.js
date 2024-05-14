@@ -222,6 +222,16 @@ const searchProduct = async (req, res) => {
   }
 };
 
+async function httpLatestProducts(req, res) {
+  try {
+    const latestAdded = await Product.find().sort({ createdAt: -1 }).limit(2);
+    res.status(200).json(latestAdded);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+}
+
 module.exports = {
   getProducts,
   getProduct,
@@ -232,4 +242,5 @@ module.exports = {
   addRating,
   getTopRatedProducts,
   searchProduct,
+  httpLatestProducts,
 };

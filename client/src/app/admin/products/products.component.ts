@@ -95,7 +95,7 @@ export class ProductsComponent implements OnInit {
         (res: any) => {
           alert(res.message);
           // Remove deleted product from the list
-          this.products = this.products.filter(
+          this.filterProducts = this.products.filter(
             (product) => product._id !== this.productId
           );
         },

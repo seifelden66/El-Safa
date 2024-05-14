@@ -1,12 +1,13 @@
+@import url("https://fonts.cdnfonts.com/css/blueberry");
 * {
-  padding: 0 ;
-  margin: 0 ;
-  box-sizing: border-box ;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   text-decoration: none;
 }
 
-.active_link{
-  color: #AE4EE8;
+.active_link {
+  color: #fcd34d;
 }
 /* =================================================== */
 
@@ -15,43 +16,79 @@
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  padding: 13px ;
-  background-color: #FFFFFF;
+  padding: 0.5em 1em;
+  background-color: #f8df9a;
 }
 
 .Companyandsearch {
   display: flex;
-  align-items: center;
-  /* border: solid; */
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-
+  justify-content: center;
+  flex-direction: column;
 }
 
-.Companyandsearch img{
-  width: 150px;
-  height: 65px;
+.Companyandsearch img {
+  width: 70px;
+  height: 60px;
   object-fit: cover;
   display: flex;
   justify-content: start;
-  color: #AE4EE8;
+  color: #fcd34d;
+  margin-left: 9px;
 }
 
-
-.searchbar{
-  border-radius: 8px;
-  color: #7C5ED8 ;
-  border: solid  1px #7C5ED8;
+.animate-charcter {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #d97706 0%,
+    #f59e0b 29%,
+    #fbbf24 67%,
+    #b65942 80%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 4s linear infinite;
+  display: inline-block;
+  font-size: 1.5em;
+  font-family: "Blueberry", sans-serif;
+  font-weight: bold;
+}
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 
-.search{
+.flip-infinite-loop {
+  animation: flip 2s infinite;
+}
 
+@keyframes flip {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+}
+
+.searchbar {
   border-radius: 8px;
-  color: #7C5ED8 ;
+  color: #fbbf24;
+  border: solid 3px#fbbf24;
+}
+
+.search {
+  border-radius: 8px;
+  color: #070706;
   border: none;
 }
-
 
 .firest_nav .row {
   display: flex;
@@ -72,7 +109,6 @@
   border-radius: 4px;
   padding: 7px;
   font-size: 20px;
-
 }
 
 .user_img,
@@ -80,14 +116,13 @@
 .faverot {
   display: flex;
   justify-content: center;
-
 }
 
-.payment{
+.payment {
   position: relative;
 }
 
-.payment p{
+.payment p {
   position: absolute;
   width: 15px;
   height: 15px;
@@ -97,18 +132,18 @@
   justify-content: center;
   align-items: center;
   top: 0%;
-  right:5%;
+  right: 5%;
   font-weight: 200;
-  background-color:#7C5ED8 ;
+  background-color: #fcd34d;
   font-size: 11px;
-  color:white;
-  padding: 5px ;
+  color: white;
+  padding: 5px;
 }
 
 .user_img {
-  width: 40px ;
+  width: 50px;
   cursor: pointer;
-  border: solid #7C5ED8 3.5px;
+  border: solid #f59e0b 3.5px;
   border-radius: 50%;
 }
 
@@ -118,7 +153,6 @@
   border-radius: 50%;
   cursor: pointer;
   padding: 7px;
-  
 }
 
 .user_img img {
@@ -128,10 +162,10 @@
 .payment i {
   color: gray;
   font-size: 22px;
-  color: #7C5ED8;
+  color: #f59e0b;
 }
 .faverot i {
-  color: #7C5ED8;
+  color: #f59e0b;
   font-size: 22px;
 }
 
@@ -147,47 +181,41 @@
 }
 
 /* ==================================================== */
-.big_sidebar{
-  background-color: #F4F1FF;
+.big_sidebar {
+  background-color: #f4f1ff;
 }
-.sidebar{
+.sidebar {
   /* border: SOLID  green; */
-  background-color: #F4F1FF;
+  background-color: #f4f1ff;
   padding: 0px 7px;
   box-shadow: 3px 3px 15px rgb(170, 162, 162);
-  border-bottom-right-radius:12px ;
-  border-top-right-radius:12px ;
-
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-
-.sidebar_data{
+.sidebar_data {
   padding: 50px 0px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.sidebar_data h3{
-  padding: 7px ;
+.sidebar_data h3 {
+  padding: 7px;
   cursor: pointer;
-  transition: .4s ease;
+  transition: 0.4s ease;
 }
 
-.sidebar_data h3:hover{
-  background-color: #7C5ED8;
+.sidebar_data h3:hover {
+  background-color: #fcd34d;
   color: white;
 }
 
-
-
-
-.sidebar_text{
+.sidebar_text {
   display: flex;
   align-items: center;
   gap: 7px;
 }
-
 
 /* ================================ */
 

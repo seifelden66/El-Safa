@@ -51,7 +51,6 @@ interface Rating {
     RatingModule,
     RouterLink,
     MatProgressSpinnerModule
-    
   ],
   templateUrl: "./product-page.component.html",
   styleUrl: "./product-page.component.css",
@@ -63,7 +62,6 @@ export class ProductPageComponent implements OnInit {
   totalPages: number = 1;
   userToken: any;
   rating = 4;
-  search!: string;
 
   constructor(
     private http: HttpClient,
@@ -90,6 +88,7 @@ export class ProductPageComponent implements OnInit {
 
 
   toggleHeart(prod_id: any , product_data : any) {
+
     // this.toster.success("added to Wishlist", "Success");
     this.heartToggled[prod_id] = !this.heartToggled[prod_id];
     console.log(this.heartToggled);
@@ -97,8 +96,6 @@ export class ProductPageComponent implements OnInit {
       this.toster.success("added to Wishlist", "Success");
       this.CartService.addtocart(product_data)
       console.log(product_data);
-      
-
     } else {
       this.toster.error("removed from Wishlist", "Removed");
     }
@@ -115,8 +112,7 @@ export class ProductPageComponent implements OnInit {
 
     this.ActivatedRoute.params.subscribe((param) => {
       if (param["search"]) {
-        this.search = param["search"];
-        console.log(param["search"]);
+        this.searchOnProduct(param["search"]);
       } else {
         this.getallproduct();
       }
@@ -128,6 +124,18 @@ export class ProductPageComponent implements OnInit {
 
   }
 
+  searchOnProduct(query: string) {
+    this.http
+      .get(`http://localhost:8000/v1/products/search?search=${query}`)
+      .subscribe(
+        (res: any) => {
+          this.allproducts = res;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 
   getallproduct() {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
@@ -138,19 +146,15 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
-
   redirect(product_id: any) {
     this.router.navigate([`/product_details`, product_id]);
   }
-// ======================================================
-
-
+  // ======================================================
 
   // =====================================
   open(content: any) {
     this.modalService.open(content);
   }
-
 
   // =======filter by category====================================
 
@@ -173,7 +177,6 @@ export class ProductPageComponent implements OnInit {
       }
     );
   }
-
 
   onCategoryChange(category: string): void {
     if (category === "All Products") {
@@ -227,44 +230,37 @@ export class ProductPageComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
-          this.toster.success('Product added to cart','Success')
-
+          this.toster.success("Product added to cart", "Success");
         },
         (error) => {
           console.log(error);
-          this.toster.error('Please Login Firest')
-
+          this.toster.error("Please Login Firest");
         }
       );
   }
 
-    // ===============================================
-    getAverageRatings(products: any[]): { [productId: string]: number } {
-      const averageRatings: { [productId: string]: number } = {};
-  
-      products.forEach((product: any) => {
-          let totalRating = 0;
-          let totalRatingsCount = 0;
-  
-          product.ratings.forEach((rating: Rating) => {
-              totalRating += rating.value;
-              totalRatingsCount++;
-          });
-  
-          if (totalRatingsCount === 0) {
-              averageRatings[product._id] = 0; // If no ratings, assign 0
-          } else {
-              averageRatings[product._id] = totalRating / totalRatingsCount; // Calculate average rating
-          }
+  // ===============================================
+  getAverageRatings(products: any[]): { [productId: string]: number } {
+    const averageRatings: { [productId: string]: number } = {};
+
+    products.forEach((product: any) => {
+      let totalRating = 0;
+      let totalRatingsCount = 0;
+
+      product.ratings.forEach((rating: Rating) => {
+        totalRating += rating.value;
+        totalRatingsCount++;
       });
-  
-      return averageRatings;
+
+      if (totalRatingsCount === 0) {
+        averageRatings[product._id] = 0; // If no ratings, assign 0
+      } else {
+        averageRatings[product._id] = totalRating / totalRatingsCount; // Calculate average rating
+      }
+    });
+
+    return averageRatings;
   }
 
-  // =============ADd to Wish list===============================
-
-
-
-
-
+  // =============rating form===============================
 }

@@ -9,101 +9,119 @@
 
 <app-second-header></app-second-header>
 <app-firestnav></app-firestnav>
-<div class="container-fluid mx-auto py-3">
-  <div class="row allproduct_container mx-auto py-4 px-2">
 
-    
-    <div class="col-12 col-xxl-2 col-xl-2 col-md-4">
-      <div class="sidebar">
-        <h4 class="p-2 search_type d-flex justify-content-center">
-          Filter by Categories
-        </h4>
-        <div  class="sidebar_data">
-          <div class="item_name">
-            <p  (click)="onCategoryChange('All Products')"  class="m-0">All Products</p>
-
-          </div>
-          <hr>
-          <ng-container>
-            @if (category && category.length) { @for (cat of category; track
-            $index) {
-            <div class="item_name">
-              <p [class.selected-item]="cat === selectedCategory"   (click)="onCategoryChange(cat)" class="m-0 sidebar_text">{{ cat }}</p>
-              <hr>
-            </div>
-            } }
-          </ng-container>
+<div class="allproduct_container">
+  <div class="col-lg-2 col-md-3 col-sm-4">
+    <div class="sidebar">
+      <h4 class="p-2 search_type d-flex justify-content-center">
+        Filter by Categories
+      </h4>
+      <div class="sidebar_data">
+        <div class="item_name">
+          <p (click)="onCategoryChange('All Products')" class="m-0">
+            All Products
+          </p>
         </div>
+        <ng-container>
+          @if (category && category.length) { @for (cat of category; track
+          $index) {
+          <div class="item_name">
+            <p
+              [class.selected-item]="cat === selectedCategory"
+              (click)="onCategoryChange(cat)"
+              class="m-0 sidebar_text"
+            >
+              {{ cat }}
+            </p>
+          </div>
+          } }
+        </ng-container>
       </div>
     </div>
+  </div>
 
+  <div class="col-lg-10 col-md-9 col-sm-8 mt-5">
+    <div class="row allproduct">
+      @for(product of allproducts; track $index){
+      <div class="product_data mb-5">
+        <div class="product_img">
+          <!-- <img
+            class="w-100 p-3"
+            src="/assets/{{ product.images[0] }}"
+            alt=""
+            (click)="redirect(product?._id)"
+          /> -->
+          <img
+            src="../../../assets/northfolk-vTi5S_vtc9U-unsplash.jpg"
+            alt=""
+            (click)="redirect(product?._id)"
+          />
+        </div>
 
-    <div class="col-xxl-9 col-xl-9 col-md-8 col-10">
-      <div class="row allproduct">
-        @for(product of allproducts; track $index){
-        <div class="product_data my-3">
-          <div class="product_img">
-            <img
-              class="w-100 p-3"
-              src="/assets/{{ product.images[0] }}"
-              alt=""
-              (click)="redirect(product?._id)"
-            />
-            <!-- <img src="../../../assets/northfolk-vTi5S_vtc9U-unsplash.jpg" alt=""> -->
-          </div>
-
-          <div class="product_price p-1">
-            <div class="product_data_card">
-              <div class="data1">
-                <h2 class="m-0">{{ product?.name }}</h2>
-                <h4 class="m-0">{{ product?.category?.name }}</h4>
-                <div class="rate_product">
-                
-                  <ngb-rating [rate]="averageRatings[product?._id]" [readonly]="true" [max]="5"></ngb-rating>
+        <div class="product_price py-3 px-2">
+          <div class="product_data_card">
+            <div class="data1 w-100">
+              <span class="m-1 font3">{{ product?.name }}</span>
+              <div
+                class="w-100 d-flex justify-content-between align-items-center"
+              >
+                <span class="m-1 font5">{{ product?.short_desc }}</span>
+                <div class="data2 some_offersh">
+                  <span class="animated-text">${{ product?.price }}</span>
                 </div>
-                <!-- @if (product?.ratings['0'].value) {
+              </div>
+
+              <div class="rate_product my-2">
+                <ngb-rating
+                  [rate]="averageRatings[product?._id]"
+                  [readonly]="true"
+                  [max]="5"
+                ></ngb-rating>
+              </div>
+              <!-- @if (product?.ratings['0'].value) {
 
                   <div class="rate_product">
                     <ngb-rating [(rate)]="product?.ratings['0'].value" [max]="5" [readonly]="true" />
   
                   </div>
                 } -->
-              </div>
+            </div>
+          </div>
 
-              <div class="data2">
-                <h1 class="m-0">${{ product?.price }}</h1>
-              </div>
+          <div class="add_fav_btn Btns">
+            <div class="card w-75">
+              <p-toast></p-toast>
+              <button
+                type="button"
+                pButton
+                (click)="addToCart(product?._id)"
+                label=""
+                class="btn1"
+              >
+                Add to Cart
+              </button>
             </div>
 
-            <div class="add_fav_btn Btns">
-              <div class="card w-75">
-                <p-toast></p-toast>
-                <button type="button" pButton (click)="addToCart(product?._id)" label="" class="btn1">Add to
-                  Cart</button>
-
-              </div>
-
-              <div class="card w-25">
-                <p-toast></p-toast>
-                <button
-                  type="button"
-                  pButton
-                  (click)="toggleHeart(product?._id , product) "
-                  label=""
-                  class="fav_btn btn2"
-                >
-                  <i
-                    class="fa-solid fa-heart hearts"
-                    [class.hideen]="!heartToggled[product?._id]"
-                  ></i>
-                </button>
-              </div>
+            <div class="card w-25">
+              <p-toast></p-toast>
+              <button
+                type="button"
+                pButton
+                (click)="toggleHeart(product?._id , product)"
+                label=""
+                class="fav_btn btn2"
+              >
+                <i
+                  class="fa-solid fa-heart hearts"
+                  [class.hideen]="!heartToggled[product?._id]"
+                ></i>
+              </button>
             </div>
           </div>
         </div>
-
-        }
       </div>
+
+      }
     </div>
   </div>
 </div>

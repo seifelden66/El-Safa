@@ -1,5 +1,5 @@
 .main_container {
-  background-color: #f4f1ff;
+  background-color: #fffbeb;
   border: solid transparent;
   padding-block: 3rem;
 }
@@ -10,7 +10,7 @@
 
 .contact-form {
   width: 50%;
-  background-color: #ede9fe;
+  background-color: #fffbeb;
   border-radius: 5px;
   padding: 2em;
 }
@@ -22,7 +22,8 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  color: #333;
+  color: #f59e0b;
+  font-size: 1.1em;
 }
 
 .form-group input,
@@ -39,7 +40,7 @@
 }
 
 .form-group button {
-  background-color: #007bff;
+  background-color: #d97706;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -48,5 +49,5 @@
 }
 
 .form-group button:hover {
-  background-color: #0056b3;
+  background-color: #fbbf24;
 }

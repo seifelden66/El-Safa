@@ -1,4 +1,5 @@
-import { CookieService } from './../../services/cookie.service';
+import { SearchService } from "./../services/search.service";
+import { CookieService } from "./../../services/cookie.service";
 import { CartService } from "./../services/cart.service";
 import { CounterService } from "../services/counter.service";
 import { JsonPipe } from "@angular/common";
@@ -61,8 +62,8 @@ export class SecondHeaderComponent implements OnInit {
   products: any[] = [];
   categories: string[] = [];
   selectedCategory: string | null = null;
-  usertoken:any ;
-  userdata!:any;
+  usertoken: any;
+  userdata!: any;
 
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
@@ -88,15 +89,21 @@ export class SecondHeaderComponent implements OnInit {
     private http: HttpClient,
     private CounterService: CounterService,
     private CartService: CartService,
-    private CookieService: CookieService
+    private CookieService: CookieService,
+    private SearchService: SearchService
   ) {}
+
+  onSearch(query: string): void {
+    if (query) {
+      this.SearchService.perFormsearch(query);
+    }
+  }
 
   redirect() {
     if (this.usertoken) {
       this.router.navigate([`profile`]);
-      
-    }else{
-      alert('you Should Login Firest')
+    } else {
+      alert("you Should Login Firest");
     }
   }
 
@@ -105,9 +112,8 @@ export class SecondHeaderComponent implements OnInit {
   }
 
   redirect3() {
-    this.CookieService.remove('userToken')
+    this.CookieService.remove("userToken");
     this.router.navigate([`login`]);
-
   }
 
   redirect4() {
@@ -134,7 +140,7 @@ export class SecondHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
-    this.usertoken = this.CookieService.get('userToken')
+    this.usertoken = this.CookieService.get("userToken");
 
     // this.CartService.getcount().subscribe((res) => {
     //   this.count = res;
@@ -166,20 +172,23 @@ export class SecondHeaderComponent implements OnInit {
     this.selectedCategory = category;
   }
 
-  getuserdata(){
-    this.http.get('http://localhost:8000/v1/users/profile',{headers:{
-      Authorization : `Bearer ${this.usertoken}`
-    }}).subscribe((res:any)=>{
-      this.userdata = res.user;
-      console.log(res);
-    
-    },
-  error => {
-    console.log(error);
-  })
+  getuserdata() {
+    this.http
+      .get("http://localhost:8000/v1/users/profile", {
+        headers: {
+          Authorization: `Bearer ${this.usertoken}`,
+        },
+      })
+      .subscribe(
+        (res: any) => {
+          this.userdata = res.user;
+          console.log(res);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
-
-
 
   // ======counter======================================
 }

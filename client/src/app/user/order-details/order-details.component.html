@@ -2,131 +2,202 @@
 <app-firestnav></app-firestnav>
 
 <div class="big_container">
-    <div class="sidebar">
-        <div class="sidebar_data">
-          <h3 [routerLink]="['/profile']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="User informations">
-            <i class="fa-solid fa-user"></i>
-          </h3>
-          <h3 href="#" [routerLink]="['/home']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="Home"><i class="fa-solid fa-house"></i>  </h3>
-          <h3 href="#" [routerLink]="['/product']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="All products" ><i class="fa-brands fa-product-hunt"></i>  </h3>
-          <h3 href="#" [routerLink]="['/user-product']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="User order" ><i class="fa-solid fa-cart-shopping"></i>  </h3>
-          <h3 href="#" [routerLink]="['/wishlist']" routerLinkActive="active" class="sidebar_text"placement="end" ngbTooltip="Wishlist" ><i class="fa-solid fa-heart"></i> </h3>
-          <h3 href="#" [routerLink]="['/cart']" routerLinkActive="active" class="sidebar_text" placement="end" ngbTooltip="payment" ><i class="fa-solid fa-credit-card"></i></h3>
+  <div class="sidebar">
+    <div class="sidebar_data">
+      <h3
+        [routerLink]="['/profile']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="User informations"
+      >
+        <i class="fa-solid fa-user"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/home']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="Home"
+      >
+        <i class="fa-solid fa-house"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/product']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="All products"
+      >
+        <i class="fa-brands fa-product-hunt"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/user-product']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="User order"
+      >
+        <i class="fa-solid fa-cart-shopping"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/wishlist']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="Wishlist"
+      >
+        <i class="fa-solid fa-heart"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/cart']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="payment"
+      >
+        <i class="fa-solid fa-credit-card"></i>
+      </h3>
+    </div>
+  </div>
 
-
+  <!-- ===================================================== -->
+  <div class="container padding-bottom-3x mb-1 mt-5">
+    <div class="card mb-3">
+      <div class="p-4 text-center text-white text-lg rounded-top tracking">
+        <span class="text-uppercase">Tracking Order No - </span
+        ><span class="text-medium">{{ order_id }}</span>
+      </div>
+      <div
+        class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary"
+      >
+        <div class="w-100 text-center py-1 px-2">
+          <span class="text-medium">Shipped Via:</span> UPS Ground
+        </div>
+        <div class="w-100 text-center py-1 px-2">
+          <span class="text-medium">Status:</span> Checking Quality
+        </div>
+        <div class="w-100 text-center py-1 px-2">
+          <span class="text-medium">Expected Date:</span> SEP 09, 2024
         </div>
       </div>
-
-
-
-      <!-- ===================================================== -->
-      <div class="bigcontiner2">
-        <div class="card mb-3 py-4">
-
+      <div class="card-body">
+        <div
+          class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x"
+        >
+          <!-- completed -->
           <div
-            class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 "
+            class="step"
+            [ngClass]="{
+              completed:
+                orderStatus == 'confirmed' ||
+                orderStatus == 'dispatched' ||
+                orderStatus == 'delivered'
+            }"
           >
-            <div class="w-100 text-center py-1 px-2">
-              <span class="text-medium">Shipped Via:</span> UPS Ground
+            <div class="step-icon-wrap">
+              <div class="step-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
             </div>
-            <div class="w-100 text-center py-1 px-2">
-              <span class="text-medium">Status:</span> Checking Quality
-            </div>
-            <div class="w-100 text-center py-1 px-2">
-              <span class="text-medium">Expected Date:</span> SEP 09, 2024
-            </div>
+            <h4 class="step-title">Confirmed Order</h4>
           </div>
-          <div class="card-body">
-            <div
-              class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x"
-            >
-      
-      
-            <div
-                class="step"
-                [ngClass]="{
-                  completed:
-                    orderStatus == 'confirmed' ||
-                    orderStatus == 'dispatched' ||
-                    orderStatus == 'delivered'
-                }"
-              >
-                <div class="step-icon-wrap">
-                  <div class="step-icon">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                  </div>
-                </div>
-                <h4 class="step-title">Confirmed Order</h4>
-              </div>
-              <div
-                class="step"
-                [ngClass]="{
-                  completed:
-                    orderStatus == 'dispatched' || orderStatus == 'delivered'
-                }"
-              >
-                <div class="step-icon-wrap">
-                  <div class="step-icon"><i class="fas fa-truck"></i></div>
-                </div>
-                <h4 class="step-title">Product Dispatched</h4>
-              </div>
-              <div
-                class="step"
-                [ngClass]="{
-                  completed: orderStatus == 'delivered'
-                }"
-              >
-                <div class="step-icon-wrap">
-                  <div class="step-icon">
-                    <i class="fa-solid fa-house-chimney"></i>
-                  </div>
-                </div>
-                <h4 class="step-title">Product Delivered</h4>
+          <div
+            class="step"
+            [ngClass]="{
+              completed:
+                orderStatus == 'dispatched' || orderStatus == 'delivered'
+            }"
+          >
+            <div class="step-icon-wrap">
+              <div class="step-icon"><i class="fas fa-truck"></i></div>
+            </div>
+            <h4 class="step-title">Product Dispatched</h4>
+          </div>
+          <div
+            class="step"
+            [ngClass]="{
+              completed: orderStatus == 'delivered'
+            }"
+          >
+            <div class="step-icon-wrap">
+              <div class="step-icon">
+                <i class="fa-solid fa-house-chimney"></i>
               </div>
             </div>
+            <h4 class="step-title">Product Delivered</h4>
           </div>
         </div>
-
-
-        
-        <div class="card table my-5 ">
-                <p-table
-                  [value]="order_details?.order?.orderItems"
-                  [paginator]="true"
-                  [rows]="5"
-                >
-                  <ng-template  pTemplate="header">
-                    <tr class="product_data">
-                      <th scope="col">image</th>
-                      <th scope="col">name</th>
-                      <th scope="col">price</th>
-                      <th scope="col">quantity</th>
-                      <th scope="col">totalPrice</th>
-                    </tr>
-                  </ng-template>
-                  <ng-template pTemplate="body" let-item>
-                    <tr class="product_data">
-                      <!-- <td (click)="order_data(item?._id)" class="pt-5 font"> {{ item?._id }}</td> -->
-                      <td> <img class="table_img" src="/assets/{{ item!.images }}" alt=""> </td>
-                      <td class="pt-5 font">{{ item?.name }}</td>
-                      <td class="pt-5 font">{{ item?.price }}</td>
-                      <td class="pt-5 font">{{ item?.quantity }}</td>
-                      <td class="pt-5 font">${{ item?.totalPrice }}</td>
-            
-                    </tr>
-                  </ng-template>
-                </p-table>
-              
-        
-              
-              
-        </div>
-              
       </div>
+    </div>
+    <div
+      class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-sm-between align-items-center"
+    ></div>
 
-
+    <div class="table-responsive my-5">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr class="user-table-header-tr">
+            <th>PRODUCT & TITLE</th>
+            <th>QUANTITY</th>
+            <th>PRICE</th>
+            <th>TOTAL PRICE</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(order of orders?.orderItems; track order.id){
+          <tr class="user-table-body-tr">
+            <td class="d-flex justify-content-center product-info gap-3">
+              <div class="product-img">
+                <img
+                  src="/assets/{{ order?.images }}"
+                  (error)="errorHandler($event)"
+                  loading="lazy"
+                />
+              </div>
+              <a
+                routerLink="/product_details/{{ order?.id }}"
+                class="product-title"
+                >Shirt</a
+              >
+            </td>
+            <td>{{ order?.quantity }}</td>
+            <td>${{ order?.price }}</td>
+            <td>${{ order?.totalPrice }}</td>
+          </tr>
+          }
+          <tr class="order-details-tr">
+            <td colspan="3">TOTAL RPICE</td>
+            <td>${{ orders?.totalPrice }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modelBackdrop" [ngClass]="{ show: modelStatus }"></div>
+    <div class="ng-Modal" [ngClass]="{ show: modelStatus }">
+      <div class="ng-Modal-header">
+        <h3>Order Status</h3>
+      </div>
+      <div class="ng-Modal-body">
+        <p>{{ orderMessage }}</p>
+      </div>
+      <div class="ng-Modal-footer">
+        <div class="d-flex gap-2 float-end py-2">
+          <button class="btn btn-primary" (click)="hideModel()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
 
 <app-footer></app-footer>

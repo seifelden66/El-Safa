@@ -2,11 +2,11 @@
 @import "primeicons/primeicons.css";
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 @import "ngx-toastr/toastr";
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 
 html {
-  background-color: #eef0fc;
+  background-color: #fffbeb;
 }
 
 .modelBackdrop {
@@ -124,4 +124,21 @@ html {
 
 .searchInput {
   background-color: #fdf4ff !important;
+}
+
+.user-table-body-tr {
+  /* border-bottom: solid 0.5px rgb(234, 230, 235); */
+  background-color: #fdf4ff;
+}
+.user-table-body-tr:hover {
+  background-color: #f1e866 !important;
+}
+
+.user-table-header-tr {
+  background-color: #fbbf24ed !important;
+}
+
+.user-table-body-tr td {
+  font-weight: 500;
+  color: #451a03;
 }

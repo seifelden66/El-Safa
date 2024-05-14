@@ -20,6 +20,12 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 import { TableModule } from "primeng/table";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from "@angular/forms";
 
 @Component({
   selector: "app-cart",
@@ -34,7 +40,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     RouterLinkActive,
     NgbTooltipModule,
     TableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   templateUrl: "./cart.component.html",
   styleUrl: "./cart.component.css",
@@ -53,37 +60,88 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 })
 export class CartComponent implements OnInit {
   
-  constructor(
-    private CounterService: CounterService,
-    private http: HttpClient,
-    private cookieservice: CookieService
-  ) {}
   count: number = 0;
   totalP: number = 0;
   userToken: any;
   cartItems!: any;
   CartService = inject(CartService);
   totalPrice!: number;
-  showLoader: boolean = true;
-  
+  userDetails!: FormGroup;
+  isClicked: boolean = false;
+  PayModelForm: boolean = false;
+  showLoader: boolean = true; // Flag to control loader visibility
+
+  constructor(
+    private CounterService: CounterService,
+    private http: HttpClient,
+    private cookieservice: CookieService
+  ) {}
+
   ngOnInit(): void {
     this.userToken = this.cookieservice.get("userToken");
     this.getCartItems();
+    this.userDetails = new FormGroup({
+      name: new FormControl("", [Validators.required]),
+      email: new FormControl("", [
+        Validators.required,
+        Validators.pattern("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"),
+      ]),
+      Delivery_address: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      type_of_payment: new FormControl("cache"),
+    });
+
 
     setTimeout(() => {
       this.showLoader = false;
-    }, 3000);
+    },4000);
 
   }
 
-  isClicked: boolean = false;
+  hidePayModelForm() {
+    this.PayModelForm = false;
+  }
+  showPayModelForm() {
+    this.PayModelForm = true;
+  }
+
+  payCash() {
+    this.userDetails.controls["type_of_payment"].setValue("cache");
+    Object.keys(this.userDetails.controls).forEach((field) => {
+      const control = this.userDetails.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
+
+    if (this.userDetails.invalid) {
+      return;
+    }
+    this.postOrder();
+    this.hidePayModelForm();
+    alert("your order is successfully saved ");
+  }
+
+  payOnline() {
+    this.userDetails.controls["type_of_payment"].setValue("online");
+    Object.keys(this.userDetails.controls).forEach((field) => {
+      const control = this.userDetails.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
+
+    if (this.userDetails.invalid) {
+      return;
+    }
+    this.payment();
+  }
 
   increase(item: any) {
     if (item.quantity >= 1) {
       item.quantity++;
-
-      // cartItems
-
       this.http
         .post(
           "http://localhost:8000/v1/cart/addToCart",
@@ -95,8 +153,8 @@ export class CartComponent implements OnInit {
           }
         )
         .subscribe(
-          (res) => {
-            console.log(res);
+          (res: any) => {
+            this.totalPrice = res.totalPrice;
           },
           (error) => {
             console.log(error);
@@ -120,8 +178,8 @@ export class CartComponent implements OnInit {
           }
         )
         .subscribe(
-          (res) => {
-            console.log(res);
+          (res: any) => {
+            this.totalPrice = res.totalPrice;
           },
           (error) => {
             console.log(error);
@@ -130,7 +188,7 @@ export class CartComponent implements OnInit {
     }
   }
 
-  // payment flow functions with paymob
+  // SECTION - payment flow functions with paymob
   private API_KEY =
     "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2T1RjME1ETXdMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuTnp3cS1sdHNhaDl1VFMyWXBTUjlUSWFYOVQ0bFp3UGNPRFVKZG9wRER6MUFmbm9uRl9oTEJoeTlMYUpVbmkyTl8td1NMTzdTbGtnMXFkZGJsYXVKemc=";
 
@@ -245,27 +303,16 @@ export class CartComponent implements OnInit {
       console.error("Error in cardPayment:", error);
     }
   }
-
+  // !SECTION end section payment flow with paymob
   postOrder() {
     this.http
-      .post(
-        "http://localhost:8000/postOrder",
-        {
-          Delivery_address: "test order pay online",
-          type_of_payment: "online",
-          email: "kareem.345@yahoo.com",
-          name: "kareem",
+      .post("http://localhost:8000/postOrder", this.userDetails.value, {
+        headers: {
+          Authorization: `Bearer ${this.userToken}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${this.userToken}`,
-          },
-        }
-      )
+      })
       .subscribe(
-        (res) => {
-          console.log(res);
-        },
+        (res) => {},
         (error) => {
           console.log(error);
         }
@@ -294,12 +341,10 @@ export class CartComponent implements OnInit {
       })
       .subscribe(
         (res: any) => {
-          this.cartItems.items = this.cartItems.items.filter(
-            (elem: any) => elem.id !== id
-          );
+          this.cartItems = res;
+          this.totalPrice = res.totalPrice;
         },
-        error => {
-          
+        (error) => {
           console.log(error);
         }
       );
