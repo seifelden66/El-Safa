@@ -69,7 +69,7 @@
   <!-- ===================================================== -->
   <div class="container padding-bottom-3x mb-1 mt-5">
     <div class="card mb-3">
-      <div class="p-4 text-center text-white text-lg bg-dark rounded-top">
+      <div class="p-4 text-center text-white text-lg rounded-top tracking">
         <span class="text-uppercase">Tracking Order No - </span
         ><span class="text-medium">{{ order_id }}</span>
       </div>
@@ -157,7 +157,7 @@
         <tbody>
           @for(order of orders?.orderItems; track order.id){
           <tr class="user-table-body-tr">
-            <td class="d-flex justify-content-center product-info">
+            <td class="d-flex justify-content-center product-info gap-3">
               <div class="product-img">
                 <img
                   src="/assets/{{ order?.images }}"

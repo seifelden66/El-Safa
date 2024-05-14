@@ -127,18 +127,18 @@ html {
 }
 
 .user-table-body-tr {
-  border-bottom: solid 0.5px rgb(234, 230, 235);
+  /* border-bottom: solid 0.5px rgb(234, 230, 235); */
   background-color: #fdf4ff;
 }
 .user-table-body-tr:hover {
-  background-color: #fdeffd !important;
+  background-color: #f1e866 !important;
 }
 
 .user-table-header-tr {
-  background-color: #d7c1db !important;
-  border: solid 0.5px rgb(208, 183, 214);
+  background-color: #fbbf24ed !important;
 }
 
-/* ///  */
-
-/* button animation  */
+.user-table-body-tr td {
+  font-weight: 500;
+  color: #451a03;
+}

@@ -7,7 +7,7 @@
   position: sticky;
   top: 0;
   z-index: 2;
-  background-color: #fffbeb;
+  background-color: #fef3c7;
 }
 
 .sec_nav {
@@ -33,7 +33,7 @@
 }
 
 .two .navbar_container {
-  background-color: #fffbeb !important;
+  background-color: #fef3c7 !important;
   display: flex;
 }
 

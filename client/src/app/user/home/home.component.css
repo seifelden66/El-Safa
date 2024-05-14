@@ -1,6 +1,7 @@
 @import url("https://fonts.cdnfonts.com/css/adlam-display");
 @import url("https://fonts.cdnfonts.com/css/noto-sans-ol-chiki");
 @import url("https://fonts.cdnfonts.com/css/blueberry");
+
 * {
   padding: 0;
   margin: 0;
@@ -11,9 +12,30 @@
 .body {
   background-color: #fffbeb;
 }
-.container-fluid {
-  /* background-color: #f4f1ff; */
+.font1 {
+  color: #92400e;
+  font-family: "ADLaM Display", sans-serif;
 }
+
+.font2 {
+  font-family: "ADLaM Display", sans-serif;
+  background: linear-gradient(
+    50deg,
+    rgba(252, 211, 77, 1) 0%,
+    rgba(251, 191, 36, 1) 25%,
+    rgba(245, 158, 11, 1) 50%,
+    rgba(217, 119, 6, 1) 75%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  padding: 20px 0px;
+  font-weight: 500;
+  letter-spacing: 5px;
+}
+
 /* Add this CSS to your stylesheet */
 /* ========================================== */
 .carousel_img {
@@ -172,7 +194,7 @@
   justify-content: space-between;
   gap: 2px;
   padding: 30px 0px;
-  background-color: #faf7ee;
+  background-color: #fffbeb;
 }
 
 .mostsells {
@@ -201,12 +223,10 @@
   top: 0;
   background: linear-gradient(
     180deg,
-    #e4bbe5,
-    #c676ca,
-    #9b11a3,
-    #8931b0,
-    #5d74c9,
-    #1ed1ed
+    rgba(252, 211, 77, 1) 0%,
+    rgba(251, 191, 36, 1) 25%,
+    rgba(245, 158, 11, 1) 50%,
+    rgba(217, 119, 6, 1) 75%
   );
 }
 
@@ -223,12 +243,10 @@
   width: 30px;
   background: linear-gradient(
     to bottom,
-    #e4bbe5,
-    #c676ca,
-    #9b11a3,
-    #8931b0,
-    #5d74c9,
-    #1ed1ed
+    rgba(252, 211, 77, 1) 0%,
+    rgba(251, 191, 36, 1) 25%,
+    rgba(245, 158, 11, 1) 50%,
+    rgba(217, 119, 6, 1) 75%
   );
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
@@ -239,12 +257,10 @@
   width: 30px;
   background: linear-gradient(
     to bottom,
-    #e4bbe5,
-    #c676ca,
-    #9b11a3,
-    #8931b0,
-    #5d74c9,
-    #1ed1ed
+    rgba(252, 211, 77, 1) 0%,
+    rgba(251, 191, 36, 1) 25%,
+    rgba(245, 158, 11, 1) 50%,
+    rgba(217, 119, 6, 1) 75%
   );
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
@@ -255,12 +271,10 @@
   width: 30px;
   background: linear-gradient(
     to bottom,
-    #e4bbe5,
-    #c676ca,
-    #9b11a3,
-    #8931b0,
-    #5d74c9,
-    #1ed1ed
+    rgba(252, 211, 77, 1) 0%,
+    rgba(251, 191, 36, 1) 25%,
+    rgba(245, 158, 11, 1) 50%,
+    rgba(217, 119, 6, 1) 75%
   );
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
@@ -282,13 +296,14 @@
 }
 
 .carusel_bt {
-  background-color: #5c3dc3;
-  color: white;
+  background-color: transparent;
+  color: #92400e;
   border-radius: 5px;
+  border: dashed 5px #92400e;
 }
 
 .Launch_offer {
-  color: #c636b5;
+  color: #fbbf24;
 }
 
 /* ================================ */
@@ -298,7 +313,7 @@
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  background-color: #fffbeb;
+  background-color: #fffdf7;
   /* margin: 10px 0px; */
   border-radius: 12px;
 }
@@ -331,16 +346,15 @@
   cursor: pointer;
 }
 /* ========================================================= */
-
+/* 
 .owl_header {
   display: flex;
   justify-content: center;
   font-size: 40px;
   padding: 20px 0px;
-  color: linear-gradient(to right, #f59e0b, #fbbf24);
   font-weight: 500;
-  letter-spacing: 7px;
-}
+  letter-spacing: 5px;
+} */
 
 .owl-img img {
   height: 250px;
@@ -385,7 +399,6 @@
   font-weight: 500;
   font-size: 30px;
   letter-spacing: 6px;
-  /* border: solid red; */
 }
 
 .offer_data img {
@@ -400,14 +413,16 @@
   transform: scale(1.07);
   cursor: pointer;
 }
-
+.star_icon {
+  width: 50px;
+}
 .rating {
   color: #ffd869;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .carusel_Btnss {
-  border: dashed #e6e2f5;
+  border: dashed 0.8px #d97706;
   background-color: transparent;
 }
 
@@ -416,23 +431,25 @@
 }
 
 .carusel_Btnss span {
-  color: linear-gradient(to right, #f59e0b, #fbbf24);
-
+  color: #d97706;
   margin: 0px auto;
 }
 
 /* ======================================== */
 .services_container {
   display: flex;
-  justify-content: space-between;
   padding: 60px 20px;
-  /* gap: 7px ; */
+  justify-content: center;
+  gap: 3em;
   background-color: #fffbeb;
+  flex-wrap: wrap;
 }
 
 .service {
-  /* height: 100%; */
   width: 24%;
+}
+.service .service-card {
+  background-color: #fef3c7 !important;
 }
 
 .icon_color1 {
@@ -545,7 +562,7 @@
 /* Apply the animation to the offer_card class */
 .mostsells,
 .some_offersh {
-  animation: cardHover 1.5s infinite;
+  animation: cardHover 1s infinite;
 }
 
 /* animations for offer_card */

@@ -98,7 +98,9 @@
 
   <div class="container-fluid mx-auto">
     <div class="row mostsells_container py-5 px-3">
-      <h3 class="some_offersh d-flex justify-content-center">New Collection</h3>
+      <h3 class="some_offersh d-flex justify-content-center font2">
+        New Products
+      </h3>
       <div data-aos="zoom-in" class="mostsells">
         <div class="shap"></div>
 
@@ -157,11 +159,11 @@
       </div>
     </div>
 
-    <div class="row brands">
+    <div class="row brands py-5">
       <div class="col-10 col-xl-4 col-xxl-5">
         <div class="brand_names">
-          <h1>Most Populer Brands</h1>
-          <h5>All brand Offer start 25 Dec.</h5>
+          <h1 class="font1">Most Populer Brands</h1>
+          <h5 class="font1">All brand Offer start 25 Dec.</h5>
         </div>
       </div>
 
@@ -170,152 +172,131 @@
           <div class="brands_imgs" data-aos="zoom-in">
             <img src="../../assets/brand1.png" alt="" />
           </div>
-          <div class="product_data">
-            <h1>! New Collection</h1>
-            <p class="my-3 Launch_offer">Launch Offer 15% Off!</p>
-            <button
-              (click)="redirect4()"
-              type="button"
-              class="btn carusel_bt btn-outline-secondary w-100 p-2 my-5"
-            >
-              View collection
-            </button>
+
+          <div class="brands_imgs" data-aos="zoom-in">
+            <img src="../../assets/brand2.png" alt="" />
           </div>
 
-          <div class="product_img">
+          <div class="brands_imgs" data-aos="zoom-in">
+            <img src="../../assets/brand3.png" alt="" />
+          </div>
+
+          <div class="brands_imgs" data-aos="zoom-in">
+            <img src="../../assets/brand4.png" alt="" />
+          </div>
+
+          <div class="brands_imgs" data-aos="zoom-in">
+            <img src="../../assets/brand5.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ms-5">
+      <h1 class="some_offersh font2">WHAT WE HAVE</h1>
+
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+          <div class="card owl-img" style="width: 18rem">
             <img
-              class="w-75"
-              [src]="
-                '/assets/' + productcenter[productcenter?.length - 2].images[0]
-              "
-              alt=""
+              src="../../../assets/northfolk-pxNcBLSPSMc-unsplash (1).jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">Books</p>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card owl-img" style="width: 18rem">
+            <img
+              src="../../../assets/nathaniel-chang-OWPKGmKXbGM-unsplash.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">Pens</p>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card owl-img" style="width: 18rem">
+            <img
+              src="../../../assets/northfolk-Ok76F6yW2iA-unsplash.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">Pappers</p>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card owl-img" style="width: 18rem">
+            <img
+              src="../../../assets/hayley-maxwell-xygwKLIjDJ4-unsplash.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">colored pens</p>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card owl-img" style="width: 18rem">
+            <img
+              src="../../../assets/cici-hung-AeCAudI-biE-unsplash (1).jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">Office supplies</p>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+
+    <div class="container-fluid some_offers">
+      <div class="row w-90">
+        <div class="d-flex justify-content-center align-items-center">
+          <h1
+            class="some_offersh m-0 d-flex justify-conten t-center py-4 font2"
+          >
+            Top Products
+          </h1>
+          <div class="star_icon">
+            <img
+              class="w-100"
+              src="../../../assets/favourite.gif"
+              alt="star icon"
             />
           </div>
         </div>
       </div>
+      <div class="row best_product_container row-cols-1 row-cols-md-3 g-4">
+        @for (product of topproduct ; track $index) {
 
-      <div class="row brands">
-        <div class="col-10 col-xl-4 col-xxl-5">
-          <div class="brand_names">
-            <h1>Most Populer Brands</h1>
-            <h5>All brand Offer start 25 Dec.</h5>
-          </div>
-        </div>
-
-        <div class="col-10 col-xl-5 col-xxl-5">
-          <div class="brand_imgs_container">
-            <div class="brands_imgs" data-aos="zoom-in">
-              <img src="../../assets/brand1.png" alt="" />
-            </div>
-
-            <div class="brands_imgs" data-aos="zoom-in">
-              <img src="../../assets/brand2.png" alt="" />
-            </div>
-
-            <div class="brands_imgs" data-aos="zoom-in">
-              <img src="../../assets/brand3.png" alt="" />
-            </div>
-
-            <div class="brands_imgs" data-aos="zoom-in">
-              <img src="../../assets/brand4.png" alt="" />
-            </div>
-
-            <div class="brands_imgs" data-aos="zoom-in">
-              <img src="../../assets/brand5.png" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ms-5">
-        <h1 class="owl_header">WHAT WE HAVE</h1>
-
-        <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide>
-            <div class="card owl-img" style="width: 18rem">
-              <img
-                src="../../../assets/northfolk-pxNcBLSPSMc-unsplash (1).jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body owl_body">
-                <p class="card-text">Books</p>
-              </div>
-            </div>
-          </ng-template>
-
-          <ng-template carouselSlide>
-            <div class="card owl-img" style="width: 18rem">
-              <img
-                src="../../../assets/nathaniel-chang-OWPKGmKXbGM-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body owl_body">
-                <p class="card-text">Pens</p>
-              </div>
-            </div>
-          </ng-template>
-
-          <ng-template carouselSlide>
-            <div class="card owl-img" style="width: 18rem">
-              <img
-                src="../../../assets/northfolk-Ok76F6yW2iA-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body owl_body">
-                <p class="card-text">Pappers</p>
-              </div>
-            </div>
-          </ng-template>
-
-          <ng-template carouselSlide>
-            <div class="card owl-img" style="width: 18rem">
-              <img
-                src="../../../assets/hayley-maxwell-xygwKLIjDJ4-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body owl_body">
-                <p class="card-text">colored pens</p>
-              </div>
-            </div>
-          </ng-template>
-
-          <ng-template carouselSlide>
-            <div class="card owl-img" style="width: 18rem">
-              <img
-                src="../../../assets/cici-hung-AeCAudI-biE-unsplash (1).jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body owl_body">
-                <p class="card-text">Office supplies</p>
-              </div>
-            </div>
-          </ng-template>
-        </owl-carousel-o>
-      </div>
-
-      <div class="container-fluid some_offers">
-        <h1 class="some_offersh m-0 d-flex justify-content-center py-4">
-          Top Products
-        </h1>
-
-        <div class="row best_product_container row-cols-1 row-cols-md-3 g-4">
-          @for (product of topproduct ; track $index) {
-
-          <div class="col-9 col-xxl-2 col-xl-3 col-md-5 offer_card my-2">
-            <div data-aos="zoom-in" class="card offer_data p-4 h-100">
-              <img
-                (click)="redirectproduct(product?._id)"
-                src="/assets/{{ product?.images['0'] }}"
-                alt=""
-              />
-
-              <div class="card-body my-4">
-                <h2 class="card-title">{{ product?.name }}</h2>
+        <div class="col-9 col-xxl-2 col-xl-3 col-md-5 offer_card my-2">
+          <div data-aos="zoom-in" class="card offer_data h-100">
+            <!-- <img
+              (click)="redirectproduct(product?._id)"
+              src="/assets/{{ product?.images['0'] }}"
+              alt=""
+            /> -->
+            <img
+              src="https://cdn.thewirecutter.com/wp-content/media/2020/11/notebooks-2048px-2008.jpg?auto=webp&quality=75&width=1024"
+              alt=""
+            />
+            <div class="card-body px-3 py-2">
+              <h2 class="card-title">{{ product?.name }}</h2>
+              <div class="d-flex justify-content-between">
                 <h3 class="card-title">${{ product?.price }}</h3>
                 <div class="rating">
                   <ngb-rating
@@ -324,84 +305,71 @@
                     [max]="5"
                   ></ngb-rating>
                 </div>
-
-                <button
-                  type="button"
-                  (click)="redirect4()"
-                  class="btn carusel_Btnss btn-success d-flex w-100 p-1 mt-3"
-                >
-                  <span>Most selling</span>
-                </button>
               </div>
+
+              <button
+                type="button"
+                (click)="redirect4()"
+                class="btn carusel_Btnss btn-success d-flex w-100 p-1 mt-3"
+              >
+                <span>More Details</span>
+              </button>
             </div>
           </div>
-
-          }
         </div>
+
+        }
       </div>
+    </div>
 
-      <div class="services">
-        <div class="row services_container">
-          <div class="service" data-aos="zoom-in" data-aos-easing="linear">
-            <div class="card flex justify-content-center">
-              <p-card header="">
-                <i class="pi pi-truck icon_color1" style="font-size: 2rem"></i>
+    <div class="mx-5 services w-85 d-flex justify-content-center py-5">
+      <div class="services_container">
+        <div class="service" data-aos="zoom-in" data-aos-easing="linear">
+          <div class="card justify-content-center">
+            <p-card class="service-card">
+              <i
+                class="pi pi-truck icon_color1 text-center"
+                style="font-size: 2rem"
+              ></i>
 
-                <h5>Fast Delivery</h5>
+              <h5>Fast Delivery</h5>
 
-                <p class="m-0">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Inventore sed consequuntur
-                </p>
-              </p-card>
-            </div>
+              <p class="m-0">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Inventore sed consequuntur
+              </p>
+            </p-card>
           </div>
+        </div>
 
-          <div class="service" data-aos="zoom-in" data-aos-easing="linear">
-            <div class="card flex justify-content-center">
-              <p-card header="">
-                <i class="pi pi-server icon_color3" style="font-size: 2rem"></i>
+        <div class="service" data-aos="zoom-in" data-aos-easing="linear">
+          <div class="card flex justify-content-center">
+            <p-card class="service-card">
+              <i class="pi pi-server icon_color3" style="font-size: 2rem"></i>
 
-                <h5>Online Support 24/7</h5>
-                <p class="m-0">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Inventore sed consequuntur
-                </p>
-              </p-card>
-            </div>
+              <h5>Online Support 24/7</h5>
+              <p class="m-0">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Inventore sed consequuntur
+              </p>
+            </p-card>
           </div>
+        </div>
 
-          <div class="service" data-aos="zoom-in" data-aos-easing="linear">
-            <div class="card flex justify-content-center">
-              <p-card header="">
-                <i
-                  class="pi pi-credit-card icon_color4"
-                  style="font-size: 2rem"
-                ></i>
+        <div class="service" data-aos="zoom-in" data-aos-easing="linear">
+          <div class="card flex justify-content-center">
+            <p-card class="service-card">
+              <i
+                class="pi pi-credit-card icon_color4"
+                style="font-size: 2rem"
+              ></i>
 
-                <h5>Secure Payment</h5>
-                <p class="m-0">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Inventore sed consequuntur
-                </p>
-              </p-card>
-            </div>
-          </div>
-
-          <div class="service" data-aos="zoom-in" data-aos-easing="linear">
-            <div class="card flex justify-content-center">
-              <p-card header="">
-                <i
-                  class="fa-solid fa-truck-fast icon_color2"
-                  style="font-size: 2rem"
-                ></i>
-                <h5>Secure Payment</h5>
-                <p class="m-0">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Inventore sed consequuntur
-                </p>
-              </p-card>
-            </div>
+              <h5>Secure Payment</h5>
+              <p class="m-0">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Inventore sed consequuntur
+              </p>
+            </p-card>
           </div>
         </div>
       </div>

@@ -1,14 +1,10 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-footer {
-  background-color: #d8d2ec;
 
-  color: black;
-}
 
 .row {
   padding: 15px;
@@ -51,7 +47,7 @@ footer {
 }
 
 .links2 p {
-  /* border: solid; */
+
   width: 35px;
   height: 35px;
   display: flex;
@@ -85,7 +81,7 @@ footer {
   font-size: 20px;
 }
 .links2 p {
-  /* border: solid 1px black; */
+ 
   padding: 15px;
 }
 
@@ -135,4 +131,18 @@ footer {
   100% {
     background-color: transparent;
   }
+} */
+
+footer {
+  background-color: #914617;
+}
+
+.footer-link {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.footer-link a {
+  color: #fef3c7;
+  text-decoration: none;
 }

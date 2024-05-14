@@ -65,7 +65,7 @@ export class CartComponent implements OnInit {
   totalPrice!: number;
   userDetails!: FormGroup;
   isClicked: boolean = false;
-
+  PayModelForm: boolean = false;
   constructor(
     private CounterService: CounterService,
     private http: HttpClient,
@@ -77,23 +77,60 @@ export class CartComponent implements OnInit {
     this.getCartItems();
     this.userDetails = new FormGroup({
       name: new FormControl("", [Validators.required]),
-      email: new FormControl("", [Validators.email]),
+      email: new FormControl("", [
+        Validators.required,
+        Validators.pattern("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"),
+      ]),
       Delivery_address: new FormControl("", [
         Validators.required,
         Validators.minLength(3),
       ]),
+      type_of_payment: new FormControl("cache"),
     });
   }
 
-  payCash() {}
-  payOnline() {}
+  hidePayModelForm() {
+    this.PayModelForm = false;
+  }
+  showPayModelForm() {
+    this.PayModelForm = true;
+  }
+
+  payCash() {
+    this.userDetails.controls["type_of_payment"].setValue("cache");
+    Object.keys(this.userDetails.controls).forEach((field) => {
+      const control = this.userDetails.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
+
+    if (this.userDetails.invalid) {
+      return;
+    }
+    this.postOrder();
+    this.hidePayModelForm();
+    alert("your order is successfully saved ");
+  }
+
+  payOnline() {
+    this.userDetails.controls["type_of_payment"].setValue("online");
+    Object.keys(this.userDetails.controls).forEach((field) => {
+      const control = this.userDetails.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
+
+    if (this.userDetails.invalid) {
+      return;
+    }
+    this.payment();
+  }
 
   increase(item: any) {
     if (item.quantity >= 1) {
       item.quantity++;
-
-      // cartItems
-
       this.http
         .post(
           "http://localhost:8000/v1/cart/addToCart",
@@ -105,8 +142,8 @@ export class CartComponent implements OnInit {
           }
         )
         .subscribe(
-          (res) => {
-            console.log(res);
+          (res: any) => {
+            this.totalPrice = res.totalPrice;
           },
           (error) => {
             console.log(error);
@@ -130,8 +167,8 @@ export class CartComponent implements OnInit {
           }
         )
         .subscribe(
-          (res) => {
-            console.log(res);
+          (res: any) => {
+            this.totalPrice = res.totalPrice;
           },
           (error) => {
             console.log(error);
@@ -258,24 +295,13 @@ export class CartComponent implements OnInit {
   // !SECTION end section payment flow with paymob
   postOrder() {
     this.http
-      .post(
-        "http://localhost:8000/postOrder",
-        {
-          Delivery_address: "test order pay online",
-          type_of_payment: "online",
-          email: "kareem.345@yahoo.com",
-          name: "kareem",
+      .post("http://localhost:8000/postOrder", this.userDetails.value, {
+        headers: {
+          Authorization: `Bearer ${this.userToken}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${this.userToken}`,
-          },
-        }
-      )
+      })
       .subscribe(
-        (res) => {
-          console.log(res);
-        },
+        (res) => {},
         (error) => {
           console.log(error);
         }
@@ -304,9 +330,8 @@ export class CartComponent implements OnInit {
       })
       .subscribe(
         (res: any) => {
-          this.cartItems.items = this.cartItems.items.filter(
-            (elem: any) => elem.id !== id
-          );
+          this.cartItems = res;
+          this.totalPrice = res.totalPrice;
         },
         (error) => {
           console.log(error);

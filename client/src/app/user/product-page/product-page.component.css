@@ -1,22 +1,24 @@
+@import url("https://fonts.cdnfonts.com/css/adlam-display");
+@import url("https://fonts.cdnfonts.com/css/noto-sans-ol-chiki");
+@import url("https://fonts.cdnfonts.com/css/blueberry");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-.container-fluid {
-  background-color: #f4f1ff;
-}
+
 .allproduct_container {
   display: flex;
   align-items: start;
-  justify-content: space-evenly;
-  /* background-color: #eef0fc; */
-  /* gap: 2px; */
+  background-color: #fffbeb;
+  /* height: 100vh; */
+  /* height: 100%; */
 }
 
 .allproduct {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .product_name {
@@ -43,25 +45,30 @@
 }
 
 .btn1 {
-  background-color: #7c5ed8;
-  color: white !important;
+  background-color: #f59e0b;
+  color: #451a03 !important;
   font-weight: 400;
   border-radius: 5px;
   padding: 10px 0px;
 }
 
+.btn1:hover {
+  background-color: #d97706;
+}
+
 .btn2 {
   color: white !important;
   font-weight: 300;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 10px 0px;
-  border: none;
+  border: solid 0.5px #d97706 !important;
   background-color: transparent;
 }
 
 .fav_btn {
   color: red !important;
 }
+
 .hideen {
   color: rgb(226, 220, 220) !important ;
 }
@@ -81,8 +88,8 @@
 }
 
 .product_data {
-  border-radius: 6px;
-  width: 30%;
+  border-radius: 5px;
+  width: 27%;
   overflow: hidden;
 }
 
@@ -112,7 +119,48 @@
 
 .rate_product {
   color: #ffd869;
-  font-size: 20px;
+  font-size: 30px;
+}
+
+.font3 {
+  font-family: "ADLaM Display", sans-serif;
+  color: #451a03;
+  font-size: 1.3em;
+}
+
+/* .font4 {
+  font-family: "ADLaM Display", sans-serif;
+  font-size: 1.2em;
+  color: #7c2d12;
+} */
+.animated-text {
+  background: linear-gradient(
+    50deg,
+    rgba(252, 211, 77, 1) 0%,
+    rgba(251, 191, 36, 1) 25%,
+    rgba(245, 158, 11, 1) 50%,
+    rgba(217, 119, 6, 1) 75%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: animateGradient 2s linear infinite;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.font5 {
+  font-size: 1.1em;
+  color: #92400e;
 }
 
 .modal-title {
@@ -140,22 +188,23 @@
 /* =============================================================== */
 
 .sidebar {
-  /* border: double #7c5cd3; */
-  border-radius: 10px;
   overflow: hidden;
-  height: 100%;
   font-size: 16px;
   font-weight: 500;
+  background-color: #fef3c7;
+  height: 100vh;
+  padding-top: 1.5em;
 }
 
 .item_name {
   transition: 0.7s;
   cursor: pointer;
-  padding: 0;
+  padding: 0.5em 1em;
+  border-bottom: solid 0.5px rgb(212, 204, 204);
 }
 
 .item_name:hover {
-  background-color: #7c5cd3;
+  background-color: #f59e0b;
   color: white;
 }
 
