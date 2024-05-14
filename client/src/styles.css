@@ -6,7 +6,17 @@
 @import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 
 html {
-  background-color: #fffbeb;
+  background-color:var(--background-color)  ;
+
+}
+:root{
+  --main-color: #164863;
+  --secondary-color: #DDF2FD;
+  --background-color: #427D9D;
+  --text-color: #fff;
+  --accent-color: #3f3f46;
+  --dark-color: #9BBEC8;
+
 }
 
 .modelBackdrop {

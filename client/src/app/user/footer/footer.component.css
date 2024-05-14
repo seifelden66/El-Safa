@@ -134,7 +134,8 @@
 } */
 
 footer {
-  background-color: #914617;
+  background-color: var(--main-color);
+  border: solid transparent;
 }
 
 .footer-link {
@@ -142,7 +143,9 @@ footer {
   font-weight: 600;
 }
 
+
+
 .footer-link a {
-  color: #fef3c7;
+  color: var(--text-color);
   text-decoration: none;
 }

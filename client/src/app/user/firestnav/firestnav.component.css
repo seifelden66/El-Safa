@@ -1,13 +1,12 @@
 .active_link {
-  color: #f59e0b;
-  border-bottom: solid 2px #fbbf24;
+  border-bottom: solid 2px var(--text-color);
 }
 
 .second_nav {
   position: sticky;
   top: 0;
-  z-index: 2;
-  background-color: #fef3c7;
+  z-index: 10;
+  background-color: var(--accent-color);
 }
 
 .sec_nav {
@@ -33,8 +32,9 @@
 }
 
 .two .navbar_container {
-  background-color: #fef3c7 !important;
+  background-color: var(--accent-color) !important;
   display: flex;
+  
 }
 
 .navbar_container .container-fluid {
@@ -51,10 +51,15 @@
   font-weight: 600;
   display: flex;
   justify-content: space-around;
+  color: var(--text-color);
+}
+
+.navbar_data li a {
+  color: var(--text-color);
 }
 
 .navbar_data li a:hover {
-  color: #f59e0b;
+  color: var(--text-color);
 }
 
 .offcanvas-body {
@@ -76,8 +81,8 @@
 }
 
 .category_btn {
-  background-color: #fffbeb;
-  color: #f59e0b;
+  background-color: var();
+  color: white;
   font-weight: 500;
   align-items: center;
   gap: 7px;
@@ -86,7 +91,7 @@
   /* padding: 0.5em 0.5; */
 }
 .category_btn:hover {
-  background-color: #f59e0b;
+  background-color: var(--main-color);
   color: #f4f2fb;
 }
 

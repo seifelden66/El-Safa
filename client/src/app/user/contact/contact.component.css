@@ -1,5 +1,5 @@
 .main_container {
-  background-color: #fffbeb;
+  background-color: var(--background-color);
   border: solid transparent;
   padding-block: 3rem;
 }
@@ -10,7 +10,7 @@
 
 .contact-form {
   width: 50%;
-  background-color: #fffbeb;
+  background-color: var(--text-color);
   border-radius: 5px;
   padding: 2em;
 }
@@ -22,7 +22,7 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  color: #f59e0b;
+  color: var(--accent-color);
   font-size: 1.1em;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .form-group button {
-  background-color: #d97706;
+  background-color: var(--accent-color);
   color: #fff;
   border: none;
   padding: 10px 20px;

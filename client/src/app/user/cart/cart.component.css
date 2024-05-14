@@ -7,7 +7,8 @@
   align-items: center;
   gap: 10px;
   padding: 100px 0px;
-  background-color: #EEF0FC;
+  background-color: var(--background-color);
+  color: white;
 }
 
 
@@ -16,13 +17,13 @@
   justify-content: space-between;
   overflow-x: auto;
   gap: 10px;
-  background-color: #fffbeb;
+  background-color: var(--background-color);
 }
 
 /* ========================================= */
 .active {
-  background-color: #f59e0b;
-  color: white;
+  background-color: var(--dark-color);
+  color: var(--text-color);
 }
 
 .row {
@@ -36,12 +37,13 @@
 /* ==================================== */
 
 .sidebar {
-  background-color: #fef3c7;
+  background-color: var(--main-color);
   padding: 0px 7px;
   min-width: 6%;
   margin: 20px 0px;
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
+  color: var(--text-color);
 }
 
 .sidebar_data {
@@ -61,7 +63,7 @@
 }
 
 .sidebar_data h3:hover {
-  background-color: #fbbf24;
+  background-color: var(--dark-color);
   color: white;
 }
 
