@@ -28,7 +28,7 @@
             @if (category && category.length) { @for (cat of category; track
             $index) {
             <div class="item_name">
-              <p         [class.selected-item]="cat === selectedCategory"   (click)="onCategoryChange(cat)" class="m-0 sidebar_text">{{ cat }}</p>
+              <p [class.selected-item]="cat === selectedCategory"   (click)="onCategoryChange(cat)" class="m-0 sidebar_text">{{ cat }}</p>
               <hr>
             </div>
             } }
@@ -88,7 +88,7 @@
                 <button
                   type="button"
                   pButton
-                  (click)="toggleHeart(product?._id)"
+                  (click)="toggleHeart(product?._id , product) "
                   label=""
                   class="fav_btn btn2"
                 >

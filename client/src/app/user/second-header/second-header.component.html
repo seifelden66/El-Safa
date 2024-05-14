@@ -26,13 +26,11 @@
           
       <div class="col-4  three">
         <div class="user_options">
-          <div class="faverot payment ">
-            <!-- <p class="m-0">{{ count }}</p> -->
+          <div (click)="redirect8()" class="faverot payment ">
             <i class="pi pi-heart"></i>
           </div>
     
           <div class="payment" (click)="redirect7()">
-            <!-- <p class="m-0">{{ count }}</p> -->
             <i class="pi pi-shopping-cart"></i>
             
           </div>
@@ -42,26 +40,13 @@
             <img data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" src="/assets/{{ userdata?.profile_picture }}" alt="" />
 
             }@else {
-              <img data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" src="../../assets/icon-256x256-removebg-preview.png"z alt="" />
+              <img data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" src="../../assets/icon-256x256-removebg-preview.png" alt="" />
 
             }
             <div class="offcanvas offcanvas-start big_sidebar" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
               <h2 class="d-flex justify-content-center py-4">User options</h2>
-              <!-- <div class="offcanvas-header">
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-              </div> -->
+ 
               <div class="offcanvas-body ">
-<!--     
-                <div class="nav_btns px-2">
-    
-                  <button type="button" (click)="redirect()" class="btn  btn-outline-info w-100 ">Profile <i class="pi pi-user"></i> </button>
-                  <button type="button" (click)="redirect2()" class="btn  btn-outline-secondary w-100 "> invoice <i class="pi pi-file"></i></button>
-                  <button type="button" (click)="redirect3()" class="btn  btn-outline-danger w-100 ">Sign out <i class="pi pi-sign-out"></i></button>
-                  <button (click)="redirect5()" type="button" class="btn btn-outline-success px-3 py-2">Register</button>
-                  <button (click)="redirect6()" type="button" class="btn btn-outline-secondary px-3 py-2">Log in</button>
-          
-                </div> -->
-
                 <div class="sidebar">
                   <div class="sidebar_data">
                     <h3 (click)="redirect()" class="sidebar_text"> <i class="fa-solid fa-user"></i> <span>Profile</span> </h3>

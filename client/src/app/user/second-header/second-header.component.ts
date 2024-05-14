@@ -126,6 +126,10 @@ export class SecondHeaderComponent implements OnInit {
     this.router.navigate([`cart`]);
   }
 
+  redirect8(){
+    this.router.navigate([`wishlist`])
+  }
+
   // =============================
 
   ngOnInit(): void {

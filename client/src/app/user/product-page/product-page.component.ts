@@ -70,10 +70,10 @@ export class ProductPageComponent implements OnInit {
     private router: Router,
     config: NgbModalConfig,
     private modalService: NgbModal,
-    private CounterService: CounterService,
     private messageService: MessageService,
     private cookkeService: CookieService,
-    private ActivatedRoute: ActivatedRoute
+    private ActivatedRoute: ActivatedRoute,
+    private CartService : CartService
   ) {
     config.backdrop = "static";
     config.keyboard = false;
@@ -89,12 +89,16 @@ export class ProductPageComponent implements OnInit {
   toster = inject(ToastrService);
 
 
-  toggleHeart(prod_id: any) {
+  toggleHeart(prod_id: any , product_data : any) {
     // this.toster.success("added to Wishlist", "Success");
     this.heartToggled[prod_id] = !this.heartToggled[prod_id];
     console.log(this.heartToggled);
     if (this.heartToggled[prod_id]) {
       this.toster.success("added to Wishlist", "Success");
+      this.CartService.addtocart(product_data)
+      console.log(product_data);
+      
+
     } else {
       this.toster.error("removed from Wishlist", "Removed");
     }
@@ -257,7 +261,7 @@ export class ProductPageComponent implements OnInit {
       return averageRatings;
   }
 
-  // =============rating form===============================
+  // =============ADd to Wish list===============================
 
 
 

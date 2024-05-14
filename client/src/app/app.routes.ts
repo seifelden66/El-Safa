@@ -26,6 +26,7 @@ import { ContactComponent } from "./user/contact/contact.component";
 import { AdminProfileComponent } from "./admin/admin-profile/admin-profile.component";
 import { UserProductComponent } from "./user/user-product/user-product.component";
 import { OrderDetailsComponent } from "./user/order-details/order-details.component";
+import { WishlistComponent } from "./user/wishlist/wishlist.component";
 
 export const routes: Routes = [
   {
@@ -118,6 +119,10 @@ export const routes: Routes = [
   {
     path: "cart",
     component: CartComponent,
+  },
+  {
+    path: "wishlist",
+    component: WishlistComponent,
   },
   {
     path: "user-product",
