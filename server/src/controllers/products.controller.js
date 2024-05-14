@@ -231,9 +231,5 @@ module.exports = {
   addComment,
   addRating,
   getTopRatedProducts,
-<<<<<<< HEAD
   searchProduct,
-=======
-  
->>>>>>> c065d948db290dd8c6bc298b24a7356f061bd190
 };
