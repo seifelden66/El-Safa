@@ -23,6 +23,18 @@ const getProducts = async (req, res) => {
       filter.category = category._id;
     }
 
+    // Add price filtering if provided in the query
+    if (req.query.minPrice && req.query.maxPrice) {
+      filter.price = {
+        $gte: parseInt(req.query.minPrice),
+        $lte: parseInt(req.query.maxPrice)
+      };
+    } else if (req.query.minPrice) {
+      filter.price = { $gte: parseInt(req.query.minPrice) };
+    } else if (req.query.maxPrice) {
+      filter.price = { $lte: parseInt(req.query.maxPrice) };
+    }
+
     const totalCount = await Product.countDocuments(filter);
     const totalPages = Math.ceil(totalCount / pageSize);
     const products = await Product.find(filter)
