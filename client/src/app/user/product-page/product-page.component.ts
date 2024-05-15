@@ -166,7 +166,7 @@ export class ProductPageComponent implements OnInit {
   }
 
   getallproduct() {
-    this.http.get(`http://localhost:8000/v1/products?page=1`).subscribe((res: any) => {
+    this.http.get(`http://localhost:8000/v1/products`).subscribe((res: any) => {
       this.allproducts = res.products;
       this.averageRatings = this.getAverageRatings(this.allproducts);
 
