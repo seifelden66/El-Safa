@@ -1,3 +1,4 @@
+import { Toast } from 'primeng/toast';
 import { HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Component, Input, OnInit, inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -52,7 +53,9 @@ export class ProductDetailsComponent implements OnInit {
   commentSubmitted: boolean = false;
   averageRatings: { [productId: string]: number } = {};
   showLoader: boolean = true;
+  userdata!:any
   toster = inject(ToastrService);
+
 
 
   @Input() id?: any;
@@ -66,13 +69,15 @@ export class ProductDetailsComponent implements OnInit {
     private http: HttpClient,
     private cartService: CartService,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private Toaster : ToastrService
   ) {}
 
   ngOnInit(): void {
     this.product_id = this.activatedRoute.snapshot.params["id"];
     this.userToken = this.cookieService.get("userToken"); // Get user token from cookies
     this.getProduct()
+    this.getuserdata()
 
     setTimeout(() => {
       this.showLoader = false;
@@ -131,13 +136,18 @@ submitRating() {
       console.log("Rating submitted successfully:", response);
       this.ratingError = ""; // Clear rating error message
       this.rating = null;
+      this.Toaster.success('Thank you for your review','Success')
+
     },
     (error: HttpErrorResponse) => {
       console.error("Error submitting rating:", error);
       if (error.error && error.error.message) {
         this.ratingError = error.error.message; // Extract error message from API response
+        this.Toaster.error(this.ratingError,'Error')
       } else {
         this.ratingError = "Failed to submit rating. Please try again.";
+        this.Toaster.error(this.ratingError,'Error')
+
       }
     }
   );
@@ -158,13 +168,19 @@ submitComments() {
       console.log("Comments submitted successfully:", response);
       this.commentError = ""; // Clear comment error message
       this.comment = "";
+      this.Toaster.success('Thank you for your review','Success')
+
     },
     (error: HttpErrorResponse) => {
       console.error("Error submitting comments:", error);
       if (error.error && error.error.message) {
         this.commentError = error.error.message; // Extract error message from API response
+        this.Toaster.error(this.commentError,'Error')
+
       } else {
         this.commentError = "Failed to submit comments. Please try again.";
+        this.Toaster.error(this.commentError,'Error')
+
       }
     }
   )
@@ -188,6 +204,19 @@ addToCart(id : string){
       console.log(error);
     }
   )
+}
+
+getuserdata(){
+  this.http.get('http://localhost:8000/v1/users/profile',{headers:{
+    Authorization : `Bearer ${this.userToken}`
+  }}).subscribe((res:any)=>{
+    this.userdata = res.user;
+    console.log(res);
+  
+  },
+error => {
+  console.log(error);
+})
 }
 
   

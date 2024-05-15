@@ -40,11 +40,11 @@
   text-transform: uppercase;
   background-image: linear-gradient(
     -225deg,
-    #164863 0%,
-    #427D9D 29%,
-    #fff 67%,
-    #3f3f46 80%,
-    #9BBEC8 100%
+    #ED6156 0%,
+    #F5F5F5 29%,
+    #EA514D 67%,
+    #F8A792 80%,
+    #fff 100%
   );
   background-size: auto auto;
   background-clip: border-box;
@@ -145,7 +145,7 @@
 .user_img {
   width: 50px;
   cursor: pointer;
-  border: solid white 3.5px;
+  border: solid #ED6156 3.5px;
   border-radius: 50%;
 }
 
@@ -163,11 +163,11 @@
 
 .payment i {
   font-size: 22px;
-  color: var(--text-color);
+  color: #ED6156;
 
 }
 .faverot i {
-  color: var(--text-color);
+  color: #ED6156;
   font-size: 22px;
 }
 
@@ -184,7 +184,7 @@
 
 /* ==================================================== */
 .big_sidebar {
-  background-color: var(--main-color);
+  background-color:#F5F5F5;
 }
 .sidebar {
   /* border: SOLID  green; */
@@ -192,7 +192,7 @@
   box-shadow: 3px 3px 15px rgb(170, 162, 162);
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
-  color: white;
+  color: black;
 }
 
 .sidebar_data {
@@ -209,7 +209,7 @@
 }
 
 .sidebar_data h3:hover {
-  background-color: var(--dark-color);
+  background-color:#ED6156;
   color: white;
 }
 

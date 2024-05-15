@@ -27,11 +27,20 @@ import { RatingModule } from "primeng/rating";
 import { ToastrService } from "ngx-toastr";
 import { CookieService } from "../../services/cookie.service";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { PaginatorModule } from 'primeng/paginator';
+
 
 interface Rating {
   value: number;
   _id: string;
   date: string;
+}
+
+interface PageEvent {
+  first: number;
+  rows: number;
+  page: number;
+  pageCount: number;
 }
 @Component({
   selector: "app-product-page",
@@ -50,7 +59,8 @@ interface Rating {
     FormsModule,
     RatingModule,
     RouterLink,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    PaginatorModule
   ],
   templateUrl: "./product-page.component.html",
   styleUrl: "./product-page.component.css",
@@ -71,7 +81,8 @@ export class ProductPageComponent implements OnInit {
     private messageService: MessageService,
     private cookkeService: CookieService,
     private ActivatedRoute: ActivatedRoute,
-    private CartService : CartService
+    private CartService : CartService,
+    private CounterService : CounterService
   ) {
     config.backdrop = "static";
     config.keyboard = false;
@@ -85,6 +96,7 @@ export class ProductPageComponent implements OnInit {
   averageRatings: { [productId: string]: number } = {};
   showLoader: boolean = true;
   toster = inject(ToastrService);
+  counter:number = 0    
 
   toggleHeart(prod_id: any , product_data : any) {
 
@@ -106,6 +118,11 @@ export class ProductPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUniqueCategories();
+    this.CounterService.getcount().subscribe((res)=>{
+      this.counter = res
+
+    })
+    
 
     this.userToken = this.cookkeService.get("userToken");
 
@@ -149,7 +166,7 @@ export class ProductPageComponent implements OnInit {
   }
 
   getallproduct() {
-    this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
+    this.http.get(`http://localhost:8000/v1/products?page=1`).subscribe((res: any) => {
       this.allproducts = res.products;
       this.averageRatings = this.getAverageRatings(this.allproducts);
 
@@ -273,5 +290,7 @@ export class ProductPageComponent implements OnInit {
     return averageRatings;
   }
 
-  // =============rating form===============================
+  // =============pagination===============================
+
+
 }

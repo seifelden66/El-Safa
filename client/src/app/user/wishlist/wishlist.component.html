@@ -3,8 +3,9 @@
 
 <div class="container">
     <div class="wishlist">
+
       
-        <div class="card table">
+        <!-- <div class="card table">
           <p-table [value]="CartService.getproduct()" [paginator]="true" [rows]="5">
             <ng-template pTemplate="header">
               <tr class="product_data">
@@ -17,7 +18,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-item>
               <tr class="product_data">
-                <!-- <td class="table_img pt-5"><img src="../../../assets/cinthia-becher-z_WgCHcIkrs-unsplash.jpg" alt=""></td> -->
+                <td class="table_img pt-5"><img src="../../../assets/cinthia-becher-z_WgCHcIkrs-unsplash.jpg" alt=""></td>
                 <td class="table_img pt-5"><img src="/assets/{{ item?.images['0']}}" alt="/assets/{{ item?.images['0']}}"></td>
                 <td class="pt-5 font">{{ item?.name }}</td>
                 <td class="pt-5 font">
@@ -25,7 +26,7 @@
                 </td>
 
                 <td class="delete pt-5 font">
-                  <!-- <i (click)="deleteItem(item?.id)" class="fa-solid fa-trash delete-icon"></i> -->
+                  <i (click)="deleteItem(item?.id)" class="fa-solid fa-trash delete-icon"></i>
                 </td>
               </tr>
             </ng-template>
@@ -33,9 +34,51 @@
     
       
       
-        </div>
+        </div> -->
+
+      </div>
 
       
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Product</th>
+          <th scope="col">product_name</th>
+          <th scope="col">product_price</th>
+          <th scope="col">count</th>
+          <th scope="col">Option</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+          @for (item of CartService.getproduct(); track $index) {
+              <tr>
+                <th scope="row">{{item.id}}</th>
+                <!-- <td><img class="w-md-75 w-sm-100 w-xxl-25 w-xl-75" [src]="item.images[0]" alt=""></td> -->
+                <td>{{item.name}}</td>
+                <!-- <td>{{item.price * item.quantity}}</td> -->
+                <td>{{item.quantity}}</td>
+                <td>
+                  <div class="d-flex gap-4 options">
+                    <!-- <button type="button" (click)="CartService.incrementQuantity(item.id)" class="btn btn-outline-success">+</button> -->
+                    <h5>{{item.quantity}}</h5>
+                    <!-- <button type="button" (click)="CartService.decrementQuantity(item.id)" class="btn btn-outline-danger">-</button> -->
+
+                  </div>
+
+                </td>
+
+
+                <td>
+                  <!-- <button type="button" (click)="delete(item)" class="btn btn-danger">Delete</button> -->
+
+                </td>
+
+              </tr>
+          }
+      </tbody>
+    </table>
         
 
 </div>
