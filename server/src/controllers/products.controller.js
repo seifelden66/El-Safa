@@ -234,6 +234,15 @@ const searchProduct = async (req, res) => {
   }
 };
 
+const getProductsOnSale = async (req, res) => {
+  try {
+    const productsOnSale = await Product.find({ discount: { $gt: 0 } });
+    res.status(200).json(productsOnSale);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 async function httpLatestProducts(req, res) {
   try {
     const latestAdded = await Product.find().sort({ createdAt: -1 }).limit(2);
@@ -255,4 +264,5 @@ module.exports = {
   getTopRatedProducts,
   searchProduct,
   httpLatestProducts,
+  getProductsOnSale
 };
