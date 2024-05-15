@@ -1,29 +1,52 @@
+@if (showLoader) {
+  <div class="loader-container d-flex justify-content-center ">
+    <mat-spinner></mat-spinner>
+    <h1>Loading...</h1>
+  </div>
+}
+
+@if (!showLoader) {
+
 <app-second-header></app-second-header>
 <app-firestnav></app-firestnav>
 
 <div class="container-fluid big_container py-2 px-4">
   <div class="row product_details_container">
-    <h3 class="m-0 title">Title</h3>
-    <hr />
-    <div class="col-xxl-6 col-xl-5 my-5 col-10 gallary">
-      <div class="row gallary_container py-4">
-        <div class="col-12 main_img">
-          <img class="" src="/assets/{{ main_img }}" alt="ss" />
-        </div>
+    <div class="col-lg-6 col-12 gallary">
+      <div class="gallary_container py-2">
 
-        <div class="col-12 gallary_images p-2 d-flex gap-3">
+        
+        <div class="gallary_images p-2 d-flex gap-3">
           @for (item of product_details?.images; track $index) {
 
           <div class="img1">
-            <img [class]="item" src="/assets/{{ item }}" [alt]="item" (click)="reternsrc(item)" />
+            <!-- <img
+              [class]="item"
+              src="/assets/{{ item }}"
+              [alt]="item"
+              (click)="reternsrc(item)"
+            /> -->
+            <img
+              src="../../../assets/northfolk-vTi5S_vtc9U-unsplash.jpg"
+              alt=""
+            />
           </div>
-
           }
         </div>
+
+        <div class="main_img">
+          <!-- <img class="" src="/assets/{{ main_img }}" alt="ss" /> -->
+          <img
+            src="../../../assets/northfolk-vTi5S_vtc9U-unsplash.jpg"
+            alt=""
+          />
+        </div>
+
+
       </div>
     </div>
 
-    <div class="col-xxl-5 col-xl-5 col-10 product_details">
+    <div class="col-lg-4 col-12 product_details">
       <div class="card text-bg-dark">
         <div class="card-body py-3">
           <h1>
@@ -35,34 +58,41 @@
 
           <div class="product_price">
             <h2 class="new_price">${{ product_details?.price }}</h2>
-            <h2 class="card-title my-0 old_price">${{product_details?.originalPrice}}</h2>
+            <h2 class="card-title my-0 old_price">
+              ${{ product_details?.originalPrice }}
+            </h2>
           </div>
 
           <h2>quantity: {{ product_details?.quantity }}</h2>
           <div class="rate_product">
-            <ngb-rating [(rate)]="product_details?.ratings['0'].value" [max]="5" [readonly]="true" />
-
+            <ngb-rating
+              [rate]="averageRatings[product_details?._id]"
+              [readonly]="true"
+              [max]="5"
+            ></ngb-rating>
           </div>
-          
-
-
-
-
-          <!-- rate -->
-          <form action="post"></form>
 
           <h5 class="detal">description:</h5>
-          <h2 class="card-text">{{ product_details?.description }}</h2>
+          <h2 class="card-text">{{ product_details?.short_desc }}</h2>
         </div>
 
-
-
         <div class="Btns d-flex gap-5">
-          <button type="button" pButton (click)="  show() ; addToCart(product_details?._id)" label="" class="btn1 carusel_bt px-4">Add to
-            Cart</button>
+          <button
+            type="button"
+            pButton
+            (click)="show(); addToCart(product_details?._id)"
+            label=""
+            class="btn1 carusel_bt px-4"
+          >
+            Add to Cart
+          </button>
 
           <!-- carusel_bt -->
-          <button type="button" (click)="redirect()" class="btn py-1 px-3 btn-danger">
+          <button
+            type="button"
+            (click)="redirect()"
+            class="btn py-1 px-3 btn-danger"
+          >
             Back to home
           </button>
         </div>
@@ -70,113 +100,138 @@
     </div>
   </div>
 
-  
-        <!-- ======================================================================= -->
-        <!-- ======================================================================= -->
-        <!-- ======================================================================= -->
-        <!-- ======================================================================= -->
+  <!-- ======================================================================= -->
+  <!-- ======================================================================= -->
+  <!-- ======================================================================= -->
+  <!-- ======================================================================= -->
 
   <div class="w-100 my-3 product_descusion">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button
+          class="nav-link nav1 active"
+          id="nav-home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-home"
+          type="button"
+          role="tab"
+          aria-controls="nav-home"
+          aria-selected="true"
+        >
+          Home
+        </button>
+        <button
+          class="nav-link nav1"
+          id="nav-profile-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-profile"
+          type="button"
+          role="tab"
+          aria-controls="nav-profile"
+          aria-selected="false"
+        >
+          Profile
+        </button>
+      </div>
+    </nav>
 
-      <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <button class="nav-link nav1 active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-          <button class="nav-link nav1 " id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-        </div>
-      </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <!-- ==================Part1================================================================== -->
 
-
-      <div class="tab-content" id="nav-tabContent">
-
-        <!-- ==================Part1================================================================== -->
-
-        <div class="tab-pane fade show active " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-          <div class="row d-flex py-4 gap-5">
-            <div class="col-12">
-              <h1>Product descriptions</h1>
-              {{ product_details?.description }}
-              <p class="w-75">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusantium incidunt id ut inventore assumenda mollitia vel nisi
-                dignissimos dolor beatae dolorem velit distinctio, cupiditate
-                nam consequatur rem, ipsum rerum unde?
-              </p>
-            </div>
-
-            <div class="col-12">
-              <h1 style="font-weight: 500">Other User review</h1>
-
-              <div class="review_container py-3 w-75">
-                
-                @for (item of product_details?.comments; track $index) {
-
-
-                  <div class="user_review">
-                    <div class="user_comment">
-                      <img
-                        src="../../../assets/icon-256x256-removebg-preview.png"
-                        alt=""
-                      />
-                      <h4>User name</h4>
-                    </div>
-  
-                    <p class="px-1">
-                      {{ item?.text }}
-                    </p>
-                  </div>
-                }
-
-
-
-              </div>
-            </div>
+      <div
+        class="tab-pane fade show active"
+        id="nav-home"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+        tabindex="0"
+      >
+        <div class="row d-flex py-4 gap-5">
+          <div class="col-12">
+            <h1>Product descriptions</h1>
+            <p class="product_descreption w-75">
+              {{ product_details?.desc }}
+            </p>
           </div>
 
-        </div>
+          <div class="col-12">
+            <h1 style="font-weight: 400">Other User review</h1>
 
+            <div class="review_container py-3 w-75">
+              @for (item of product_details?.comments; track $index) {
 
-        <!-- ==================Part2================================================================== -->
-        <div class="tab-pane rate_comment fade py-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-          <form class="rating_form" (ngSubmit)="submitRating()">
-            <label for="rating">Rate this product:</label>
-            <div class="rating_input">
-              <input type="number" id="rating" name="rating" [(ngModel)]="rating" required min="1" max="5" />
-              <button class="btn btn-secondary" type="submit">Submit</button>
-              @if (ratingError) {
-                <h1>{{ ratingError }}</h1>
+              <div class="user_review">
+                <div class="user_comment">
+                  <img
+                    src="../../../assets/icon-256x256-removebg-preview.png"
+                    alt=""
+                  />
+                  <h4>User name</h4>
+                </div>
+
+                <p class="px-1">
+                  {{ item?.text }}
+                </p>
+              </div>
               }
-
             </div>
-          </form>
-          <form class="rating_form" (ngSubmit)="submitComments()">
-            <label for="rating">comment this product:</label>
-            <div class="rating_input">
-              <input type="text" id="rating" name="comments" [(ngModel)]="comment" required  />
-              <button class="btn btn-secondary" type="submit">Submit</button>
-
-            </div>
-          </form>
-          @if (commentError) {
-            {{ commentError }}
-          }
-
+          </div>
         </div>
+      </div>
 
+      <!-- ==================Part2================================================================== -->
+      <div
+        class="tab-pane rate_comment fade py-4"
+        id="nav-profile"
+        role="tabpanel"
+        aria-labelledby="nav-profile-tab"
+        tabindex="0"
+      >
+        <form class="rating_form" (ngSubmit)="submitRating()">
+          <label for="rating">Rate this product:</label>
+          <div class="rating_input">
+            <!-- <input type="number" id="rating" name="rating" [(ngModel)]="rating" required min="1" max="5" /> -->
+            <ngb-rating
+              class="rating"
+              [(ngModel)]="rating"
+              id="rating"
+              name="rating"
+              min="1"
+              [max]="5"
+            ></ngb-rating>
 
-        <!-- ==================End=============================================================================== -->
+            <button class="btn btn-secondary" type="submit">Submit</button>
+            @if (ratingError) {
+            <p>{{ ratingError }}</p>
+            }
+          </div>
+        </form>
+        <form class="rating_form" (ngSubmit)="submitComments()">
+          <label for="rating">comment this product:</label>
+          <div class="rating_input">
+            <input
+              type="text"
+              id="rating"
+              name="comments"
+              [(ngModel)]="comment"
+              required
+            />
 
+            <button class="btn btn-secondary" type="submit">Submit</button>
+          </div>
+        </form>
+        @if (commentError) {
+        {{ commentError }}
+        }
+      </div>
 
-
-      
+      <!-- ==================End=============================================================================== -->
     </div>
-
-
   </div>
 
-        <!-- ======================================================================= -->
-        <!-- ======================================================================= -->
-        <!-- ======================================================================= -->
-
+  <!-- ======================================================================= -->
+  <!-- ======================================================================= -->
+  <!-- ======================================================================= -->
 </div>
 
 <app-footer></app-footer>
+}

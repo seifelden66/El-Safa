@@ -1,3 +1,4 @@
+import { Toast } from 'primeng/toast';
 import { CookieService } from './../../services/cookie.service';
 import { Component , OnInit , ViewChild  } from '@angular/core';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
@@ -6,6 +7,7 @@ import { FirestnavComponent } from '../firestnav/firestnav.component';
 import { SidebarModule } from 'primeng/sidebar';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -16,7 +18,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 export class ProfileComponent implements OnInit  {
 
 
-  constructor(private CookieService : CookieService, private http : HttpClient,private router : Router){}
+  constructor(private CookieService : CookieService, private http : HttpClient,private router : Router , private Toaster : ToastrService){}
 
   usertoken!:any
   userdata!:any
@@ -29,7 +31,7 @@ export class ProfileComponent implements OnInit  {
 
     }else{
       this.router.navigate([`/regester`])
-      alert('Please login Firest')
+      this.Toaster.error('Please login firest','Error')
     }
     
   }

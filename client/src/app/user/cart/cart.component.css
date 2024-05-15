@@ -1,83 +1,84 @@
-.big_container {
-display: flex;
-justify-content: space-between;
-overflow-x: auto;
-gap: 10px;
-
-}
-
-
-
-/* ========================================= */
-.active{
-  background-color: #7C5ED8;
+@import url("https://fonts.cdnfonts.com/css/blueberry");
+@import url("https://fonts.cdnfonts.com/css/adlam-display");
+.loader-container {
+  margin: 200px 0px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 100px 0px;
+  background-color: var(--background-color);
   color: white;
 }
 
-.row{
+.big_container {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+  gap: 10px;
+  background-color: var(--background-color);
+}
+
+/* ========================================= */
+.active {
+  background-color: #f87171;
+  color: white;
+}
+
+.row {
   display: flex;
   align-items: center;
   /* padding: 20p 0px ; */
-  row-gap:30px ;
+  row-gap: 30px;
   text-align: center;
 }
 
 /* ==================================== */
 
-.sidebar{
-  background-color: #F4F1FF;
+.sidebar {
+  background-color: var(--main-color);
   padding: 0px 7px;
-  min-width: 6%;  
+  min-width: 6%;
   margin: 20px 0px;
-  border-bottom-right-radius:12px ;
-  border-top-right-radius:12px ;
-
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+  color: var(--text-color);
 }
 
-
-.sidebar_data{
+.sidebar_data {
   padding: 50px 0px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  
 }
 
-.sidebar_data h3{
-  padding: 7px ;
+.sidebar_data h3 {
+  padding: 7px;
   cursor: pointer;
-  transition: .4s ease;
+  transition: 0.4s ease;
   display: flex;
   justify-content: center;
   border-radius: 7px;
 }
 
-.sidebar_data h3:hover{
-  background-color: #7C5ED8;
+.sidebar_data h3:hover {
+  background-color: #fca5a5;
   color: white;
 }
 
-
-
-
-.sidebar_text{
+.sidebar_text {
   display: flex;
   align-items: center;
   gap: 7px;
 }
 
-
-
 /* ======================================================================== */
-.table_container{
-overflow-x: auto;
-margin:120px 0px ;
+.table_container {
+  margin: 120px 0px;
 }
 
 .table {
-  text-align: center;
-
-  flex: 1;
+  width: 100%;
+  /* overflow-x: auto; */
 }
 
 .product_data {
@@ -86,99 +87,190 @@ margin:120px 0px ;
 
 .Btns {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 30px;
-  align-items: center;
+  margin-left: 120px !important;
+  border: solid 2px #a1a1aa;
+  width: 140px;
+  height: 40px;
+  border-radius: 3px;
 }
 
+.quan_edit {
+  background-color: #a1a1aa;
+  color: var(--text-color);
+  border: none;
+  height: 100%;
+  width: 40%;
+  font-size: 1.1em;
+}
+
+.payment_btn {
+  background-color: #1c1917;
+  color: #fafaf9;
+  font-size: 1.1em;
+  width: 40%;
+  height: 100%;
+  border: none;
+}
+
+.payment_btn:hover {
+  background-color: #dc2626;
+}
+.payment_btn:last-child {
+  background-color: #dc2626;
+}
 .delete i {
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.rating {
-  color: #ffd869;
   font-size: 20px;
+  cursor: pointer;
+  color: red;
+  opacity: 0.7;
 }
 
 .table_img img {
   height: 100px;
   object-fit: contain;
 }
-.total {
-  font-size: 22px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-
-}
-
-.font{
-  font-size: 20px;
-  font-weight: 500;
-}
-
-
-.payment_btn {
-  background-color: blueviolet;
-  color: white;
-}
-
-.form_item label {
-  font-weight: 400;
-  font-size: 20px;
-}
-
-
-.product_data td{
+.product_data td {
   text-align: center;
 }
+
+.table-cart-header {
+  background-color: #fcd34d;
+}
+
+.table-cart-body {
+  background-color: #fef3c7;
+}
+
 /* ==================================================== */
 
-.sec_page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 30px;
-}
-
-.sec_page span {
-  font-size: 50px;
-  color: #ebb9f0;
-}
 /* ================================================= */
 
-.empty_table{
+.empty_table {
   display: flex;
-  justify-content:center ;
+  justify-content: center;
   align-items: center;
-  margin: auto ;
+  margin: auto;
   flex-direction: column;
-  padding:15px;
+  padding: 15px;
   gap: 20px;
 }
 
-.empty_table h1{
-
+.empty_table h1 {
   font-size: 40px;
 }
 
-.empty_table h2{
-
-  font-size: 60px;
-  color: #7C5ED8;
+.empty_table h2 {
+  font-size: 50px;
+  color: #f59e0b;
 }
 
 /* ============= */
 
+.cart_container {
+  flex: 1;
+  padding: 20px;
+}
+
+/* ============================================= */
+.payment_conatiner {
+  width: 100%;
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
+.payment_form h2 {
+  color: var(--text-color);
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  padding: 7px 3px;
+  gap: 5px;
+}
+
+.inputs label {
+  color: var(--text-color);
+  font-size: 1.1em;
+  padding-left: 5px;
+}
+
+.inputs input {
+  padding: 8px 5px;
+  border-radius: 7px;
+  border: solid 1px #d6d3d1;
+  background-color: var(--main-color);
+  outline: none;
+  font-size: 14px;
+}
+
+.inputs select {
+  padding: 5px;
+  border-radius: 7px;
+}
+
+.pay {
+  border: solid 0.5px #ef4444;
+  border-radius: 3px;
+}
+.pay:hover {
+  border: solid 0.5px #d4d4d8;
+}
+.pay button {
+  font-size: 1.2em;
+  font-family: "ADLaM Display", sans-serif;
+  font-weight: 500;
+  background-color: transparent;
+  color: #ef4444;
+}
+
+.icon-img {
+  width: 50px;
+}
+
+.total-price {
+  font-size: 1.5em;
+  font-family: "Blueberry", sans-serif;
+  font-weight: bold;
+  color: #ef4444;
+}
+
+.price {
+  font-size: 1.3em;
+  font-weight: bold;
+}
 /* =========media========================================== */
 
 @media (width<900px) {
-
-  .sidebar{
-    min-width: 10%;   
+  .sidebar {
+    min-width: 10%;
   }
-  
+}
+
+.pay-model {
+  width: 700px;
+  background-color: var(--background-color);
+}
+.pay-model-header {
+  background-color: var(--main-color);
+}
+.font2 {
+  font-family: "ADLaM Display", sans-serif;
+  background: linear-gradient(
+    50deg,
+    #f50b0b 0%,
+    #912323 25%,
+    #2e1111 50%,
+    #160202 75%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  padding: 20px 0px;
+  font-weight: 500;
+  letter-spacing: 5px;
 }

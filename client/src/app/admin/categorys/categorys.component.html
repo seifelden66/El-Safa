@@ -6,7 +6,7 @@
       <div class="d-flex justify-content-between mt-5 mb-4">
         <h1 class="h3">Categorys</h1>
         <button
-          class="btn btn-primary align-content-center"
+          class="admin-btn align-content-center"
           (click)="showAddNewCategoryModel()"
         >
           Add Category
@@ -85,15 +85,12 @@
                   formControlName="description"
                 ></textarea>
               </div>
-              <button class="btn btn-primary">Add Category</button>
+              <button class="admin-btn">Add Category</button>
             </form>
           </div>
           <div class="ng-Modal-footer">
             <div class="d-flex gap-2 float-end py-2">
-              <button
-                class="btn btn-primary"
-                (click)="hideAddNewCategoryModel()"
-              >
+              <button class="admin-btn" (click)="hideAddNewCategoryModel()">
                 Close
               </button>
             </div>

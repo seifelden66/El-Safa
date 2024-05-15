@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { SecondHeaderComponent } from "../second-header/second-header.component";
 import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { FooterComponent } from "../footer/footer.component";
-
+import { GoogleMapsModule } from "@angular/google-maps";
 import {
   Validators,
   FormControl,
@@ -10,6 +10,7 @@ import {
   ReactiveFormsModule,
 } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
+import { NgIf } from "@angular/common";
 @Component({
   selector: "app-contact",
   standalone: true,
@@ -18,12 +19,17 @@ import { HttpClient } from "@angular/common/http";
     FirestnavComponent,
     FooterComponent,
     ReactiveFormsModule,
+    GoogleMapsModule,
+    NgIf,
   ],
   templateUrl: "./contact.component.html",
   styleUrl: "./contact.component.css",
 })
 export class ContactComponent {
   FormData!: FormGroup;
+  center: google.maps.LatLngLiteral = { lat: 31.26, lng: 32.29 };
+  zoom = 9;
+  markerPosition: google.maps.LatLngLiteral = this.center;
   constructor(private http: HttpClient) {}
   ngOnInit() {
     this.FormData = new FormGroup({

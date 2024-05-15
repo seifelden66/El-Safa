@@ -2,11 +2,19 @@
 @import "primeicons/primeicons.css";
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 @import "ngx-toastr/toastr";
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 
 html {
-  background-color: #eef0fc;
+  /* background-color: var(--background-color); */
+}
+:root {
+  --main-color: #f5f5f5;
+  --secondary-color: #f5f5f5;
+  --background-color: #ffffff;
+  --text-color: #0a0a0a;
+  --accent-color: #ffffff;
+  --dark-color: #9bbec8;
 }
 
 .modelBackdrop {
@@ -70,7 +78,7 @@ html {
 
 .admin-btn {
   padding: 10px 20px;
-  background: linear-gradient(to right, #da8cff, #9a55ff);
+  background: linear-gradient(to right, #00d2ff, #3a7bd5);
   color: white;
   border: none;
   border-radius: 4px;
@@ -84,7 +92,7 @@ html {
 
 .admin-body {
   font-family: "Arial", sans-serif;
-  background-color: #f3e8ff;
+  background-color: hsl(214, 95%, 97%);
 }
 
 /* table design for admin  */
@@ -95,7 +103,7 @@ html {
   text-align: center;
   font-weight: 600;
   font-size: 1.2em;
-  opacity: 0.7;
+  /* opacity: 0.7; */
   font-family: "Arial", sans-serif;
 }
 
@@ -105,16 +113,16 @@ html {
   text-align: center;
   font-weight: 500;
   font-size: 1.1rem;
-  opacity: 0.7;
+  /* opacity: 0.7; */
   font-family: "Arial", sans-serif;
 }
 
 .table-body-tr {
   border-bottom: solid 0.5px rgb(234, 230, 235);
-  background-color: #fdf4ff;
+  background-color: #eff6ff !important;
 }
 .table-body-tr:hover {
-  background-color: #f5cefc !important;
+  background-color: #dbeafe !important;
 }
 
 .table-header-tr {
@@ -124,4 +132,22 @@ html {
 
 .searchInput {
   background-color: #fdf4ff !important;
+}
+
+.user-table-body-tr {
+  background-color: var(--background-color);
+  border-bottom: solid 0.5px #d4d4d8;
+}
+
+.user-table-header-tr {
+  background-color: var(--main-color) !important;
+}
+
+/* .user-table-body-tr:hover {
+  background-color: var(--main-color) !important;
+} */
+
+.user-table-body-tr td {
+  font-weight: 500;
+  color: var(--text-color);
 }

@@ -1,0 +1,44 @@
+<app-firestnav></app-firestnav>
+<app-second-header></app-second-header>
+
+<div class="container">
+    <div class="wishlist">
+      
+        <div class="card table">
+          <p-table [value]="CartService.getproduct()" [paginator]="true" [rows]="5">
+            <ng-template pTemplate="header">
+              <tr class="product_data">
+                <th scope="col">image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Options</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+              <tr class="product_data">
+                <!-- <td class="table_img pt-5"><img src="../../../assets/cinthia-becher-z_WgCHcIkrs-unsplash.jpg" alt=""></td> -->
+                <td class="table_img pt-5"><img src="/assets/{{ item?.images['0']}}" alt="/assets/{{ item?.images['0']}}"></td>
+                <td class="pt-5 font">{{ item?.name }}</td>
+                <td class="pt-5 font">
+                  ${{ (item?.price * item?.quantity).toFixed(2) }}
+                </td>
+
+                <td class="delete pt-5 font">
+                  <!-- <i (click)="deleteItem(item?.id)" class="fa-solid fa-trash delete-icon"></i> -->
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+    
+      
+      
+        </div>
+
+      
+        
+
+</div>
+
+
+<app-footer></app-footer>

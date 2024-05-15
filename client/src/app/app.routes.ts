@@ -4,7 +4,6 @@ import { HomeComponent } from "./user/home/home.component";
 import { ProductPageComponent } from "./user/product-page/product-page.component";
 import { ProfileComponent } from "./user/profile/profile.component";
 import { SignUpComponent } from "./user/sign-up/sign-up.component";
-import { InvoiceComponent } from "./user/invoice/invoice.component";
 import { ProductDetailsComponent } from "./user/product-details/product-details.component";
 import { DashbordComponent } from "./admin/dashbord/dashbord.component";
 import { ProductsComponent } from "./admin/products/products.component";
@@ -25,9 +24,11 @@ import { SingleOrderComponent } from "./admin/single-order/single-order.componen
 import { CartComponent } from "./user/cart/cart.component";
 import { ContactComponent } from "./user/contact/contact.component";
 import { AdminProfileComponent } from "./admin/admin-profile/admin-profile.component";
-import { TrackingComponent } from "./user/tracking/tracking.component";
 import { UserProductComponent } from "./user/user-product/user-product.component";
 import { OrderDetailsComponent } from "./user/order-details/order-details.component";
+import { WishlistComponent } from "./user/wishlist/wishlist.component";
+import { FetccatComponent } from "./user/fetccat/fetccat.component";
+import { SingleProductComponent } from "./user/single-product/single-product.component";
 
 export const routes: Routes = [
   {
@@ -40,6 +41,14 @@ export const routes: Routes = [
     canActivate: [isLoginGuard],
   },
   {
+    path: "product/search/:search",
+    component: ProductPageComponent,
+  },
+  {
+    path: "product/category/:cat",
+    component: ProductPageComponent,
+  },
+  {
     path: "product",
     component: ProductPageComponent,
   },
@@ -50,10 +59,6 @@ export const routes: Routes = [
   {
     path: "regester",
     component: SignUpComponent,
-  },
-  {
-    path: "tracking",
-    component: TrackingComponent,
   },
   {
     path: "product_details/:id",
@@ -122,12 +127,24 @@ export const routes: Routes = [
     component: CartComponent,
   },
   {
+    path: "test",
+    component: SingleProductComponent,
+  },
+  {
+    path: "wishlist",
+    component: WishlistComponent,
+  },
+  {
     path: "user-product",
     component: UserProductComponent,
   },
   {
     path: "order-data/:id",
     component: OrderDetailsComponent,
+  },
+  {
+    path: "fetchcat/:cat",
+    component:FetccatComponent,
   },
   {
     path: "contact",

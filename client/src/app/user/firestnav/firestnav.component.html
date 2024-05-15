@@ -1,28 +1,26 @@
-
 <div class="col-12 second_nav">
   <div
     dir="ltr"
-    class="row sec_nav justify-content-xxl-start gap-xxl-2 justify-content-md-start gap-md-4">
-    <div class="col-3 col-xxl-2 col-md-3 px-5 one">
+    class="row sec_nav justify-content-xxl-start gap-xxl-2 justify-content-md-start gap-md-4"
+  >
+    <div class="col-3 col-xxl-2 col-md-3 px-4 one">
       <button
         class="btn btn-suceess category_btn d-flex"
         [matMenuTriggerFor]="animals"
       >
-      <i class="fas fa-list-ul m-0  "></i>
-        <span>Category</span> 
+        <i class="fas fa-list-ul m-0"></i>
+        <span>Category</span>
       </button>
 
       <mat-menu #animals="matMenu">
         @for (item of category; track $index) {
 
-          <button mat-menu-item>
-            {{ item?.category?.name }}
-          </button>
+        <button (click)="getcat(item?.name)" mat-menu-item>
+          {{ item?.name }}
+        </button>
 
         }
-
       </mat-menu>
-
     </div>
 
     <div class="col-7 col-xxl-9 col-md-8 two">
@@ -33,7 +31,6 @@
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
-            
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
@@ -46,7 +43,7 @@
             id="navbarSupportedContent"
           >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <div class="d-flex navbar_data gap-3">
+              <div class="d-flex navbar_data">
                 <li class="nav-item">
                   <a
                     class="nav-link"
@@ -67,11 +64,13 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link"
-                  routerLinkActive="active_link"
-                  routerLink="/cart">Cart</a>
+                  <a
+                    class="nav-link"
+                    routerLinkActive="active_link"
+                    routerLink="/cart"
+                    >Cart</a
+                  >
                 </li>
-
 
                 <li class="nav-item">
                   <a
@@ -80,10 +79,6 @@
                     routerLink="/contact"
                     >Contact Us</a
                   >
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" routerLinkActive="active_link"  routerLink="/tracking">Tracking</a>
                 </li>
               </div>
             </ul>
