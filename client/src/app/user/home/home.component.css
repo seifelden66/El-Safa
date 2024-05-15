@@ -232,11 +232,7 @@ p {
   left: 0;
   top: 0;
 
-  background: linear-gradient(
-    to top,
-    #f05053,
-    #e1eec3
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to top, #f05053, #e1eec3);
 
   background-blend-mode: normal, multiply;
 }

@@ -1,11 +1,9 @@
 @if (showLoader) {
-  <div class="loader-container d-flex justify-content-center ">
-    <mat-spinner></mat-spinner>
-    <h1>Loading...</h1>
-  </div>
-}
-
-@if (!showLoader) {
+<div class="loader-container d-flex justify-content-center">
+  <mat-spinner></mat-spinner>
+  <h1>Loading...</h1>
+</div>
+} @if (!showLoader) {
 
 <app-second-header></app-second-header>
 <app-firestnav></app-firestnav>
@@ -14,35 +12,31 @@
   <div class="row product_details_container">
     <div class="col-lg-6 col-12 gallary">
       <div class="gallary_container py-2">
-
-        
         <div class="gallary_images p-2 d-flex gap-3">
           @for (item of product_details?.images; track $index) {
 
           <div class="img1">
-            <!-- <img
+            <img
               [class]="item"
               src="/assets/{{ item }}"
               [alt]="item"
               (click)="reternsrc(item)"
-            /> -->
-            <img
+            />
+            <!-- <img
               src="../../../assets/northfolk-vTi5S_vtc9U-unsplash.jpg"
               alt=""
-            />
+            /> -->
           </div>
           }
         </div>
 
         <div class="main_img">
-          <!-- <img class="" src="/assets/{{ main_img }}" alt="ss" /> -->
-          <img
+          <img class="" src="/assets/{{ main_img }}" alt="ss" />
+          <!-- <img
             src="../../../assets/northfolk-vTi5S_vtc9U-unsplash.jpg"
             alt=""
-          />
+          /> -->
         </div>
-
-
       </div>
     </div>
 
