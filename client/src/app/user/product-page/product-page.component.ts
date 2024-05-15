@@ -86,7 +86,6 @@ export class ProductPageComponent implements OnInit {
   showLoader: boolean = true;
   toster = inject(ToastrService);
 
-
   toggleHeart(prod_id: any , product_data : any) {
 
     // this.toster.success("added to Wishlist", "Success");
@@ -110,9 +109,14 @@ export class ProductPageComponent implements OnInit {
 
     this.userToken = this.cookkeService.get("userToken");
 
-    this.ActivatedRoute.params.subscribe((param) => {
-      if (param["search"]) {
-        this.searchOnProduct(param["search"]);
+    this.ActivatedRoute.params.subscribe((params) => {
+      const searchQuery = params["search"];
+      const category = params["cat"];
+  
+      if (searchQuery) {
+        this.searchOnProduct(searchQuery);      
+      } else if (category) {
+        this.fetchcat(category);        
       } else {
         this.getallproduct();
       }
@@ -122,6 +126,13 @@ export class ProductPageComponent implements OnInit {
       this.showLoader = false;
     }, 3000);
 
+  }
+
+  fetchcat(category : string ){
+    this.http.get(`http://localhost:8000/v1/products?page=1&category=${category}`).subscribe((res:any)=>{
+      this.allproducts = res.products
+      console.log(res , "sssssssssssssss");   
+    })
   }
 
   searchOnProduct(query: string) {

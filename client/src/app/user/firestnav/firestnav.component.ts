@@ -112,23 +112,29 @@ export class FirestnavComponent {
   category: any[] = [];
   usertoken: any;
 
+  
+
   ngOnInit(): void {
     
     this.getProduct()
     this.usertoken = this.CookieService.get('userToken')
     // console.log(this.usertoken);
-    
-  
   }
 
 
   getProduct() {
-    this.http.get<ProductResponse>('http://localhost:8000/v1/products').subscribe((res) => {
-      this.category =res.products
-      console.log(res.products);
+    this.http.get('http://localhost:8000/v1/categories').subscribe((res : any) => {
+      this.category =res
+      console.log(res);
     });
   }
   
 
+  getcat(item : any){
+    console.log(item);
+    this.router.navigate([`product/category/${item}`])
+  }
+
+  
   
 }

@@ -15,8 +15,8 @@
       <mat-menu #animals="matMenu">
         @for (item of category; track $index) {
 
-        <button mat-menu-item>
-          {{ item?.category?.name }}
+        <button (click)="getcat(item?.name)" mat-menu-item>
+          {{ item?.name }}
         </button>
 
         }

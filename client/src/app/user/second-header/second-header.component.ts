@@ -91,6 +91,7 @@ export class SecondHeaderComponent implements OnInit {
     private CartService: CartService,
     private CookieService: CookieService,
     private SearchService: SearchService
+  
   ) {}
 
   onSearch(query: string): void {
