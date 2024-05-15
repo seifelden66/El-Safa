@@ -22,6 +22,18 @@ const getProducts = async (req, res) => {
       filter.category = category._id;
     }
 
+    // Add price filtering if provided in the query
+    if (req.query.minPrice && req.query.maxPrice) {
+      filter.price = {
+        $gte: parseInt(req.query.minPrice),
+        $lte: parseInt(req.query.maxPrice),
+      };
+    } else if (req.query.minPrice) {
+      filter.price = { $gte: parseInt(req.query.minPrice) };
+    } else if (req.query.maxPrice) {
+      filter.price = { $lte: parseInt(req.query.maxPrice) };
+    }
+
     const totalCount = await Product.countDocuments(filter);
     const totalPages = Math.ceil(totalCount / pageSize);
     const products = await Product.find(filter)
@@ -53,7 +65,10 @@ const getProduct = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(404).json({ message: "Invalid product ID" });
     }
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).populate(
+      "category",
+      "name"
+    );
     res.status(200).json(product);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -222,6 +237,15 @@ const searchProduct = async (req, res) => {
   }
 };
 
+const getProductsOnSale = async (req, res) => {
+  try {
+    const productsOnSale = await Product.find({ discount: { $gt: 0 } });
+    res.status(200).json(productsOnSale);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 async function httpLatestProducts(req, res) {
   try {
     const latestAdded = await Product.find().sort({ createdAt: -1 }).limit(2);
@@ -243,4 +267,5 @@ module.exports = {
   getTopRatedProducts,
   searchProduct,
   httpLatestProducts,
+  getProductsOnSale,
 };
