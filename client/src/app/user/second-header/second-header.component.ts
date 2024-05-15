@@ -25,6 +25,7 @@ import { IconFieldModule } from "primeng/iconfield";
 import { InputIconModule } from "primeng/inputicon";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { OrderListModule } from "primeng/orderlist";
+import { ToastrService } from "ngx-toastr";
 
 type State = { id: number; name: string };
 
@@ -62,7 +63,7 @@ export class SecondHeaderComponent implements OnInit {
   products: any[] = [];
   categories: string[] = [];
   selectedCategory: string | null = null;
-  usertoken: any;
+  usertoken!: any;
   userdata!: any;
 
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
@@ -90,7 +91,8 @@ export class SecondHeaderComponent implements OnInit {
     private CounterService: CounterService,
     private CartService: CartService,
     private CookieService: CookieService,
-    private SearchService: SearchService
+    private SearchService: SearchService,
+    private toster: ToastrService
   ) {}
 
   onSearch(query: string): void {
@@ -103,7 +105,7 @@ export class SecondHeaderComponent implements OnInit {
     if (this.usertoken) {
       this.router.navigate([`profile`]);
     } else {
-      alert("you Should Login Firest");
+      this.toster.error("Please login firest", "Error");
     }
   }
 
@@ -132,8 +134,8 @@ export class SecondHeaderComponent implements OnInit {
     this.router.navigate([`cart`]);
   }
 
-  redirect8(){
-    this.router.navigate([`wishlist`])
+  redirect8() {
+    this.router.navigate([`wishlist`]);
   }
 
   // =============================

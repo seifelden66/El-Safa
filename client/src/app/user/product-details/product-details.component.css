@@ -38,7 +38,7 @@ p {
 
 .product_details_container {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
   margin: 40px 0px;
   gap: 40px;
@@ -73,7 +73,7 @@ p {
 
 .main_img img {
   width: 100%;
-  height: 400px;
+  height: 550px;
   object-fit: cover;
 }
 
@@ -88,7 +88,7 @@ p {
 
 .img1 img {
   width: 80%;
-  height: 150px;
+  height: 100px;
   object-fit: cover;
   cursor: pointer;
   transform: scale(1);
@@ -102,9 +102,14 @@ p {
 }
 
 .carusel_bt {
-  background-color: #5c3dc3;
+  background-color: #ED6156;
   color: white;
   border-radius: 5px;
+  border: none;
+}
+
+.btn-danger{
+  background-color: black;
   border: none;
 }
 
@@ -184,9 +189,10 @@ p {
   padding: 15px;
 }
 /* =============================== */
+
 .product_descusion {
   margin: 0px auto;
-  background-color: white;
+  background-color:white;
   padding: 20px;
 }
 
@@ -198,16 +204,18 @@ p {
 
 .user_review {
   display: flex;
-  background-color: #eef0fc;
+  background-color: white;
   flex-direction: column;
   padding: 10px;
-  border: solid 1px;
+  border: solid #ED6156 1px;
   border-radius: 15px;
+  color:#ED6156 ;
 }
 
 .user_review h4 {
   display: flex;
   font-weight: 600;
+
 }
 
 .user_comment {
@@ -216,6 +224,13 @@ p {
   align-items: center;
   gap: 10px;
   padding: 10px 0px;
+
+}
+
+.comment_user{
+  font-size: 20px ;
+  font-weight: 500;
+  color: black;
 }
 
 .user_comment img {
@@ -266,10 +281,10 @@ p {
 /* ===================================== */
 .nav1 {
   padding: 10px;
-  background-color: #7c5cd3;
+  background-color: #EF8179;
   color: white;
-}
 
+}
 .rate_comment {
   display: flex;
   flex-direction: column;
@@ -299,9 +314,18 @@ p {
 
 .rating_input button {
   width: 100px;
-  padding: 3px 5px;
-  background-color: #7c5cd3;
+  padding: 3px 10px;
+  background-color: #EF8179;
   border: none;
+}
+
+.rating_input .rating{
+  font-size: 30px;
+
+}
+
+.rating_input1 button{
+  margin-left: 62px;
 }
 
 .product_descreption {

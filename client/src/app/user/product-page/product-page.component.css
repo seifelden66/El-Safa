@@ -15,7 +15,7 @@
   gap: 10px;
   padding: 100px 0px;
   background-color: var(--background-color);
-  color: white;
+  color: #E65540;
 }
 
 .container-fluid {
@@ -224,7 +224,7 @@
 }
 
 .selected-item {
-  background-color: #7c5cd3;
+  background-color: #E65540;
   color: white;
 }
 

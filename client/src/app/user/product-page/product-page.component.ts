@@ -26,12 +26,20 @@ import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { RatingModule } from "primeng/rating";
 import { ToastrService } from "ngx-toastr";
 import { CookieService } from "../../services/cookie.service";
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { PaginatorModule } from "primeng/paginator";
 
 interface Rating {
   value: number;
   _id: string;
   date: string;
+}
+
+interface PageEvent {
+  first: number;
+  rows: number;
+  page: number;
+  pageCount: number;
 }
 @Component({
   selector: "app-product-page",
@@ -50,7 +58,8 @@ interface Rating {
     FormsModule,
     RatingModule,
     RouterLink,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    PaginatorModule,
   ],
   templateUrl: "./product-page.component.html",
   styleUrl: "./product-page.component.css",
@@ -71,7 +80,8 @@ export class ProductPageComponent implements OnInit {
     private messageService: MessageService,
     private cookkeService: CookieService,
     private ActivatedRoute: ActivatedRoute,
-    private CartService : CartService
+    private CartService: CartService,
+    private CounterService: CounterService
   ) {
     config.backdrop = "static";
     config.keyboard = false;
@@ -85,16 +95,15 @@ export class ProductPageComponent implements OnInit {
   averageRatings: { [productId: string]: number } = {};
   showLoader: boolean = true;
   toster = inject(ToastrService);
+  counter: number = 0;
 
-
-  toggleHeart(prod_id: any , product_data : any) {
-
+  toggleHeart(prod_id: any, product_data: any) {
     // this.toster.success("added to Wishlist", "Success");
     this.heartToggled[prod_id] = !this.heartToggled[prod_id];
     console.log(this.heartToggled);
     if (this.heartToggled[prod_id]) {
       this.toster.success("added to Wishlist", "Success");
-      this.CartService.addtocart(product_data)
+      this.CartService.addtocart(product_data);
       console.log(product_data);
     } else {
       this.toster.error("removed from Wishlist", "Removed");
@@ -105,14 +114,34 @@ export class ProductPageComponent implements OnInit {
     return index;
   }
 
+  nextPage() {
+    this.currentPage = this.currentPage + 1;
+    console.log(this.currentPage);
+    this.getallproduct();
+  }
+
+  previosPage() {
+    this.currentPage = this.currentPage - 1;
+    console.log(this.currentPage);
+    this.getallproduct();
+  }
+
   ngOnInit(): void {
     this.getUniqueCategories();
+    this.CounterService.getcount().subscribe((res) => {
+      this.counter = res;
+    });
 
     this.userToken = this.cookkeService.get("userToken");
 
-    this.ActivatedRoute.params.subscribe((param) => {
-      if (param["search"]) {
-        this.searchOnProduct(param["search"]);
+    this.ActivatedRoute.params.subscribe((params) => {
+      const searchQuery = params["search"];
+      const category = params["cat"];
+
+      if (searchQuery) {
+        this.searchOnProduct(searchQuery);
+      } else if (category) {
+        this.fetchcat(category);
       } else {
         this.getallproduct();
       }
@@ -121,7 +150,14 @@ export class ProductPageComponent implements OnInit {
     setTimeout(() => {
       this.showLoader = false;
     }, 3000);
+  }
 
+  fetchcat(category: string) {
+    this.http
+      .get(`http://localhost:8000/v1/products?page=1&category=${category}`)
+      .subscribe((res: any) => {
+        this.allproducts = res.products;
+      });
   }
 
   searchOnProduct(query: string) {
@@ -138,12 +174,18 @@ export class ProductPageComponent implements OnInit {
   }
 
   getallproduct() {
-    this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
-      this.allproducts = res.products;
-      this.averageRatings = this.getAverageRatings(this.allproducts);
-
-      console.log(this.allproducts);
-    });
+    this.http
+      .get(`http://localhost:8000/v1/products?page=${this.currentPage}`)
+      .subscribe(
+        (res: any) => {
+          this.allproducts = res.products;
+          this.averageRatings = this.getAverageRatings(this.allproducts);
+          console.log(this.allproducts);
+        },
+        (error) => {
+          this.allproducts = [];
+        }
+      );
   }
 
   redirect(product_id: any) {
@@ -190,7 +232,7 @@ export class ProductPageComponent implements OnInit {
   filterProducts(): void {
     if (!this.selectedCategory) {
       // If no category is selected, show all products
-      this.getallproduct();
+      // this.getallproduct(page);
       return;
     }
 
@@ -214,7 +256,6 @@ export class ProductPageComponent implements OnInit {
     );
   }
 
-  
   // ================add to cart===============================
   addToCart(id: string) {
     this.http
@@ -262,5 +303,5 @@ export class ProductPageComponent implements OnInit {
     return averageRatings;
   }
 
-  // =============rating form===============================
+  // =============pagination===============================
 }

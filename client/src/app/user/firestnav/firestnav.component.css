@@ -82,7 +82,7 @@
 }
 
 .category_btn {
-  background-color: var();
+  background-color:#ED6156;
   color: white;
   font-weight: 500;
   align-items: center;
@@ -93,7 +93,7 @@
 }
 .category_btn:hover {
   background-color: var(--main-color);
-  color: #f4f2fb;
+  color: #ED6156;
 }
 
 /* ============================== */

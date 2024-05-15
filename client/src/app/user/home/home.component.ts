@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit {
   productcenter: any = [];
   topproduct: any = [];
   averageRatings: { [productId: string]: number } = {};
-  showLoader : boolean = true
+  showLoader : boolean = false
 
   ngOnInit(): void {
     this.getallproduct();

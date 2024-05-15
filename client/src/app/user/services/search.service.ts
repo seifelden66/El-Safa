@@ -9,6 +9,6 @@ export class SearchService {
   constructor(private router: Router) {}
 
   perFormsearch(query: string) {
-    this.router.navigate([`/product/${query}`]);
+    this.router.navigate([`/product/search/${query}`]);
   }
 }

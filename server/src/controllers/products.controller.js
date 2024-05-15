@@ -7,11 +7,10 @@ const User = require("../models/users/users.mongo");
 
 const ObjectId = mongoose.Types.ObjectId;
 
-
 const getProducts = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const pageSize = 10;
+    const pageSize = 9;
 
     let filter = {};
     if (req.query.category) {
@@ -31,7 +30,9 @@ const getProducts = async (req, res) => {
       .limit(pageSize);
 
     if (products.length === 0) {
-      return res.status(404).json({ message: "No products found for this category" });
+      return res
+        .status(404)
+        .json({ message: "No products found for this category" });
     }
 
     res.status(200).json({
@@ -46,7 +47,6 @@ const getProducts = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
 
 const getProduct = async (req, res) => {
   try {
@@ -194,7 +194,7 @@ const getTopRatedProducts = async (req, res) => {
   try {
     const topRatedProducts = await Product.find({})
       .sort({ "ratings.value": -1 })
-      .limit(5);
+      .limit(4);
     res.status(200).json(topRatedProducts);
   } catch (error) {
     res.status(500).json({ message: error.message });

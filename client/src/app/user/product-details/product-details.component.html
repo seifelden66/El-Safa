@@ -112,7 +112,7 @@
           aria-controls="nav-home"
           aria-selected="true"
         >
-          Home
+          Comments
         </button>
         <button
           class="nav-link nav1"
@@ -124,7 +124,7 @@
           aria-controls="nav-profile"
           aria-selected="false"
         >
-          Profile
+          Rating
         </button>
       </div>
     </nav>
@@ -159,10 +159,10 @@
                     src="../../../assets/icon-256x256-removebg-preview.png"
                     alt=""
                   />
-                  <h4>User name</h4>
+                  <h4>{{ userdata?.name }}</h4>
                 </div>
 
-                <p class="px-1">
+                <p class="px-1 comment_user">
                   {{ item?.text }}
                 </p>
               </div>
@@ -182,7 +182,7 @@
       >
         <form class="rating_form" (ngSubmit)="submitRating()">
           <label for="rating">Rate this product:</label>
-          <div class="rating_input">
+          <div class="rating_input rating_input1">
             <!-- <input type="number" id="rating" name="rating" [(ngModel)]="rating" required min="1" max="5" /> -->
             <ngb-rating
               class="rating"
@@ -194,9 +194,9 @@
             ></ngb-rating>
 
             <button class="btn btn-secondary" type="submit">Submit</button>
-            @if (ratingError) {
+            <!-- @if (ratingError) {
             <p>{{ ratingError }}</p>
-            }
+            } -->
           </div>
         </form>
         <form class="rating_form" (ngSubmit)="submitComments()">
@@ -213,9 +213,9 @@
             <button class="btn btn-secondary" type="submit">Submit</button>
           </div>
         </form>
-        @if (commentError) {
+        <!-- @if (commentError) {
         {{ commentError }}
-        }
+        } -->
       </div>
 
       <!-- ==================End=============================================================================== -->

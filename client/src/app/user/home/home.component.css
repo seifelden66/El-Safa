@@ -74,7 +74,7 @@
 }
 
 .data > .offer {
-  background-color: var(--main-color);
+  background-color: #ed6156;
   padding: 4px;
   letter-spacing: 3px;
   font-weight: 500;
@@ -107,7 +107,7 @@
 }
 
 .color {
-  color: var(--main-color);
+  color: #ed6156;
   animation-name: sale-animation;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -116,7 +116,7 @@
 }
 
 .color2 {
-  color: white;
+  color: #ed6156;
   animation-name: sale-animation;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -179,7 +179,7 @@
 }
 
 .carusel_btn:hover {
-  background-color: var(--main-color);
+  background-color: #ed6156;
   font-weight: 500;
 }
 
@@ -200,7 +200,7 @@
   justify-content: space-between;
   gap: 2px;
   padding: 30px 0px;
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
 }
 
 .mostsells {
@@ -213,6 +213,7 @@
   width: 49%;
   position: relative;
   overflow: hidden;
+  box-shadow: 0px 2px 7px black;
 }
 
 .product_data {
@@ -221,7 +222,8 @@
 }
 .product_data h1,
 p {
-  color: var(--text-color);
+  color: white;
+  font-weight: 500;
 }
 
 .shap {
@@ -231,10 +233,10 @@ p {
   height: 100%;
   left: 0;
   top: 0;
+  box-shadow: 0px 2px 13px black;
 
-  background: linear-gradient(to top, #f05053, #e1eec3);
-
-  background-blend-mode: normal, multiply;
+  background: linear-gradient(200deg, #e64444, #fa9276, #f1e7e7, #ffffff);
+  /* background-blend-mode: normal, multiply; */
 }
 
 /* .shap2 {
@@ -303,13 +305,18 @@ p {
 }
 
 .carusel_bt {
-  border: solid 1px var(--text-color) !important;
-  background-color: var(--main-color);
-  color: var(--text-color);
+  border: solid 1px #ed6156 !important;
+  background-color: transparent;
+  color: #ed6156;
+}
+
+.carusel_bt:hover {
+  background-color: #ed6156;
+  color: white;
 }
 
 .Launch_offer {
-  color: var(--text-color);
+  color: white;
 }
 
 /* ================================ */

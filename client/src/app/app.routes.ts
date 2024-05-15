@@ -27,6 +27,7 @@ import { AdminProfileComponent } from "./admin/admin-profile/admin-profile.compo
 import { UserProductComponent } from "./user/user-product/user-product.component";
 import { OrderDetailsComponent } from "./user/order-details/order-details.component";
 import { WishlistComponent } from "./user/wishlist/wishlist.component";
+import { FetccatComponent } from "./user/fetccat/fetccat.component";
 import { SingleProductComponent } from "./user/single-product/single-product.component";
 
 export const routes: Routes = [
@@ -40,7 +41,11 @@ export const routes: Routes = [
     canActivate: [isLoginGuard],
   },
   {
-    path: "product/:search",
+    path: "product/search/:search",
+    component: ProductPageComponent,
+  },
+  {
+    path: "product/category/:cat",
     component: ProductPageComponent,
   },
   {
@@ -136,6 +141,10 @@ export const routes: Routes = [
   {
     path: "order-data/:id",
     component: OrderDetailsComponent,
+  },
+  {
+    path: "fetchcat/:cat",
+    component: FetccatComponent,
   },
   {
     path: "contact",
