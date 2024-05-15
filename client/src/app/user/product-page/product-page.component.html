@@ -1,11 +1,9 @@
 @if (showLoader) {
-  <div class="loader-container d-flex justify-content-center ">
-    <mat-spinner></mat-spinner>
-    <h1>Loading...</h1>
-  </div>
-}
-
-@if (!showLoader) {
+<div class="loader-container d-flex justify-content-center">
+  <mat-spinner></mat-spinner>
+  <h1>Loading...</h1>
+</div>
+} @if (!showLoader) {
 
 <app-second-header></app-second-header>
 <app-firestnav></app-firestnav>
@@ -13,7 +11,10 @@
 <div class="allproduct_container">
   <div class="col-lg-2 col-md-3 col-sm-4">
     <div class="sidebar">
-      <h4 class="p-2 search_type d-flex justify-content-center">
+      <h4
+        class="p-2 search_type d-flex justify-content-center"
+        style="color: var(--text-color)"
+      >
         Filter by Categories
       </h4>
       <div class="sidebar_data">
@@ -61,7 +62,7 @@
         <div class="product_price py-3 px-2">
           <div class="product_data_card">
             <div class="data1 w-100">
-              <span class="m-1 font3">{{ product?.name }}</span>
+              <h1 class="m-1 font3">{{ product?.name }}</h1>
               <div
                 class="w-100 d-flex justify-content-between align-items-center"
               >
@@ -107,7 +108,7 @@
               <button
                 type="button"
                 pButton
-                (click)="toggleHeart(product?._id , product)"
+                (click)="toggleHeart(product?._id, product)"
                 label=""
                 class="fav_btn btn2"
               >

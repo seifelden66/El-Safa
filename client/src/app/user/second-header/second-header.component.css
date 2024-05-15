@@ -7,7 +7,7 @@
 }
 
 .active_link {
-  color: #fcd34d;
+  color: var(--text-color);
 }
 /* =================================================== */
 
@@ -17,7 +17,7 @@
   justify-content: space-between;
   gap: 15px;
   padding: 0.5em 1em;
-  background-color: #f8df9a;
+  background-color: var(--main-color);
 }
 
 .Companyandsearch {
@@ -32,7 +32,7 @@
   object-fit: cover;
   display: flex;
   justify-content: start;
-  color: #fcd34d;
+  color: white;
   margin-left: 9px;
 }
 
@@ -40,10 +40,11 @@
   text-transform: uppercase;
   background-image: linear-gradient(
     -225deg,
-    #d97706 0%,
-    #f59e0b 29%,
-    #fbbf24 67%,
-    #b65942 80%
+    #164863 0%,
+    #427D9D 29%,
+    #fff 67%,
+    #3f3f46 80%,
+    #9BBEC8 100%
   );
   background-size: auto auto;
   background-clip: border-box;
@@ -80,14 +81,15 @@
 
 .searchbar {
   border-radius: 8px;
-  color: #fbbf24;
-  border: solid 3px#fbbf24;
+  color: var(--secondary-color);
+  outline: none;
 }
 
 .search {
   border-radius: 8px;
   color: #070706;
-  border: none;
+  border: var(--secondary-color);
+  outline: none;
 }
 
 .firest_nav .row {
@@ -134,7 +136,7 @@
   top: 0%;
   right: 5%;
   font-weight: 200;
-  background-color: #fcd34d;
+  background-color: var(--background-color);
   font-size: 11px;
   color: white;
   padding: 5px;
@@ -143,7 +145,7 @@
 .user_img {
   width: 50px;
   cursor: pointer;
-  border: solid #f59e0b 3.5px;
+  border: solid white 3.5px;
   border-radius: 50%;
 }
 
@@ -160,12 +162,12 @@
 }
 
 .payment i {
-  color: gray;
   font-size: 22px;
-  color: #f59e0b;
+  color: var(--text-color);
+
 }
 .faverot i {
-  color: #f59e0b;
+  color: var(--text-color);
   font-size: 22px;
 }
 
@@ -182,15 +184,15 @@
 
 /* ==================================================== */
 .big_sidebar {
-  background-color: #f4f1ff;
+  background-color: var(--main-color);
 }
 .sidebar {
   /* border: SOLID  green; */
-  background-color: #f4f1ff;
   padding: 0px 7px;
   box-shadow: 3px 3px 15px rgb(170, 162, 162);
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
+  color: white;
 }
 
 .sidebar_data {
@@ -207,7 +209,7 @@
 }
 
 .sidebar_data h3:hover {
-  background-color: #fcd34d;
+  background-color: var(--dark-color);
   color: white;
 }
 

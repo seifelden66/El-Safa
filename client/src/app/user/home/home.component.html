@@ -1,11 +1,9 @@
 @if (showLoader) {
-  <div class="loader-container d-flex justify-content-center ">
-    <mat-spinner></mat-spinner>
-    <h1>Loading...</h1>
-  </div>
-}
-
-@if (!showLoader) {
+<div class="loader-container d-flex justify-content-center">
+  <mat-spinner></mat-spinner>
+  <h1>Loading...</h1>
+</div>
+} @if (!showLoader) {
 <app-second-header></app-second-header>
 <app-firestnav></app-firestnav>
 <div class="body">
@@ -26,7 +24,7 @@
         <button
           (click)="redirect4()"
           type="button"
-          class="btn_animation btn-animation--yellow carusel_btn btn-outline-secondary w-25 p-2 mb-2"
+          class="carusel_btn btn-outline-secondary w-25 p-2 my-4"
         >
           <span class="btn__txt">Explore Store</span>
           <i class="btn__bg" aria-hidden="true"></i>
@@ -106,22 +104,18 @@
 
   <div class="container-fluid mx-auto">
     <div class="row mostsells_container py-5 px-3">
-      <h3 class="some_offersh d-flex justify-content-center font2">
-        New Products
-      </h3>
+      <h1 class="d-flex justify-content-center font2">New Products</h1>
       <div data-aos="zoom-in" class="mostsells">
         <div class="shap"></div>
 
         <div class="product_data">
-          <h1 style="color: white">New Collection !</h1>
-          <p style="color: white" class="my-3 Launch_offer">
-            Launch Offer 15% Off!
-          </p>
+          <h1>New Collection !</h1>
+          <p class="my-3 Launch_offer">Launch Offer 15% Off!</p>
           <button
             style="border: none"
             (click)="redirect4()"
             type="button"
-            class="btn carusel_bt btn-outline-secondary w-100 p-2 my-5"
+            class="btn carusel_bt w-100 p-2 my-5"
           >
             View collection
           </button>
@@ -138,13 +132,15 @@
         </div>
       </div>
       <div data-aos="zoom-in" class="mostsells">
-        <div class="shap2">
+        <!-- <div class="shap2">
           <div class="shap2_1"></div>
           <div class="shap2_2"></div>
           <div class="shap2_3"></div>
-        </div>
+        </div> -->
+        <div class="shap"></div>
+
         <div class="product_data">
-          <h1>! New Collection</h1>
+          <h1>New Collection!</h1>
           <p class="my-3 Launch_offer">Launch Offer 15% Off!</p>
           <button
             (click)="redirect4()"
@@ -165,6 +161,77 @@
           />
         </div>
       </div>
+    </div>
+
+    <div class="ms-5">
+      <h1 class="some_offersh font2">WHAT WE HAVE</h1>
+
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+          <div class="card1 owl-img" style="width: 18rem">
+            <img
+              src="../../../assets/northfolk-pxNcBLSPSMc-unsplash (1).jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">Books</p>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card1 owl-img" style="width: 18rem">
+            <img
+              src="../../../assets/nathaniel-chang-OWPKGmKXbGM-unsplash.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">Pens</p>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card1 owl-img" style="width: 18rem">
+            <img
+              src="../../../assets/northfolk-Ok76F6yW2iA-unsplash.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">Pappers</p>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card1 owl-img" style="width: 18rem">
+            <img
+              src="../../../assets/hayley-maxwell-xygwKLIjDJ4-unsplash.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">colored pens</p>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card1 owl-img" style="width: 18rem">
+            <img
+              src="../../../assets/cici-hung-AeCAudI-biE-unsplash (1).jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body owl_body">
+              <p class="card-text">Office supplies</p>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
     </div>
 
     <div class="row brands py-5">
@@ -200,77 +267,6 @@
       </div>
     </div>
 
-    <div class="ms-5">
-      <h1 class="some_offersh font2">WHAT WE HAVE</h1>
-
-      <owl-carousel-o [options]="customOptions">
-        <ng-template carouselSlide>
-          <div class="card owl-img" style="width: 18rem">
-            <img
-              src="../../../assets/northfolk-pxNcBLSPSMc-unsplash (1).jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body owl_body">
-              <p class="card-text">Books</p>
-            </div>
-          </div>
-        </ng-template>
-
-        <ng-template carouselSlide>
-          <div class="card owl-img" style="width: 18rem">
-            <img
-              src="../../../assets/nathaniel-chang-OWPKGmKXbGM-unsplash.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body owl_body">
-              <p class="card-text">Pens</p>
-            </div>
-          </div>
-        </ng-template>
-
-        <ng-template carouselSlide>
-          <div class="card owl-img" style="width: 18rem">
-            <img
-              src="../../../assets/northfolk-Ok76F6yW2iA-unsplash.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body owl_body">
-              <p class="card-text">Pappers</p>
-            </div>
-          </div>
-        </ng-template>
-
-        <ng-template carouselSlide>
-          <div class="card owl-img" style="width: 18rem">
-            <img
-              src="../../../assets/hayley-maxwell-xygwKLIjDJ4-unsplash.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body owl_body">
-              <p class="card-text">colored pens</p>
-            </div>
-          </div>
-        </ng-template>
-
-        <ng-template carouselSlide>
-          <div class="card owl-img" style="width: 18rem">
-            <img
-              src="../../../assets/cici-hung-AeCAudI-biE-unsplash (1).jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body owl_body">
-              <p class="card-text">Office supplies</p>
-            </div>
-          </div>
-        </ng-template>
-      </owl-carousel-o>
-    </div>
-
     <div class="container-fluid some_offers">
       <div class="row w-90">
         <div class="d-flex justify-content-center align-items-center">
@@ -302,7 +298,7 @@
               src="https://cdn.thewirecutter.com/wp-content/media/2020/11/notebooks-2048px-2008.jpg?auto=webp&quality=75&width=1024"
               alt=""
             />
-            <div class="card-body px-3 py-2">
+            <div class="offer_card_details px-2 py-4">
               <h2 class="card-title">{{ product?.name }}</h2>
               <div class="d-flex justify-content-between">
                 <h3 class="card-title">${{ product?.price }}</h3>
@@ -318,7 +314,7 @@
               <button
                 type="button"
                 (click)="redirect4()"
-                class="btn carusel_Btnss btn-success d-flex w-100 p-1 mt-3"
+                class="btn carusel_Btnss btn-success d-flex w-100 p-2 mt-3"
               >
                 <span>More Details</span>
               </button>
@@ -332,58 +328,39 @@
 
     <div class="mx-5 services w-85 d-flex justify-content-center py-5">
       <div class="services_container">
-        <div class="service" data-aos="zoom-in" data-aos-easing="linear">
-          <div class="card justify-content-center">
-            <p-card class="service-card">
-              <i
-                class="pi pi-truck icon_color1 text-center"
-                style="font-size: 2rem"
-              ></i>
-
-              <h5>Fast Delivery</h5>
-
-              <p class="m-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Inventore sed consequuntur
-              </p>
-            </p-card>
-          </div>
+        <div class="card service p-3">
+          <i class="fa-solid fa-truck icon_color1 mb-2 mx-3"></i>
+          <h2 class="card-title">Fast delever</h2>
+          <p class="card-text-1">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
         </div>
 
-        <div class="service" data-aos="zoom-in" data-aos-easing="linear">
-          <div class="card flex justify-content-center">
-            <p-card class="service-card">
-              <i class="pi pi-server icon_color3" style="font-size: 2rem"></i>
-
-              <h5>Online Support 24/7</h5>
-              <p class="m-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Inventore sed consequuntur
-              </p>
-            </p-card>
-          </div>
+        <div class="card service p-4">
+          <i class="fa-solid fa-shop icon_color2 mb-2 mx-3"></i>
+          <h2 class="card-title">Easy payment</h2>
+          <p class="card-text-1">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
         </div>
 
-        <div class="service" data-aos="zoom-in" data-aos-easing="linear">
-          <div class="card flex justify-content-center">
-            <p-card class="service-card">
-              <i
-                class="pi pi-credit-card icon_color4"
-                style="font-size: 2rem"
-              ></i>
-
-              <h5>Secure Payment</h5>
-              <p class="m-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Inventore sed consequuntur
-              </p>
-            </p-card>
-          </div>
+        <div class="card service p-4">
+          <i class="fa-solid fa-wallet icon_color3 mb-2 mx-2"></i>
+          <h2 class="card-title">Security system</h2>
+          <p class="card-text-1">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
         </div>
       </div>
     </div>
-  
+
+    <app-footer></app-footer>
   </div>
-  <app-footer></app-footer>
-  </div>
+</div>
+
 }
+
+<!-- data-aos="zoom-in" -->

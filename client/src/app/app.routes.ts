@@ -28,6 +28,7 @@ import { UserProductComponent } from "./user/user-product/user-product.component
 import { OrderDetailsComponent } from "./user/order-details/order-details.component";
 import { WishlistComponent } from "./user/wishlist/wishlist.component";
 import { FetccatComponent } from "./user/fetccat/fetccat.component";
+import { SingleProductComponent } from "./user/single-product/single-product.component";
 
 export const routes: Routes = [
   {
@@ -124,6 +125,10 @@ export const routes: Routes = [
   {
     path: "cart",
     component: CartComponent,
+  },
+  {
+    path: "test",
+    component: SingleProductComponent,
   },
   {
     path: "wishlist",

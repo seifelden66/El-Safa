@@ -69,7 +69,7 @@ export class CartComponent implements OnInit {
   userDetails!: FormGroup;
   isClicked: boolean = false;
   PayModelForm: boolean = false;
-  showLoader: boolean = true; // Flag to control loader visibility
+  showLoader: boolean = false; // Flag to control loader visibility
 
   constructor(
     private CounterService: CounterService,

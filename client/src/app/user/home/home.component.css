@@ -1,49 +1,45 @@
 @import url("https://fonts.cdnfonts.com/css/adlam-display");
 @import url("https://fonts.cdnfonts.com/css/noto-sans-ol-chiki");
 @import url("https://fonts.cdnfonts.com/css/blueberry");
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
 }
-.loader-container{
+
+.loader-container {
   margin: 200px 0px;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   padding: 100px 0px;
-  background-color: #EEF0FC;
+  background-color: var(--background-color);
+  color: white;
 }
-.container-fluid{
-  background-color:#F4F1FF ;
+
+.container-fluid {
+  background-color: var(--background-color) !important ;
 }
 .body {
-  background-color: #fffbeb;
+  background-color: var(--background-color) !important;
 }
+
 .font1 {
-  color: #92400e;
+  color: var(--text-color);
   font-family: "ADLaM Display", sans-serif;
 }
 
 .font2 {
   font-family: "ADLaM Display", sans-serif;
-  background: linear-gradient(
-    50deg,
-    rgba(252, 211, 77, 1) 0%,
-    rgba(251, 191, 36, 1) 25%,
-    rgba(245, 158, 11, 1) 50%,
-    rgba(217, 119, 6, 1) 75%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   display: flex;
   justify-content: center;
-  font-size: 40px;
+  font-size: 33px;
   padding: 20px 0px;
   font-weight: 500;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 /* Add this CSS to your stylesheet */
@@ -78,7 +74,7 @@
 }
 
 .data > .offer {
-  background-color: #fbbf24;
+  background-color: var(--main-color);
   padding: 4px;
   letter-spacing: 3px;
   font-weight: 500;
@@ -111,7 +107,7 @@
 }
 
 .color {
-  color: #f59e0b;
+  color: var(--main-color);
   animation-name: sale-animation;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -140,7 +136,7 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   font-size: 50px;
-  color: #f59e0b;
+  color: var(--main-color);
   font-weight: 700;
   font-family: "ADLaM Display", sans-serif;
 }
@@ -182,10 +178,10 @@
   color: white;
 }
 
-/* .carusel_btn:hover {
-  background-color: #5c3dc3;
+.carusel_btn:hover {
+  background-color: var(--main-color);
   font-weight: 500;
-} */
+}
 
 .carouserl_img {
   display: flex;
@@ -204,24 +200,29 @@
   justify-content: space-between;
   gap: 2px;
   padding: 30px 0px;
-  background-color: #fffbeb;
+  background-color: var(--background-color);
 }
 
 .mostsells {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--secondary-color);
   border-radius: 6px;
   padding: 15px;
   width: 49%;
   position: relative;
   overflow: hidden;
+  box-shadow: 0px 2px 7px black;
 }
 
 .product_data {
   position: relative;
   z-index: 2;
+}
+.product_data h1,
+p {
+  color: var(--text-color);
 }
 
 .shap {
@@ -231,19 +232,22 @@
   height: 100%;
   left: 0;
   top: 0;
+  box-shadow: 0px 2px 13px black;
+
   background: linear-gradient(
-    180deg,
-    rgba(252, 211, 77, 1) 0%,
-    rgba(251, 191, 36, 1) 25%,
-    rgba(245, 158, 11, 1) 50%,
-    rgba(217, 119, 6, 1) 75%
-  );
+    200deg,
+    #e64444 ,
+    #FA9276 ,
+    #f1e7e7 ,
+    #FFFFFF 
+); /
+  /* background-blend-mode: normal, multiply; */
 }
 
-.shap2 {
+/* .shap2 {
   position: absolute;
   top: 0;
-  right: 20%;
+  left: 0;
   display: flex;
   gap: 30px;
 }
@@ -252,11 +256,11 @@
   height: 180px;
   width: 30px;
   background: linear-gradient(
-    to bottom,
-    rgba(252, 211, 77, 1) 0%,
-    rgba(251, 191, 36, 1) 25%,
-    rgba(245, 158, 11, 1) 50%,
-    rgba(217, 119, 6, 1) 75%
+    60deg,
+    var(--main-color) 0%,
+    var(--background-color) 25%,
+    var(--background-color) 50%,
+    var(--dark-color) 75%
   );
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
@@ -266,11 +270,11 @@
   height: 230px;
   width: 30px;
   background: linear-gradient(
-    to bottom,
-    rgba(252, 211, 77, 1) 0%,
-    rgba(251, 191, 36, 1) 25%,
-    rgba(245, 158, 11, 1) 50%,
-    rgba(217, 119, 6, 1) 75%
+    60deg,
+    var(--main-color) 0%,
+    var(--background-color) 25%,
+    var(--background-color) 50%,
+    var(--dark-color) 75%
   );
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
@@ -280,15 +284,15 @@
   height: 180px;
   width: 30px;
   background: linear-gradient(
-    to bottom,
-    rgba(252, 211, 77, 1) 0%,
-    rgba(251, 191, 36, 1) 25%,
-    rgba(245, 158, 11, 1) 50%,
-    rgba(217, 119, 6, 1) 75%
+    60deg,
+    var(--main-color) 0%,
+    var(--background-color) 25%,
+    var(--background-color) 50%,
+    var(--dark-color) 75%
   );
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-}
+} */
 
 .product_img {
   width: 30%;
@@ -306,14 +310,13 @@
 }
 
 .carusel_bt {
-  background-color: transparent;
-  color: #92400e;
-  border-radius: 5px;
-  border: dashed 5px #92400e;
+  border: solid 1px var(--text-color) !important;
+  background-color: var(--main-color);
+  color: var(--text-color);
 }
 
 .Launch_offer {
-  color: #fbbf24;
+  color: var(--text-color);
 }
 
 /* ================================ */
@@ -323,12 +326,13 @@
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  background-color: #fffdf7;
+  background-color: var(--main-color);
   /* margin: 10px 0px; */
   border-radius: 12px;
+  color: var(--text-color);
 }
 .brand_names p {
-  color: gray;
+  color: var(--text-color);
 }
 
 .brand_imgs_container {
@@ -373,18 +377,19 @@
 
 .owl_body {
   padding: 10px 3px;
-  background-color: #f59e0b;
+  background-color: var(--main-color);
   font-weight: 500;
   color: white;
   text-align: center;
   font-size: 22px;
   letter-spacing: 3px;
+  border: none;
 }
 
 /* ======================= */
 .some_offers {
   padding: 20px;
-  background-color: #fffbeb;
+  background-color: var(--main-color);
 }
 
 .best_product_container {
@@ -399,16 +404,38 @@
   font-family: "Blueberry", sans-serif;
 }
 
+.card-body {
+  background-color: #27272a;
+  border: none;
+}
+.card-body:hover {
+  background-color: #e65540;
+}
+.offer_card_details {
+  background-color: var(--main-color);
+}
+.card-text {
+  color: #fafafa;
+}
+
+.card-text-1 {
+  color: #09090b;
+}
+
 .offer_card {
   width: 24%;
   cursor: pointer;
 }
 
 .some_offersh span {
-  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  background: var();
   font-weight: 500;
   font-size: 30px;
   letter-spacing: 6px;
+}
+.offer_data {
+  background-color: var(--main-color);
+  color: var(--text-color);
 }
 
 .offer_data img {
@@ -425,53 +452,67 @@
 }
 .star_icon {
   width: 50px;
+  background-color: transparent;
 }
+
 .rating {
   color: #ffd869;
   font-size: 25px;
 }
 
 .carusel_Btnss {
-  border: dashed 0.8px #d97706;
+  border: dashed 0.8px var(--text-color);
   background-color: transparent;
+  background-color: var(--main-color);
 }
 
 .carusel_Btnss:hover {
-  background-color: #eeebf9;
+  border: dashed 0.8px var(--text-color);
+  background-color: #e65540;
 }
 
 .carusel_Btnss span {
-  color: #d97706;
+  color: var(--text-color);
   margin: 0px auto;
 }
 
+.carusel_Btnss:hover span {
+  color: var(--main-color);
+}
+
 /* ======================================== */
+
 .services_container {
   display: flex;
   padding: 60px 20px;
-  justify-content: center;
-  gap: 3em;
-  background-color: #fffbeb;
+  justify-content: space-around;
+  gap: 10px;
+  /* background-color: var(--background-color); */
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .service {
-  width: 24%;
+  width: 30%;
+  background-color: var(--accent-color) !important;
 }
-.service .service-card {
-  background-color: #fef3c7 !important;
+.service-card {
+  background-color: var(--accent-color) !important  ;
 }
 
 .icon_color1 {
   color: #00be82;
+  font-size: 30px;
 }
 
 .icon_color2 {
   color: #ff3c78;
+  font-size: 30px;
 }
 
 .icon_color3 {
   color: #fea16f;
+  font-size: 30px;
 }
 
 .icon_color4 {
@@ -502,6 +543,7 @@
 
   .service {
     width: 40%;
+    background-color: var(--main-color);
   }
 
   .mostsells_container {
@@ -554,7 +596,7 @@
 }
 /* Add this CSS to your stylesheet Animation */
 
-@keyframes cardHover {
+/* @keyframes cardHover {
   0% {
     transform: scale(1);
     font-weight: 500;
@@ -567,18 +609,18 @@
     transform: scale(1);
     font-weight: 500;
   }
-}
+} */
 
 /* Apply the animation to the offer_card class */
-.mostsells,
+/* .mostsells,
 .some_offersh {
   animation: cardHover 1s infinite;
-}
+} */
 
 /* animations for offer_card */
 /* Define a keyframe animation */
 /* Define a keyframe animation */
-@keyframes shake {
+/* @keyframes shake {
   0% {
     transform: translate(0, 0);
   }
@@ -594,7 +636,7 @@
   100% {
     transform: translate(0, 0);
   }
-}
+} */
 
 .offer_card {
   /* Other styles for your card */
@@ -607,9 +649,8 @@
   animation: shake 1s ease-in-out infinite;
 }
 
-.btn_animation {
-  background: #fbbf24; /* Set background color directly to match #fbbf24 */
-  border: none;
+/* .btn_animation {
+  background: var(--main-color);
   border-radius: 7px;
   cursor: pointer;
   color: whitesmoke;
@@ -620,26 +661,9 @@
   min-height: 3.3em;
   position: relative;
   text-transform: lowercase;
-}
+} */
 
-.btn-animation--yellow {
-  --hue: 48; /* Hue value for #fbbf24 */
-}
-
-.btn_animation:active,
-.btn_animation:focus {
-  outline: 3px solid hsl(calc(var(--hue) + 90), 91%, 40%);
-}
-
-.btn_animation + .btn_animation {
-  margin-top: 2.5em;
-}
-
-.btn__txt {
-  position: relative;
-  z-index: 2;
-}
-
+/* 
 .btn__bg {
   background: hsl(var(--hueBg), 98%, 80%);
   border-radius: 50%;
@@ -655,6 +679,7 @@
   transform-origin: 50% 50%;
   transition: transform 0.175s cubic-bezier(0.5, 1, 0.89, 1);
   z-index: 1;
+  border: solid red !;
 }
 
 .btn__bg:nth-of-type(1) {
@@ -706,4 +731,6 @@
 .btn_animation:focus .btn__bg:nth-of-type(4),
 .btn_animation:active .btn__bg:nth-of-type(4) {
   transition-delay: 0.46s;
-}
+} */
+
+/* ////////////////////////////////////////////////// */

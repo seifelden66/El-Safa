@@ -1,28 +1,31 @@
 @import url("https://fonts.cdnfonts.com/css/adlam-display");
 .active {
-  background-color: #f59e0b;
+  background-color: #f87171;
   color: white;
+  border-radius: 3px;
 }
 .body {
-  background-color: #fffbeb;
+  background-color: var(--background-color);
 }
 
 .row {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   padding: 20px 0px;
   row-gap: 30px;
+  background-color: var(--background-color);
 }
 
 /* ==================================== */
 
 .sidebar {
   /* border: SOLID  green; */
-  background-color: #fef3c7;
+  background-color: var(--main-color);
   padding: 0px 7px;
-  box-shadow: 3px 3px 10px rgb(170, 162, 162);
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
+  color: var(--text-color);
 }
 
 .sidebar_data {
@@ -39,7 +42,7 @@
 }
 
 .sidebar_data h3:hover {
-  background-color: #fbbf24;
+  background-color: #fca5a5;
   color: white;
 }
 
@@ -49,13 +52,19 @@
   gap: 7px;
 }
 
+.input i {
+  color: #f87171;
+}
+
 /* ==================================== */
 
 .profile_data {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 0px 50px;
+  padding: 30px 50px;
+  background-color: var(--background-color);
+  border-radius: 7px;
 }
 
 .user_img img {
@@ -92,12 +101,12 @@
   right: 9px;
   top: 50%;
   transform: translate(0, -50%);
-  color: #fbbf24;
+  color: var(--accent-color);
 }
 
 label {
   font-family: "ADLaM Display", sans-serif;
-  background: linear-gradient(
+  /* background: linear-gradient(
     50deg,
     rgba(252, 211, 77, 1) 0%,
     rgba(251, 191, 36, 1) 25%,
@@ -105,8 +114,9 @@ label {
     rgba(217, 119, 6, 1) 75%
   );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
   display: flex;
   font-size: 20px;
   padding: 20px 10px;
+  color: var(--text-color);
 }

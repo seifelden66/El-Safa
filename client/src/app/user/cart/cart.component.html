@@ -1,22 +1,84 @@
 @if (showLoader) {
-  <div class="loader-container d-flex justify-content-center ">
-    <mat-spinner></mat-spinner>
-    <h1>Loading...</h1>
+<div class="loader-container d-flex justify-content-center">
+  <mat-spinner></mat-spinner>
+  <h1>Loading...</h1>
+</div>
+} @if(!showLoader){
+<app-second-header></app-second-header>
+<app-firestnav></app-firestnav>
+<!-- ================================================= -->
+<div class="big_container">
+  <div class="sidebar">
+    <div class="sidebar_data">
+      <h3
+        [routerLink]="['/profile']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="User informations"
+      >
+        <i class="fa-solid fa-user"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/home']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="Home"
+      >
+        <i class="fa-solid fa-house"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/product']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="All products"
+      >
+        <i class="fa-brands fa-product-hunt"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/user-product']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="User order"
+      >
+        <i class="fa-solid fa-cart-shopping"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/a']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="Wishlist"
+      >
+        <i class="fa-solid fa-heart"></i>
+      </h3>
+      <h3
+        href="#"
+        [routerLink]="['/cart']"
+        routerLinkActive="active"
+        class="sidebar_text"
+        placement="end"
+        ngbTooltip="payment"
+      >
+        <i class="fa-solid fa-credit-card"></i>
+      </h3>
+    </div>
   </div>
-}
-
-@if(!showLoader){
-  <app-second-header></app-second-header>
-  <app-firestnav></app-firestnav>
-  <!-- ================================================= -->
 
   <div class="cart_container">
     @if (cartItems?.items?.length > 0) {
-  
+
     <div class="card table">
       <p-table [value]="cartItems?.items" [paginator]="true" [rows]="5">
-        <ng-template pTemplate="header">
-          <tr class="product_data table-cart-header">
+        <ng-template class="ngtable" pTemplate="header">
+          <tr class="product_data user-table-header-tr">
             <th scope="col">image</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
@@ -24,9 +86,9 @@
             <th scope="col">Delete</th>
           </tr>
         </ng-template>
-  
+
         <ng-template pTemplate="body" let-item>
-          <tr class="product_data table-cart-body">
+          <tr class="product_data user-table-body-tr">
             <!-- <td class="table_img pt-5"><img src="../../../assets/cinthia-becher-z_WgCHcIkrs-unsplash.jpg" alt=""></td> -->
             <td class="table_img pt-5">
               <img
@@ -43,7 +105,7 @@
                 <button
                   type="button"
                   (click)="increase(item)"
-                  class="payment_btn"
+                  class="quan_edit"
                 >
                   +
                 </button>
@@ -51,13 +113,13 @@
                 <button
                   type="button"
                   (click)="decrease(item)"
-                  class="payment_btn"
+                  class="quan_edit"
                 >
                   -
                 </button>
               </div>
             </td>
-  
+
             <td class="delete pt-5 font">
               <i
                 (click)="deleteItem(item?.id)"
@@ -68,11 +130,11 @@
         </ng-template>
       </p-table>
     </div>
-  
+
     <div class="w-100 d-flex justify-content-center align-items-center gap-5">
       <div class="d-flex gap-2">
         <span class="total-price">Total Price : </span>
-        <span class="price">${{ totalPrice }}</span>
+        <span class="price">${{ totalPrice.toFixed(2) }}</span>
       </div>
       <div class="d-flex gap-2 pay">
         <button (click)="showPayModelForm()" class="btn m-auto">BUY Now</button>
@@ -87,7 +149,7 @@
         show: PayModelForm
       }"
     ></div>
-  
+
     <!-- Payment model -->
     <div class="ng-Modal pay-model" [ngClass]="{ show: PayModelForm }">
       <div class="ng-Modal-header pay-model-header">
@@ -99,7 +161,7 @@
             <h2 class="d-flex justify-content-center">
               Please Enter your data
             </h2>
-  
+
             <form [formGroup]="userDetails">
               <div class="inputs">
                 <label for="name">User Name</label>
@@ -116,7 +178,7 @@
                 </small>
                 }
               </div>
-  
+
               <div class="inputs">
                 <label for="email">Email</label>
                 <input
@@ -132,7 +194,7 @@
                 </small>
                 }
               </div>
-  
+
               <div class="inputs">
                 <label for="address">Address</label>
                 <input
@@ -149,9 +211,9 @@
                 }
               </div>
             </form>
-  
+
             <hr />
-  
+
             <h2 class="m-0 py-3">
               Total Price : ${{ totalPrice!.toFixed(2) }}
             </h2>
@@ -171,21 +233,20 @@
       </div>
     </div>
     }@else {
-  
+
     <div class="empty_table">
       <h1 class="m-0">THER IS NO THING IN THE CART.. !</h1>
-  
+
       <h2><i class="fa-solid fa-cart-plus"></i></h2>
     </div>
-  
+
     }
   </div>
-  <!-- ================================================= -->
+</div>
+<!-- ================================================= -->
 
-  <app-footer></app-footer>
+<app-footer></app-footer>
 
 }
 
-
 <!-- ================================================= -->
-
