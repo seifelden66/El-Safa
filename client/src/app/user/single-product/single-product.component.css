@@ -1,0 +1,34 @@
+/* product.component.css */
+.price {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.short-description {
+  margin-bottom: 20px;
+}
+
+.main-image img {
+  width: 100%;
+  height: auto;
+}
+
+.thumbnail-images img {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.product-meta {
+  margin-top: 20px;
+}
+
+.accordion {
+  margin-top: 10px;
+}
+
+.accordion:focus {
+  outline: none;
+  box-shadow: none;
+}

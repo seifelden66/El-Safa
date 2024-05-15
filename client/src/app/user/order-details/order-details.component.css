@@ -5,7 +5,7 @@
   justify-content: start;
   overflow-x: auto;
   gap: 10px;
-  background-color: #fffbeb;
+  background-color: var(--backgroud-color);
 }
 
 .bigcontiner2 {
@@ -15,7 +15,7 @@
 
 /* ========================================= */
 .active {
-  background-color: #7c5ed8;
+  background-color: var(--main-color);
   color: white;
 }
 
@@ -30,7 +30,7 @@
 /* ==================================== */
 
 .sidebar {
-  background-color: #fef3c7;
+  background-color: var(--main-color);
   padding: 0px 7px;
   min-width: 6%;
   margin: 20px 0px;
@@ -55,7 +55,7 @@
 }
 
 .sidebar_data h3:hover {
-  background-color: #f59e0b;
+  background-color: #f87171;
   color: white;
 }
 
@@ -68,7 +68,7 @@
 /* ======================================================================== */
 
 .tracking {
-  background-color: #fbbf24;
+  background-color: #ef4444;
 }
 
 .tracking span {
@@ -148,7 +148,7 @@
 .steps .step .step-title {
   margin-top: 16px;
   margin-bottom: 0;
-  color: #b45309 !important;
+  color: var(--text-color) !important;
   font-size: 15px;
   font-weight: 600;
 }
@@ -280,12 +280,12 @@
 
 .steps .step.completed .step-icon-wrap::before,
 .steps .step.completed .step-icon-wrap::after {
-  background-color: #d97706;
+  background-color: #f87171;
 }
 
 .steps .step.completed .step-icon {
-  border-color: #d97706;
-  background-color: #d97706;
+  border-color: #f87171;
+  background-color: #f87171;
   color: #fff;
 }
 
@@ -337,11 +337,15 @@
   font-weight: bold;
 }
 
-.order-details-tr td {
-  font-weight: 600;
-  color: #78350f;
+.user-table-header-tr th {
+  background-color: var(--main-color);
 }
 
-.order-details-tr {
-  background-color: #fbbf24ed;
+.order-details-tr td {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.order-details-tr td {
+  background-color: var(--main-color) !important;
 }

@@ -1,11 +1,9 @@
 @if (showLoader) {
-  <div class="loader-container d-flex justify-content-center ">
-    <mat-spinner></mat-spinner>
-    <h1>Loading...</h1>
-  </div>
-}
-
-@if (!showLoader) {
+<div class="loader-container d-flex justify-content-center">
+  <mat-spinner></mat-spinner>
+  <h1>Loading...</h1>
+</div>
+} @if (!showLoader) {
 <app-second-header></app-second-header>
 <app-firestnav></app-firestnav>
 <div class="body">
@@ -26,7 +24,7 @@
         <button
           (click)="redirect4()"
           type="button"
-          class="  carusel_btn btn-outline-secondary w-25 p-2 my-4"
+          class="carusel_btn btn-outline-secondary w-25 p-2 my-4"
         >
           <span class="btn__txt">Explore Store</span>
           <i class="btn__bg" aria-hidden="true"></i>
@@ -106,22 +104,18 @@
 
   <div class="container-fluid mx-auto">
     <div class="row mostsells_container py-5 px-3">
-      <h1 class=" d-flex justify-content-center font2">
-        New Products
-      </h1>
+      <h1 class="d-flex justify-content-center font2">New Products</h1>
       <div data-aos="zoom-in" class="mostsells">
         <div class="shap"></div>
 
         <div class="product_data">
           <h1>New Collection !</h1>
-          <p class="my-3 Launch_offer">
-            Launch Offer 15% Off!
-          </p>
+          <p class="my-3 Launch_offer">Launch Offer 15% Off!</p>
           <button
             style="border: none"
             (click)="redirect4()"
             type="button"
-            class="btn carusel_bt  w-100 p-2 my-5"
+            class="btn carusel_bt w-100 p-2 my-5"
           >
             View collection
           </button>
@@ -165,39 +159,6 @@
             "
             alt=""
           />
-        </div>
-      </div>
-    </div>
-
-    <div class="row brands py-5">
-      <div class="col-10 col-xl-4 col-xxl-5">
-        <div class="brand_names">
-          <h1 class="font1">Most Populer Brands</h1>
-          <h5 class="font1">All brand Offer start 25 Dec.</h5>
-        </div>
-      </div>
-
-      <div class="col-10 col-xl-5 col-xxl-5">
-        <div class="brand_imgs_container">
-          <div class="brands_imgs" data-aos="zoom-in">
-            <img src="../../assets/brand1.png" alt="" />
-          </div>
-
-          <div class="brands_imgs" data-aos="zoom-in">
-            <img src="../../assets/brand2.png" alt="" />
-          </div>
-
-          <div class="brands_imgs" data-aos="zoom-in">
-            <img src="../../assets/brand3.png" alt="" />
-          </div>
-
-          <div class="brands_imgs" data-aos="zoom-in">
-            <img src="../../assets/brand4.png" alt="" />
-          </div>
-
-          <div class="brands_imgs" data-aos="zoom-in">
-            <img src="../../assets/brand5.png" alt="" />
-          </div>
         </div>
       </div>
     </div>
@@ -273,6 +234,39 @@
       </owl-carousel-o>
     </div>
 
+    <div class="row brands py-5">
+      <div class="col-10 col-xl-4 col-xxl-5">
+        <div class="brand_names">
+          <h1 class="font1">Most Populer Brands</h1>
+          <h5 class="font1">All brand Offer start 25 Dec.</h5>
+        </div>
+      </div>
+
+      <div class="col-10 col-xl-5 col-xxl-5">
+        <div class="brand_imgs_container">
+          <div class="brands_imgs" data-aos="zoom-in">
+            <img src="../../assets/brand1.png" alt="" />
+          </div>
+
+          <div class="brands_imgs" data-aos="zoom-in">
+            <img src="../../assets/brand2.png" alt="" />
+          </div>
+
+          <div class="brands_imgs" data-aos="zoom-in">
+            <img src="../../assets/brand3.png" alt="" />
+          </div>
+
+          <div class="brands_imgs" data-aos="zoom-in">
+            <img src="../../assets/brand4.png" alt="" />
+          </div>
+
+          <div class="brands_imgs" data-aos="zoom-in">
+            <img src="../../assets/brand5.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container-fluid some_offers">
       <div class="row w-90">
         <div class="d-flex justify-content-center align-items-center">
@@ -304,7 +298,7 @@
               src="https://cdn.thewirecutter.com/wp-content/media/2020/11/notebooks-2048px-2008.jpg?auto=webp&quality=75&width=1024"
               alt=""
             />
-            <div class="card-body px-2 py-4">
+            <div class="offer_card_details px-2 py-4">
               <h2 class="card-title">{{ product?.name }}</h2>
               <div class="d-flex justify-content-between">
                 <h3 class="card-title">${{ product?.price }}</h3>
@@ -333,57 +327,40 @@
     </div>
 
     <div class="mx-5 services w-85 d-flex justify-content-center py-5">
-      <div class="services_container">   
-        
-        
-        <div class="card text-bg-dark service p-4">
-          <div class="card-body">
-            <i class="fa-solid fa-truck icon_color1"></i>
-            <h2 class="card-title">Fast delever</h2>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-
-
-      </div>
-
-
-             
-      <div class="card text-bg-dark service p-4">
-        <div class="card-body">
-          <i class="fa-solid fa-shop icon_color2"></i>
-          <h2 class="card-title">Easy payment</h2>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <div class="services_container">
+        <div class="card service p-3">
+          <i class="fa-solid fa-truck icon_color1 mb-2 mx-3"></i>
+          <h2 class="card-title">Fast delever</h2>
+          <p class="card-text-1">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
         </div>
 
+        <div class="card service p-4">
+          <i class="fa-solid fa-shop icon_color2 mb-2 mx-3"></i>
+          <h2 class="card-title">Easy payment</h2>
+          <p class="card-text-1">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
 
-    </div>
-
-
-           
-    <div class="card text-bg-dark service p-4 " >
-      <div class="card-body">
-        <i class="fa-solid fa-wallet icon_color3 "></i>
-        <h2 class="card-title">Security system</h2>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="card service p-4">
+          <i class="fa-solid fa-wallet icon_color3 mb-2 mx-2"></i>
+          <h2 class="card-title">Security system</h2>
+          <p class="card-text-1">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
       </div>
-
-
-  </div>
-
-
-
-  
-
-
     </div>
-  
-  </div>
-  <app-footer></app-footer>
-  </div>
 
+    <app-footer></app-footer>
+  </div>
 </div>
 
 }
-
 
 <!-- data-aos="zoom-in" -->

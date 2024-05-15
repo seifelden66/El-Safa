@@ -7,7 +7,7 @@
 
 /* ========================================= */
 .active {
-  background-color: #f59e0b;
+  background-color: #f87171;
   color: white;
 }
 
@@ -22,7 +22,7 @@
 /* ==================================== */
 
 .sidebar {
-  background-color: #fef3c7;
+  background-color: var(--main-color);
   padding: 0px 7px;
   min-width: 6%;
   margin: 20px 0px;
@@ -47,7 +47,7 @@
 }
 
 .sidebar_data h3:hover {
-  background-color: #fbbf24;
+  background-color: #fca5a5;
   color: white;
 }
 

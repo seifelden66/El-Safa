@@ -1,10 +1,11 @@
 @import url("https://fonts.cdnfonts.com/css/adlam-display");
 .active {
-  background-color: var(--dark-color);
+  background-color: #f87171;
   color: white;
+  border-radius: 3px;
 }
 .body {
-  background-color: #fffbeb;
+  background-color: var(--background-color);
 }
 
 .row {
@@ -21,7 +22,7 @@
   /* border: SOLID  green; */
   background-color: var(--main-color);
   padding: 0px 7px;
-  /* box-shadow: 3px 3px 10px rgb(170, 162, 162); */
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
   color: var(--text-color);
@@ -41,7 +42,7 @@
 }
 
 .sidebar_data h3:hover {
-  background-color: var(--dark-color);
+  background-color: #fca5a5;
   color: white;
 }
 
@@ -51,6 +52,10 @@
   gap: 7px;
 }
 
+.input i {
+  color: #f87171;
+}
+
 /* ==================================== */
 
 .profile_data {
@@ -58,9 +63,8 @@
   flex-direction: column;
   gap: 30px;
   padding: 30px 50px;
-  background-color: var(--text-color);
+  background-color: var(--background-color);
   border-radius: 7px;
-
 }
 
 .user_img img {
@@ -114,5 +118,5 @@ label {
   display: flex;
   font-size: 20px;
   padding: 20px 10px;
-  color:  var(--accent-color);
+  color: var(--text-color);
 }

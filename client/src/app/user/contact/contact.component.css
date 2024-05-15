@@ -10,7 +10,7 @@
 
 .contact-form {
   width: 50%;
-  background-color: var(--text-color);
+  background-color: var(--main-color);
   border-radius: 5px;
   padding: 2em;
 }
@@ -22,7 +22,8 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  color: var(--accent-color);
+  padding-left: 5px;
+  color: var(--text-color);
   font-size: 1.1em;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .form-group button {
-  background-color: var(--accent-color);
+  background-color: #292524;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -49,5 +50,5 @@
 }
 
 .form-group button:hover {
-  background-color: #fbbf24;
+  background-color: #dc2626;
 }

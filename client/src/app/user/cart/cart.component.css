@@ -1,7 +1,6 @@
-
 @import url("https://fonts.cdnfonts.com/css/blueberry");
-
-.loader-container{
+@import url("https://fonts.cdnfonts.com/css/adlam-display");
+.loader-container {
   margin: 200px 0px;
   flex-direction: column;
   align-items: center;
@@ -10,7 +9,6 @@
   background-color: var(--background-color);
   color: white;
 }
-
 
 .big_container {
   display: flex;
@@ -22,8 +20,8 @@
 
 /* ========================================= */
 .active {
-  background-color: var(--dark-color);
-  color: var(--text-color);
+  background-color: #f87171;
+  color: white;
 }
 
 .row {
@@ -63,7 +61,7 @@
 }
 
 .sidebar_data h3:hover {
-  background-color: var(--dark-color);
+  background-color: #fca5a5;
   color: white;
 }
 
@@ -92,22 +90,36 @@
   justify-content: space-between;
   margin-top: 30px;
   margin-left: 120px !important;
-  border: solid 2px #f59e0b;
+  border: solid 2px #a1a1aa;
   width: 140px;
   height: 40px;
   border-radius: 3px;
 }
 
+.quan_edit {
+  background-color: #a1a1aa;
+  color: var(--text-color);
+  border: none;
+  height: 100%;
+  width: 40%;
+  font-size: 1.1em;
+}
+
 .payment_btn {
-  background-color: #f59e0b;
-  opacity: 0.6;
-  color: #78350f;
+  background-color: #1c1917;
+  color: #fafaf9;
   font-size: 1.1em;
   width: 40%;
   height: 100%;
   border: none;
 }
 
+.payment_btn:hover {
+  background-color: #dc2626;
+}
+.payment_btn:last-child {
+  background-color: #dc2626;
+}
 .delete i {
   font-size: 20px;
   cursor: pointer;
@@ -169,7 +181,7 @@
   border-radius: 10px;
 }
 .payment_form h2 {
-  color: #451a03;
+  color: var(--text-color);
 }
 
 .inputs {
@@ -180,7 +192,7 @@
 }
 
 .inputs label {
-  color: #f59e0b;
+  color: var(--text-color);
   font-size: 1.1em;
   padding-left: 5px;
 }
@@ -188,8 +200,8 @@
 .inputs input {
   padding: 8px 5px;
   border-radius: 7px;
-  border: white 1px;
-  background-color: #fef3c7;
+  border: solid 1px #d6d3d1;
+  background-color: var(--main-color);
   outline: none;
   font-size: 14px;
 }
@@ -200,19 +212,18 @@
 }
 
 .pay {
-  border: solid 0.5px #d97706;
+  border: solid 0.5px #ef4444;
   border-radius: 3px;
 }
 .pay:hover {
-  border: solid 0.5px #b45309;
+  border: solid 0.5px #d4d4d8;
 }
 .pay button {
+  font-size: 1.2em;
+  font-family: "ADLaM Display", sans-serif;
   font-weight: 500;
   background-color: transparent;
-  color: #d97706;
-}
-.pay button {
-  color: #b45309;
+  color: #ef4444;
 }
 
 .icon-img {
@@ -223,11 +234,11 @@
   font-size: 1.5em;
   font-family: "Blueberry", sans-serif;
   font-weight: bold;
-  color: #451a03;
+  color: #ef4444;
 }
 
 .price {
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: bold;
 }
 /* =========media========================================== */
@@ -240,19 +251,19 @@
 
 .pay-model {
   width: 700px;
-  background-color: #fffbeb;
+  background-color: var(--background-color);
 }
 .pay-model-header {
-  background-color: #f8df9a;
+  background-color: var(--main-color);
 }
 .font2 {
   font-family: "ADLaM Display", sans-serif;
   background: linear-gradient(
     50deg,
-    #f59e0b 0%,
-    #d97706 25%,
-    #b45309 50%,
-    #92400e 75%
+    #f50b0b 0%,
+    #912323 25%,
+    #2e1111 50%,
+    #160202 75%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

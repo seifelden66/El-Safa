@@ -4,22 +4,26 @@
   box-sizing: border-box;
 }
 
-
-.loader-container{
+.loader-container {
   margin: 200px 0px;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   padding: 100px 0px;
-  color:  white;
+  color: white;
   background-color: var(--background-color);
 }
 
-
-h1,h2,h3,h4,h5,h6,p{
-  margin:0px 0px ;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0px 0px;
 }
-.container-fluid{
+.container-fluid {
   background-color: var(--background-color);
 }
 
@@ -38,14 +42,13 @@ h1,h2,h3,h4,h5,h6,p{
   justify-content: space-between;
   margin: 40px 0px;
   gap: 40px;
-  background-color: var(--text-color);
+  background-color: var(--background-color);
 }
-.gallary_container{
+.gallary_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-
 }
 
 .gallary {
@@ -53,12 +56,11 @@ h1,h2,h3,h4,h5,h6,p{
   justify-content: space-between;
   margin: 0px auto;
   overflow: auto;
-  
 }
 
 .gallary_images {
   display: flex;
-  flex-direction:column ;
+  flex-direction: column;
 }
 
 .main_img {
@@ -73,7 +75,6 @@ h1,h2,h3,h4,h5,h6,p{
   width: 100%;
   height: 400px;
   object-fit: cover;
-  
 }
 
 .img1 {
@@ -83,7 +84,6 @@ h1,h2,h3,h4,h5,h6,p{
   align-items: start;
   width: 100%;
   position: relative;
-
 }
 
 .img1 img {
@@ -95,7 +95,6 @@ h1,h2,h3,h4,h5,h6,p{
   transition: 0.5s;
   border: solid 1px;
   overflow: hidden;
-
 }
 
 .img1 img:hover {
@@ -238,9 +237,9 @@ h1,h2,h3,h4,h5,h6,p{
 .sign_rate {
   width: 49%;
 }
-.rating{
+.rating {
   font-size: 20px;
-  color: #FFD869;
+  color: #ffd869;
 }
 
 .rating_reviews {

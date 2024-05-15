@@ -1,5 +1,6 @@
 .active_link {
-  border-bottom: solid 2px var(--text-color);
+  border-bottom: solid 2px #f87171;
+  color: #f87171 !important;
 }
 
 .second_nav {
@@ -7,6 +8,7 @@
   top: 0;
   z-index: 10;
   background-color: var(--accent-color);
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
 }
 
 .sec_nav {
@@ -34,7 +36,6 @@
 .two .navbar_container {
   background-color: var(--accent-color) !important;
   display: flex;
-  
 }
 
 .navbar_container .container-fluid {
