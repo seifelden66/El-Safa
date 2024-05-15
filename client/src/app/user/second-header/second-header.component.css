@@ -1,30 +1,95 @@
+@import url("https://fonts.cdnfonts.com/css/blueberry");
 * {
-  padding: 0 ;
-  margin: 0 ;
-  box-sizing: border-box ;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   text-decoration: none;
 }
 
-.active_link{
-  color: #AE4EE8;
+.active_link {
+  color: var(--text-color);
 }
 /* =================================================== */
 
 .firest_nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 15px;
-  padding: 13px;
-  background-color: #eef0fc;
+  padding: 0.5em 1em;
+  background-color: var(--main-color);
 }
 
 .Companyandsearch {
   display: flex;
-  align-items: center;
-  /* border: solid; */
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Companyandsearch img {
+  width: 70px;
+  height: 60px;
+  object-fit: cover;
+  display: flex;
+  justify-content: start;
+  color: white;
+  margin-left: 9px;
+}
+
+.animate-charcter {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #164863 0%,
+    #427D9D 29%,
+    #fff 67%,
+    #3f3f46 80%,
+    #9BBEC8 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 4s linear infinite;
+  display: inline-block;
+  font-size: 1.5em;
+  font-family: "Blueberry", sans-serif;
+  font-weight: bold;
+}
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.flip-infinite-loop {
+  animation: flip 2s infinite;
+}
+
+@keyframes flip {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+}
+
+.searchbar {
+  border-radius: 8px;
+  color: var(--secondary-color);
+  outline: none;
+}
+
+.search {
+  border-radius: 8px;
+  color: #070706;
+  border: var(--secondary-color);
+  outline: none;
 }
 
 .firest_nav .row {
@@ -46,7 +111,6 @@
   border-radius: 4px;
   padding: 7px;
   font-size: 20px;
-
 }
 
 .user_img,
@@ -54,14 +118,13 @@
 .faverot {
   display: flex;
   justify-content: center;
-
 }
 
-.payment{
+.payment {
   position: relative;
 }
 
-.payment p{
+.payment p {
   position: absolute;
   width: 15px;
   height: 15px;
@@ -70,28 +133,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -5%;
-  right:5%;
-  font-weight: 500;
+  top: 0%;
+  right: 5%;
+  font-weight: 200;
+  background-color: var(--background-color);
+  font-size: 11px;
   color: white;
-  /* background-color:#3B82F6 ; */
-  font-size: 14px;
-  color:  #AE4EE8;
+  padding: 5px;
 }
 
 .user_img {
-  width: 45px;
+  width: 50px;
   cursor: pointer;
+  border: solid white 3.5px;
+  border-radius: 50%;
 }
 
 .payment,
 .faverot {
-  border-bottom: solid 2px #EC1E18;
   width: fit-content;
   border-radius: 50%;
   cursor: pointer;
   padding: 7px;
-  
 }
 
 .user_img img {
@@ -99,13 +162,13 @@
 }
 
 .payment i {
-  color: gray;
-  font-size: 25px;
-  color: #EC1E18;
+  font-size: 22px;
+  color: var(--text-color);
+
 }
 .faverot i {
-  color: red;
-  font-size: 25px;
+  color: var(--text-color);
+  font-size: 22px;
 }
 
 .nav_btns {
@@ -120,11 +183,47 @@
 }
 
 /* ==================================================== */
+.big_sidebar {
+  background-color: var(--main-color);
+}
+.sidebar {
+  /* border: SOLID  green; */
+  padding: 0px 7px;
+  box-shadow: 3px 3px 15px rgb(170, 162, 162);
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+  color: white;
+}
+
+.sidebar_data {
+  padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar_data h3 {
+  padding: 7px;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.sidebar_data h3:hover {
+  background-color: var(--dark-color);
+  color: white;
+}
+
+.sidebar_text {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
 /* ================================ */
 
 @media (width<1000px) {
   .navbar_data {
-    direction: rtl;
+    /* direction: rtl; */
     display: flex;
     justify-content: space-evenly;
   }
@@ -135,6 +234,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    direction: rtl;
+    /* direction: rtl; */
   }
 }

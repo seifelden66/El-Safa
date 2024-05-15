@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const { UUID } = require("bson");
 
 const usersSchema = new mongoose.Schema({
+  _id: { type: String },
   name: {
     type: String,
     required: true,
@@ -12,7 +14,7 @@ const usersSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: false,
   },
   location: {
     type: String,
@@ -20,7 +22,7 @@ const usersSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    require: true,
+    required: true,
   },
   profile_picture: {
     type: String,
@@ -28,7 +30,7 @@ const usersSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    required: true,
+    required: false,
   },
   createdAt: {
     type: Date,
@@ -40,5 +42,11 @@ const usersSchema = new mongoose.Schema({
   },
 });
 
-// Connects usersSchema with the "Users" collection
+usersSchema.pre("save", function (next) {
+  if (!this._id) {
+    this._id = "custom_id_" + new UUID().toHexString();
+  }
+  next();
+});
+
 module.exports = mongoose.model("User", usersSchema);

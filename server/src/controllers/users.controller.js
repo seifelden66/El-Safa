@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { validationResult, check } = require("express-validator");
+const { validationResult } = require("express-validator");
 const {
   getAllUser,
   addNewUser,
@@ -13,6 +13,8 @@ const {
   saveResetCode,
   cheackCode,
   resetPassword,
+  GoogleAccountOauth,
+  DashboardDetails,
 } = require("../models/users/users.model");
 const {
   generateAndSetToken,
@@ -91,7 +93,7 @@ async function httpAddUser(req, res) {
           )
         );
       }
-      res.status(400).json({ error: "email is already exist" });
+      res.status(400).json({ email: "email is already exist" });
     } else {
       console.error(error);
       return res.status(500).json({ error: "Internal server error" });
@@ -141,7 +143,7 @@ async function httpAddAdmin(req, res) {
           )
         );
       }
-      res.status(400).json({ error: "email is already exist" });
+      res.status(400).json({ email: "email is already exist" });
     } else {
       console.error(error);
       return res.status(500).json({ error: "Internal server error" });
@@ -335,6 +337,62 @@ async function httpResetPassword(req, res) {
   }
 }
 // !SECTION - END SECTION USER AND ADMIN
+
+// SECTION - OAUTH GOOGLE ACCOUNT (RGISTER AND LOGIN);
+// register with google account
+async function httpGoogleAccountOauth(accessToken, refreshToken, user, done) {
+  try {
+    const userProfile = await getOneUser(user._json.sub);
+    if (userProfile) {
+      console.log("this user is exist  " + userProfile);
+      done(null, user);
+    } else {
+      const profile = {
+        _id: user._json.sub,
+        name: user._json.name,
+        email: user._json.email,
+        profile_picture: user._json.picture,
+        role: "user",
+      };
+      const resp = await GoogleAccountOauth(profile);
+      console.log("this is created user profile " + resp);
+      done(null, user);
+    }
+  } catch (err) {
+    console.log(err);
+    done(null, false);
+  }
+}
+// !SECTION end oauth with google
+
+async function httpDashboardDetails(req, res) {
+  try {
+    const data = await DashboardDetails();
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+async function httpContactUs(req, res) {
+  try {
+    await sendEmail({
+      from: req.body.email,
+      to: "kareem.345@outlook.com",
+      subject: `Email From ${req.body.name}`,
+      html: `<h1>ElSafa!</h1>
+      <p>From : <strong>${req.body.name}</strong>,</p>
+      <p>Email : <strong>${req.body.email}</strong>,</p>
+      <p>${req.body.message}</p>
+      <p>Best regards,<br/>The ElSafa Team</p>`,
+    });
+    res.status(200).json({ message: "the message is send successfuly" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
 module.exports = {
   httpGetAllUser,
   httpGetUser,
@@ -346,4 +404,7 @@ module.exports = {
   httpForgotPasswordEmail,
   httpCheckCode,
   httpResetPassword,
+  httpGoogleAccountOauth,
+  httpDashboardDetails,
+  httpContactUs,
 };

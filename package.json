@@ -2,7 +2,7 @@
   "name": "el-safa",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
+   "scripts": {
     "install-server": "npm install --prefix server",
     "install-client": "npm install --prefix client",
     "install": "npm run install-server && npm run install client",
@@ -17,12 +17,21 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "concurrently": "^8.2.2"
   },
   "dependencies": {
+    "@angular/animations": "^17.3.6",
+    "@angular/router": "^17.3.7",
+    "@ng-bootstrap/ng-bootstrap": "^16.0.0",
+    "aos": "^2.3.4",
+    "ngx-owl-carousel-o": "^17.0.0",
     "ngx-toastr": "^18.0.0",
+    "primeicons": "^7.0.0",
+    "primeng": "^17.15.0",
+    "server": "^1.0.39",
     "some-module": "^0.0.3",
-    "primeng": "^17.14.1",
-    "server": "^1.0.39"
+    "swiper": "^11.1.1"
+
   }
 }

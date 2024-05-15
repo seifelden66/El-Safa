@@ -1,4 +1,125 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
-  <app-navbar class="w-100"></app-navbar>
+
+  <div class="admin-body w-100">
+    <app-navbar class="w-100"></app-navbar>
+    <div class="container mt-5">
+      <section class="row dashboar-cards my-5">
+        <div class="card">
+          <div class="bubble"></div>
+          <div class="content">
+            <h2>Users</h2>
+            <p>{{ dashboardDetails?.usersCount }}</p>
+            <p>Increased by 40%</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="bubble"></div>
+          <div class="content">
+            <h2>Prouducts</h2>
+            <p>{{ dashboardDetails?.productCount }}</p>
+            <p>Increased by 60%</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="bubble"></div>
+          <div class="content">
+            <h2>Peinging Orders</h2>
+            <p>{{ dashboardDetails?.peindingOrder }}</p>
+            <p>Increased by 60%</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="bubble"></div>
+          <div class="content">
+            <h2>total Funds</h2>
+            <p>${{ dashboardDetails?.totalFundsAggregate[0].totalFunds }}</p>
+            <p>Increased by 60%</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="box most-selling">
+        <i class="material-icons">bar_chart</i>
+        <h2>Most Selling Product</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Units Sold</th>
+              <th>Revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Product A</td>
+              <td>100</td>
+              <td>$1000</td>
+            </tr>
+            <tr>
+              <td>Product B</td>
+              <td>80</td>
+              <td>$800</td>
+            </tr>
+            <tr>
+              <td>Product C</td>
+              <td>70</td>
+              <td>$700</td>
+            </tr>
+          </tbody>
+        </table>
+      </section> -->
+
+      <section class="row my-5">
+        <div class="col-lg-5 col-md-11 col-sm-12 todo-list p-5">
+          <div class="todo-container">
+            <div class="d-flex gap-2 mb-3">
+              <input
+                class="todo-input"
+                [(ngModel)]="newTaskTitle"
+                placeholder="What do you need to do today?"
+              />
+              <button class="add-btn" (click)="addTask()">Add</button>
+            </div>
+            <div class="tasks-container">
+              <ul class="tasks">
+                <li
+                  *ngFor="let task of tasks"
+                  [class.completed]="task.completed"
+                  class="d-flex align-items-center justify-content-between"
+                >
+                  <span class="d-flex align-items-center">
+                    <input
+                      type="checkbox"
+                      (click)="toggleCompletion(task.id)"
+                      [checked]="task.completed"
+                    />
+                    {{ task.title }}
+                  </span>
+                  <span
+                    ><i
+                      (click)="deleteTask(task.id)"
+                      class="delete-icon fa-solid fa-xmark"
+                    ></i
+                  ></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="calendar-container col-lg-5 col-md-11 col-sm-12">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=5addf0142c89e554acbf49784868e31dc14865543d8afd6500cadf7d99260421%40group.calendar.google.com&ctz=Africa%2FCairo"
+            style="border: 0"
+            width="600"
+            height="500"
+            frameborder="0"
+            scrolling="no"
+          ></iframe>
+        </div>
+      </section>
+
+      <footer style="height: 100px"></footer>
+    </div>
+  </div>
 </div>

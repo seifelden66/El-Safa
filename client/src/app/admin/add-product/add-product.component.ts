@@ -30,13 +30,20 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     this.getCategorys();
     this.productForm = new FormGroup({
-      name: new FormControl("", [Validators.required]),
+      name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       quantity: new FormControl("", [Validators.required]),
       price: new FormControl("", [Validators.required]),
       category: new FormControl("", [Validators.required]),
-      images: new FormControl(null),
-      short_desc: new FormControl("", [Validators.required]),
-      desc: new FormControl("", [Validators.required]),
+      images: new FormControl(null, [Validators.required]),
+      short_desc: new FormControl("", [
+        Validators.required,
+        Validators.minLength(15),
+      ]),
+      desc: new FormControl("", [
+        Validators.required,
+        Validators.minLength(30),
+      ]),
+      discount: new FormControl("", [Validators.required]),
     });
   }
 
@@ -59,6 +66,16 @@ export class AddProductComponent implements OnInit {
   }
 
   addNewProduct() {
+    Object.keys(this.productForm.controls).forEach((field) => {
+      const control = this.productForm.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
+
+    if (this.productForm.invalid) {
+      return;
+    }
     const formData = new FormData();
     formData.append("name", this.productForm.value.name);
     formData.append("quantity", this.productForm.value.quantity);
@@ -66,13 +83,14 @@ export class AddProductComponent implements OnInit {
     formData.append("category", this.productForm.value.category);
     formData.append("short_desc", this.productForm.value.short_desc);
     formData.append("desc", this.productForm.value.desc);
+    formData.append("discount", this.productForm.value.discount);
     const images: FileList = this.productForm.value.images;
 
     for (let i = 0; i < images.length; i++) {
       formData.append("image", images[i]);
     }
 
-    // console.log(formData.get("image"));
+    console.log(this.productForm);
 
     this.http.post("http://localhost:8000/v1/products", formData).subscribe(
       (res: any) => {

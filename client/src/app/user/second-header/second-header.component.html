@@ -1,70 +1,113 @@
-
 <div class="row navbar_bigcontainer">
   <div dir="ltr" class="col-12 firest_nav">
-
-
-    <div class="row ">
-
-      <div class="Companyandsearch col-6 col-xxl-4 ">
-        <h4 class="m-0 ">Company Logo</h4>
-
-        <div class="search w-50">
-          <p-iconField iconPosition="right">
-            <p-inputIcon styleClass="pi pi-spinner pi-spin" />
-            <input  pInputText placeholder="Search" class="py-2 px-3 w-100" type="text" pInputText />
-        </p-iconField>
-        </div>
-
-
+    <div class="row px-2">
+      <div class="Companyandsearch col-2 col-xxl-4">
+        <img
+          class="flip-infinite-loop"
+          src="../../../assets/logo2.png"
+          alt=""
+        />
+        <h1 class="m-0 logo animate-charcter">EL SAFA</h1>
       </div>
 
+      <div class="search col-4 col-xxl-4">
+        <div class="searchbar w-100">
+          <p-iconField iconPosition="right">
+            <p-inputIcon styleClass="pi pi-search" />
+            <input
+              pInputText
+              placeholder="Search"
+              class="py-2 px-3 w-100 search"
+              type="text"
+              pInputText
+              (keyup.enter)="onSearch($any($event).target.value)"
+            />
+          </p-iconField>
+        </div>
+      </div>
 
-
-          
-      <div class="col-6  three">
+      <div class="col-4 three">
         <div class="user_options">
-          <div class="faverot">
+          <div (click)="redirect8()" class="faverot payment ">
             <i class="pi pi-heart"></i>
           </div>
-    
+
           <div class="payment" (click)="redirect7()">
-            <p class="m-0">{{ count }}</p>
             <i class="pi pi-shopping-cart"></i>
-            
           </div>
-          
+
           <div class="user_img">
-            
-            <img data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" src="../../assets/icon-256x256-removebg-preview.png" alt="" />
-    
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-              <div class="offcanvas-header">
-                <h2 class="offcanvas-title" id="offcanvasExampleLabel">User Options</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-              </div>
+            @if (userdata?.profile_picture) {
+            <img
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
+              src="/assets/{{ userdata?.profile_picture }}"
+              alt=""
+            />
+
+            }@else {
+            <img
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
+              src="../../assets/icon-256x256-removebg-preview.png"
+              z
+              alt=""
+            />
+
+            }
+            <div
+              class="offcanvas offcanvas-start big_sidebar"
+              tabindex="-1"
+              id="offcanvasExample"
+              aria-labelledby="offcanvasExampleLabel"
+            >
+              <h2 class="d-flex justify-content-center py-4">User options</h2>
+ 
               <div class="offcanvas-body ">
-    
-                <div class="nav_btns px-2">
-    
-                  <button type="button" (click)="redirect()" class="btn  btn-outline-info w-100 ">Profile <i class="pi pi-user"></i>              </button>
-                  <button type="button" (click)="redirect2()" class="btn  btn-outline-secondary w-100 "> invoice <i class="pi pi-file"></i></button>
-                  <button type="button" (click)="redirect3()" class="btn  btn-outline-danger w-100 ">Sign out <i class="pi pi-sign-out"></i></button>
-                  <button (click)="redirect5()" type="button" class="btn btn-outline-success px-3 py-2">Register</button>
-                  <button (click)="redirect6()" type="button" class="btn btn-outline-secondary px-3 py-2">Log in</button>
-          
+                <div class="sidebar">
+                  <div class="sidebar_data">
+                    <h3 (click)="redirect()" class="sidebar_text">
+                      <i class="fa-solid fa-user"></i> <span>Profile</span>
+                    </h3>
+                    <h3
+                      href="#"
+                      [routerLink]="['/product']"
+                      routerLinkActive="active"
+                      class="sidebar_text"
+                    >
+                      <i class="fa-brands fa-product-hunt"></i>
+                      <span>All product</span>
+                    </h3>
+                    <h3
+                      href="#"
+                      [routerLink]="['/user-product']"
+                      routerLinkActive="active"
+                      class="sidebar_text"
+                    >
+                      <i class="fa-solid fa-cart-shopping"></i>
+                      <span>My order</span>
+                    </h3>
+                    <h3 href="#" (click)="redirect5()" class="sidebar_text">
+                      <i class="fa-solid fa-registered"></i>
+                      <span>Register</span>
+                    </h3>
+                    <h3 href="#" (click)="redirect6()" class="sidebar_text">
+                      <i class="fa-solid fa-right-to-bracket"></i>
+                      <span>Login</span>
+                    </h3>
+                    <h3 href="#" (click)="redirect3()" class="sidebar_text">
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                      <span>Sign out</span>
+                    </h3>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-    
   </div>
-
-
-
-
 </div>
-

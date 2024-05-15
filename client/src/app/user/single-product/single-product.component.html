@@ -1,0 +1,135 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="main-image mb-3">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa4mmp04hQ3wbEOxpeQVcNmENeYOPWZOLgp1yQKydiYw&s/500"
+          class="img-fluid"
+          alt="Main Product Image"
+        />
+      </div>
+      <div class="thumbnail-images d-flex justify-content-between">
+        <img
+          src="https://via.placeholder.com/100"
+          class="img-thumbnail"
+          alt="Thumbnail 1"
+        />
+        <img
+          src="https://via.placeholder.com/100"
+          class="img-thumbnail"
+          alt="Thumbnail 2"
+        />
+        <img
+          src="https://via.placeholder.com/100"
+          class="img-thumbnail"
+          alt="Thumbnail 3"
+        />
+        <img src=" " class="img-thumbnail" alt="Thumbnail 4" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h1>Boxy T-Shirt with Roll Sleeve Detail</h1>
+      <p class="price">$22</p>
+      <p class="short-description">
+        Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula.
+        Mauris consequat ornare feugiat.
+      </p>
+
+      <div class="product-options mb-3">
+        <div class="form-group">
+          <label for="size">Size</label>
+          <select id="size" class="form-control">
+            <option>Choose an option</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="color">Color</label>
+          <select id="color" class="form-control">
+            <option>Choose an option</option>
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="quantity mb-3">
+        <label for="quantity">Quantity</label>
+        <input
+          type="number"
+          id="quantity"
+          name="quantity"
+          class="form-control"
+          min="1"
+          value="1"
+        />
+      </div>
+
+      <button
+        class="btn btn-dark btn-lg btn-block mb-3"
+        (click)="filterResults()"
+      >
+        ADD TO CART
+      </button>
+
+      <div class="product-meta">
+        <p><strong>SKU:</strong> MUG-01</p>
+        <p><strong>Categories:</strong> Mug, Design</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-description mt-5">
+    <button
+      class="accordion btn btn-link"
+      type="button"
+      data-toggle="collapse"
+      data-target="#description"
+      aria-expanded="true"
+      aria-controls="description"
+    >
+      Description
+    </button>
+    <div id="description" class="collapse show">
+      <p class="mt-3">
+        Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus
+        convallis quis ac lectus. Praesent sapien massa, convallis a
+        pellentesque nec, egestas non nisi. Donec sollicitudin molestie
+        malesuada.
+      </p>
+    </div>
+    <button
+      class="accordion btn btn-link"
+      type="button"
+      data-toggle="collapse"
+      data-target="#additional-info"
+      aria-expanded="false"
+      aria-controls="additional-info"
+    >
+      Additional information
+    </button>
+    <div id="additional-info" class="collapse">
+      <p class="mt-3">
+        Nulla quis lorem ut libero malesuada feugiat. Curabitur arcu erat,
+        accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero
+        malesuada feugiat.
+      </p>
+    </div>
+    <button
+      class="accordion btn btn-link"
+      type="button"
+      data-toggle="collapse"
+      data-target="#reviews"
+      aria-expanded="false"
+      aria-controls="reviews"
+    >
+      Reviews (0)
+    </button>
+    <div id="reviews" class="collapse">
+      <p class="mt-3">No reviews yet.</p>
+    </div>
+  </div>
+</div>

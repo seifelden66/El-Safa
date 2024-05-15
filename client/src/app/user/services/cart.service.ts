@@ -16,11 +16,13 @@ export class CartService {
     if (existingProductIndex !== -1) {
         // If the product exists, increase its quantity
         this.item[existingProductIndex].quantity++;
-      
+
     } else {
         // If the product doesn't exist, add it to the cart
-        this.item.push({...product_details, quantity: 1});
+        this.item.push({...product_details,quantity: 1});
     }
+
+    // localStorage.setItem('cart',JSON.stringify(this.item))
 }
 
   getproduct(){
@@ -37,7 +39,7 @@ export class CartService {
   increase(id:any){
 
     let item = this.item.find((item)=> item.id === id)
-    // console.log(item);
+    console.log(id);
 
     if(item.quantity >= 1){
       item.quantity++

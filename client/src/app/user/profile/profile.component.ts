@@ -1,72 +1,55 @@
-import { Component , OnInit } from '@angular/core';
-import { ChartModule } from 'primeng/chart';
+import { Toast } from 'primeng/toast';
+import { CookieService } from './../../services/cookie.service';
+import { Component , OnInit , ViewChild  } from '@angular/core';
 import { SecondHeaderComponent } from '../second-header/second-header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FirestnavComponent } from '../firestnav/firestnav.component';
-
+import { SidebarModule } from 'primeng/sidebar';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ChartModule,SecondHeaderComponent,FooterComponent,FirestnavComponent],
+  imports: [SecondHeaderComponent,FooterComponent,FirestnavComponent,SidebarModule,RouterLinkActive,RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit  {
 
 
-  basicData: any;
+  constructor(private CookieService : CookieService, private http : HttpClient,private router : Router , private Toaster : ToastrService){}
 
-  basicOptions: any;
+  usertoken!:any
+  userdata!:any
+  
+  ngOnInit(): void {
+    this.usertoken=this.CookieService.get('userToken')
+    console.log(this.usertoken);
+    this.getuserdata()
+    if(this.usertoken){
 
-  ngOnInit() {
-      const documentStyle = getComputedStyle(document.documentElement);
-      const textColor = documentStyle.getPropertyValue('--text-color');
-      const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-      const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-
-      this.basicData = {
-          labels: ['Sat', 'Sun', 'Mon', 'Tue' , 'Wen' , 'Thr' , 'Fre'],
-          datasets: [
-              {
-                  label: 'Sales',
-                  data: [540, 325, 702, 620 , 800 , 500 , 600],
-                  backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(120,159,870,05)'],
-                  borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
-                  borderWidth: 1
-              }
-          ]
-      };
-
-      this.basicOptions = {
-          plugins: {
-              legend: {
-                  labels: {
-                      color: textColor
-                  }
-              }
-          },
-          scales: {
-              y: {
-                  beginAtZero: true,
-                  ticks: {
-                      color: textColorSecondary
-                  },
-                  grid: {
-                      color: surfaceBorder,
-                      drawBorder: false
-                  }
-              },
-              x: {
-                  ticks: {
-                      color: textColorSecondary
-                  },
-                  grid: {
-                      color: surfaceBorder,
-                      drawBorder: false
-                  }
-              }
-          }
-      };
+    }else{
+      this.router.navigate([`/regester`])
+      this.Toaster.error('Please login firest','Error')
+    }
+    
   }
+
+  getuserdata(){
+    this.http.get('http://localhost:8000/v1/users/profile',{headers:{
+      Authorization : `Bearer ${this.usertoken}`
+    }}).subscribe((res:any)=>{
+      this.userdata = res.user;
+      console.log(res);
+    
+    },
+  error => {
+    console.log(error);
+  })
+  }
+
+
+
 
 }

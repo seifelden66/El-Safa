@@ -5,35 +5,6 @@
 .h3 {
   color: rgb(118, 118, 235);
 }
-/* Override Bootstrap styles for the table */
-#dataTable_wrapper {
-  padding: 20px;
-}
-
-#dataTable_length label {
-  margin-bottom: 0;
-}
-
-.table thead th {
-  background-color: #f8f9fc;
-  color: #6c757d;
-  border-bottom: 2px solid #dee2e6;
-}
-
-.table th,
-.table td {
-  padding: 10px;
-  color: #6c757d;
-  text-align: center;
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #f3f3f3;
-}
-
-.table-hover tbody tr:hover {
-  background-color: #e2e6ea;
-}
 
 .card {
   border: none;
@@ -47,27 +18,6 @@
 .btn-sm {
   padding: 6px 12px;
   font-size: 0.875rem;
-}
-/* Search input style */
-.input-group {
-  width: 250px;
-  margin-bottom: 20px;
-}
-
-.input-group input[type="text"] {
-  border-radius: 0;
-}
-
-.input-group button {
-  border-radius: 0;
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #f3f3f3;
-}
-
-.table-hover tbody tr:hover {
-  background-color: #e2e6ea;
 }
 
 /* Action buttons style */
@@ -89,7 +39,23 @@
   color: blue;
 }
 
-/* Custom CSS for table borders */
-table.table-bordered tbody tr {
-  border-bottom: 1px solid #dee2e6; /* Add bottom border between rows */
+.order-status {
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1e1b4b;
+}
+.status-pending {
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+}
+.status-confirmed {
+  background-color: #2dd4bf;
+}
+.status-dispatched {
+  background-color: #818cf8;
+  color: #eef2ff;
+}
+.status-delivered {
+  background-color: #0000ff;
+  color: #eef2ff;
 }

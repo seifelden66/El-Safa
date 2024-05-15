@@ -1,4 +1,5 @@
 const ordersSchema = require("./orders.mongo");
+const payOnlineSchema = require("./payOnline.mongo");
 const { cart } = require("../cart/cart.model");
 
 async function NewOrders(order) {
@@ -7,6 +8,17 @@ async function NewOrders(order) {
 
 async function allOrders() {
   return await ordersSchema.find({}, { orderItems: 0, __v: 0 });
+}
+
+async function userOrders(id) {
+  return await ordersSchema.find({ userId: id }, { orderItems: 0, __v: 0 });
+}
+
+async function pendingOrders() {
+  return await ordersSchema.find(
+    { order_status: "pending" },
+    { orderItems: 0, __v: 0 }
+  );
 }
 
 async function orderDetails(id) {
@@ -37,6 +49,10 @@ async function deliverOrder(id) {
   );
 }
 
+async function PayOnline(data) {
+  return await payOnlineSchema.create(data);
+}
+
 module.exports = {
   NewOrders,
   allOrders,
@@ -44,4 +60,7 @@ module.exports = {
   confirmOrder,
   dispatchOrder,
   deliverOrder,
+  userOrders,
+  PayOnline,
+  pendingOrders,
 };

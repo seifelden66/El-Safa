@@ -1,12 +1,12 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
-  <div class="body w-100">
+  <div class="admin-body w-100">
     <app-navbar class="w-100"></app-navbar>
     <div class="container-fluid">
       <div class="d-flex justify-content-between mt-5 mb-4">
         <h1 class="h3">Categorys</h1>
         <button
-          class="btn btn-primary align-content-center"
+          class="admin-btn align-content-center"
           (click)="showAddNewCategoryModel()"
         >
           Add Category
@@ -18,36 +18,42 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table
+            <p-table
               class="table table-bordered"
               id="dataTable"
-              width="100%"
-              cellspacing="0"
+              [value]="categorys"
+              [paginator]="true"
+              [rows]="rows"
+              [totalRecords]="totalRecords"
+              [rowsPerPageOptions]="rowsPerPageOptions"
+              (onPageChange)="onPageChange($event)"
             >
-              <thead>
-                <tr>
+              <ng-template pTemplate="header">
+                <tr class="table-header-tr">
                   <th>NAME</th>
                   <th>DESCRIPTION</th>
                 </tr>
-              </thead>
-
-              <tbody>
-                @for(category of categorys; track category._id){
-
-                <tr>
-                  <td>{{ category!.name }}</td>
-                  <td>{{ category!.description }}</td>
+              </ng-template>
+              <ng-template pTemplate="body" let-category>
+                <tr class="table-body-tr">
+                  <td>{{ category.name }}</td>
+                  <td>{{ category.description }}</td>
                 </tr>
-                }
-              </tbody>
-            </table>
+              </ng-template>
+            </p-table>
           </div>
         </div>
         <!-- Edit product model -->
         <div
+          class="modelBackdrop"
+          [ngClass]="{
+            show: AddNewCategoryModelStatus
+          }"
+        ></div>
+        <div
           id="editmodel"
           class="ng-Modal"
-          [ngClass]="{ hide: AddNewCategoryModelStatus }"
+          [ngClass]="{ show: AddNewCategoryModelStatus }"
         >
           <div class="ng-Modal-header">
             <h3>Edit Product</h3>
@@ -79,15 +85,12 @@
                   formControlName="description"
                 ></textarea>
               </div>
-              <button class="btn btn-primary">Add Category</button>
+              <button class="admin-btn">Add Category</button>
             </form>
           </div>
           <div class="ng-Modal-footer">
             <div class="d-flex gap-2 float-end py-2">
-              <button
-                class="btn btn-primary"
-                (click)="hideAddNewCategoryModel()"
-              >
+              <button class="admin-btn" (click)="hideAddNewCategoryModel()">
                 Close
               </button>
             </div>

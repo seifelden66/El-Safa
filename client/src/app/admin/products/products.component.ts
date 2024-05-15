@@ -11,6 +11,8 @@ import {
   ReactiveFormsModule,
 } from "@angular/forms";
 import { CategorysService } from "../services/categorys.service";
+import { TableModule } from "primeng/table";
+import { PaginatorModule } from "primeng/paginator";
 
 @Component({
   selector: "app-products",
@@ -21,6 +23,8 @@ import { CategorysService } from "../services/categorys.service";
     RouterLink,
     NgClass,
     ReactiveFormsModule,
+    TableModule,
+    PaginatorModule,
   ],
   templateUrl: "./products.component.html",
   styleUrl: "./products.component.css",
@@ -30,6 +34,11 @@ export class ProductsComponent implements OnInit {
     private http: HttpClient,
     private categorysService: CategorysService
   ) {}
+  // for pagination
+  totalRecords!: number;
+  rowsPerPageOptions = [5, 10, 20];
+  rows = 10;
+  first = 0;
 
   products: any[] = [];
   categorys: any;
@@ -39,19 +48,30 @@ export class ProductsComponent implements OnInit {
   imageModelStatus: boolean = false;
   productImages: any;
   productForm!: FormGroup;
+  filterProducts!: any[];
 
   ngOnInit(): void {
     this.getallproduct();
     this.getCategorys();
     this.initForm();
+    this.filterProducts = this.products;
   }
 
   getallproduct() {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
       this.products = res.products;
-      console.log(res.products);
+      this.filterProducts = [...this.products];
+      this.totalRecords = this.products.length;
     });
   }
+
+  // for pagination
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.getallproduct();
+  }
+
   // get categorys service
   getCategorys(): void {
     this.categorysService.getCategorys().subscribe((res) => {
@@ -75,7 +95,7 @@ export class ProductsComponent implements OnInit {
         (res: any) => {
           alert(res.message);
           // Remove deleted product from the list
-          this.products = this.products.filter(
+          this.filterProducts = this.products.filter(
             (product) => product._id !== this.productId
           );
         },
@@ -95,7 +115,10 @@ export class ProductsComponent implements OnInit {
       name: product.name,
       quantity: product.quantity,
       price: product.price,
+      discount: product.discount,
       category: product.category,
+      short_desc: product.short_desc,
+      desc: product.desc,
     });
   }
 
@@ -115,6 +138,7 @@ export class ProductsComponent implements OnInit {
       name: new FormControl("", [Validators.required]),
       quantity: new FormControl("", [Validators.required]),
       price: new FormControl("", [Validators.required]),
+      discount: new FormControl("", [Validators.required]),
       category: new FormControl("", [Validators.required]),
       short_desc: new FormControl("", [Validators.required]),
       desc: new FormControl("", [Validators.required]),
@@ -144,6 +168,18 @@ export class ProductsComponent implements OnInit {
         }
       );
     this.editModelStatus = false;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    if (filterValue) {
+      this.filterProducts = this.products.filter((product: any) =>
+        product.name.toLowerCase().includes(filterValue.toLowerCase())
+      );
+    } else {
+      this.filterProducts = [...this.products];
+    }
+    this.totalRecords = this.filterProducts.length;
   }
 }
 

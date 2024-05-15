@@ -1,33 +1,71 @@
 <app-second-header></app-second-header>
 <app-firestnav></app-firestnav>
 
-<div class="container">
+<div class="main_container">
+  <div class="container-fluid py-5">
+    <div class="row d-flex">
+      <google-map
+        [center]="center"
+        [zoom]="zoom"
+        class="map-container"
+        width="100%"
+      >
+        <map-marker [position]="markerPosition"></map-marker>
+      </google-map>
+      <div class="contact-form col-lg-5 col-md-12 col-sm-12">
+        <form [formGroup]="FormData" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" formControlName="name" />
 
+            @if(FormData.controls['name'].touched &&
+            FormData.controls['name'].invalid){
+            <small class="small admin-error mx-3"
+              >*name is requierd and It must be at least three letters
+            </small>
+            }
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              formControlName="email"
+            />
 
-    <h1>Contact Us</h1>
-    <p>Have a question or want to get in touch? Fill out the form below.</p>
-    
-    <div class="contact-form">
-        <form>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit">Send Message</button>
-            </div>
+            @if(FormData.controls['email'].touched &&
+            FormData.controls['email'].invalid){
+            <small class="small admin-error mx-3"
+              >*name is requierd and It must be at least three letters
+            </small>
+            }
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
 
-                    <!-- Add the map -->
+            <textarea
+              id="message"
+              name="message"
+              formControlName="message"
+            ></textarea>
+            @if(FormData.controls['message'].touched &&
+            FormData.controls['message'].invalid){
+            <small class="small admin-error mx-3"
+              >*Please provide your message and It must be at least 30
+              letters</small
+            >
+            }
+          </div>
+          <div class="form-group">
+            <button type="submit">Send Message</button>
+          </div>
+
+          <!-- Add the map -->
         </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <app-footer></app-footer>

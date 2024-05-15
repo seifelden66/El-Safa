@@ -1,64 +1,69 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
-  <div class="body w-100">
+  <div class="admin-body w-100">
     <app-navbar class="w-100"></app-navbar>
     <div class="container-fluid">
       <div class="d-flex justify-content-between mt-5 mb-4">
         <h1 class="h3">Products</h1>
         <a
-          class="btn btn-primary align-content-center"
+          class="admin-btn align-content-center"
           routerLink="/admin/add-product"
         >
-          add Product
+          Add Product
         </a>
       </div>
       <div class="card shadow mb-4">
-        <div class="card-header d-flex justify-content-between">
-          <h3 class="m-0 font-weight-bold text-primary">Products Table</h3>
-          <div class="input-group">
+        <div class="card-header py-3 d-flex justify-content-center">
+          <div class="input-group w-50">
             <input
               type="text"
-              class="form-control"
-              placeholder="Search..."
+              class="searchInput form-control"
+              placeholder="Search By Name ..."
               aria-label="Search"
               aria-describedby="search-btn"
+              (input)="applyFilter($event)"
             />
-            <button class="btn btn-primary" type="button" id="search-btn">
-              <i class="fas fa-search"></i>
-            </button>
           </div>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <!-- Product Table -->
-            <table class="table table-bordered" id="dataTable">
-              <thead>
-                <tr>
+            <p-table
+              class="table table-bordered"
+              id="dataTable"
+              [value]="filterProducts"
+              [paginator]="true"
+              [rows]="rows"
+              [totalRecords]="totalRecords"
+              [rowsPerPageOptions]="rowsPerPageOptions"
+              (onPageChange)="onPageChange($event)"
+            >
+              <ng-template pTemplate="header">
+                <tr class="table-header-tr">
                   <th>PRODUCT & TITLE</th>
                   <th>CATEGORIES</th>
                   <th>image</th>
                   <th>Quantity</th>
                   <th>Price</th>
+                  <th>Discount</th>
                   <th>Action</th>
                 </tr>
-              </thead>
-
-              <tbody>
-                <!-- Use Bootstrap classes for table rows -->
-                @for(product of products; track product?._id){
-                <tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-product>
+                <tr class="table-body-tr">
                   <td>{{ product?.name }}</td>
                   <td>{{ product?.category?.['name'] }}</td>
                   <td>
                     <button
                       (click)="showImageModel(product?.images)"
-                      class="btn btn-primary"
+                      class="admin-btn"
                     >
                       images
                     </button>
                   </td>
                   <td>{{ product?.quantity }}</td>
-                  <td>{{ product?.price }}</td>
+                  <td>${{ product?.price }}</td>
+                  <td>${{ product?.discount }}</td>
                   <td>
                     <button
                       class="btn btn-sm"
@@ -75,9 +80,8 @@
                     </button>
                   </td>
                 </tr>
-                }
-              </tbody>
-            </table>
+              </ng-template>
+            </p-table>
           </div>
         </div>
         <div
@@ -97,16 +101,15 @@
           </div>
           <div class="ng-Modal-footer">
             <div class="d-flex gap-2 float-end py-2">
-              <button class="btn btn-primary" (click)="hideDeleteModel()">
+              <button class="admin-btn" (click)="hideDeleteModel()">
                 Close
               </button>
-              <button class="btn btn-danger" (click)="deleteProduct()">
+              <button class="admin-btn" (click)="deleteProduct()">
                 Delete
               </button>
             </div>
           </div>
         </div>
-
         <!-- Edit product model -->
         <div
           id="editmodel"
@@ -145,7 +148,7 @@
                   />
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row mb-4">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <label for="price">Price</label>
                   <input
@@ -156,21 +159,33 @@
                     placeholder="Price"
                   />
                 </div>
-                <div class="col-sm-6">
-                  <label for="category">Categorys</label>
-                  <select
-                    class="form-control form-control-product mb-4"
-                    id="category"
-                    formControlName="category"
-                  >
-                    @for(category of categorys; track category?._id){
-                    <option value="{{ category?._id }}">
-                      {{ category?.name }}
-                    </option>
-                    }
-                  </select>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label for="discount">Discount</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-product mb4"
+                    id="discount"
+                    formControlName="discount"
+                    placeholder="Discount"
+                  />
                 </div>
               </div>
+
+              <div class="form-group row mb-4 w-75">
+                <label for="category">Categorys</label>
+                <select
+                  class="form-control form-control-product mb-4"
+                  id="category"
+                  formControlName="category"
+                >
+                  @for(category of categorys; track category?._id){
+                  <option value="{{ category?._id }}">
+                    {{ category?.name }}
+                  </option>
+                  }
+                </select>
+              </div>
+
               <div class="form-group row mb-4 w-75">
                 <label for="desc">Short Description</label>
                 <textarea
@@ -185,6 +200,7 @@
               <div class="form-group row mb-4 w-75">
                 <label for="desc">Description</label>
                 <textarea
+                  formControlName="desc"
                   id="desc"
                   class="form-control"
                   formControlName="desc"
@@ -192,14 +208,12 @@
                   rows="5"
                 ></textarea>
               </div>
-              <button class="btn btn-primary">Edit Product</button>
+              <button class="admin-btn">Edit Product</button>
             </form>
           </div>
           <div class="ng-Modal-footer">
             <div class="d-flex gap-2 float-end py-2">
-              <button class="btn btn-primary" (click)="hideEditModel()">
-                Close
-              </button>
+              <button class="admin-btn" (click)="hideEditModel()">Close</button>
             </div>
           </div>
         </div>
@@ -220,7 +234,7 @@
           </div>
           <div class="ng-Modal-footer">
             <div class="d-flex gap-2 float-end py-2">
-              <button class="btn btn-primary" (click)="hideImageModel()">
+              <button class="admin-btn" (click)="hideImageModel()">
                 Close
               </button>
             </div>

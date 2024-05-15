@@ -20,14 +20,23 @@ const productSchema = mongoose.Schema(
             type: Number,
             default: 1
         },
-        price: {
-            type: Number,
-            required: true,
-        },
         images: [{
             type: String,
             required: false
         }],
+        price: {
+            type: Number,
+            required: true,
+          },
+          originalPrice: {
+            type: Number,
+            required: true,
+          },
+          discount: {
+            type: Number,
+            required:false,
+            default: 0, 
+          },
         category: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Category',
@@ -35,7 +44,7 @@ const productSchema = mongoose.Schema(
         },
         comments: [{
             user: {
-                type: mongoose.Schema.Types.ObjectId,
+                type: String,
                 ref: 'User'
             },
             text: {
@@ -49,7 +58,7 @@ const productSchema = mongoose.Schema(
         }],
         ratings: [{
             user: {
-                type: mongoose.Schema.Types.ObjectId,
+                type: String,
                 ref: 'User'
             },
             value: {

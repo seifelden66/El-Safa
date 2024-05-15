@@ -6,12 +6,12 @@ import {
 } from "@angular/forms";
 import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-forgot-password",
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: "./forgot-password.component.html",
   styleUrl: "./forgot-password.component.css",
 })

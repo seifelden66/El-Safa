@@ -36,7 +36,7 @@ export class SingleOrderComponent {
 
   getOrderDetails() {
     this.http
-      .get(`http://localhost:8000/v1/admin/orders-details?id=${this.orderId}`, {
+      .get(`http://localhost:8000/v1/users/orders-details?id=${this.orderId}`, {
         headers: {
           Authorization: `Bearer ${this.adminToken}`,
         },
@@ -124,5 +124,9 @@ export class SingleOrderComponent {
 
   hideModel() {
     this.modelStatus = false;
+  }
+  errorHandler(event: any) {
+    event.target.src =
+      "https://cdn.pixabay.com/photo/2016/04/11/10/45/sunrise-1321710_1280.jpg";
   }
 }

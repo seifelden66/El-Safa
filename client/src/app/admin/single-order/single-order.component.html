@@ -1,6 +1,6 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
-  <div class="body w-100">
+  <div class="admin-body w-100">
     <app-navbar class="w-100"></app-navbar>
 
     <div class="container padding-bottom-3x mb-1 mt-5">
@@ -9,30 +9,32 @@
           <div class="profile-img">
             <img
               class="w-100"
-              src="https://w7.pngwing.com/pngs/4/736/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
-              alt=""
+              src="/assets/{{ user?.profile_picture }}"
+              (error)="errorHandler($event)"
+              loading="lazy"
             />
           </div>
           <div class="user-details d-flex flex-column gap-2">
-            <h2 class="m-0">{{ user.name }}</h2>
+            <h2 class="m-0">{{ user?.name }}</h2>
             <span
               ><strong>Customer ID : </strong>
-              <span class="id-number">{{ user!._id }}</span></span
+              <span class="id-number">{{ user?._id }}</span></span
             >
           </div>
         </div>
         <div class="d-flex gap-3">
-          <button (click)="confirmOrder(orderId)" class="btn btn-primary">
+          <button (click)="confirmOrder(orderId)" class="admin-btn">
             Confirmed Order
           </button>
-          <button (click)="dispatchOrder(orderId)" class="btn btn-primary">
+          <button (click)="dispatchOrder(orderId)" class="admin-btn">
             Dispatche order
           </button>
-          <button (click)="deliverOrder(orderId)" class="btn btn-primary">
+          <button (click)="deliverOrder(orderId)" class="admin-btn">
             order Delivered
           </button>
         </div>
       </div>
+
       <div class="card mb-3">
         <div class="p-4 text-center text-white text-lg bg-dark rounded-top">
           <span class="text-uppercase">Tracking Order No - </span
@@ -112,7 +114,7 @@
           cellspacing="0"
         >
           <thead>
-            <tr>
+            <tr class="table-header-tr">
               <th>PRODUCT & TITLE</th>
               <th>QUANTITY</th>
               <th>PRICE</th>
@@ -120,29 +122,30 @@
             </tr>
           </thead>
           <tbody>
-            @for(order of orders.orderItems; track order.id){
-            <tr>
+            @for(order of orders?.orderItems; track order.id){
+            <tr class="table-body-tr">
               <td class="d-flex justify-content-center product-info">
                 <div class="product-img">
                   <img
-                    src="https://media.istockphoto.com/id/1672317574/photo/ama-dablam-mountain-peak.webp?b=1&s=170667a&w=0&k=20&c=Ea8yDEHpUemrRuMZUKGPDBE11YTWVksIupMN8FkEBf8="
-                    alt="Product Image"
+                    src="/assets/{{ order?.images }}"
+                    (error)="errorHandler($event)"
+                    loading="lazy"
                   />
                 </div>
                 <a
-                  routerLink="/product_details/{{ order!.id }}"
+                  routerLink="/product_details/{{ order?.id }}"
                   class="product-title"
                   >Shirt</a
                 >
               </td>
-              <td>{{ order!.quantity }}</td>
-              <td>${{ order!.price }}</td>
-              <td>${{ order!.totalPrice }}</td>
+              <td>{{ order?.quantity }}</td>
+              <td>${{ order?.price }}</td>
+              <td>${{ order?.totalPrice }}</td>
             </tr>
             }
-            <tr>
+            <tr class="order-details-tr">
               <td colspan="3">TOTAL RPICE</td>
-              <td>${{ orders!.totalPrice }}</td>
+              <td>${{ orders?.totalPrice }}</td>
             </tr>
           </tbody>
         </table>

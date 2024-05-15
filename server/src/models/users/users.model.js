@@ -1,4 +1,7 @@
 const usersSchema = require("./users.mongo");
+const productSchema = require("../products/product.model");
+const orderSchema = require("../orders/orders.mongo");
+// const
 const resetCodeSchema = require("./forgotPassword.mongo");
 const generateHashPassword = require("../../services/auth/bcryptPassword");
 
@@ -86,6 +89,30 @@ async function resetPassword(email, password) {
     { new: true }
   );
 }
+
+// SECTION - GOOGLE OAUTH (REGISTER AND LOGIN)
+async function GoogleAccountOauth(user) {
+  return await usersSchema.create(user);
+}
+
+async function DashboardDetails() {
+  const usersCount = await usersSchema.countDocuments();
+  const productCount = await productSchema.countDocuments();
+  const peindingOrder = await orderSchema.countDocuments({
+    order_status: "pending",
+  });
+  const totalFundsAggregate = await orderSchema.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalFunds: { $sum: "$totalPrice" },
+      },
+    },
+  ]);
+
+  return { usersCount, productCount, peindingOrder, totalFundsAggregate };
+}
+
 module.exports = {
   getAllUser,
   addNewUser,
@@ -98,10 +125,8 @@ module.exports = {
   saveResetCode,
   cheackCode,
   resetPassword,
+  GoogleAccountOauth,
+  DashboardDetails,
 };
-
-
-
-
 
 // TODO  add validation on reseet password function

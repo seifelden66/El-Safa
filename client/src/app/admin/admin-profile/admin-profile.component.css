@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  height: 100vh;
+}
+.h3 {
+  color: rgb(118, 118, 235);
+}
+
+.active {
+  background-color: #7c5ed8;
+  color: white;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 20px 0px;
+  row-gap: 30px;
+}
+
+/* ==================================== */
+
+.profile_data {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0px 50px;
+}
+
+/* .user_img img {
+  width: 100px;
+} */
+
+.user_data {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+.input_filed {
+  position: relative;
+  width: 100%;
+}
+
+.input input {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.icon {
+  position: absolute;
+  right: 9px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
