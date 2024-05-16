@@ -519,6 +519,13 @@ p {
   color: #a855f7;
 }
 
+.mostsell2 {
+  border: solid;
+}
+.carousel3 {
+  border: solid red !important;
+}
+
 /* ============================================== */
 /* media Quary */
 
