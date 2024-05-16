@@ -7,10 +7,66 @@ const User = require("../models/users/users.mongo");
 
 const ObjectId = mongoose.Types.ObjectId;
 
+// const getProducts = async (req, res) => {
+//   try {
+//     const page = req.query.page ? parseInt(req.query.page) : null;
+//     const pageSize = 9;
+
+//     let filter = {};
+//     if (req.query.category) {
+//       // Find the category ObjectId by name
+//       const category = await Category.findOne({ name: req.query.category });
+//       if (!category) {
+//         return res.status(404).json({ message: "Category not found" });
+//       }
+//       filter.category = category._id;
+//     }
+
+//     // Add price filtering if provided in the query
+//     if (req.query.minPrice && req.query.maxPrice) {
+//       filter.price = {
+//         $gte: parseInt(req.query.minPrice),
+//         $lte: parseInt(req.query.maxPrice),
+//       };
+//     } else if (req.query.minPrice) {
+//       filter.price = { $gte: parseInt(req.query.minPrice) };
+//     } else if (req.query.maxPrice) {
+//       filter.price = { $lte: parseInt(req.query.maxPrice) };
+//     }
+
+//     const totalCount = await Product.countDocuments(filter);
+//     const totalPages = Math.ceil(totalCount / pageSize);
+//     const products = await Product.find(filter)
+//       .skip((page - 1) * pageSize)
+//       .populate("category")
+//       .limit(pageSize);
+
+//     if (products.length === 0) {
+//       return res
+//         .status(404)
+//         .json({ message: "No products found for this category" });
+//     }
+
+//     res.status(200).json({
+//       currentPage: page,
+//       totalPages: totalPages,
+//       pageSize: pageSize,
+//       totalCount: totalCount,
+//       products: products,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Internal server error" });
+//   }
+// };
+
 const getProducts = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const pageSize = 9;
+
+    // Ensure page is at least 1
+    const currentPage = Math.max(page, 1);
 
     let filter = {};
     if (req.query.category) {
@@ -34,26 +90,42 @@ const getProducts = async (req, res) => {
       filter.price = { $lte: parseInt(req.query.maxPrice) };
     }
 
-    const totalCount = await Product.countDocuments(filter);
-    const totalPages = Math.ceil(totalCount / pageSize);
-    const products = await Product.find(filter)
-      .skip((page - 1) * pageSize)
-      .populate("category")
-      .limit(pageSize);
+    let products;
+    if (req.query.page) {
+      const totalCount = await Product.countDocuments(filter);
+      const totalPages = Math.ceil(totalCount / pageSize);
+      products = await Product.find(filter)
+        .skip((currentPage - 1) * pageSize)
+        .populate("category")
+        .limit(pageSize);
 
-    if (products.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "No products found for this category" });
+      if (products.length === 0) {
+        return res
+          .status(404)
+          .json({ message: "No products found for this category" });
+      }
+
+      return res.status(200).json({
+        currentPage: currentPage,
+        totalPages: totalPages,
+        pageSize: pageSize,
+        totalCount: totalCount,
+        products: products,
+      });
+    } else {
+      products = await Product.find(filter).populate("category");
+
+      if (products.length === 0) {
+        return res
+          .status(404)
+          .json({ message: "No products found for this category" });
+      }
+
+      return res.status(200).json({
+        totalCount: products.length,
+        products: products,
+      });
     }
-
-    res.status(200).json({
-      currentPage: page,
-      totalPages: totalPages,
-      pageSize: pageSize,
-      totalCount: totalCount,
-      products: products,
-    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });

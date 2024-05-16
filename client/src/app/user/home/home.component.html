@@ -259,6 +259,60 @@
       </owl-carousel-o>
     </div>
 
+    <div class="onsale py-4 px-4">
+      <div class="row w-90">
+        <div class="d-flex justify-content-center align-items-center">
+          <h1
+            class="some_offersh m-0 d-flex justify-conten t-center py-4 font2"
+            style="color: f87171"
+          >
+            Sale
+          </h1>
+          <div class="star_icon">
+            <img class="w-100" src="/assets/favourite.gif" alt="star icon" />
+          </div>
+        </div>
+      </div>
+      <owl-carousel-o [options]="customOptions">
+        @for (product of onSaleProducts; track $index) {
+        <ng-template carouselSlide>
+          <div data-aos="zoom-in" class="card offer_data h-100">
+            <img
+              (click)="redirectproduct(product?._id)"
+              src="/assets/{{ product?.images['0'] }}"
+              alt=""
+            />
+            <!-- <img
+                src="https://cdn.thewirecutter.com/wp-content/media/2020/11/notebooks-2048px-2008.jpg?auto=webp&quality=75&width=1024"
+                alt=""
+              /> -->
+            <div class="offer_card_details px-2 py-4">
+              <h2 class="card-title">{{ product?.name }}</h2>
+              <div class="d-flex justify-content-between">
+                <h3 class="card-title">${{ product?.price }}</h3>
+                <div class="rating">
+                  <ngb-rating
+                    [rate]="averageRatings[product?._id]"
+                    [readonly]="true"
+                    [max]="5"
+                  ></ngb-rating>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                (click)="redirect4()"
+                class="btn carusel_Btnss btn-success d-flex w-100 p-2 mt-3"
+              >
+                <span>More Details</span>
+              </button>
+            </div>
+          </div>
+        </ng-template>
+        }
+      </owl-carousel-o>
+    </div>
+
     <div class="row brands py-5">
       <div class="col-10 col-xl-4 col-xxl-5">
         <div class="brand_names">
@@ -305,6 +359,7 @@
           </div>
         </div>
       </div>
+
       <div class="row best_product_container row-cols-1 row-cols-md-3 g-4">
         @for (product of topproduct ; track $index) {
 
