@@ -4,24 +4,24 @@ import {
   NgbTypeaheadModule,
 } from "@ng-bootstrap/ng-bootstrap";
 
-import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
-import { ChartModule } from 'primeng/chart'; // <-- Import ChartModule from PrimeNG
-import { Observable, OperatorFunction } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { Router } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { SecondHeaderComponent } from '../second-header/second-header.component';
-import { FooterComponent } from '../footer/footer.component';
-import { FirestnavComponent } from '../firestnav/firestnav.component';
-import Aos from 'aos'
-import { CarouselModule } from 'ngx-owl-carousel-o';
-import { OwlOptions } from 'ngx-owl-carousel-o';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { FormsModule } from "@angular/forms";
+import { JsonPipe } from "@angular/common";
+import { ChartModule } from "primeng/chart"; // <-- Import ChartModule from PrimeNG
+import { Observable, OperatorFunction } from "rxjs";
+import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { ButtonModule } from "primeng/button";
+import { CardModule } from "primeng/card";
+import { Router } from "@angular/router";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { NgbRatingModule } from "@ng-bootstrap/ng-bootstrap";
+import { SecondHeaderComponent } from "../second-header/second-header.component";
+import { FooterComponent } from "../footer/footer.component";
+import { FirestnavComponent } from "../firestnav/firestnav.component";
+import Aos from "aos";
+import { CarouselModule } from "ngx-owl-carousel-o";
+import { OwlOptions } from "ngx-owl-carousel-o";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 type State = { id: number; name: string };
 
@@ -32,7 +32,6 @@ interface Rating {
   _id: string;
   date: string;
 }
-
 
 @Component({
   selector: "app-home",
@@ -54,7 +53,7 @@ interface Rating {
     FooterComponent,
     FirestnavComponent,
     CarouselModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.css",
@@ -99,33 +98,36 @@ export class HomeComponent implements OnInit {
   redirect4() {
     this.router.navigate([`product`]);
   }
+
+  redirect5(id: string) {
+    this.router.navigate([`/product_details`, id]);
+  }
   //s=======================================
 
   productcenter: any = [];
   topproduct: any = [];
   averageRatings: { [productId: string]: number } = {};
-  showLoader : boolean = false
-
+  showLoader: boolean = false;
+  onSaleProducts!: any;
   ngOnInit(): void {
     this.getallproduct();
     this.getTopproduct();
-  
+    this.getOnSaleProducts();
+
     //s=======================================
 
     setTimeout(() => {
       this.showLoader = false;
-    },4000);
+    }, 4000);
+  }
 
-    }
-
-    getallproduct() {
-      this.http.get('http://localhost:8000/v1/products').subscribe((res: any) => {
-        this.productcenter = res.products;
-        this.averageRatings = this.getAverageRatings(this.productcenter);
-        console.log("Average Ratings:", this.averageRatings);
-      });
-    }
-    
+  getallproduct() {
+    this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
+      this.productcenter = res.products;
+      this.averageRatings = this.getAverageRatings(this.productcenter);
+      console.log("Average Ratings:", this.averageRatings);
+    });
+  }
 
   // =================getAverageRatings==============================
 
@@ -160,6 +162,17 @@ export class HomeComponent implements OnInit {
         console.log(res);
       }
       // http://localhost:8000/v1/products/top-rated
+    );
+  }
+
+  getOnSaleProducts() {
+    this.http.get("http://localhost:8000/v1/products/on-sale").subscribe(
+      (res: any) => {
+        this.onSaleProducts = res;
+      },
+      (error) => {
+        console.log(error);
+      }
     );
   }
 
