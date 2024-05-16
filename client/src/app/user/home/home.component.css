@@ -434,8 +434,7 @@ p {
   letter-spacing: 6px;
 }
 .offer_data {
-  background-color: var(--main-color);
-  color: var(--text-color);
+  margin: 0px 10px;
 }
 
 .offer_data img {
@@ -517,13 +516,6 @@ p {
 
 .icon_color4 {
   color: #a855f7;
-}
-
-.mostsell2 {
-  border: solid;
-}
-.carousel3 {
-  border: solid red !important;
 }
 
 /* ============================================== */
