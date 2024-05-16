@@ -43,8 +43,8 @@ registerWithGoogleOauth.get(
       const sub = req.user._json.sub;
       const token = generateAndSetToken(sub, "user");
       res.cookie("userToken", token, {
-        httpOnly: true,
-        secure: true,
+        httpOnly: false,
+        secure: false,
         maxAge: 24 * 60 * 60 * 1000,
       });
       res.redirect("/home");
