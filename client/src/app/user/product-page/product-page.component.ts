@@ -26,9 +26,8 @@ import { FirestnavComponent } from "../firestnav/firestnav.component";
 import { RatingModule } from "primeng/rating";
 import { ToastrService } from "ngx-toastr";
 import { CookieService } from "../../services/cookie.service";
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { PaginatorModule } from 'primeng/paginator';
-
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { PaginatorModule } from "primeng/paginator";
 
 interface Rating {
   value: number;
@@ -60,7 +59,7 @@ interface PageEvent {
     RatingModule,
     RouterLink,
     MatProgressSpinnerModule,
-    PaginatorModule
+    PaginatorModule,
   ],
   templateUrl: "./product-page.component.html",
   styleUrl: "./product-page.component.css",
@@ -81,8 +80,8 @@ export class ProductPageComponent implements OnInit {
     private messageService: MessageService,
     private cookkeService: CookieService,
     private ActivatedRoute: ActivatedRoute,
-    private CartService : CartService,
-    private CounterService : CounterService
+    private CartService: CartService,
+    private CounterService: CounterService
   ) {
     config.backdrop = "static";
     config.keyboard = false;
@@ -95,18 +94,16 @@ export class ProductPageComponent implements OnInit {
   heartToggled: { [id: string]: boolean } = {};
   averageRatings: { [productId: string]: number } = {};
   showLoader: boolean = true;
+  counter: number = 0;
   toster = inject(ToastrService);
-  counter:number = 0    
+  
 
-  toggleHeart(prod_id: any , product_data : any) {
-
+  toggleHeart(prod_id: any, product_data: any) {
     // this.toster.success("added to Wishlist", "Success");
     this.heartToggled[prod_id] = !this.heartToggled[prod_id];
-    console.log(this.heartToggled);
     if (this.heartToggled[prod_id]) {
       this.toster.success("added to Wishlist", "Success");
-      this.CartService.addtocart(product_data)
-      console.log(product_data);
+      this.CartService.addtocart(product_data);
     } else {
       this.toster.error("removed from Wishlist", "Removed");
     }
@@ -116,24 +113,40 @@ export class ProductPageComponent implements OnInit {
     return index;
   }
 
+  nextPage() {
+    if (this.allproducts.length == 9) {
+      this.currentPage = this.currentPage + 1;
+      this.getallproduct();
+      this.CounterService.setcount(this.counter+1)
+    }
+  }
+
+  previosPage() {
+    if(this.currentPage > 1 ){
+
+      this.currentPage = this.currentPage - 1;
+      this.getallproduct();
+      this.CounterService.setcount(this.counter-1)
+    }
+
+  }
+
   ngOnInit(): void {
     this.getUniqueCategories();
-    this.CounterService.getcount().subscribe((res)=>{
-      this.counter = res
-
-    })
-    
+    this.CounterService.getcount().subscribe((res) => {
+      this.counter = res;
+    });
 
     this.userToken = this.cookkeService.get("userToken");
 
     this.ActivatedRoute.params.subscribe((params) => {
       const searchQuery = params["search"];
       const category = params["cat"];
-  
+
       if (searchQuery) {
-        this.searchOnProduct(searchQuery);      
+        this.searchOnProduct(searchQuery);
       } else if (category) {
-        this.fetchcat(category);        
+        this.fetchcat(category);
       } else {
         this.getallproduct();
       }
@@ -142,14 +155,19 @@ export class ProductPageComponent implements OnInit {
     setTimeout(() => {
       this.showLoader = false;
     }, 3000);
-
   }
 
-  fetchcat(category : string ){
-    this.http.get(`http://localhost:8000/v1/products?page=1&category=${category}`).subscribe((res:any)=>{
-      this.allproducts = res.products
-      console.log(res , "sssssssssssssss");   
-    })
+
+
+
+
+
+  fetchcat(category: string) {
+    this.http
+      .get(`http://localhost:8000/v1/products?page=1&category=${category}`)
+      .subscribe((res: any) => {
+        this.allproducts = res.products;
+      });
   }
 
   searchOnProduct(query: string) {
@@ -160,18 +178,22 @@ export class ProductPageComponent implements OnInit {
           this.allproducts = res;
         },
         (error) => {
-          console.log(error);
         }
       );
   }
 
   getallproduct() {
-    this.http.get(`http://localhost:8000/v1/products`).subscribe((res: any) => {
-      this.allproducts = res.products;
-      this.averageRatings = this.getAverageRatings(this.allproducts);
-
-      console.log(this.allproducts);
-    });
+    this.http
+      .get(`http://localhost:8000/v1/products?page=${this.currentPage}`)
+      .subscribe(
+        (res: any) => {
+          this.allproducts = res.products;
+          this.averageRatings = this.getAverageRatings(this.allproducts);
+        },
+        (error) => {
+          this.allproducts = [];
+        }
+      );
   }
 
   redirect(product_id: any) {
@@ -197,11 +219,9 @@ export class ProductPageComponent implements OnInit {
           );
           this.category = Array.from(uniqueCategoriesSet);
         } else {
-          console.log("Products not found or is not an array");
         }
       },
       (err) => {
-        console.log(err.error);
       }
     );
   }
@@ -218,7 +238,7 @@ export class ProductPageComponent implements OnInit {
   filterProducts(): void {
     if (!this.selectedCategory) {
       // If no category is selected, show all products
-      this.getallproduct();
+      // this.getallproduct(page);
       return;
     }
 
@@ -233,16 +253,13 @@ export class ProductPageComponent implements OnInit {
           );
           this.totalPages = res.totalPages;
         } else {
-          console.log("Products not found or is not an array");
         }
       },
       (err) => {
-        console.log(err.error);
       }
     );
   }
 
-  
   // ================add to cart===============================
   addToCart(id: string) {
     this.http
@@ -257,11 +274,9 @@ export class ProductPageComponent implements OnInit {
       )
       .subscribe(
         (res) => {
-          console.log(res);
           this.toster.success("Product added to cart", "Success");
         },
         (error) => {
-          console.log(error);
           this.toster.error("Please Login Firest");
         }
       );
@@ -291,6 +306,4 @@ export class ProductPageComponent implements OnInit {
   }
 
   // =============pagination===============================
-
-
 }

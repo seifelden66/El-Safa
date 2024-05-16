@@ -220,6 +220,14 @@ th {
   z-index: 1;
 }
 
+.content h2 {
+  font-size: 1.5em;
+}
+.content p {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
 .content h2,
 .content p {
   color: #ffffff;

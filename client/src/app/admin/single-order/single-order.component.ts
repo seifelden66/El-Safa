@@ -48,7 +48,6 @@ export class SingleOrderComponent {
           this.orderStatus = res.order.order_status;
         },
         (error) => {
-          console.log(error.error);
         }
       );
   }
@@ -71,7 +70,6 @@ export class SingleOrderComponent {
           this.orderMessage = res.message;
         },
         (error) => {
-          console.log(error);
         }
       );
   }
@@ -94,7 +92,6 @@ export class SingleOrderComponent {
           this.orderMessage = res.message;
         },
         (error) => {
-          console.log(error);
         }
       );
   }
@@ -117,7 +114,6 @@ export class SingleOrderComponent {
           this.orderMessage = res.message;
         },
         (error) => {
-          console.log(error);
         }
       );
   }
@@ -125,6 +121,7 @@ export class SingleOrderComponent {
   hideModel() {
     this.modelStatus = false;
   }
+
   errorHandler(event: any) {
     event.target.src =
       "https://cdn.pixabay.com/photo/2016/04/11/10/45/sunrise-1321710_1280.jpg";

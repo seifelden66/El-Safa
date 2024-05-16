@@ -52,7 +52,6 @@ export class OrdersComponent {
           this.totalRecords = this.orders.length;
         },
         (error) => {
-          console.log(error.error);
         }
       );
   }

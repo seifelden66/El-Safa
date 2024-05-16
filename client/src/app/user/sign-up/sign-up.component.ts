@@ -98,9 +98,7 @@ export class SignUpComponent {
 
             this.route.navigate(["/home"]);
             setCookie("userToken", token, 7);
-            console.log(token);
           } else {
-            console.log("Token not found or is not a string");
           }
         },
         (error) => {
@@ -110,7 +108,6 @@ export class SignUpComponent {
   }
 
   submithandel() {
-    console.log(this.singin);
   }
 }
 

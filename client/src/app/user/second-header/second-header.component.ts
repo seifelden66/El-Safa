@@ -63,7 +63,7 @@ export class SecondHeaderComponent implements OnInit {
   products: any[] = [];
   categories: string[] = [];
   selectedCategory: string | null = null;
-  usertoken: any;
+  usertoken!: any;
   userdata!: any;
 
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
@@ -92,8 +92,7 @@ export class SecondHeaderComponent implements OnInit {
     private CartService: CartService,
     private CookieService: CookieService,
     private SearchService: SearchService,
-    private toster : ToastrService
-  
+    private toster: ToastrService
   ) {}
 
   onSearch(query: string): void {
@@ -106,7 +105,7 @@ export class SecondHeaderComponent implements OnInit {
     if (this.usertoken) {
       this.router.navigate([`profile`]);
     } else {
-      this.toster.error('Please login firest','Error')
+      this.toster.error("Please login firest", "Error");
     }
   }
 
@@ -135,8 +134,8 @@ export class SecondHeaderComponent implements OnInit {
     this.router.navigate([`cart`]);
   }
 
-  redirect8(){
-    this.router.navigate([`wishlist`])
+  redirect8() {
+    this.router.navigate([`wishlist`]);
   }
 
   // =============================
@@ -185,10 +184,8 @@ export class SecondHeaderComponent implements OnInit {
       .subscribe(
         (res: any) => {
           this.userdata = res.user;
-          console.log(res);
         },
         (error) => {
-          console.log(error);
         }
       );
   }

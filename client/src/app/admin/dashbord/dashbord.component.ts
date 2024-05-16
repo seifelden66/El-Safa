@@ -76,7 +76,6 @@ export class DashbordComponent {
           this.dashboardDetails = res;
         },
         (error) => {
-          console.log(error);
         }
       );
   }

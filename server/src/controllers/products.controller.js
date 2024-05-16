@@ -7,11 +7,10 @@ const User = require("../models/users/users.mongo");
 
 const ObjectId = mongoose.Types.ObjectId;
 
-
 const getProducts = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const pageSize = 10;
+    const pageSize = 9;
 
     let filter = {};
     if (req.query.category) {
@@ -27,7 +26,7 @@ const getProducts = async (req, res) => {
     if (req.query.minPrice && req.query.maxPrice) {
       filter.price = {
         $gte: parseInt(req.query.minPrice),
-        $lte: parseInt(req.query.maxPrice)
+        $lte: parseInt(req.query.maxPrice),
       };
     } else if (req.query.minPrice) {
       filter.price = { $gte: parseInt(req.query.minPrice) };
@@ -43,7 +42,9 @@ const getProducts = async (req, res) => {
       .limit(pageSize);
 
     if (products.length === 0) {
-      return res.status(404).json({ message: "No products found for this category" });
+      return res
+        .status(404)
+        .json({ message: "No products found for this category" });
     }
 
     res.status(200).json({
@@ -59,13 +60,15 @@ const getProducts = async (req, res) => {
   }
 };
 
-
 const getProduct = async (req, res) => {
   try {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(404).json({ message: "Invalid product ID" });
     }
-    const product = await Product.findById(req.params.id).populate('category', 'name');
+    const product = await Product.findById(req.params.id).populate(
+      "category",
+      "name"
+    );
     res.status(200).json(product);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -206,7 +209,7 @@ const getTopRatedProducts = async (req, res) => {
   try {
     const topRatedProducts = await Product.find({})
       .sort({ "ratings.value": -1 })
-      .limit(5);
+      .limit(4);
     res.status(200).json(topRatedProducts);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -264,5 +267,5 @@ module.exports = {
   getTopRatedProducts,
   searchProduct,
   httpLatestProducts,
-  getProductsOnSale
+  getProductsOnSale,
 };

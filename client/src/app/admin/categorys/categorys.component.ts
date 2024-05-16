@@ -32,6 +32,7 @@ export class CategorysComponent {
     private http: HttpClient
   ) {}
 
+  categoryId: any;
   totalRecords!: number;
   rowsPerPageOptions = [5, 10, 20];
   rows = 10;
@@ -39,7 +40,7 @@ export class CategorysComponent {
   categorys: any;
   AddNewCategoryModelStatus: boolean = false;
   CategoryForm!: FormGroup;
-
+  deleteModelStatus: boolean = false;
   ngOnInit() {
     this.getCategorys();
     this.CategoryForm = new FormGroup({
@@ -62,6 +63,35 @@ export class CategorysComponent {
     this.AddNewCategoryModelStatus = false;
   }
 
+  showDeleteModel(id: string) {
+
+    this.categoryId = id;
+    this.deleteModelStatus = true;
+  }
+
+  hideDeleteModel() {
+    this.deleteModelStatus = false;
+  }
+
+  deleteCategory() {
+    this.http
+      .delete(`http://localhost:8000/v1/categories/${this.categoryId}`)
+      .subscribe(
+        (res: any) => {
+
+          alert(res.message);
+          // Remove deleted Category from the list
+          this.categorys = this.categorys.filter(
+            (category: any) => category._id !== this.categoryId
+          );
+        },
+        (error) => {
+          alert(error.error.message);
+        }
+      );
+    this.deleteModelStatus = false;
+  }
+
   addNewCategory() {
     Object.keys(this.CategoryForm.controls).forEach((field) => {
       const control = this.CategoryForm.get(field);
@@ -82,7 +112,6 @@ export class CategorysComponent {
           this.categorys.push(res);
         },
         (error) => {
-          console.log(error);
         }
       );
   }
