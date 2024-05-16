@@ -47,8 +47,7 @@ export class UserProductComponent {
 
   ngOnInit(): void {
     this.usertoken = this.CookieService.get("userToken");
-    console.log(this.usertoken);
-
+    
     this.getmyproduct();
 
     if (this.usertoken) {
@@ -68,26 +67,13 @@ export class UserProductComponent {
       })
       .subscribe((res) => {
         this.userorders = res;
-        console.log(res);
       });
   }
 
   order_data(order_id: any) {
     this.router.navigate([`/order-data`, order_id]);
 
-    // console.log( this.http.get(`http://localhost:8000/v1/users/orders-details?id=${order_id}`));
 
-    //   this.http.get(`http://localhost:8000/v1/users/orders-details?id=${order_id}`,{headers : {
-    // Authorization : `Bearer ${this.usertoken}`
-    //   }}).subscribe(
-    //     res =>{
-    //       console.log(res);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     }
-    //   )
-    // }
   }
 }
 

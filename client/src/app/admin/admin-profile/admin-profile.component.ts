@@ -33,7 +33,6 @@ export class AdminProfileComponent {
           this.adminData = res.user;
         },
         (error) => {
-          console.log(error);
         }
       );
   }

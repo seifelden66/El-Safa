@@ -94,17 +94,16 @@ export class ProductPageComponent implements OnInit {
   heartToggled: { [id: string]: boolean } = {};
   averageRatings: { [productId: string]: number } = {};
   showLoader: boolean = true;
-  toster = inject(ToastrService);
   counter: number = 0;
+  toster = inject(ToastrService);
+  
 
   toggleHeart(prod_id: any, product_data: any) {
     // this.toster.success("added to Wishlist", "Success");
     this.heartToggled[prod_id] = !this.heartToggled[prod_id];
-    console.log(this.heartToggled);
     if (this.heartToggled[prod_id]) {
       this.toster.success("added to Wishlist", "Success");
       this.CartService.addtocart(product_data);
-      console.log(product_data);
     } else {
       this.toster.error("removed from Wishlist", "Removed");
     }
@@ -115,15 +114,21 @@ export class ProductPageComponent implements OnInit {
   }
 
   nextPage() {
-    this.currentPage = this.currentPage + 1;
-    console.log(this.currentPage);
-    this.getallproduct();
+    if (this.allproducts.length == 9) {
+      this.currentPage = this.currentPage + 1;
+      this.getallproduct();
+      this.CounterService.setcount(this.counter+1)
+    }
   }
 
   previosPage() {
-    this.currentPage = this.currentPage - 1;
-    console.log(this.currentPage);
-    this.getallproduct();
+    if(this.currentPage > 1 ){
+
+      this.currentPage = this.currentPage - 1;
+      this.getallproduct();
+      this.CounterService.setcount(this.counter-1)
+    }
+
   }
 
   ngOnInit(): void {
@@ -152,6 +157,11 @@ export class ProductPageComponent implements OnInit {
     }, 3000);
   }
 
+
+
+
+
+
   fetchcat(category: string) {
     this.http
       .get(`http://localhost:8000/v1/products?page=1&category=${category}`)
@@ -168,7 +178,6 @@ export class ProductPageComponent implements OnInit {
           this.allproducts = res;
         },
         (error) => {
-          console.log(error);
         }
       );
   }
@@ -180,7 +189,6 @@ export class ProductPageComponent implements OnInit {
         (res: any) => {
           this.allproducts = res.products;
           this.averageRatings = this.getAverageRatings(this.allproducts);
-          console.log(this.allproducts);
         },
         (error) => {
           this.allproducts = [];
@@ -211,11 +219,9 @@ export class ProductPageComponent implements OnInit {
           );
           this.category = Array.from(uniqueCategoriesSet);
         } else {
-          console.log("Products not found or is not an array");
         }
       },
       (err) => {
-        console.log(err.error);
       }
     );
   }
@@ -247,11 +253,9 @@ export class ProductPageComponent implements OnInit {
           );
           this.totalPages = res.totalPages;
         } else {
-          console.log("Products not found or is not an array");
         }
       },
       (err) => {
-        console.log(err.error);
       }
     );
   }
@@ -270,11 +274,9 @@ export class ProductPageComponent implements OnInit {
       )
       .subscribe(
         (res) => {
-          console.log(res);
           this.toster.success("Product added to cart", "Success");
         },
         (error) => {
-          console.log(error);
           this.toster.error("Please Login Firest");
         }
       );

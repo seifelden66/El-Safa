@@ -184,10 +184,8 @@ export class SecondHeaderComponent implements OnInit {
       .subscribe(
         (res: any) => {
           this.userdata = res.user;
-          console.log(res);
         },
         (error) => {
-          console.log(error);
         }
       );
   }

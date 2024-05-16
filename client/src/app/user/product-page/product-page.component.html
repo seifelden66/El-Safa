@@ -38,10 +38,7 @@
           } }
         </ng-container>
         <div>
-          <button (click)="previosPage()" class="btn btn-primary">
-            previos
-          </button>
-          <button (click)="nextPage()" class="btn btn-primary">next</button>
+        
         </div>
       </div>
     </div>
@@ -95,6 +92,7 @@
             </div>
           </div>
 
+
           <div class="add_fav_btn Btns">
             <div class="card w-75">
               <p-toast></p-toast>
@@ -128,6 +126,16 @@
         </div>
       </div>
       }
+      <div class="btns_pagination d-flex gap-4  my-3 ">
+        <button  style="background-color: black; border: none;" (click)="previosPage()" class="btn btn-primary py-2 px-3">
+          Previos
+        </button>
+
+        <p class="m-0" style="font-size: 21px; color: gray;" >{{ counter }}</p>
+
+        <button style="background-color: #ED6156;border: none; " (click)="nextPage()" class="btn btn-primary py-2 px-3 ">Next</button>
+
+      </div>
     </div>
   </div>
 </div>

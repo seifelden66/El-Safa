@@ -96,7 +96,6 @@ export class AddNewAdminComponent {
         },
         (error) => {
           this.error = error.error;
-          console.log(error);
         }
       );
   }

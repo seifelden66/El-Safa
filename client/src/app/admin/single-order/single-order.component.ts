@@ -48,7 +48,6 @@ export class SingleOrderComponent {
           this.orderStatus = res.order.order_status;
         },
         (error) => {
-          console.log(error.error);
         }
       );
   }
@@ -71,7 +70,6 @@ export class SingleOrderComponent {
           this.orderMessage = res.message;
         },
         (error) => {
-          console.log(error);
         }
       );
   }
@@ -94,7 +92,6 @@ export class SingleOrderComponent {
           this.orderMessage = res.message;
         },
         (error) => {
-          console.log(error);
         }
       );
   }
@@ -117,7 +114,6 @@ export class SingleOrderComponent {
           this.orderMessage = res.message;
         },
         (error) => {
-          console.log(error);
         }
       );
   }

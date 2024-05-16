@@ -90,13 +90,11 @@ export class AddProductComponent implements OnInit {
       formData.append("image", images[i]);
     }
 
-    console.log(this.productForm);
 
     this.http.post("http://localhost:8000/v1/products", formData).subscribe(
       (res: any) => {
         this.route.navigate(["/admin/products"]);
       },
-      (error) => console.log(error)
     );
   }
 }

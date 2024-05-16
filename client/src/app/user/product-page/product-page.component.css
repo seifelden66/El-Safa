@@ -228,6 +228,13 @@
   color: white;
 }
 
+/* ====================================================== */
+
+.btns_pagination{
+  align-items: center;
+  justify-content: center;
+}
+
 /* ======================================================== */
 /* media quary */
 @media (width < 1000px) {

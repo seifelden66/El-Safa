@@ -90,7 +90,6 @@ getProduct(){
     .get(`http://localhost:8000/v1/products/${this.product_id}`)
     .subscribe((res: any) => {
       this.product_details = res;
-      console.log(res);      
       this.main_img = this.product_details.images[0];
       this.averageRatings = this.getAverageRatings([this.product_details]); // Pass an array with a single product
     });
@@ -133,7 +132,6 @@ submitRating() {
 
   this.http.post(apiUrl, body, { headers }).subscribe(
     (response) => {
-      console.log("Rating submitted successfully:", response);
       this.ratingError = ""; // Clear rating error message
       this.rating = null;
       this.Toaster.success('Thank you for your review','Success')
@@ -165,7 +163,6 @@ submitComments() {
 
   this.http.post(apiUrl, body, { headers }).subscribe(
     (response) => {
-      console.log("Comments submitted successfully:", response);
       this.commentError = ""; // Clear comment error message
       this.comment = "";
       this.Toaster.success('Thank you for your review','Success')
@@ -198,10 +195,8 @@ addToCart(id : string){
     Authorization : `Bearer ${this.userToken}`
   }}).subscribe(
     res =>{
-      console.log(res);
     },
     error => {
-      console.log(error);
     }
   )
 }
@@ -211,11 +206,9 @@ getuserdata(){
     Authorization : `Bearer ${this.userToken}`
   }}).subscribe((res:any)=>{
     this.userdata = res.user;
-    console.log(res);
   
   },
 error => {
-  console.log(error);
 })
 }
 

@@ -64,7 +64,6 @@ export class CategorysComponent {
   }
 
   showDeleteModel(id: string) {
-    console.log(id);
 
     this.categoryId = id;
     this.deleteModelStatus = true;
@@ -79,7 +78,6 @@ export class CategorysComponent {
       .delete(`http://localhost:8000/v1/categories/${this.categoryId}`)
       .subscribe(
         (res: any) => {
-          console.log(res);
 
           alert(res.message);
           // Remove deleted Category from the list
@@ -114,7 +112,6 @@ export class CategorysComponent {
           this.categorys.push(res);
         },
         (error) => {
-          console.log(error);
         }
       );
   }

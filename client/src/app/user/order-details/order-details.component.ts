@@ -67,13 +67,11 @@ export class OrderDetailsComponent implements OnInit {
       })
       .subscribe(
         (res: any) => {
-          console.log(res);
 
           this.orders = res.order;
           this.orderStatus = res.order.order_status;
         },
         (error) => {
-          console.log(error.error);
         }
       );
   }

@@ -125,7 +125,6 @@ export class FirestnavComponent {
   getProduct() {
     this.http.get('http://localhost:8000/v1/categories').subscribe((res : any) => {
       this.category =res
-      console.log(res);
     });
   }
   

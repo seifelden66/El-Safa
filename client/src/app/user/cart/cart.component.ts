@@ -202,7 +202,6 @@ export class CartComponent implements OnInit {
       })
       .subscribe(
         (res: any) => {
-          console.log(res);
           const token = res.token;
           this.paymentSecndStep(token);
         },
@@ -328,7 +327,6 @@ export class CartComponent implements OnInit {
         },
       })
       .subscribe((res: any) => {
-        console.log(res);
         this.cartItems = res;
         this.totalPrice = this.cartItems.totalPrice;
       });

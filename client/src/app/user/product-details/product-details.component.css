@@ -42,7 +42,7 @@ p {
   justify-content: space-between;
   margin: 40px 0px;
   gap: 40px;
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
 }
 .gallary_container {
   display: flex;
@@ -140,7 +140,7 @@ p {
 }
 
 .card-body .details {
-  color: #3d7bed;
+  color: #ED6156;
 }
 .rate_product {
   color: #ffd869;

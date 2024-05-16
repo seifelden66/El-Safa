@@ -125,7 +125,6 @@ export class HomeComponent implements OnInit {
     this.http.get("http://localhost:8000/v1/products").subscribe((res: any) => {
       this.productcenter = res.products;
       this.averageRatings = this.getAverageRatings(this.productcenter);
-      console.log("Average Ratings:", this.averageRatings);
     });
   }
 
@@ -159,7 +158,6 @@ export class HomeComponent implements OnInit {
     this.http.get("http://localhost:8000/v1/products/top-rated").subscribe(
       (res: any) => {
         this.topproduct = res;
-        console.log(res);
       }
       // http://localhost:8000/v1/products/top-rated
     );

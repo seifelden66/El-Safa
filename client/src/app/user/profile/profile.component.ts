@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit  {
   
   ngOnInit(): void {
     this.usertoken=this.CookieService.get('userToken')
-    console.log(this.usertoken);
     this.getuserdata()
     if(this.usertoken){
 
@@ -41,11 +40,9 @@ export class ProfileComponent implements OnInit  {
       Authorization : `Bearer ${this.usertoken}`
     }}).subscribe((res:any)=>{
       this.userdata = res.user;
-      console.log(res);
     
     },
   error => {
-    console.log(error);
   })
   }
 
