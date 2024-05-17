@@ -425,6 +425,14 @@ p {
 .offer_card {
   width: 24%;
   cursor: pointer;
+  height: 100%;
+}
+
+.card-title {
+  overflow-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .some_offersh span {
@@ -435,12 +443,13 @@ p {
 }
 .offer_data {
   margin: 0px 10px;
+  overflow: hidden;
 }
 
 .offer_data img {
   transform: scale(1);
   transition: 0.7s;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
   width: 100%;
 }

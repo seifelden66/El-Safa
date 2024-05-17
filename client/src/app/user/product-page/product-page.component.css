@@ -104,12 +104,18 @@
   border-radius: 5px;
   width: 27%;
   overflow: hidden;
+  
 }
 
 .product_data_card {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  overflow-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .data1 {
@@ -118,9 +124,14 @@
   align-items: start;
   width: 60%;
   padding: 0px 10px;
+  overflow-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .data1 h1 {
   color: var(--text-color);
+  
 }
 /* .data2 {
   width: 40%;

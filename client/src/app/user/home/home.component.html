@@ -276,9 +276,9 @@
       <owl-carousel-o [options]="customOptions">
         @for (product of onSaleProducts; track $index) {
         <ng-template carouselSlide>
-          <div data-aos="zoom-in" class="card offer_data h-100">
+          <div data-aos="zoom-in" (click)="redirectproduct(product?._id)"  class="card offer_data h-100">
             <img
-              (click)="redirectproduct(product?._id)"
+              
               src="/assets/{{ product?.images['0'] }}"
               alt=""
             />
